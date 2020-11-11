@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbU-3y-GZP">
+                                <rect key="frame" x="132" y="144" width="150" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1yt-xw-UFm"/>
+                                    <constraint firstAttribute="height" constant="75" id="VtJ-q5-38X"/>
+                                </constraints>
+                                <state key="normal" title="主播端">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="BroadCaster:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5cp-yP-Qf4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKe-f0-Dkc">
+                                <rect key="frame" x="132" y="294" width="150" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="vO3-ku-Kjc"/>
+                                    <constraint firstAttribute="height" constant="75" id="ylJ-69-sO5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="观众端(低延迟)">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="BroadCaster:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FhU-zC-eoF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWi-jp-c4R">
+                                <rect key="frame" x="132" y="444" width="150" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="GBM-X6-qpC"/>
+                                    <constraint firstAttribute="height" constant="75" id="ZcI-Qh-6pb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="观众端(合流布局)">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="Audience:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rIt-AZ-UPm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gKe-f0-Dkc" firstAttribute="top" secondItem="JbU-3y-GZP" secondAttribute="bottom" constant="75" id="1xQ-AI-F9J"/>
+                            <constraint firstItem="JbU-3y-GZP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4fw-OM-tdf"/>
+                            <constraint firstItem="WWi-jp-c4R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bh6-1j-PwS"/>
+                            <constraint firstItem="JbU-3y-GZP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="UGV-Ea-7Ok"/>
+                            <constraint firstItem="gKe-f0-Dkc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X3g-rW-tcC"/>
+                            <constraint firstItem="WWi-jp-c4R" firstAttribute="top" secondItem="gKe-f0-Dkc" secondAttribute="bottom" constant="75" id="x0c-tb-b5c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="audience_noDelay" destination="gKe-f0-Dkc" id="t4C-rS-bFK"/>
+                        <outlet property="audience_nor" destination="WWi-jp-c4R" id="vhk-Ev-f4C"/>
+                        <outlet property="broadcaster" destination="JbU-3y-GZP" id="oLO-sG-hCQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-584.05797101449275" y="84.375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
