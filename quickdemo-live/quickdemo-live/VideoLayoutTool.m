@@ -1,9 +1,5 @@
 //
-//  VideoLayoutTool.m
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/11/2.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import "VideoLayoutTool.h"
@@ -12,18 +8,18 @@
 @implementation VideoLayoutTool
 
 - (void)layoutVideos:(NSMutableArray *)videos
-         inContainer:(UIView *)container{
+         inContainer:(UIView *)container {
     for (StreamVideo *video in videos) {
         [video.canvesView removeFromSuperview];
     }
     NSArray *allViews = [self viewListFromVideos:videos maxCount:4 ignorVideo:nil];
     [self layoutGridViews:allViews inContainerView:container];
-    
+
 }
 
 - (StreamVideo *)responseViewOfGesture:(UIGestureRecognizer *)gesture
-                              WithVideos:(NSArray<StreamVideo *> *)videos
-                       inContainerView:(UIView *)container{
+                            WithVideos:(NSArray<StreamVideo *> *)videos
+                       inContainerView:(UIView *)container {
     CGPoint location = [gesture locationInView:container];
     for (StreamVideo *video in videos) {
         CGRect rect = video.canvesView.frame;
@@ -37,7 +33,7 @@
 
 - (NSArray<UIView *> *)viewListFromVideos:(NSArray *)videos
                                  maxCount:(NSUInteger)maxCount
-                             ignorVideo:(StreamVideo *)ignorVideo{
+                               ignorVideo:(StreamVideo *)ignorVideo {
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (StreamVideo *v in videos) {
         if (v == ignorVideo) {
@@ -52,7 +48,7 @@
 }
 
 
-- (void)layoutFullScreenView:(UIView *)view inContainerView:(UIView *)contianer{
+- (void)layoutFullScreenView:(UIView *)view inContainerView:(UIView *)contianer {
     [contianer addSubview:view];
     [view mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
@@ -68,10 +64,10 @@
         UIView *lastView = allViews.lastObject;
         [container addSubview:firstView];
         [container addSubview:lastView];
-        
+
         [firstView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
-            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height/2);
+            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height / 2);
         }];
         [lastView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(0);
@@ -85,11 +81,11 @@
         [container addSubview:firstView];
         [container addSubview:secondView];
         [container addSubview:lastView];
-        
+
         [firstView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.mas_equalTo(0);
-            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height/2);
-            make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width/2);
+            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height / 2);
+            make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width / 2);
         }];
         [secondView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.top.mas_equalTo(0);
@@ -108,11 +104,11 @@
         [container addSubview:secondView];
         [container addSubview:thirdView];
         [container addSubview:lastView];
-    
+
         [firstView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.top.mas_equalTo(0);
-            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height/2);
-            make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width/2);
+            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height / 2);
+            make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width / 2);
         }];
         [secondView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.top.mas_equalTo(0);

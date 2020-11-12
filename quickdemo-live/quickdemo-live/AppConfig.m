@@ -1,9 +1,5 @@
 //
-//  AppConfig.m
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/10/29.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,7 +13,8 @@
 //NSString *const token = @"zwmKb9ZtZfwfWX5LqZ4oT2JphWbSReCoideXWWShdTBou3Ip9nAyeytP11C18t6l@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";
 
 //137
-NSString *const token = @"TUcgGdtBCJwAcIjnk+c/Yk9i76msP3z0ideXWWShdTDOLxrZXp9mTNu3K7h1d5ZR@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";
+NSString *const token =
+    @"TUcgGdtBCJwAcIjnk+c/Yk9i76msP3z0ideXWWShdTDOLxrZXp9mTNu3K7h1d5ZR@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";
 
 //182108838081B63
 //NSString *const token = @"RDUEeWleByzWnWCgWlBZcm8qAVId2a/kxv06p42fPzEVpVzK33NSDw==@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";

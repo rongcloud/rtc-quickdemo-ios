@@ -1,9 +1,5 @@
 //
-//  VideoLayoutTool.h
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/11/2.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,7 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VideoLayoutTool : NSObject
+@interface VideoLayoutTool: NSObject
 
 - (void)layoutVideos:(NSMutableArray *)videos
          inContainer:(UIView *)container;
