@@ -362,8 +362,8 @@
 
 - (void)customLayoutWithStreams:(NSMutableArray *)streams streamConfig:(RCRTCMixConfig *)streamConfig{
     NSInteger streamCount = streams.count;
-    NSInteger itemWidth = 150;
-    NSInteger itemHeight = itemWidth;
+    int itemWidth = 150;
+    int itemHeight = itemWidth;
     if (streamCount == 1) {
         RCRTCStream *firstStream = [streams firstObject];
         RCRTCCustomLayout *inputConfig = [[RCRTCCustomLayout alloc] init];
@@ -422,7 +422,7 @@
         [streamConfig.customLayouts addObject:inputConfig3];
         
     }else{
-        NSInteger i = 0;
+        int i = 0;
         for (RCRTCStream *stream in streams) {
             RCRTCCustomLayout *inputConfig = [[RCRTCCustomLayout alloc] init];
             inputConfig.videoStream = stream;
