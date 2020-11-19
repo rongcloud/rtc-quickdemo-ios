@@ -26,9 +26,9 @@ abstract_target 'CommonPods' do
         pod 'RongRTCLib'
     end
     
-    target 'quickdemo-callKit' do
+    target 'quickdemo-callkit' do
         platform :ios, '9.0'
-        project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
+        project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
         pod 'RongCloudIM'
         pod 'RongCloudRTC'
     end
