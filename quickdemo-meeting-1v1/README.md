@@ -13,8 +13,8 @@ RTC Quick Start for iOS.
 1.申请完成之后在 **AppID.m**文件中填写 AppID , token
 
 ```
-   NSString *const token = @"<#这是连接IM的token#>";
-   NSString *const AppID = @"<#这里填写你的appID#>";
+   NSString *const TOKEN = @"<#这是连接 IM 的 TOKEN#>";
+   NSString *const AppKey = @"<#这里填写你的 App Key#>";
 ```
 
 2.运行之前请先执行 pod install 安装一下需要的依赖库（RongIMLib, RongRTCLib）

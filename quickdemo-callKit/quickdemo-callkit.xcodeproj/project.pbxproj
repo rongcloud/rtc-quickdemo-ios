@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5AFBE4F725651BA10052F06E /* quickdemo-callKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-callKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AFBE4F725651BA10052F06E /* quickdemo-callkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-callkit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFBE4FA25651BA10052F06E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5AFBE4FB25651BA10052F06E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5AFBE4FD25651BA10052F06E /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		5AFBE4EE25651BA10052F06E = {
 			isa = PBXGroup;
 			children = (
-				5AFBE4F925651BA10052F06E /* quickdemo-callKit */,
+				5AFBE4F925651BA10052F06E /* quickdemo-callkit */,
 				5AFBE4F825651BA10052F06E /* Products */,
 				34EB4CE1E1B123FE0F3672F3 /* Pods */,
 				DB3469902205519A9B3FE918 /* Frameworks */,
@@ -70,12 +70,12 @@
 		5AFBE4F825651BA10052F06E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AFBE4F725651BA10052F06E /* quickdemo-callKit.app */,
+				5AFBE4F725651BA10052F06E /* quickdemo-callkit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5AFBE4F925651BA10052F06E /* quickdemo-callKit */ = {
+		5AFBE4F925651BA10052F06E /* quickdemo-callkit */ = {
 			isa = PBXGroup;
 			children = (
 				5AFBE4FA25651BA10052F06E /* AppDelegate.h */,
@@ -90,7 +90,7 @@
 				5AFBE50B25651BA40052F06E /* Info.plist */,
 				5AFBE50C25651BA40052F06E /* main.m */,
 			);
-			path = "quickdemo-callKit";
+			path = "quickdemo-callkit";
 			sourceTree = "<group>";
 		};
 		DB3469902205519A9B3FE918 /* Frameworks */ = {
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5AFBE4F625651BA10052F06E /* quickdemo-callKit */ = {
+		5AFBE4F625651BA10052F06E /* quickdemo-callkit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5AFBE52625651BA50052F06E /* Build configuration list for PBXNativeTarget "quickdemo-callKit" */;
+			buildConfigurationList = 5AFBE52625651BA50052F06E /* Build configuration list for PBXNativeTarget "quickdemo-callkit" */;
 			buildPhases = (
 				B2C943692F9627DD59790E7F /* [CP] Check Pods Manifest.lock */,
 				5AFBE4F325651BA10052F06E /* Sources */,
@@ -119,9 +119,9 @@
 			);
 			dependencies = (
 			);
-			name = "quickdemo-callKit";
+			name = "quickdemo-callkit";
 			productName = "quickdemo-callKit";
-			productReference = 5AFBE4F725651BA10052F06E /* quickdemo-callKit.app */;
+			productReference = 5AFBE4F725651BA10052F06E /* quickdemo-callkit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +137,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callKit" */;
+			buildConfigurationList = 5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callkit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -150,7 +150,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5AFBE4F625651BA10052F06E /* quickdemo-callKit */,
+				5AFBE4F625651BA10052F06E /* quickdemo-callkit */,
 			);
 		};
 /* End PBXProject section */
@@ -380,14 +380,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				DEVELOPMENT_TEAM = CQJSB93Y3D;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-callKit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quickcallkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -400,14 +400,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				DEVELOPMENT_TEAM = CQJSB93Y3D;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-callKit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quickcallkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -416,7 +416,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callKit" */ = {
+		5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callkit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AFBE52425651BA50052F06E /* Debug */,
@@ -425,7 +425,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5AFBE52625651BA50052F06E /* Build configuration list for PBXNativeTarget "quickdemo-callKit" */ = {
+		5AFBE52625651BA50052F06E /* Build configuration list for PBXNativeTarget "quickdemo-callkit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AFBE52725651BA50052F06E /* Debug */,
