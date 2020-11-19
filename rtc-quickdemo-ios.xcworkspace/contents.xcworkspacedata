@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/zhanglei/Workspace/ios-rc/rtc-quickdemo-ios/quickdemo-callKit/quickdemo-callkit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj">
    </FileRef>
    <FileRef

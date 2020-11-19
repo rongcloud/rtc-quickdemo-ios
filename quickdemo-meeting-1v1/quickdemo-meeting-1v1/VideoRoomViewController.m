@@ -13,7 +13,7 @@
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
 // ROOM_ID 所要加入的房间 ID
-NSString *const ROOM_ID = @"HelloRongCloud";
+#define ROOM_ID @"HelloRongCloud"
 
 @interface VideoRoomViewController () <RCRTCRoomEventDelegate>
 

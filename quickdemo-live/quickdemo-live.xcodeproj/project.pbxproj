@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41A87FE13282B93578D2BBEC /* Pods_CommonPods_quickdemo_live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */; };
 		5A2F81A0255000EE004A7FAF /* StreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F819F255000EE004A7FAF /* StreamVideo.m */; };
 		5A2F81A425500302004A7FAF /* VideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F81A325500302004A7FAF /* VideoLayoutTool.m */; };
 		5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FC5254AB58000D415FC /* AppDelegate.m */; };
@@ -35,7 +36,6 @@
 		5A8BA004254AB6EE00D415FC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA003254AB6ED00D415FC /* CFNetwork.framework */; };
 		5A8BA006254AB6F700D415FC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA005254AB6F700D415FC /* AudioToolbox.framework */; };
 		5A8BA008254AB6FE00D415FC /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA007254AB6FE00D415FC /* VideoToolbox.framework */; };
-		5A8BA009254AB70700D415FC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FEF254AB69B00D415FC /* AVFoundation.framework */; };
 		5A8BA00C254AB73C00D415FC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA00A254AB72200D415FC /* libc++.tbd */; };
 		5A8BA00D254AB74800D415FC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA00B254AB72C00D415FC /* libz.tbd */; };
 		5A8BA00F254AB76000D415FC /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA00E254AB75200D415FC /* libbz2.tbd */; };
@@ -102,6 +102,7 @@
 		5AA8195125555B080049B51F /* UIAlertController+RC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RC.h"; sourceTree = "<group>"; };
 		5AA8195225555B080049B51F /* UIAlertController+RC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RC.m"; sourceTree = "<group>"; };
 		914232221E2591E315969845 /* Pods-CommonPods-quickdemo-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.release.xcconfig"; sourceTree = "<group>"; };
+		9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA8D2484B63319F3FFE3E135 /* Pods-CommonPods-quickdemo-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +116,6 @@
 				5A8B9FF0254AB69B00D415FC /* AVFoundation.framework in Frameworks */,
 				5A8B9FF2254AB6A400D415FC /* GLKit.framework in Frameworks */,
 				5A8B9FE8254AB67900D415FC /* ImageIO.framework in Frameworks */,
-				5A8BA009254AB70700D415FC /* AVFoundation.framework in Frameworks */,
 				5A8B9FEA254AB68200D415FC /* Security.framework in Frameworks */,
 				5A8B9FEE254AB69200D415FC /* QuartzCore.framework in Frameworks */,
 				5A8B9FF4254AB6AB00D415FC /* OpenGLES.framework in Frameworks */,
@@ -135,6 +135,7 @@
 				5A8B9FF6254AB6B500D415FC /* CoreGraphics.framework in Frameworks */,
 				5A8B9FE4254AB65E00D415FC /* AssetsLibrary.framework in Frameworks */,
 				5A8BA006254AB6F700D415FC /* AudioToolbox.framework in Frameworks */,
+				41A87FE13282B93578D2BBEC /* Pods_CommonPods_quickdemo_live.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +238,7 @@
 				5A8B9FE7254AB67900D415FC /* ImageIO.framework */,
 				5A8B9FE5254AB66A00D415FC /* MapKit.framework */,
 				5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */,
+				9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -260,7 +262,7 @@
 			dependencies = (
 			);
 			name = "quickdemo-live";
-			productName = "ios-live-quick-start";
+			productName = "quickdemo-live";
 			productReference = 5A8B9FC1254AB58000D415FC /* quickdemo-live.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -270,7 +272,7 @@
 		5A8B9FB9254AB58000D415FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "huan xu";
 				TargetAttributes = {
 					5A8B9FC0254AB58000D415FC = {
@@ -436,6 +438,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -494,6 +497,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -530,13 +534,13 @@
 				DEVELOPMENT_TEAM = CQJSB93Y3D;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-live/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quickdemo.live;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quicklive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -553,13 +557,13 @@
 				DEVELOPMENT_TEAM = CQJSB93Y3D;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-live/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quickdemo.live;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quicklive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

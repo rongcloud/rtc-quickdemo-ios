@@ -1,9 +1,5 @@
 //
-//  BroadcasterViewController.h
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/10/30.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -26,13 +22,14 @@ typedef NS_ENUM(NSUInteger, RCRTCRoleType) {
 };
 
 
-@interface BroadcasterViewController : UIViewController
+@interface BroadcasterViewController: UIViewController
+
 /* 创建房间需要的id**/
-@property (nonatomic, copy)NSString *roomId;
+@property(nonatomic, copy) NSString *roomId;
 /*
  只会存在 RCRTCAudienceNodelayType & RCRTCBroadcasterType 两种模式
  */
-@property (nonatomic, assign)RCRTCRoleType role;
+@property(nonatomic, assign) RCRTCRoleType role;
 @end
 
 NS_ASSUME_NONNULL_END

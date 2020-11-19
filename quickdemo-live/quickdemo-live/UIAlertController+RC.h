@@ -1,9 +1,5 @@
 //
-//  UIAlertController+RC.h
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/11/6.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

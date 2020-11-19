@@ -1,9 +1,5 @@
 //
-//  AppDelegate.m
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/10/29.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -22,10 +18,10 @@
     [[RCIMClient sharedRCIMClient] initWithAppKey:AppID];
     [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Verbose];
     [[RCIMClient sharedRCIMClient] connectWithToken:token dbOpened:^(RCDBErrorCode code) {
-    } success:^(NSString *userId) {
-        NSLog(@"IM 连接成功 userId: %@",userId);
-    } error:^(RCConnectErrorCode errorCode) {
-        NSLog(@"IM 连接失败 errorCode: %ld",errorCode);
+    }                                       success:^(NSString *userId) {
+        NSLog(@"IM 连接成功 userId: %@", userId);
+    }                                         error:^(RCConnectErrorCode errorCode) {
+        NSLog(@"IM 连接失败 errorCode: %ld", errorCode);
     }];
     return YES;
 }

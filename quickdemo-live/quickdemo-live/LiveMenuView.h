@@ -1,9 +1,5 @@
 //
-//  LiveMenuView.h
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/11/6.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -16,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol LiveMenuContrlEventDelegate <NSObject>
 
-@optional
+  @optional
 - (void)exitRoom;
 - (void)microphoneIsMute:(BOOL)isMute;
 - (void)changeCamera;
@@ -25,8 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface LiveMenuView : UIView
-@property (nonatomic, weak)id <LiveMenuContrlEventDelegate> delegate;
+@interface LiveMenuView: UIView
+
+@property(nonatomic, weak) id <LiveMenuContrlEventDelegate> delegate;
 
 /*
  角色区分
@@ -34,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  1:无延迟模式观众
  2:正常主播
  */
-@property (nonatomic, assign)NSInteger roleType;
+@property(nonatomic, assign) NSInteger roleType;
 
 + (instancetype)MenuViewWithRoleType:(NSInteger)roleType roomId:(NSString *)roomId;
 

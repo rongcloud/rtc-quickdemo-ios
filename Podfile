@@ -5,6 +5,7 @@ workspace 'rtc-quickdemo-ios'
 
 project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
 project 'quickdemo-live/quickdemo-live.xcodeproj'
+project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
 
 abstract_target 'CommonPods' do
     # Comment the next line if you don't want to use dynamic frameworks
@@ -23,5 +24,12 @@ abstract_target 'CommonPods' do
         platform :ios, '9.0'
         project 'quickdemo-live/quickdemo-live.xcodeproj'
         pod 'RongRTCLib'
+    end
+    
+    target 'quickdemo-callkit' do
+        platform :ios, '9.0'
+        project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
+        pod 'RongCloudIM'
+        pod 'RongCloudRTC'
     end
 end

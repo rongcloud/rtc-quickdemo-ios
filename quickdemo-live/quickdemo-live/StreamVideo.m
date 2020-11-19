@@ -1,9 +1,5 @@
 //
-//  VideoLayout.m
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/11/2.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import "StreamVideo.h"
@@ -20,7 +16,7 @@
     return self;
 }
 
-+ (instancetype)LocalStreamVideo{
++ (instancetype)LocalStreamVideo {
     StreamVideo *localStreamVideo = [[StreamVideo alloc] init];
     localStreamVideo.userId = @"0";
     localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] init];

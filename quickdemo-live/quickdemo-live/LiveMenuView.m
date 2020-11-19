@@ -1,20 +1,16 @@
 //
-//  LiveMenuView.m
-//  ios-live-quick-start
-//
-//  Created by huan xu on 2020/11/6.
-//  Copyright © 2020 huan xu. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import "LiveMenuView.h"
 #import <Masonry/Masonry.h>
 
-@interface LiveMenuView()
-@property (nonatomic, copy)NSString *title;
+@interface LiveMenuView ()
+
+@property(nonatomic, copy) NSString *title;
 @end
 
-@implementation LiveMenuView
-{
+@implementation LiveMenuView {
     UIButton *_closeBtn;
     UIButton *_micMuteBtn;
     UIButton *_cameraBtn;
@@ -22,13 +18,13 @@
     UIButton *_changeRoleBtn;
 }
 
-+ (instancetype)MenuViewWithRoleType:(NSInteger)roleType roomId:(NSString *)roomId{
++ (instancetype)MenuViewWithRoleType:(NSInteger)roleType roomId:(NSString *)roomId {
     LiveMenuView *view = [[self alloc] initWithTitle:roomId];
     view.roleType = roleType;
     return view;
 }
 
-- (instancetype)initWithTitle:(NSString *)title{
+- (instancetype)initWithTitle:(NSString *)title {
     if (self = [super init]) {
         self.title = title;
         [self setupSubviews];
@@ -36,7 +32,7 @@
     return self;
 }
 
-- (void)setRoleType:(NSInteger)roleType{
+- (void)setRoleType:(NSInteger)roleType {
     /*
      角色区分
      0:合流布局模式观众
@@ -45,24 +41,21 @@
      */
     _roleType = roleType;
     switch (_roleType) {
-        case 0:
-        {
+        case 0: {
             _micMuteBtn.hidden = YES;
             _cameraBtn.hidden = YES;
             _changeRoleBtn.hidden = YES;
             _layoutModeBtn.hidden = YES;
         }
             break;
-        case 1:
-        {
+        case 1: {
             _micMuteBtn.hidden = YES;
             _cameraBtn.hidden = YES;
             _changeRoleBtn.hidden = NO;
             _layoutModeBtn.hidden = YES;
         }
             break;
-        case 2:
-        {
+        case 2: {
             _micMuteBtn.hidden = NO;
             _cameraBtn.hidden = NO;
             _changeRoleBtn.hidden = NO;
@@ -75,34 +68,34 @@
 }
 
 
-- (void)btnClick:(UIButton *)btn{
+- (void)btnClick:(UIButton *)btn {
     if (btn == _closeBtn) {
         [self.delegate exitRoom];
-    }else if (btn == _micMuteBtn){
+    } else if (btn == _micMuteBtn) {
         btn.selected = !btn.selected;
         [self.delegate microphoneIsMute:btn.selected];
-    }else if (btn == _cameraBtn){
+    } else if (btn == _cameraBtn) {
         btn.selected = !btn.selected;
         [self.delegate changeCamera];
-    }else if (btn == _changeRoleBtn){
+    } else if (btn == _changeRoleBtn) {
         [self.delegate changeRole:btn];
-    }else if (btn == _layoutModeBtn){
+    } else if (btn == _layoutModeBtn) {
         if (btn.tag >= 3) {
             btn.tag = RCRTCMixLayoutModeCustom;
-        }else{
-            btn.tag ++;
+        } else {
+            btn.tag++;
         }
         [self _layoutStyleWtihBtn:btn];
         [self.delegate streamlayoutMode:btn.tag];
     }
 }
 
-- (void)_layoutStyleWtihBtn:(UIButton *)btn{
+- (void)_layoutStyleWtihBtn:(UIButton *)btn {
     switch (btn.tag) {
         case RCRTCMixLayoutModeCustom:
             [btn setTitle:@"自定义" forState:UIControlStateNormal];
             break;
-        case  RCRTCMixLayoutModeSuspension:
+        case RCRTCMixLayoutModeSuspension:
             [btn setTitle:@"悬浮" forState:UIControlStateNormal];
             break;
         case RCRTCMixLayoutModeAdaptive:
@@ -118,15 +111,15 @@
 }
 
 
-- (void)setupSubviews{
+- (void)setupSubviews {
     UIButton *closeBtn = [UIButton buttonWithType:0];
     [closeBtn setImage:[UIImage imageNamed:@"close"] forState:0];
     [closeBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = self.title;
     titleLabel.textColor = [UIColor whiteColor];
-    
+
     UIButton *micMuteBtn = [UIButton buttonWithType:0];
     [micMuteBtn setImage:[UIImage imageNamed:@"mute"] forState:0];
     [micMuteBtn setImage:[UIImage imageNamed:@"mute_hover"] forState:UIControlStateSelected];
@@ -136,19 +129,19 @@
     [cameraBtn setImage:[UIImage imageNamed:@"camera"] forState:0];
     [cameraBtn setImage:[UIImage imageNamed:@"camera_hover"] forState:UIControlStateSelected];
     [cameraBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     UIButton *layoutModeBtn = [UIButton buttonWithType:0];
     [layoutModeBtn setImage:[UIImage imageNamed:@"layout_mode"] forState:0];
     layoutModeBtn.tag = RCRTCMixLayoutModeCustom;
     [self _layoutStyleWtihBtn:layoutModeBtn];
     [layoutModeBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [layoutModeBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     UIButton *changeRoleBtn = [UIButton buttonWithType:0];
     [changeRoleBtn setImage:[UIImage imageNamed:@"stop_video"] forState:0];
     [changeRoleBtn setImage:[UIImage imageNamed:@"stop_video_s"] forState:UIControlStateSelected];
     [changeRoleBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     _closeBtn = closeBtn;
     _micMuteBtn = micMuteBtn;
     _cameraBtn = cameraBtn;
@@ -161,7 +154,7 @@
     [self addSubview:cameraBtn];
     [self addSubview:changeRoleBtn];
     [self addSubview:layoutModeBtn];
-    
+
     [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_offset(30);
         make.right.mas_offset(-20);
