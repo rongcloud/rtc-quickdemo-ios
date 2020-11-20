@@ -1,9 +1,7 @@
 //
 //  ViewController.m
 //  quickdemo-callKit
-//
-//  Created by huan xu on 2020/11/18.
-//
+
 
 #import "ViewController.h"
 #import <RongIMLib/RongIMLib.h>
@@ -29,35 +27,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    /*
-     //186
-     NSString *const token = @"zwmKb9ZtZfwfWX5LqZ4oT2JphWbSReCoideXWWShdTBou3Ip9nAyeytP11C18t6l@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";
-
-     //137
-     //NSString *const token = @"TUcgGdtBCJwAcIjnk+c/Yk9i76msP3z0ideXWWShdTDOLxrZXp9mTNu3K7h1d5ZR@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";
-
-     //182108838081B63
-     //NSString *const token = @"RDUEeWleByzWnWCgWlBZcm8qAVId2a/kxv06p42fPzEVpVzK33NSDw==@emx6.cn.rongnav.com;emx6.cn.rongcfg.com";
-
-     NSString *const AppID = @"z3v5yqkbv8v30";
-     */
-    
     //User1
-    self.callUser1Id = @"xuhuan"; //请自定义User1的ID
-    self.callUser1Token = @"B+QoHfaZ8F592THITdFJl1JUNInU59yomRVTrHGalkU=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com"; //请使用自定义User1的ID 生成User1的Token
+    self.callUser1Id = @"<#userId1#>";
+    self.callUser1Token = @"<#请输入使用userId1生成的token#>";
     
     //User2
-    self.callUser2Id = @"xushao"; //请自定义User2的ID
-    self.callUser2Token = @"IrsKLk6XkuCQb+y5GEwd7VJUNInU59yoBrbVP7Lpr4w=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com"; //请使用自定义User2的ID 生成User2的Token
+    self.callUser2Id = @"<#userId2#>";
+    self.callUser2Token =  @"<#请输入使用userId2生成的token#>";
     
-    self.targetId = @"363702"; //群组ID, 只有在多人通话时才会用到, 单人通话时可以不填写, 发起多人通话时, 上面的两个用户必须在此群组targetId的群里, 且targetId不能为@"",否则无法正常通话
+    self.targetId = @"<#groupId#>"; //群组ID, 只有在多人通话时才会用到, 单人通话时可以不填写, 发起多人通话时, 上面的两个用户必须在此群组targetId的群里, 且targetId不能为@"",否则无法正常通话
     
     self.isContect1 = NO;
     self.isSingleCall = YES;
     self.mediaType = RCCallMediaVideo;
     
-    [[RCIMClient sharedRCIMClient] initWithAppKey:@"6tnym1brnzcx7"]; //请登录融云官网获取AppKey
+    [[RCIMClient sharedRCIMClient] initWithAppKey:@"<#AppKey#>"]; //请登录融云官网获取AppKey
     [RCIMClient sharedRCIMClient].logLevel = RC_Log_Level_Verbose;
     [RCCall sharedRCCall]; //必须初始化, 否则无法收到来电
     [self initUIView];
