@@ -6,7 +6,7 @@
 #import <RongRTCLib/RongRTCLib.h>
 
 #import "VideoRoomViewController.h"
-#import "AppIDToken.h"
+#import "AppKeyToken.h"
 
 #define kScreenWidth self.view.frame.size.width
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;

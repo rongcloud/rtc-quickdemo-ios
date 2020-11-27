@@ -1,7 +1,6 @@
 //
 //  SceneDelegate.h
-//  quickdemo-callKit
-
+//  quickdemo-callkit
 #import <UIKit/UIKit.h>
 
 @interface SceneDelegate : UIResponder <UIWindowSceneDelegate>

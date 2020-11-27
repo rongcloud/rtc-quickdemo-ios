@@ -1,7 +1,6 @@
 //
 //  SceneDelegate.m
-//  quickdemo-callKit
-
+//  quickdemo-callkit
 
 #import "SceneDelegate.h"
 

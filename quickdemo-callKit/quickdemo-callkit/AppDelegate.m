@@ -1,7 +1,6 @@
 //
 //  AppDelegate.m
-//  quickdemo-callKit
-
+//  quickdemo-callkit
 #import "AppDelegate.h"
 
 @interface AppDelegate ()

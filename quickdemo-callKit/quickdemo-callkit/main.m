@@ -1,7 +1,6 @@
 //
 //  main.m
-//  quickdemo-callKit
-
+//  quickdemo-callkit
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
