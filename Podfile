@@ -16,8 +16,7 @@ abstract_target 'CommonPods' do
     target 'quickdemo-meeting-1v1' do
         platform :ios, '9.0'
         project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
-        pod 'RongCloudIM'
-        pod 'RongCloudRTC'
+        pod 'RongRTCLib'
     end
 
     target 'quickdemo-live' do
@@ -29,7 +28,6 @@ abstract_target 'CommonPods' do
     target 'quickdemo-callkit' do
         platform :ios, '9.0'
         project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
-        pod 'RongCloudIM'
         pod 'RongCloudRTC'
     end
 end
