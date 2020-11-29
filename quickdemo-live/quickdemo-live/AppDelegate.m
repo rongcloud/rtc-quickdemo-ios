@@ -3,7 +3,7 @@
 //
 
 #import "AppDelegate.h"
-#import "AppConfig.h"
+#import "AppKeyToken.h"
 #import <RongIMLib/RongIMLib.h>
 
 @interface AppDelegate ()
@@ -15,9 +15,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // 前置条件,需要建立IM连接
-    [[RCIMClient sharedRCIMClient] initWithAppKey:AppID];
+    [[RCIMClient sharedRCIMClient] initWithAppKey:APP_KEY];
     [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Verbose];
-    [[RCIMClient sharedRCIMClient] connectWithToken:token dbOpened:^(RCDBErrorCode code) {
+    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {
     }                                       success:^(NSString *userId) {
         NSLog(@"IM 连接成功 userId: %@", userId);
     }                                         error:^(RCConnectErrorCode errorCode) {

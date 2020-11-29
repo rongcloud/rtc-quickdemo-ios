@@ -80,11 +80,11 @@
                                     room.delegate = self;
 
                                     if (self.role == RCRTCBroadcasterType) {
-                                        //2.发布自己的流
+                                        // 2.发布自己的流
                                         [self publishLocalLiveAVStream];
                                     }
 
-                                    //3.如果已经有远端的流
+                                    // 3.如果已经有远端的流
                                     if (room.remoteUsers.count) {
                                         NSMutableArray *streamArray = [NSMutableArray array];
                                         for (RCRTCRemoteUser *user in room.remoteUsers) {

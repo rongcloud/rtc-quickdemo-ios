@@ -1,9 +1,6 @@
 //
 //  SceneDelegate.m
-//  quickdemo-callKit
-//
-//  Created by huan xu on 2020/11/18.
-//
+//  quickdemo-callkit
 
 #import "SceneDelegate.h"
 

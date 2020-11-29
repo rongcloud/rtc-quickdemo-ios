@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		489B63D4255BF44000B1267E /* quickdemo-meeting-1v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-meeting-1v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48F55E5B255BF55700CD54E2 /* AppIDToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppIDToken.h; sourceTree = "<group>"; };
+		48F55E5B255BF55700CD54E2 /* AppKeyToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeyToken.h; sourceTree = "<group>"; };
 		5AC2DF67255BD8D000AF05B5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5AC2DF68255BD8D000AF05B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AC2DF69255BD8D000AF05B5 /* VideoRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoomViewController.m; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			children = (
 				5AC2DF71255BD8D000AF05B5 /* VideoRoomViewController.h */,
 				5AC2DF69255BD8D000AF05B5 /* VideoRoomViewController.m */,
-				48F55E5B255BF55700CD54E2 /* AppIDToken.h */,
+				48F55E5B255BF55700CD54E2 /* AppKeyToken.h */,
 				5AC2DF7C255BD8F900AF05B5 /* Supporting Files */,
 			);
 			path = "quickdemo-meeting-1v1";
