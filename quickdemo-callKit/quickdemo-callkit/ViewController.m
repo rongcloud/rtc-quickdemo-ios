@@ -28,11 +28,11 @@
     [super viewDidLoad];
     //User1
     self.callUser1Id = @"<#userId1#>";
-    self.callUser1Token = @"<#请输入使用userId1生成的token#>";
+    self.callUser1Token = @"<#请输入使用 userId1 生成的 Token#>";
     
     //User2
     self.callUser2Id = @"<#userId2#>";
-    self.callUser2Token =  @"<#请输入使用userId2生成的token#>";
+    self.callUser2Token =  @"<#请输入使用 userId2 生成的 Token#>";
     
     self.targetId = @"<#groupId#>"; //群组ID, 只有在多人通话时才会用到, 单人通话时可以不填写, 发起多人通话时, 上面的两个用户必须在此群组targetId的群里, 且targetId不能为@"",否则无法正常通话
     

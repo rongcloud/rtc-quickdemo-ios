@@ -16,7 +16,6 @@
 		5A8B9FD1254AB58100D415FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD0254AB58100D415FC /* Assets.xcassets */; };
 		5A8B9FD4254AB58100D415FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */; };
 		5A8B9FD7254AB58100D415FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD6254AB58100D415FC /* main.m */; };
-		5A8B9FE1254AB59D00D415FC /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FDD254AB59C00D415FC /* AppConfig.m */; };
 		5A8B9FE4254AB65E00D415FC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */; };
 		5A8B9FE6254AB66A00D415FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FE5254AB66A00D415FC /* MapKit.framework */; };
 		5A8B9FE8254AB67900D415FC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FE7254AB67900D415FC /* ImageIO.framework */; };
@@ -64,8 +63,7 @@
 		5A8B9FD3254AB58100D415FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A8B9FD5254AB58100D415FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A8B9FD6254AB58100D415FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5A8B9FDD254AB59C00D415FC /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
-		5A8B9FDF254AB59D00D415FC /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		5A8B9FDF254AB59D00D415FC /* AppKeyToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppKeyToken.h; sourceTree = "<group>"; };
 		5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5A8B9FE5254AB66A00D415FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5A8B9FE7254AB67900D415FC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -166,8 +164,7 @@
 			children = (
 				5A8B9FC4254AB58000D415FC /* AppDelegate.h */,
 				5A8B9FC5254AB58000D415FC /* AppDelegate.m */,
-				5A8B9FDF254AB59D00D415FC /* AppConfig.h */,
-				5A8B9FDD254AB59C00D415FC /* AppConfig.m */,
+				5A8B9FDF254AB59D00D415FC /* AppKeyToken.h */,
 				5A8B9FCA254AB58000D415FC /* ViewController.h */,
 				5A8B9FCB254AB58000D415FC /* ViewController.m */,
 				5A8BA01E254BF81B00D415FC /* BroadcasterViewController.h */,
@@ -386,7 +383,6 @@
 				5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */,
 				5A2F81A0255000EE004A7FAF /* StreamVideo.m in Sources */,
 				5A8B9FD7254AB58100D415FC /* main.m in Sources */,
-				5A8B9FE1254AB59D00D415FC /* AppConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

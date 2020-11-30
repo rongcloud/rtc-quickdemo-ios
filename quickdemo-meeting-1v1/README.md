@@ -10,12 +10,14 @@ RTC Quick Start for iOS.
 - 麦克风静音和解除静音；
 - 切换前置摄像头和后置摄像头；
 
-1.申请完成之后在 **AppKeyToken.h**文件中填写 AppID , token
+1.申请完成之后在 **AppKeyToken.h**文件中填写 APP_KEY , TOKEN
 
 ```
 #define APP_KEY @"<#这里填写你的 App Key#>"
 #define TOKEN @"<#这是连接 IM 的 Token#>"
 ```
+
+> 注意: 假设两个真机设备互通测试时，需要同一个 APP_KEY 和两个不同的 TOKEN
 
 2.运行之前请先执行 pod install 安装一下需要的依赖库（RongIMLib, RongRTCLib）
 3.目前仅支持真机测试
