@@ -5,6 +5,9 @@
       location = "group:quickdemo-callkit/quickdemo-callkit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:quickdemo-calllib/quickdemo-calllib.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:quickdemo-live/quickdemo-live.xcodeproj">
    </FileRef>
    <FileRef
