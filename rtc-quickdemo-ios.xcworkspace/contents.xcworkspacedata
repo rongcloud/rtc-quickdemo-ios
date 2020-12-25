@@ -11,6 +11,9 @@
       location = "group:quickdemo-live/quickdemo-live.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:quickdemo-liveAcross/quickdemo-liveAcross.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj">
    </FileRef>
    <FileRef

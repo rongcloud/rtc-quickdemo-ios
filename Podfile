@@ -5,6 +5,7 @@ workspace 'rtc-quickdemo-ios'
 
 project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
 project 'quickdemo-live/quickdemo-live.xcodeproj'
+project 'quickdemo-live/quickdemo-liveAcross.xcodeproj'
 project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
 project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
 
@@ -23,6 +24,12 @@ abstract_target 'CommonPods' do
     target 'quickdemo-live' do
         platform :ios, '9.0'
         project 'quickdemo-live/quickdemo-live.xcodeproj'
+        pod 'RongRTCLib'
+    end
+    
+    target 'quickdemo-liveAcross' do
+        platform :ios, '9.0'
+        project 'quickdemo-liveAcross/quickdemo-liveAcross.xcodeproj'
         pod 'RongRTCLib'
     end
     
