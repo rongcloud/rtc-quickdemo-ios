@@ -40,7 +40,6 @@
 		5A8BA00F254AB76000D415FC /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA00E254AB75200D415FC /* libbz2.tbd */; };
 		5A8BA011254AB77500D415FC /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA010254AB76C00D415FC /* libiconv.tbd */; };
 		5A8BA013254AB78B00D415FC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA012254AB78100D415FC /* libsqlite3.tbd */; };
-		5A8BA01D254BEF2C00D415FC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA01C254BEF2C00D415FC /* SceneDelegate.m */; };
 		5A8BA020254BF81B00D415FC /* BroadcasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */; };
 		5A8BA023254BF82D00D415FC /* AudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA022254BF82D00D415FC /* AudienceViewController.m */; };
 		5A8BA025254C0EE700D415FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BA024254C0EE700D415FC /* README.md */; };
@@ -88,8 +87,6 @@
 		5A8BA00E254AB75200D415FC /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		5A8BA010254AB76C00D415FC /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5A8BA012254AB78100D415FC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		5A8BA01B254BEF2C00D415FC /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		5A8BA01C254BEF2C00D415FC /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5A8BA01E254BF81B00D415FC /* BroadcasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcasterViewController.h; sourceTree = "<group>"; };
 		5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcasterViewController.m; sourceTree = "<group>"; };
 		5A8BA021254BF82D00D415FC /* AudienceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudienceViewController.h; sourceTree = "<group>"; };
@@ -187,8 +184,6 @@
 		5A8BA014254ABA5400D415FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A8BA01B254BEF2C00D415FC /* SceneDelegate.h */,
-				5A8BA01C254BEF2C00D415FC /* SceneDelegate.m */,
 				5A8B9FCD254AB58000D415FC /* Main.storyboard */,
 				5A8B9FD0254AB58100D415FC /* Assets.xcassets */,
 				5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */,
@@ -377,7 +372,6 @@
 				5A8BA020254BF81B00D415FC /* BroadcasterViewController.m in Sources */,
 				5A8B9FCC254AB58000D415FC /* ViewController.m in Sources */,
 				5AA8194E25553AFA0049B51F /* LiveMenuView.m in Sources */,
-				5A8BA01D254BEF2C00D415FC /* SceneDelegate.m in Sources */,
 				5AA8195325555B080049B51F /* UIAlertController+RC.m in Sources */,
 				5A2F81A425500302004A7FAF /* VideoLayoutTool.m in Sources */,
 				5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */,
@@ -527,16 +521,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-live/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quicklive;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -550,16 +544,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-live/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quicklive;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
