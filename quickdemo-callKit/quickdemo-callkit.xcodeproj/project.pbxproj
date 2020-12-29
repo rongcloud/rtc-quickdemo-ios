@@ -18,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E4826F0259B3E9500801853 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = "../../quickdemo-callKit/quickdemo-callkit/AppConfig.h"; sourceTree = "<group>"; };
 		5AFBE4F725651BA10052F06E /* quickdemo-callkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-callkit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFBE4FA25651BA10052F06E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5AFBE4FB25651BA10052F06E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		5AFBE4F925651BA10052F06E /* quickdemo-callkit */ = {
 			isa = PBXGroup;
 			children = (
+				1E4826F0259B3E9500801853 /* AppConfig.h */,
 				5AFBE4FA25651BA10052F06E /* AppDelegate.h */,
 				5AFBE4FB25651BA10052F06E /* AppDelegate.m */,
 				5AFBE4FD25651BA10052F06E /* SceneDelegate.h */,

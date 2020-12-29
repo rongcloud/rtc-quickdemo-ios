@@ -5,8 +5,8 @@
 //  Created by Zafer.Lee on 2020/12/24.
 //
 
-#ifndef RCConfig_h
-#define RCConfig_h
+#ifndef AppConfig_h
+#define AppConfig_h
 
 //https://developer.rongcloud.cn/app/appkey/voKJ5Sx3FogpbvvqQSKHqg
 #define RCAppKey @"<#请在开发者平台获取AppKey#>"
@@ -20,4 +20,4 @@
 #define RCUserId2 @"<#userId#>"
 #define RCUserToken2 @"<#token#>"
 
-#endif /* RCConfig_h */
+#endif /* AppConfig_h */

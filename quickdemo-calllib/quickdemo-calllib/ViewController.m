@@ -7,7 +7,7 @@
 
 #import "ViewController.h"
 #import <RongCallLib/RongCallLib.h>
-#import "RCConfig.h"
+#import "AppConfig.h"
 
 @interface ViewController ()<RCCallReceiveDelegate,RCCallSessionDelegate>
 @property (nonatomic, copy) NSString *loginUID;

@@ -10,7 +10,7 @@ RTC Quick Start for iOS.
 - 麦克风静音和解除静音；
 - 切换前置摄像头和后置摄像头；
 
-1.申请完成之后在 **AppKeyToken.h**文件中填写 APP_KEY , TOKEN
+1.申请完成之后在 **AppConfig.h**文件中填写 APP_KEY , TOKEN
 
 ```
 #define APP_KEY @"<#这里填写你的 App Key#>"

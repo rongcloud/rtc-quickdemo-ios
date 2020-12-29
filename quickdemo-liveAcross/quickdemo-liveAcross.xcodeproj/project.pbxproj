@@ -19,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E4826F4259B400D00801853 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		3904FEC72594941900CFB36B /* ViewBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewBuilder.h; sourceTree = "<group>"; };
 		3904FEC82594941900CFB36B /* ViewBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewBuilder.m; sourceTree = "<group>"; };
 		390FFAF825946E4B00DDC179 /* quickdemo-liveAcross.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-liveAcross.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +72,7 @@
 		390FFAFA25946E4B00DDC179 /* quickdemo-liveAcross */ = {
 			isa = PBXGroup;
 			children = (
+				1E4826F4259B400D00801853 /* AppConfig.h */,
 				390FFAFB25946E4B00DDC179 /* AppDelegate.h */,
 				390FFAFC25946E4B00DDC179 /* AppDelegate.m */,
 				390FFAFE25946E4B00DDC179 /* SceneDelegate.h */,

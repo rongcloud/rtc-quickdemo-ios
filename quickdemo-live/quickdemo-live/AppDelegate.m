@@ -3,7 +3,7 @@
 //
 
 #import "AppDelegate.h"
-#import "AppKeyToken.h"
+#import "AppConfig.h"
 #import <RongIMLib/RongIMLib.h>
 
 @interface AppDelegate ()

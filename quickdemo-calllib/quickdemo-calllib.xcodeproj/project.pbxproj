@@ -78,7 +78,7 @@
 		1E189A18259468E200BFB60D /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		1E189A1B259468E900BFB60D /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		1E189A1E259468F100BFB60D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		1E189A33259486B600BFB60D /* RCConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCConfig.h; sourceTree = "<group>"; };
+		1E189A33259486B600BFB60D /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		1E4E0DA0259591A80082FE4F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1E6BDE422594A4FF00383A36 /* helpImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpImg.png; sourceTree = "<group>"; };
 		23283C273355FEC106EC85E3 /* Pods-CommonPods-quickdemo-calllib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-calllib.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,11 +154,11 @@
 		1E1899CA259446CE00BFB60D /* quickdemo-calllib */ = {
 			isa = PBXGroup;
 			children = (
+				1E189A33259486B600BFB60D /* AppConfig.h */,
 				1E1899CB259446CE00BFB60D /* AppDelegate.h */,
 				1E1899CC259446CE00BFB60D /* AppDelegate.m */,
 				1E1899D1259446CE00BFB60D /* ViewController.h */,
 				1E1899D2259446CE00BFB60D /* ViewController.m */,
-				1E189A33259486B600BFB60D /* RCConfig.h */,
 				1E6BDE422594A4FF00383A36 /* helpImg.png */,
 				1E1899D4259446CE00BFB60D /* Main.storyboard */,
 				1E1899D7259446D100BFB60D /* Assets.xcassets */,

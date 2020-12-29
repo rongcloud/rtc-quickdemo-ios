@@ -9,7 +9,7 @@
 #import <RongIMLib/RongIMLib.h>
 #import <RongRTCLib/RongRTCLib.h>
 #import "ViewBuilder.h"
-
+#import "AppConfig.h"
 
 @interface ViewController () <RCRTCRoomEventDelegate, RCRTCOtherRoomEventDelegate>
 
@@ -33,15 +33,15 @@
     //跨房间连麦官网开发文档: https://docs.rongcloud.cn/v4/views/rtc/livevideo/guide/joinManage/joinAcross/ios.html
     
     //请填写登录用户1的token
-    self.user1Token = <#用户1 Token#>;
+    self.user1Token = USERID;
     
     //请填写登录用户2的token
-    self.user2Token = <#用户2 Token#>;
+    self.user2Token = TOKEN;
     
     self.imConnected = NO;
     
     //请填写您的 AppKey
-    [[RCIMClient sharedRCIMClient] initWithAppKey:<#AppKey#>];
+    [[RCIMClient sharedRCIMClient] initWithAppKey:APP_KEY];
     [RCIMClient sharedRCIMClient].logLevel = RC_Log_Level_Verbose;
     
     self.viewBuilder = [[ViewBuilder alloc] initWithViewController:self];

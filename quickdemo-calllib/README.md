@@ -14,7 +14,7 @@ CallLib Quick Start for iOS.
 - 选择另一个账户登录
 
 
-1.申请完成之后在 **RCConfig.h**文件中填写 RCAppKey , RCUserId1，RCUserToken1（id和token的获取也可参考demo中“helpImg.png”图片）
+1.申请完成之后在 **AppConfig.h**文件中填写 RCAppKey , RCUserId1，RCUserToken1（id和token的获取也可参考demo中“helpImg.png”图片）
 需要两个userid和token
 
 ```
