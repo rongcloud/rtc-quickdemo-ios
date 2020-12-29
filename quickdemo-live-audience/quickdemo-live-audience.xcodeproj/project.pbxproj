@@ -7,15 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41A87FE13282B93578D2BBEC /* Pods_CommonPods_quickdemo_live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */; };
-		5A2F81A0255000EE004A7FAF /* StreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F819F255000EE004A7FAF /* StreamVideo.m */; };
-		5A2F81A425500302004A7FAF /* VideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F81A325500302004A7FAF /* VideoLayoutTool.m */; };
-		5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FC5254AB58000D415FC /* AppDelegate.m */; };
-		5A8B9FCC254AB58000D415FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FCB254AB58000D415FC /* ViewController.m */; };
-		5A8B9FCF254AB58000D415FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FCD254AB58000D415FC /* Main.storyboard */; };
-		5A8B9FD1254AB58100D415FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD0254AB58100D415FC /* Assets.xcassets */; };
-		5A8B9FD4254AB58100D415FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */; };
-		5A8B9FD7254AB58100D415FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD6254AB58100D415FC /* main.m */; };
 		5A8B9FE4254AB65E00D415FC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */; };
 		5A8B9FE6254AB66A00D415FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FE5254AB66A00D415FC /* MapKit.framework */; };
 		5A8B9FE8254AB67900D415FC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8B9FE7254AB67900D415FC /* ImageIO.framework */; };
@@ -40,30 +31,21 @@
 		5A8BA00F254AB76000D415FC /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA00E254AB75200D415FC /* libbz2.tbd */; };
 		5A8BA011254AB77500D415FC /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA010254AB76C00D415FC /* libiconv.tbd */; };
 		5A8BA013254AB78B00D415FC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA012254AB78100D415FC /* libsqlite3.tbd */; };
-		5A8BA01D254BEF2C00D415FC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA01C254BEF2C00D415FC /* SceneDelegate.m */; };
-		5A8BA020254BF81B00D415FC /* BroadcasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */; };
-		5A8BA023254BF82D00D415FC /* AudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA022254BF82D00D415FC /* AudienceViewController.m */; };
 		5A8BA025254C0EE700D415FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BA024254C0EE700D415FC /* README.md */; };
-		5AA8194E25553AFA0049B51F /* LiveMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8194D25553AFA0049B51F /* LiveMenuView.m */; };
-		5AA8195325555B080049B51F /* UIAlertController+RC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8195225555B080049B51F /* UIAlertController+RC.m */; };
+		5AC3FF8D259B1904001D85AC /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3FF7C259B1904001D85AC /* AppConfig.m */; };
+		5AC3FF8E259B1904001D85AC /* AudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3FF7D259B1904001D85AC /* AudienceViewController.m */; };
+		5AC3FF8F259B1904001D85AC /* UIAlertController+RC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3FF7E259B1904001D85AC /* UIAlertController+RC.m */; };
+		5AC3FF90259B1904001D85AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AC3FF80259B1904001D85AC /* Assets.xcassets */; };
+		5AC3FF92259B1904001D85AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC3FF82259B1904001D85AC /* LaunchScreen.storyboard */; };
+		5AC3FF93259B1904001D85AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AC3FF84259B1904001D85AC /* Main.storyboard */; };
+		5AC3FF94259B1904001D85AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3FF89259B1904001D85AC /* main.m */; };
+		5AC3FF95259B1904001D85AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3FF8A259B1904001D85AC /* AppDelegate.m */; };
+		8C44D0D94C2B1CCA502F5E28 /* Pods_CommonPods_quickdemo_live_audience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C309B69B3E3ED60195210872 /* Pods_CommonPods_quickdemo_live_audience.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A2F819E255000EE004A7FAF /* StreamVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamVideo.h; sourceTree = "<group>"; };
-		5A2F819F255000EE004A7FAF /* StreamVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamVideo.m; sourceTree = "<group>"; };
-		5A2F81A225500302004A7FAF /* VideoLayoutTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoLayoutTool.h; sourceTree = "<group>"; };
-		5A2F81A325500302004A7FAF /* VideoLayoutTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoLayoutTool.m; sourceTree = "<group>"; };
-		5A8B9FC1254AB58000D415FC /* quickdemo-live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A8B9FC4254AB58000D415FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5A8B9FC5254AB58000D415FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5A8B9FCA254AB58000D415FC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5A8B9FCB254AB58000D415FC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5A8B9FCE254AB58000D415FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5A8B9FD0254AB58100D415FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5A8B9FD3254AB58100D415FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5A8B9FD5254AB58100D415FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A8B9FD6254AB58100D415FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5A8B9FDF254AB59D00D415FC /* AppKeyToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppKeyToken.h; sourceTree = "<group>"; };
+		59E83B82631E19F0AEB632CC /* Pods-CommonPods-quickstart-live-audience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickstart-live-audience.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickstart-live-audience/Pods-CommonPods-quickstart-live-audience.release.xcconfig"; sourceTree = "<group>"; };
+		5A8B9FC1254AB58000D415FC /* quickdemo-live-audience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-live-audience.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5A8B9FE5254AB66A00D415FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5A8B9FE7254AB67900D415FC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -88,20 +70,25 @@
 		5A8BA00E254AB75200D415FC /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		5A8BA010254AB76C00D415FC /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5A8BA012254AB78100D415FC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		5A8BA01B254BEF2C00D415FC /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		5A8BA01C254BEF2C00D415FC /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		5A8BA01E254BF81B00D415FC /* BroadcasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcasterViewController.h; sourceTree = "<group>"; };
-		5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcasterViewController.m; sourceTree = "<group>"; };
-		5A8BA021254BF82D00D415FC /* AudienceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudienceViewController.h; sourceTree = "<group>"; };
-		5A8BA022254BF82D00D415FC /* AudienceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudienceViewController.m; sourceTree = "<group>"; };
+		5A8BA015254AC88E00D415FC /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8BA024254C0EE700D415FC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5AA8194C25553AFA0049B51F /* LiveMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveMenuView.h; sourceTree = "<group>"; };
-		5AA8194D25553AFA0049B51F /* LiveMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveMenuView.m; sourceTree = "<group>"; };
-		5AA8195125555B080049B51F /* UIAlertController+RC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RC.h"; sourceTree = "<group>"; };
-		5AA8195225555B080049B51F /* UIAlertController+RC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RC.m"; sourceTree = "<group>"; };
-		914232221E2591E315969845 /* Pods-CommonPods-quickdemo-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.release.xcconfig"; sourceTree = "<group>"; };
-		9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA8D2484B63319F3FFE3E135 /* Pods-CommonPods-quickdemo-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.debug.xcconfig"; sourceTree = "<group>"; };
+		5AC3FF7C259B1904001D85AC /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
+		5AC3FF7D259B1904001D85AC /* AudienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudienceViewController.m; sourceTree = "<group>"; };
+		5AC3FF7E259B1904001D85AC /* UIAlertController+RC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RC.m"; sourceTree = "<group>"; };
+		5AC3FF7F259B1904001D85AC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5AC3FF80259B1904001D85AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5AC3FF83259B1904001D85AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5AC3FF85259B1904001D85AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5AC3FF86259B1904001D85AC /* UIAlertController+RC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RC.h"; sourceTree = "<group>"; };
+		5AC3FF87259B1904001D85AC /* AudienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudienceViewController.h; sourceTree = "<group>"; };
+		5AC3FF88259B1904001D85AC /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		5AC3FF89259B1904001D85AC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5AC3FF8A259B1904001D85AC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5AC3FF8B259B1904001D85AC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B7F05DA943B7387BAABA5B /* Pods-CommonPods-quickdemo-live-audience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live-audience.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience.debug.xcconfig"; sourceTree = "<group>"; };
+		A7A7EFC38FCF4CC33A854CF6 /* Pods-CommonPods-quickdemo-live-audience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live-audience.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience.release.xcconfig"; sourceTree = "<group>"; };
+		C309B69B3E3ED60195210872 /* Pods_CommonPods_quickdemo_live_audience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_live_audience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3D6C163FAA94309AAB253AA /* Pods-CommonPods-quickstart-live-audience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickstart-live-audience.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickstart-live-audience/Pods-CommonPods-quickstart-live-audience.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,84 +120,76 @@
 				5A8B9FF6254AB6B500D415FC /* CoreGraphics.framework in Frameworks */,
 				5A8B9FE4254AB65E00D415FC /* AssetsLibrary.framework in Frameworks */,
 				5A8BA006254AB6F700D415FC /* AudioToolbox.framework in Frameworks */,
-				41A87FE13282B93578D2BBEC /* Pods_CommonPods_quickdemo_live.framework in Frameworks */,
+				8C44D0D94C2B1CCA502F5E28 /* Pods_CommonPods_quickdemo_live_audience.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18E3AEE101564230508A2B7E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F3D6C163FAA94309AAB253AA /* Pods-CommonPods-quickstart-live-audience.debug.xcconfig */,
+				59E83B82631E19F0AEB632CC /* Pods-CommonPods-quickstart-live-audience.release.xcconfig */,
+				64B7F05DA943B7387BAABA5B /* Pods-CommonPods-quickdemo-live-audience.debug.xcconfig */,
+				A7A7EFC38FCF4CC33A854CF6 /* Pods-CommonPods-quickdemo-live-audience.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		5A8B9FB8254AB58000D415FC = {
 			isa = PBXGroup;
 			children = (
 				5A8BA024254C0EE700D415FC /* README.md */,
-				5A8B9FC3254AB58000D415FC /* quickdemo-live */,
+				5AC3FF7B259B1904001D85AC /* quickdemo-live-audience */,
 				5A8B9FC2254AB58000D415FC /* Products */,
 				E2BC41CDFAD5520D77534388 /* Frameworks */,
-				E117EFFA82791A872B10D32A /* Pods */,
+				18E3AEE101564230508A2B7E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		5A8B9FC2254AB58000D415FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A8B9FC1254AB58000D415FC /* quickdemo-live.app */,
+				5A8B9FC1254AB58000D415FC /* quickdemo-live-audience.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5A8B9FC3254AB58000D415FC /* quickdemo-live */ = {
+		5AC3FF7B259B1904001D85AC /* quickdemo-live-audience */ = {
 			isa = PBXGroup;
 			children = (
-				5A8B9FC4254AB58000D415FC /* AppDelegate.h */,
-				5A8B9FC5254AB58000D415FC /* AppDelegate.m */,
-				5A8B9FDF254AB59D00D415FC /* AppKeyToken.h */,
-				5A8B9FCA254AB58000D415FC /* ViewController.h */,
-				5A8B9FCB254AB58000D415FC /* ViewController.m */,
-				5A8BA01E254BF81B00D415FC /* BroadcasterViewController.h */,
-				5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */,
-				5A8BA021254BF82D00D415FC /* AudienceViewController.h */,
-				5A8BA022254BF82D00D415FC /* AudienceViewController.m */,
-				5AA8194C25553AFA0049B51F /* LiveMenuView.h */,
-				5AA8194D25553AFA0049B51F /* LiveMenuView.m */,
-				5AA8195125555B080049B51F /* UIAlertController+RC.h */,
-				5AA8195225555B080049B51F /* UIAlertController+RC.m */,
-				5A2F819E255000EE004A7FAF /* StreamVideo.h */,
-				5A2F819F255000EE004A7FAF /* StreamVideo.m */,
-				5A2F81A225500302004A7FAF /* VideoLayoutTool.h */,
-				5A2F81A325500302004A7FAF /* VideoLayoutTool.m */,
-				5A8BA014254ABA5400D415FC /* Supporting Files */,
+				5AC3FF88259B1904001D85AC /* AppConfig.h */,
+				5AC3FF7C259B1904001D85AC /* AppConfig.m */,
+				5AC3FF87259B1904001D85AC /* AudienceViewController.h */,
+				5AC3FF7D259B1904001D85AC /* AudienceViewController.m */,
+				5AC3FF98259B191F001D85AC /* Supporting Files */,
 			);
-			path = "quickdemo-live";
+			path = "quickdemo-live-audience";
 			sourceTree = "<group>";
 		};
-		5A8BA014254ABA5400D415FC /* Supporting Files */ = {
+		5AC3FF98259B191F001D85AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A8BA01B254BEF2C00D415FC /* SceneDelegate.h */,
-				5A8BA01C254BEF2C00D415FC /* SceneDelegate.m */,
-				5A8B9FCD254AB58000D415FC /* Main.storyboard */,
-				5A8B9FD0254AB58100D415FC /* Assets.xcassets */,
-				5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */,
-				5A8B9FD5254AB58100D415FC /* Info.plist */,
-				5A8B9FD6254AB58100D415FC /* main.m */,
+				5AC3FF7F259B1904001D85AC /* AppDelegate.h */,
+				5AC3FF8A259B1904001D85AC /* AppDelegate.m */,
+				5AC3FF86259B1904001D85AC /* UIAlertController+RC.h */,
+				5AC3FF7E259B1904001D85AC /* UIAlertController+RC.m */,
+				5AC3FF80259B1904001D85AC /* Assets.xcassets */,
+				5AC3FF82259B1904001D85AC /* LaunchScreen.storyboard */,
+				5AC3FF84259B1904001D85AC /* Main.storyboard */,
+				5AC3FF89259B1904001D85AC /* main.m */,
+				5AC3FF8B259B1904001D85AC /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E117EFFA82791A872B10D32A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DA8D2484B63319F3FFE3E135 /* Pods-CommonPods-quickdemo-live.debug.xcconfig */,
-				914232221E2591E315969845 /* Pods-CommonPods-quickdemo-live.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
 			sourceTree = "<group>";
 		};
 		E2BC41CDFAD5520D77534388 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A8BA015254AC88E00D415FC /* Masonry.framework */,
 				5A8BA012254AB78100D415FC /* libsqlite3.tbd */,
 				5A8BA010254AB76C00D415FC /* libiconv.tbd */,
 				5A8BA00E254AB75200D415FC /* libbz2.tbd */,
@@ -235,7 +214,7 @@
 				5A8B9FE7254AB67900D415FC /* ImageIO.framework */,
 				5A8B9FE5254AB66A00D415FC /* MapKit.framework */,
 				5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */,
-				9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */,
+				C309B69B3E3ED60195210872 /* Pods_CommonPods_quickdemo_live_audience.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,9 +222,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5A8B9FC0254AB58000D415FC /* quickdemo-live */ = {
+		5A8B9FC0254AB58000D415FC /* quickdemo-live-audience */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A8B9FDA254AB58100D415FC /* Build configuration list for PBXNativeTarget "quickdemo-live" */;
+			buildConfigurationList = 5A8B9FDA254AB58100D415FC /* Build configuration list for PBXNativeTarget "quickdemo-live-audience" */;
 			buildPhases = (
 				A8E37F965B1A2E3438CDAA01 /* [CP] Check Pods Manifest.lock */,
 				5A8B9FBD254AB58000D415FC /* Sources */,
@@ -258,9 +237,9 @@
 			);
 			dependencies = (
 			);
-			name = "quickdemo-live";
-			productName = "quickdemo-live";
-			productReference = 5A8B9FC1254AB58000D415FC /* quickdemo-live.app */;
+			name = "quickdemo-live-audience";
+			productName = "quickstart-live-audience";
+			productReference = 5A8B9FC1254AB58000D415FC /* quickdemo-live-audience.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -269,7 +248,7 @@
 		5A8B9FB9254AB58000D415FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "huan xu";
 				TargetAttributes = {
 					5A8B9FC0254AB58000D415FC = {
@@ -277,7 +256,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5A8B9FBC254AB58000D415FC /* Build configuration list for PBXProject "quickdemo-live" */;
+			buildConfigurationList = 5A8B9FBC254AB58000D415FC /* Build configuration list for PBXProject "quickdemo-live-audience" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -290,7 +269,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5A8B9FC0254AB58000D415FC /* quickdemo-live */,
+				5A8B9FC0254AB58000D415FC /* quickdemo-live-audience */,
 			);
 		};
 /* End PBXProject section */
@@ -300,10 +279,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A8B9FD4254AB58100D415FC /* LaunchScreen.storyboard in Resources */,
-				5A8B9FD1254AB58100D415FC /* Assets.xcassets in Resources */,
+				5AC3FF92259B1904001D85AC /* LaunchScreen.storyboard in Resources */,
+				5AC3FF90259B1904001D85AC /* Assets.xcassets in Resources */,
 				5A8BA025254C0EE700D415FC /* README.md in Resources */,
-				5A8B9FCF254AB58000D415FC /* Main.storyboard in Resources */,
+				5AC3FF93259B1904001D85AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,15 +295,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9E4884807A794309237A3EE4 /* [CP] Embed Pods Frameworks */ = {
@@ -333,15 +312,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live-audience/Pods-CommonPods-quickdemo-live-audience-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8E37F965B1A2E3438CDAA01 /* [CP] Check Pods Manifest.lock */ = {
@@ -359,7 +338,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CommonPods-quickdemo-live-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-quickdemo-live-audience-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -373,36 +352,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A8BA023254BF82D00D415FC /* AudienceViewController.m in Sources */,
-				5A8BA020254BF81B00D415FC /* BroadcasterViewController.m in Sources */,
-				5A8B9FCC254AB58000D415FC /* ViewController.m in Sources */,
-				5AA8194E25553AFA0049B51F /* LiveMenuView.m in Sources */,
-				5A8BA01D254BEF2C00D415FC /* SceneDelegate.m in Sources */,
-				5AA8195325555B080049B51F /* UIAlertController+RC.m in Sources */,
-				5A2F81A425500302004A7FAF /* VideoLayoutTool.m in Sources */,
-				5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */,
-				5A2F81A0255000EE004A7FAF /* StreamVideo.m in Sources */,
-				5A8B9FD7254AB58100D415FC /* main.m in Sources */,
+				5AC3FF94259B1904001D85AC /* main.m in Sources */,
+				5AC3FF8E259B1904001D85AC /* AudienceViewController.m in Sources */,
+				5AC3FF95259B1904001D85AC /* AppDelegate.m in Sources */,
+				5AC3FF8D259B1904001D85AC /* AppConfig.m in Sources */,
+				5AC3FF8F259B1904001D85AC /* UIAlertController+RC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5A8B9FCD254AB58000D415FC /* Main.storyboard */ = {
+		5AC3FF82259B1904001D85AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5A8B9FCE254AB58000D415FC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5A8B9FD3254AB58100D415FC /* Base */,
+				5AC3FF83259B1904001D85AC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5AC3FF84259B1904001D85AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AC3FF85259B1904001D85AC /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -522,21 +496,21 @@
 		};
 		5A8B9FDB254AB58100D415FC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA8D2484B63319F3FFE3E135 /* Pods-CommonPods-quickdemo-live.debug.xcconfig */;
+			baseConfigurationReference = 64B7F05DA943B7387BAABA5B /* Pods-CommonPods-quickdemo-live-audience.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "quickdemo-live/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_FILE = "$(SRCROOT)/quickdemo-live-audience/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quicklive;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,21 +519,21 @@
 		};
 		5A8B9FDC254AB58100D415FC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 914232221E2591E315969845 /* Pods-CommonPods-quickdemo-live.release.xcconfig */;
+			baseConfigurationReference = A7A7EFC38FCF4CC33A854CF6 /* Pods-CommonPods-quickdemo-live-audience.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "quickdemo-live/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_FILE = "$(SRCROOT)/quickdemo-live-audience/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quicklive;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -569,7 +543,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5A8B9FBC254AB58000D415FC /* Build configuration list for PBXProject "quickdemo-live" */ = {
+		5A8B9FBC254AB58000D415FC /* Build configuration list for PBXProject "quickdemo-live-audience" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A8B9FD8254AB58100D415FC /* Debug */,
@@ -578,7 +552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A8B9FDA254AB58100D415FC /* Build configuration list for PBXNativeTarget "quickdemo-live" */ = {
+		5A8B9FDA254AB58100D415FC /* Build configuration list for PBXNativeTarget "quickdemo-live-audience" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A8B9FDB254AB58100D415FC /* Debug */,

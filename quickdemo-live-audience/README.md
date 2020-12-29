@@ -1,0 +1,41 @@
+# quickdemo-live-audience
+RTC Quick Start for iOS.
+
+这个开源示例项目演示了如何快速集成RongRTCLib视频SDK，订阅liveUrl观看直播, 查看合流布局效果等场景。
+运行前需要申请融云开发者账号，并申请开通音视频功能[开通地址](https://www.rongcloud.cn/docs/)，
+
+在这个示例项目中包含了以下功能：
+
+1>.观众端
+- 观看直播(订阅)
+- 停止观看(取消订阅)
+
+1.申请完成之后在 **AppID.m**文件中填写 AppID , token(可以通过后台管理->服务管理->api调用->获取Token)
+**注意: 假设两个真机设备测试时,需要同一个AppID和两个token**
+
+```
+   NSString *const token = @"<#这是连接IM的token#>";
+   NSString *const AppID = @"<#这里填写你的appID#>";
+   NSString *const roomId = @"<#这里填写你的房间号#>";
+```
+
+2.运行之前请先执行 pod install 安装一下需要的依赖库（RongIMLib, RongRTCLib）
+3.需要适当修改 Bundle Identifier 支持真机自签名
+
+## 环境准备
+
+- XCode 10.0 +
+- iOS 真机设备
+- 不支持模拟器
+
+
+## 联系我们
+
+- 如果你遇到了困难，可以先参阅 [常见问题](https://docs.rongcloud.cn/v4/views/im/ui/faq/overview.html)
+- 完整的 API 文档见 [文档中心](https://docs.rongcloud.cn/v4/)
+- 如果你想了解RongRTCLib SDK在复杂场景下的应用，可以参考 [官方场景案例](https://www.rongcloud.cn/downloads/demo)
+- 如果你想了解融云的一些社区开发者维护的项目，可以查看 [社区](https://geekonline.rongcloud.cn/)
+
+## 代码许可
+
+The MIT License (MIT)

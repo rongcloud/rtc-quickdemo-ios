@@ -8,21 +8,22 @@ project 'quickdemo-live/quickdemo-live.xcodeproj'
 project 'quickdemo-live/quickdemo-liveAcross.xcodeproj'
 project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
 project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
+project 'quickdemo-live-audience/quickdemo-live-audience.xcodeproj'
+project 'quickdemo-live-broadcaster/quickdemo-live-broadcaster.xcodeproj'
 
 abstract_target 'CommonPods' do
     # Comment the next line if you don't want to use dynamic frameworks
     use_frameworks!
-
+    platform :ios, '9.0'
+    
     pod 'Masonry'
 
     target 'quickdemo-meeting-1v1' do
-        platform :ios, '9.0'
         project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
         pod 'RongRTCLib'
     end
 
     target 'quickdemo-live' do
-        platform :ios, '9.0'
         project 'quickdemo-live/quickdemo-live.xcodeproj'
         pod 'RongRTCLib'
     end
@@ -34,15 +35,23 @@ abstract_target 'CommonPods' do
     end
     
     target 'quickdemo-callkit' do
-        platform :ios, '9.0'
         project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
         pod 'RongCloudRTC'
     end
 
     target 'quickdemo-calllib' do
-        platform :ios, '9.0'
         project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
         pod 'RongCloudIM/IMLib'
         pod 'RongCloudRTC/RongCallLib'
+    end
+    
+    target 'quickdemo-live-audience' do
+      project 'quickdemo-live-audience/quickdemo-live-audience.xcodeproj'
+      pod 'RongRTCLib'
+    end
+    
+    target 'quickdemo-live-broadcaster' do
+      project 'quickdemo-live-broadcaster/quickdemo-live-broadcaster.xcodeproj'
+      pod 'RongRTCLib'
     end
 end

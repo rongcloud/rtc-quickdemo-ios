@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:quickdemo-live-audience/quickdemo-live-audience.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:quickdemo-live-broadcaster/quickdemo-live-broadcaster.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:quickdemo-callkit/quickdemo-callkit.xcodeproj">
    </FileRef>
    <FileRef

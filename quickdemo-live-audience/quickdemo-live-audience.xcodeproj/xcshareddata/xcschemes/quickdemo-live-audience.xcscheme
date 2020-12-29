@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E1899C7259446CE00BFB60D"
-               BuildableName = "quickdemo-calllib.app"
-               BlueprintName = "quickdemo-calllib"
-               ReferencedContainer = "container:quickdemo-calllib.xcodeproj">
+               BlueprintIdentifier = "5A8B9FC0254AB58000D415FC"
+               BuildableName = "quickdemo-live-audience.app"
+               BlueprintName = "quickdemo-live-audience"
+               ReferencedContainer = "container:quickdemo-live-audience.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E1899C7259446CE00BFB60D"
-            BuildableName = "quickdemo-calllib.app"
-            BlueprintName = "quickdemo-calllib"
-            ReferencedContainer = "container:quickdemo-calllib.xcodeproj">
+            BlueprintIdentifier = "5A8B9FC0254AB58000D415FC"
+            BuildableName = "quickdemo-live-audience.app"
+            BlueprintName = "quickdemo-live-audience"
+            ReferencedContainer = "container:quickdemo-live-audience.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E1899C7259446CE00BFB60D"
-            BuildableName = "quickdemo-calllib.app"
-            BlueprintName = "quickdemo-calllib"
-            ReferencedContainer = "container:quickdemo-calllib.xcodeproj">
+            BlueprintIdentifier = "5A8B9FC0254AB58000D415FC"
+            BuildableName = "quickdemo-live-audience.app"
+            BlueprintName = "quickdemo-live-audience"
+            ReferencedContainer = "container:quickdemo-live-audience.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

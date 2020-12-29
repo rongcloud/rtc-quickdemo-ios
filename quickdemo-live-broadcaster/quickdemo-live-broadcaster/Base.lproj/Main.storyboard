@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hUO-NA-PVV">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--直播Demo-主播端-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="BroadcasterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LrP-2B-GMa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LrP-2B-GMa" secondAttribute="height" multiplier="1:1" id="yRx-2u-C0T"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo9-eW-b1I">
+                                <rect key="frame" x="217" y="676" width="177" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gfg-Oo-gLx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="发送直播地址">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendLiveUrl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dqm-iv-sRl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4So-qf-aqs">
+                                <rect key="frame" x="19.999999999999993" y="616" width="111.33333333333331" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eji-P3-TUt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="开始直播">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="结束直播"/>
+                                <connections>
+                                    <action selector="startLive:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Q3-WL-Er1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGC-IS-fOt">
+                                <rect key="frame" x="151.33333333333334" y="616" width="111.33333333333334" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5cn-Vr-Dhx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="关闭摄像头">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="开启摄像头"/>
+                                <connections>
+                                    <action selector="cameraSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zVv-W4-xna"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbX-OR-akc">
+                                <rect key="frame" x="282.66666666666669" y="616" width="111.33333333333331" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="关闭麦克风">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="开启麦克风"/>
+                                <connections>
+                                    <action selector="micSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TeC-nX-lJJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zf7-1J-19I">
+                                <rect key="frame" x="19.999999999999993" y="556" width="111.33333333333331" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rOs-VD-bUD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="登录">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="disabled" title="登录"/>
+                                <state key="selected" title="退出"/>
+                                <connections>
+                                    <action selector="loginIM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vk2-b5-nzv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-28-ouP">
+                                <rect key="frame" x="20" y="676" width="177" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="exT-Wd-fdC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="自定义布局">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="customStreamLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bEP-TF-Y2J"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eo9-eW-b1I" firstAttribute="leading" secondItem="ATc-28-ouP" secondAttribute="trailing" constant="20" id="1zG-yf-PtR"/>
+                            <constraint firstItem="eo9-eW-b1I" firstAttribute="top" secondItem="QbX-OR-akc" secondAttribute="bottom" constant="20" id="6lz-t3-bGg"/>
+                            <constraint firstItem="tGC-IS-fOt" firstAttribute="leading" secondItem="4So-qf-aqs" secondAttribute="trailing" constant="20" id="8ZY-2o-dvW"/>
+                            <constraint firstItem="tGC-IS-fOt" firstAttribute="width" secondItem="4So-qf-aqs" secondAttribute="width" id="Rbu-Cd-6ud"/>
+                            <constraint firstItem="4So-qf-aqs" firstAttribute="width" secondItem="Zf7-1J-19I" secondAttribute="width" id="Udy-po-ftQ"/>
+                            <constraint firstItem="LrP-2B-GMa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VEh-yd-3SI"/>
+                            <constraint firstItem="QbX-OR-akc" firstAttribute="width" secondItem="4So-qf-aqs" secondAttribute="width" id="WPt-hr-9pZ"/>
+                            <constraint firstItem="tGC-IS-fOt" firstAttribute="top" secondItem="Zf7-1J-19I" secondAttribute="bottom" constant="20" id="XCY-ek-j1l"/>
+                            <constraint firstItem="LrP-2B-GMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YuV-4W-pUe"/>
+                            <constraint firstItem="ATc-28-ouP" firstAttribute="top" secondItem="tGC-IS-fOt" secondAttribute="bottom" constant="20" id="b12-fp-cR2"/>
+                            <constraint firstItem="LrP-2B-GMa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="byJ-fH-k02"/>
+                            <constraint firstItem="eo9-eW-b1I" firstAttribute="width" secondItem="ATc-28-ouP" secondAttribute="width" id="coL-fy-52W"/>
+                            <constraint firstItem="ATc-28-ouP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ed8-B9-wzn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ATc-28-ouP" secondAttribute="bottom" constant="20" id="fH6-ZT-fCK"/>
+                            <constraint firstItem="QbX-OR-akc" firstAttribute="leading" secondItem="tGC-IS-fOt" secondAttribute="trailing" constant="20" id="ggP-0P-gHt"/>
+                            <constraint firstItem="QbX-OR-akc" firstAttribute="leading" secondItem="tGC-IS-fOt" secondAttribute="trailing" constant="20" id="hud-TA-8Lf"/>
+                            <constraint firstItem="tGC-IS-fOt" firstAttribute="height" secondItem="4So-qf-aqs" secondAttribute="height" id="jfw-Yt-mnB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QbX-OR-akc" secondAttribute="trailing" constant="20" id="n9C-Br-vzR"/>
+                            <constraint firstItem="4So-qf-aqs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ooW-wG-uJP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eo9-eW-b1I" secondAttribute="trailing" constant="20" id="p95-Nf-2fY"/>
+                            <constraint firstItem="QbX-OR-akc" firstAttribute="height" secondItem="4So-qf-aqs" secondAttribute="height" id="psz-qX-eXF"/>
+                            <constraint firstItem="tGC-IS-fOt" firstAttribute="leading" secondItem="4So-qf-aqs" secondAttribute="trailing" constant="20" id="rNe-R2-poX"/>
+                            <constraint firstItem="Zf7-1J-19I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rxO-3V-0Kb"/>
+                            <constraint firstItem="ATc-28-ouP" firstAttribute="top" secondItem="4So-qf-aqs" secondAttribute="bottom" constant="20" id="sM5-u9-KEg"/>
+                            <constraint firstItem="eo9-eW-b1I" firstAttribute="leading" secondItem="ATc-28-ouP" secondAttribute="trailing" constant="20" id="xoq-Oz-uIY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eo9-eW-b1I" secondAttribute="bottom" constant="20" id="zeh-pV-Jp5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="直播Demo-主播端" id="igy-5Z-5Iw"/>
+                    <connections>
+                        <outlet property="remoteContainerView" destination="LrP-2B-GMa" id="O0w-ze-7d8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-853.62318840579712" y="52.173913043478265"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RKl-fA-1Wc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hUO-NA-PVV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kgx-T2-KSO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1AC-uK-w3z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cKB-Us-ev4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1760.8695652173915" y="52.173913043478265"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
