@@ -10,6 +10,7 @@ project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
 project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
 project 'quickdemo-live-audience/quickdemo-live-audience.xcodeproj'
 project 'quickdemo-live-broadcaster/quickdemo-live-broadcaster.xcodeproj'
+project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
 
 abstract_target 'CommonPods' do
     # Comment the next line if you don't want to use dynamic frameworks
@@ -52,6 +53,11 @@ abstract_target 'CommonPods' do
     
     target 'quickdemo-live-broadcaster' do
       project 'quickdemo-live-broadcaster/quickdemo-live-broadcaster.xcodeproj'
+      pod 'RongRTCLib'
+    end
+    
+    target 'quickdemo-meeting-beauty' do
+      project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
       pod 'RongRTCLib'
     end
 end
