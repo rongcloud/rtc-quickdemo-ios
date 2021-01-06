@@ -18,6 +18,7 @@
 @interface VideoRoomViewController () <RCRTCRoomEventDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *menuView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property(nonatomic, strong) RCRTCLocalVideoView *localView;
 @property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
@@ -41,12 +42,11 @@
     [[RCIMClient sharedRCIMClient] initWithAppKey:APP_KEY];
     // 前置条件 IM 建立连接
     @WeakObj(self);
-    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {
-    }                                       success:^(NSString *userId) {
+    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {}                       success:^(NSString *userId) {
         NSLog(@"IM 连接成功 userId: %@", userId);
         @StrongObj(self);
         [self joinRoom];
-    }                                         error:^(RCConnectErrorCode errorCode) {
+    }error:^(RCConnectErrorCode errorCode) {
         // 无网络情况下，SDK 会反复尝试，并不会走该回调提示用户
         @StrongObj(self);
         [self alertString:[NSString stringWithFormat:@"IM 连接失败 errorCode: %ld", (long) errorCode]];
@@ -57,7 +57,7 @@
 - (void)setupLocalVideoView {
     RCRTCLocalVideoView *localView = [[RCRTCLocalVideoView alloc] initWithFrame:self.view.bounds];
     localView.fillMode = RCRTCVideoFillModeAspectFill;
-    [self.view addSubview:localView];
+    [self.containerView addSubview:localView];
     self.localView = localView;
     
     //添加点击手势,可切换大小视图
@@ -67,18 +67,19 @@
 
 // 添加远端视频小窗口
 - (void)setupRemoteVideoView {
-    CGRect rect = CGRectMake(kScreenWidth - 120, 20, 100, 100 * 4 / 3);
+    CGRect rect = CGRectMake(kScreenWidth - 120, 40, 100, 100 * 4 / 3);
     _remoteView = [[RCRTCRemoteVideoView alloc] initWithFrame:rect];
     _remoteView.fillMode = RCRTCVideoFillModeAspectFill;
     [_remoteView setHidden:YES];
-    [self.view addSubview:_remoteView];
+    [self.containerView addSubview:_remoteView];
 }
 
 
 // 加入房间
 - (void)joinRoom {
     @WeakObj(self);
-    [self.engine joinRoom:ROOM_ID completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
+    [self.engine joinRoom:ROOM_ID
+               completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
         @StrongObj(self);
         if (code == RCRTCCodeSuccess) {
             [self afterJoinRoom:room];
@@ -193,9 +194,9 @@
     [CATransaction commit];
     
     if (ges.view.frame.size.width >= kScreenWidth) {
-        [self.view insertSubview:self.remoteView aboveSubview:self.localView];
+        [self.containerView bringSubviewToFront:self.remoteView];
     }else{
-        [self.view insertSubview:self.localView aboveSubview:self.remoteView];
+        [self.containerView bringSubviewToFront:self.localView];
     }
 }
 
