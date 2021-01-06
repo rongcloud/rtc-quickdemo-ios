@@ -67,7 +67,7 @@
                                         <state key="normal" title="直播/上麦">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <state key="selected" title="下麦"/>
+                                        <state key="selected" title="结束/下麦"/>
                                         <connections>
                                             <action selector="joinRoomAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="sgx-sT-Rb7"/>
                                         </connections>
