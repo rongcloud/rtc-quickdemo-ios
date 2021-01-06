@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  LiveViewController.h
 //  quickdemo-live-broadcaster
 //
 //  Created by RongCloud on 2020/10/29.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) UIWindow *window;
+@interface LiveViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

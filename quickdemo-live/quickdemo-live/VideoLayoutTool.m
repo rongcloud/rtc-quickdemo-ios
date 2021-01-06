@@ -3,33 +3,42 @@
 //
 
 #import "VideoLayoutTool.h"
-#import <Masonry/Masonry.h>
+#import "StreamVideo.h"
+
+@interface VideoLayoutTool()
+
+@property (nonatomic, strong)NSMutableArray<NSLayoutConstraint *> *layoutConstraints;
+
+@end
 
 @implementation VideoLayoutTool
 
+- (NSMutableArray<NSLayoutConstraint *> *)layoutConstraints {
+    if (!_layoutConstraints) {
+        _layoutConstraints = [[NSMutableArray<NSLayoutConstraint *> alloc] init];
+    }
+    return _layoutConstraints;
+}
+
 - (void)layoutVideos:(NSMutableArray *)videos
          inContainer:(UIView *)container {
+    
+    if (!videos.count) return;
+    
+    [NSLayoutConstraint deactivateConstraints:self.layoutConstraints];
+    [self.layoutConstraints removeAllObjects];
+    
     for (StreamVideo *video in videos) {
         [video.canvesView removeFromSuperview];
     }
+
     NSArray *allViews = [self viewListFromVideos:videos maxCount:4 ignorVideo:nil];
-    [self layoutGridViews:allViews inContainerView:container];
-
-}
-
-- (StreamVideo *)responseViewOfGesture:(UIGestureRecognizer *)gesture
-                            WithVideos:(NSArray<StreamVideo *> *)videos
-                       inContainerView:(UIView *)container {
-    CGPoint location = [gesture locationInView:container];
-    for (StreamVideo *video in videos) {
-        CGRect rect = video.canvesView.frame;
-        if (CGRectContainsPoint(rect, location)) {
-            return video;
-        }
+    [self.layoutConstraints addObjectsFromArray:[self layoutGridViews:allViews inContainerView:container]];
+    
+    if (self.layoutConstraints.count) {
+        [NSLayoutConstraint activateConstraints:self.layoutConstraints];
     }
-    return nil;
 }
-
 
 - (NSArray<UIView *> *)viewListFromVideos:(NSArray *)videos
                                  maxCount:(NSUInteger)maxCount
@@ -48,32 +57,49 @@
 }
 
 
-- (void)layoutFullScreenView:(UIView *)view inContainerView:(UIView *)contianer {
+- (NSArray<NSLayoutConstraint *> *)layoutFullScreenView:(UIView *)view inContainerView:(UIView *)contianer {
+    
+    NSMutableArray *layouts = [[NSMutableArray alloc] init];
     [contianer addSubview:view];
-    [view mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
+    
+    NSArray<NSLayoutConstraint *> *constraintsH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": view}];
+    
+    NSArray<NSLayoutConstraint *> *constraintsV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": view}];
+    
+    [layouts addObjectsFromArray:constraintsH];
+    [layouts addObjectsFromArray:constraintsV];
+    
+    return layouts.copy;
 }
 
-- (void)layoutGridViews:(NSArray<UIView *> *)allViews inContainerView:(UIView *)container {
+
+- (NSArray<NSLayoutConstraint *> *)layoutGridViews:(NSArray<UIView *> *)allViews inContainerView:(UIView *)container {
+   
+    NSMutableArray *layouts = [[NSMutableArray alloc] init];
     NSUInteger viewCount = allViews.count;
     if (viewCount == 1) {
-        [self layoutFullScreenView:allViews.lastObject inContainerView:container];
+        [layouts addObjectsFromArray:[self layoutFullScreenView:allViews.firstObject inContainerView:container]];
     } else if (viewCount == 2) {
         UIView *firstView = allViews.firstObject;
         UIView *lastView = allViews.lastObject;
         [container addSubview:firstView];
         [container addSubview:lastView];
-
-        [firstView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.mas_equalTo(0);
-            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height / 2);
-        }];
-        [lastView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.mas_equalTo(0);
-            make.top.equalTo(firstView.mas_bottom);
-            make.height.equalTo(firstView);
-        }];
+        
+        NSArray<NSLayoutConstraint *> *h1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": firstView, @"view2": lastView}];
+        
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:container attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+        
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:container attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+        
+        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:container attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+        
+        NSLayoutConstraint *equalW = [NSLayoutConstraint constraintWithItem:lastView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:firstView attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+        
+        NSLayoutConstraint *equalH = [NSLayoutConstraint constraintWithItem:lastView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:firstView attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+        
+        [layouts addObjectsFromArray:h1];
+        [layouts addObjectsFromArray:@[left,top,bottom,equalW,equalH]];
+        
     } else if (viewCount == 3) {
         UIView *firstView = allViews.firstObject;
         UIView *secondView = allViews[1];
@@ -81,20 +107,20 @@
         [container addSubview:firstView];
         [container addSubview:secondView];
         [container addSubview:lastView];
-
-        [firstView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(0);
-            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height / 2);
-            make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width / 2);
-        }];
-        [secondView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.top.mas_equalTo(0);
-            make.height.width.equalTo(firstView);
-        }];
-        [lastView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.mas_equalTo(0);
-            make.height.equalTo(firstView);
-        }];
+        
+        NSArray<NSLayoutConstraint *> *h1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": firstView, @"view2": secondView}];
+        NSArray<NSLayoutConstraint *> *v1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": firstView, @"view2": lastView}];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:lastView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:container attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:secondView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:container attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+        NSLayoutConstraint *equalWidth1 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:secondView attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+        NSLayoutConstraint *equalWidth2 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:lastView attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+        NSLayoutConstraint *equalHeight1 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:secondView attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+        NSLayoutConstraint *equalHeight2 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:lastView attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+        
+        [layouts addObjectsFromArray:h1];
+        [layouts addObjectsFromArray:v1];
+        [layouts addObjectsFromArray:@[left, top, equalWidth1, equalWidth2, equalHeight1, equalHeight2]];
+        
     } else if (viewCount >= 4) {
         UIView *firstView = allViews.firstObject;
         UIView *secondView = allViews[1];
@@ -104,25 +130,28 @@
         [container addSubview:secondView];
         [container addSubview:thirdView];
         [container addSubview:lastView];
-
-        [firstView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(0);
-            make.height.mas_equalTo(UIScreen.mainScreen.bounds.size.height / 2);
-            make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width / 2);
-        }];
-        [secondView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.top.mas_equalTo(0);
-            make.height.width.equalTo(firstView);
-        }];
-        [thirdView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.mas_equalTo(0);
-            make.height.width.equalTo(firstView);
-        }];
-        [lastView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.bottom.mas_equalTo(0);
-            make.height.width.equalTo(firstView);
-        }];
+        
+        NSArray<NSLayoutConstraint *> *h1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": firstView, @"view2": secondView}];
+        NSArray<NSLayoutConstraint *> *h2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": thirdView, @"view2": lastView}];
+        NSArray<NSLayoutConstraint *> *v1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": firstView, @"view2": thirdView}];
+        NSArray<NSLayoutConstraint *> *v2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view1]-1-[view2]|" options:0 metrics:nil views:@{@"view1": secondView, @"view2": lastView}];
+        
+        NSLayoutConstraint *equalWidth1 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:secondView attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+        NSLayoutConstraint *equalWidth2 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:thirdView attribute:NSLayoutAttributeWidth multiplier:1 constant:0];
+        NSLayoutConstraint *equalHeight1 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:secondView attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+        NSLayoutConstraint *equalHeight2 = [NSLayoutConstraint constraintWithItem:firstView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:thirdView attribute:NSLayoutAttributeHeight multiplier:1 constant:0];
+        
+        [layouts addObjectsFromArray:h1];
+        [layouts addObjectsFromArray:h2];
+        [layouts addObjectsFromArray:v1];
+        [layouts addObjectsFromArray:v2];
+        [layouts addObjectsFromArray:@[equalWidth1, equalWidth2, equalHeight1, equalHeight2]];
     }
+    
+    return [layouts copy];
 }
+
+
+
 
 @end

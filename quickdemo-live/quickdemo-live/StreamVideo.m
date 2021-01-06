@@ -1,4 +1,8 @@
 //
+//  VideoLayout.m
+//  quickdemo-live-broadcaster
+//
+//  Created by RongCloud on 2020/10/29.
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
@@ -16,7 +20,7 @@
     return self;
 }
 
-+ (instancetype)LocalStreamVideo {
++ (instancetype)LocalStreamVideo{
     StreamVideo *localStreamVideo = [[StreamVideo alloc] init];
     localStreamVideo.userId = @"0";
     localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] init];

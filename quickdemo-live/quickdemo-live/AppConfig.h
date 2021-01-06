@@ -1,9 +1,17 @@
 //
+//  AppConfig.h
+//  quickdemo-live-broadcaster
+//
+//  Created by RongCloud on 2020/10/29.
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
-/// APP_KEY 通过融云的后台管理创建的应用 ID
-#define APP_KEY @"<#这里填写你的 App Key#>"
 
-/// TOKEN 是通过融云服务器请求返回的用户凭证
-#define TOKEN @"<#这是连接 IM 的 Token#>"
+#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
+
+FOUNDATION_EXPORT NSString *const AppID;
+FOUNDATION_EXPORT NSString *const roomId;
+
+
+

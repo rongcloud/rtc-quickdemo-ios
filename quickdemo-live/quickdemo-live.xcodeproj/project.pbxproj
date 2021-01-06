@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		41A87FE13282B93578D2BBEC /* Pods_CommonPods_quickdemo_live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */; };
+		5A0C8D2325A5573700C8B1D8 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8D2225A5573700C8B1D8 /* AppConfig.m */; };
+		5A0C8D2725A5575E00C8B1D8 /* RCRTCMixStreamTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8D2625A5575E00C8B1D8 /* RCRTCMixStreamTool.m */; };
+		5A0C8D2B25A5576C00C8B1D8 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8D2A25A5576C00C8B1D8 /* LiveViewController.m */; };
+		5A0C8D2F25A5577B00C8B1D8 /* RCMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0C8D2D25A5577B00C8B1D8 /* RCMenuView.m */; };
 		5A2F81A0255000EE004A7FAF /* StreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F819F255000EE004A7FAF /* StreamVideo.m */; };
 		5A2F81A425500302004A7FAF /* VideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F81A325500302004A7FAF /* VideoLayoutTool.m */; };
 		5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FC5254AB58000D415FC /* AppDelegate.m */; };
-		5A8B9FCC254AB58000D415FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B9FCB254AB58000D415FC /* ViewController.m */; };
 		5A8B9FCF254AB58000D415FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FCD254AB58000D415FC /* Main.storyboard */; };
 		5A8B9FD1254AB58100D415FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD0254AB58100D415FC /* Assets.xcassets */; };
 		5A8B9FD4254AB58100D415FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */; };
@@ -40,14 +43,18 @@
 		5A8BA00F254AB76000D415FC /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA00E254AB75200D415FC /* libbz2.tbd */; };
 		5A8BA011254AB77500D415FC /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA010254AB76C00D415FC /* libiconv.tbd */; };
 		5A8BA013254AB78B00D415FC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA012254AB78100D415FC /* libsqlite3.tbd */; };
-		5A8BA020254BF81B00D415FC /* BroadcasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */; };
-		5A8BA023254BF82D00D415FC /* AudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BA022254BF82D00D415FC /* AudienceViewController.m */; };
 		5A8BA025254C0EE700D415FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BA024254C0EE700D415FC /* README.md */; };
-		5AA8194E25553AFA0049B51F /* LiveMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8194D25553AFA0049B51F /* LiveMenuView.m */; };
 		5AA8195325555B080049B51F /* UIAlertController+RC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8195225555B080049B51F /* UIAlertController+RC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A0C8D2225A5573700C8B1D8 /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
+		5A0C8D2525A5575E00C8B1D8 /* RCRTCMixStreamTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCMixStreamTool.h; sourceTree = "<group>"; };
+		5A0C8D2625A5575E00C8B1D8 /* RCRTCMixStreamTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCMixStreamTool.m; sourceTree = "<group>"; };
+		5A0C8D2925A5576C00C8B1D8 /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
+		5A0C8D2A25A5576C00C8B1D8 /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
+		5A0C8D2D25A5577B00C8B1D8 /* RCMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMenuView.m; sourceTree = "<group>"; };
+		5A0C8D2E25A5577B00C8B1D8 /* RCMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMenuView.h; sourceTree = "<group>"; };
 		5A2F819E255000EE004A7FAF /* StreamVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamVideo.h; sourceTree = "<group>"; };
 		5A2F819F255000EE004A7FAF /* StreamVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamVideo.m; sourceTree = "<group>"; };
 		5A2F81A225500302004A7FAF /* VideoLayoutTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoLayoutTool.h; sourceTree = "<group>"; };
@@ -55,8 +62,6 @@
 		5A8B9FC1254AB58000D415FC /* quickdemo-live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8B9FC4254AB58000D415FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5A8B9FC5254AB58000D415FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5A8B9FCA254AB58000D415FC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5A8B9FCB254AB58000D415FC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5A8B9FCE254AB58000D415FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A8B9FD0254AB58100D415FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A8B9FD3254AB58100D415FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,13 +92,7 @@
 		5A8BA00E254AB75200D415FC /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		5A8BA010254AB76C00D415FC /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5A8BA012254AB78100D415FC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		5A8BA01E254BF81B00D415FC /* BroadcasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcasterViewController.h; sourceTree = "<group>"; };
-		5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcasterViewController.m; sourceTree = "<group>"; };
-		5A8BA021254BF82D00D415FC /* AudienceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudienceViewController.h; sourceTree = "<group>"; };
-		5A8BA022254BF82D00D415FC /* AudienceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudienceViewController.m; sourceTree = "<group>"; };
 		5A8BA024254C0EE700D415FC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5AA8194C25553AFA0049B51F /* LiveMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveMenuView.h; sourceTree = "<group>"; };
-		5AA8194D25553AFA0049B51F /* LiveMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveMenuView.m; sourceTree = "<group>"; };
 		5AA8195125555B080049B51F /* UIAlertController+RC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RC.h"; sourceTree = "<group>"; };
 		5AA8195225555B080049B51F /* UIAlertController+RC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RC.m"; sourceTree = "<group>"; };
 		914232221E2591E315969845 /* Pods-CommonPods-quickdemo-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,18 +159,13 @@
 			isa = PBXGroup;
 			children = (
 				5A8B9FDF254AB59D00D415FC /* AppConfig.h */,
-				5A8B9FC4254AB58000D415FC /* AppDelegate.h */,
-				5A8B9FC5254AB58000D415FC /* AppDelegate.m */,
-				5A8B9FCA254AB58000D415FC /* ViewController.h */,
-				5A8B9FCB254AB58000D415FC /* ViewController.m */,
-				5A8BA01E254BF81B00D415FC /* BroadcasterViewController.h */,
-				5A8BA01F254BF81B00D415FC /* BroadcasterViewController.m */,
-				5A8BA021254BF82D00D415FC /* AudienceViewController.h */,
-				5A8BA022254BF82D00D415FC /* AudienceViewController.m */,
-				5AA8194C25553AFA0049B51F /* LiveMenuView.h */,
-				5AA8194D25553AFA0049B51F /* LiveMenuView.m */,
-				5AA8195125555B080049B51F /* UIAlertController+RC.h */,
-				5AA8195225555B080049B51F /* UIAlertController+RC.m */,
+				5A0C8D2225A5573700C8B1D8 /* AppConfig.m */,
+				5A0C8D2925A5576C00C8B1D8 /* LiveViewController.h */,
+				5A0C8D2A25A5576C00C8B1D8 /* LiveViewController.m */,
+				5A0C8D2525A5575E00C8B1D8 /* RCRTCMixStreamTool.h */,
+				5A0C8D2625A5575E00C8B1D8 /* RCRTCMixStreamTool.m */,
+				5A0C8D2E25A5577B00C8B1D8 /* RCMenuView.h */,
+				5A0C8D2D25A5577B00C8B1D8 /* RCMenuView.m */,
 				5A2F819E255000EE004A7FAF /* StreamVideo.h */,
 				5A2F819F255000EE004A7FAF /* StreamVideo.m */,
 				5A2F81A225500302004A7FAF /* VideoLayoutTool.h */,
@@ -184,6 +178,10 @@
 		5A8BA014254ABA5400D415FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A8B9FC4254AB58000D415FC /* AppDelegate.h */,
+				5A8B9FC5254AB58000D415FC /* AppDelegate.m */,
+				5AA8195125555B080049B51F /* UIAlertController+RC.h */,
+				5AA8195225555B080049B51F /* UIAlertController+RC.m */,
 				5A8B9FCD254AB58000D415FC /* Main.storyboard */,
 				5A8B9FD0254AB58100D415FC /* Assets.xcassets */,
 				5A8B9FD2254AB58100D415FC /* LaunchScreen.storyboard */,
@@ -247,7 +245,6 @@
 				5A8B9FBE254AB58000D415FC /* Frameworks */,
 				5A8B9FBF254AB58000D415FC /* Resources */,
 				177EBAD96CF3AD301A6C0B0A /* [CP] Copy Pods Resources */,
-				9E4884807A794309237A3EE4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,23 +319,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E4884807A794309237A3EE4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A8E37F965B1A2E3438CDAA01 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,15 +348,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A8BA023254BF82D00D415FC /* AudienceViewController.m in Sources */,
-				5A8BA020254BF81B00D415FC /* BroadcasterViewController.m in Sources */,
-				5A8B9FCC254AB58000D415FC /* ViewController.m in Sources */,
-				5AA8194E25553AFA0049B51F /* LiveMenuView.m in Sources */,
 				5AA8195325555B080049B51F /* UIAlertController+RC.m in Sources */,
 				5A2F81A425500302004A7FAF /* VideoLayoutTool.m in Sources */,
+				5A0C8D2725A5575E00C8B1D8 /* RCRTCMixStreamTool.m in Sources */,
 				5A8B9FC6254AB58000D415FC /* AppDelegate.m in Sources */,
 				5A2F81A0255000EE004A7FAF /* StreamVideo.m in Sources */,
+				5A0C8D2F25A5577B00C8B1D8 /* RCMenuView.m in Sources */,
 				5A8B9FD7254AB58100D415FC /* main.m in Sources */,
+				5A0C8D2B25A5576C00C8B1D8 /* LiveViewController.m in Sources */,
+				5A0C8D2325A5573700C8B1D8 /* AppConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

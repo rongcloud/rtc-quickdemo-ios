@@ -2,7 +2,7 @@
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
-#import <Masonry.h>
+//#import <Masonry.h>
 #import <RongRTCLib/RongRTCLib.h>
 
 #import "VideoRoomViewController.h"
@@ -34,7 +34,6 @@
     [self initIMSDK];
     [self setupLocalVideoView];
     [self setupRemoteVideoView];
-    [self setupRoomMenuView];
 }
 
 - (void)initIMSDK {
@@ -73,16 +72,6 @@
     _remoteView.fillMode = RCRTCVideoFillModeAspectFill;
     [_remoteView setHidden:YES];
     [self.view addSubview:_remoteView];
-}
-
-// 添加控制按钮层
-- (void)setupRoomMenuView {
-    [self.view addSubview:self.menuView];
-    [self.menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(0);
-        make.bottom.mas_equalTo(-50);
-        make.size.mas_offset(CGSizeMake(kScreenWidth, 50));
-    }];
 }
 
 

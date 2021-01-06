@@ -1,77 +1,116 @@
 //
-//  BroadcasterViewController.m
+//  LiveViewController.m
 //  quickdemo-live-broadcaster
 //
 //  Created by RongCloud on 2020/10/29.
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
-#import "BroadcasterViewController.h"
+#import "LiveViewController.h"
 #import "AppConfig.h"
 #import "StreamVideo.h"
 #import "VideoLayoutTool.h"
 #import "RCRTCMixStreamTool.h"
 #import "UIAlertController+RC.h"
+#import "RCMenuView.h"
 
-@interface BroadcasterViewController ()<RCRTCRoomEventDelegate>
+@interface LiveViewController ()<RCRTCRoomEventDelegate,RCMenuViewEventDelegate,RCIMClientReceiveMessageDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *remoteContainerView;
+@property (weak, nonatomic) IBOutlet RCMenuView *menuView;
 
 @property (nonatomic, strong)RCRTCEngine *engine;
 @property (nonatomic, strong)RCRTCRoom *room;
 @property (nonatomic, strong)StreamVideo *localVideo;
 @property (nonatomic, strong)RCRTCLiveInfo *liveInfo;
 
+@property (nonatomic, copy)NSString *liveUrl;
 @property (nonatomic)NSMutableArray <StreamVideo *>*streamVideos;
 @property (nonatomic, strong)VideoLayoutTool *layoutTool;
+@property (nonatomic, assign)RCRTCRoleType roleType;
 
 @end
 
-@implementation BroadcasterViewController
+@implementation LiveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //设置事件代理
+    [self.menuView setDelegate:self];
 }
 
+#pragma mark - RCMenuViewEventDelegate
 //前置条件,需要建立IM连接
-- (IBAction)loginIM:(UIButton *)sender{
-    sender.enabled = NO;
+- (void)loginIMWithIndex:(NSInteger)index{
+    //填写4个用户登录的 token 以数组形式存在
+    NSArray *tokens= @[
+        @"B+QoHfaZ8F592THITdFJlyHLbdTpM60nEZoWTNCL1tU=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
+        @"IrsKLk6XkuCQb+y5GEwd7SHLbdTpM60nX3loEGdZ8hk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
+        @"xxxx",
+        @"xxxx",];
+    
+    if (index >= tokens.count) return;
+    
+    //设置 APPKEY
     [[RCIMClient sharedRCIMClient] initWithAppKey:AppID];
-    [[RCIMClient sharedRCIMClient] connectWithToken:token dbOpened:^(RCDBErrorCode code) {
+    //接受消息回调
+    [[RCIMClient sharedRCIMClient] setReceiveMessageDelegate:self object:nil];
+    //登录IM
+    [[RCIMClient sharedRCIMClient] connectWithToken:tokens[index] dbOpened:^(RCDBErrorCode code) {
     } success:^(NSString *userId) {
         NSString *successMsg = [NSString stringWithFormat:@"IM登陆成功userId:%@",userId];
         [UIAlertController alertWithString:successMsg inCurrentVC:self];
+        //加入聊天室
+        [self joinIMChatRoom];
     } error:^(RCConnectErrorCode errorCode) {
         NSString *errorMsg = [NSString stringWithFormat:@"IM登陆失败code:%ld",(long)errorCode];
         [UIAlertController alertWithString:errorMsg inCurrentVC:self];
     }];
 }
 
-//开始直播
-- (IBAction)startLive:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    if (sender.selected) {
+//开始直播/下麦
+- (void)startLive:(RCRTCRoleType)roleType{
+    if (self.roleType == RCRTCRoleTypeAudience && roleType == RCRTCRoleTypeHost) {
+        //如果从观众端切换到主播端,需要先取消订阅
+        [self unSubscribeLiveStream];
+    }
+    
+    //清空视图
+    [self.streamVideos removeAllObjects];
+    for (UIView *subview in self.remoteContainerView.subviews) {
+        [subview removeFromSuperview];
+    }
+    
+    if (roleType == RCRTCRoleTypeHost) {
+        //开始直播
         [self setupLocalVideoView];
         [self joinLiveRoom];
-    }
-    else {
+    }else{
+        //下麦+订阅liveUrl
         [self exitRoom];
+        [self subscribeLiveStream];
     }
+    
+    self.roleType = roleType;
+}
+
+//观看直播
+- (void)watchLive{
+    self.roleType = RCRTCRoleTypeAudience;
+    [self subscribeLiveStream];
 }
 
 //开启/关闭摄像头
-- (IBAction)cameraSwitch:(UIButton *)sender {
-    sender.selected = !sender.selected;
+- (void)cameraEnable:(BOOL)enable{
     RCRTCCameraOutputStream *DVStream = self.engine.defaultVideoStream;
-    sender.selected ? [DVStream stopCapture]:[DVStream startCapture];
+    enable ? [DVStream startCapture] : [DVStream stopCapture];
 }
 
 //开启/关闭麦克风
-- (IBAction)micSwitch:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    [self.engine.defaultAudioStream setMicrophoneDisable:sender.selected];
+- (void)micDisable:(BOOL)disable{
+    [self.engine.defaultAudioStream setMicrophoneDisable:disable];
 }
-
 /**
  主播设置合流布局,观众端看效果
 
@@ -79,40 +118,34 @@
  悬浮布局 RCRTCMixLayoutModeSuspension = 2
  自适应布局 RCRTCMixLayoutModeAdaptive = 3
  */
-- (IBAction)customStreamLayout:(UIButton *)sender {
-    sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
-    [self streamlayoutMode:sender.tag];
-    switch (sender.tag) {
-        case 1:
-            [sender setTitle:@"自定义布局" forState:0];
-            break;
-        case 2:
-            [sender setTitle:@"悬浮布局" forState:0];
-            break;
-        case 3:
-            [sender setTitle:@"自适应布局" forState:0];
-            break;
-        default:
-            break;
-    }
+- (void)streamLayout:(RCRTCMixLayoutMode)mode{
+    [self streamlayoutMode:mode];
 }
 
 //发送直播地址(*通过IM消息 这属于demo 辅助功能*)
-- (IBAction)sendLiveUrl:(id)sender {
+- (void)sendLiveUrl{
+    //加入IM聊天室
+    if (!self.liveInfo.liveUrl.length) return;
     RCTextMessage *content = [RCTextMessage messageWithContent:self.liveInfo.liveUrl];
-    //这里填写指定观众的userId
-    NSString *targetId = @"";
-    if (!targetId.length) {
-        [UIAlertController alertWithString:@"请填写指定的userId" inCurrentVC:self];
-        return;
-    }
-    [[RCIMClient sharedRCIMClient] sendMessage:ConversationType_PRIVATE targetId:targetId content:content pushContent:@"" pushData:@"" success:^(long messageId) {
-        NSLog(@"消息发送成功%ld",messageId);
+    [[RCIMClient sharedRCIMClient] sendMessage:ConversationType_CHATROOM targetId:roomId content:content pushContent:@"" pushData:@"" success:^(long messageId) {
+        [UIAlertController alertWithString:@"消息发送成功" inCurrentVC:nil];
     } error:^(RCErrorCode nErrorCode, long messageId) {
-        NSLog(@"消息发送失败:%ld",(long)nErrorCode);
+        [UIAlertController alertWithString:@"消息发送失败" inCurrentVC:nil];
     }];
 }
 
+
+#pragma mark - private func
+// 加入IM聊天室(辅助流程收发直播地址)
+- (void)joinIMChatRoom{
+    [[RCIMClient sharedRCIMClient] joinChatRoom:roomId
+                                    messageCount:1
+                                        success:^{
+        NSLog(@"加入IM聊天室成功");
+    } error:^(RCErrorCode status) {
+        NSLog(@"加入IM聊天室失败:%ld",(long)status);
+    }];
+}
 
 //添加本地采集预览界面
 - (void)setupLocalVideoView{
@@ -120,12 +153,12 @@
     [self updateLayoutWithAnimation:YES];
 }
 
-//加入房间
+//加入RTC房间
 - (void)joinLiveRoom{
     //1.配置房间
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
-    config.roomType = RCRTCRoomTypeLive; //房间类型
-    config.liveType = RCRTCLiveTypeAudioVideo; //直播类型
+    config.roomType = RCRTCRoomTypeLive;
+    config.liveType = RCRTCLiveTypeAudioVideo;
     
     @WeakObj(self);
     [self.engine joinRoom:roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
@@ -141,7 +174,7 @@
         //2.发布本地默认流
         [self publishLocalLiveAVStream];
         
-        //3.如果已经有远端的流
+        //3.如果已经有远端的流,需要订阅
         if (room.remoteUsers.count) {
             NSMutableArray *streamArray = [NSMutableArray array];
             for (RCRTCRemoteUser *user in room.remoteUsers) {
@@ -154,35 +187,54 @@
     }];
 }
 
-// 发布本地音视频流
-- (void)publishLocalLiveAVStream {
-    //视频预览
+//发布本地音视频流
+- (void)publishLocalLiveAVStream{
+    //1.视频预览
     RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
-    //设置本地视频流
+    //2.设置本地视频流
     [self.engine.defaultVideoStream setVideoView:view];
-    //开始摄像头采集
+    //3.开始摄像头采集
     [self.engine.defaultVideoStream startCapture];
     
-    
-    //发布本地流到房间
+    //4.发布本地流到房间
     [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo * _Nullable liveInfo) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
         if (desc == RCRTCCodeSuccess) {
             //默认设置一次自定义合流布局
             self.liveInfo = liveInfo;
             [self streamlayoutMode:RCRTCMixLayoutModeCustom];
             NSLog(@"本地发布成功:liveUrl:%@",liveInfo.liveUrl);
-            alert.message = liveInfo.liveUrl;
-            UIAlertAction *okAtion = [UIAlertAction actionWithTitle:@"复制liveUrl到剪切板" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [UIPasteboard generalPasteboard].string = liveInfo.liveUrl;
-            }];
-            [alert addAction:okAtion];
         }else {
-            alert.message = @"本地发布失败,请退出房间重试";
-            UIAlertAction *okAtion = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:okAtion];
+            [UIAlertController alertWithString:@"本地流发布失败" inCurrentVC:nil];
         }
-        [self presentViewController:alert animated:YES completion:nil];
+    }];
+}
+
+//订阅主播
+- (void)subscribeLiveStream{
+    @WeakObj(self);
+    [self.engine subscribeLiveStream:self.liveUrl streamType:RCRTCAVStreamTypeAudioVideo completion:^(RCRTCCode desc, RCRTCInputStream * _Nullable inputStream) {
+        @StrongObj(self);
+        if (desc != RCRTCCodeSuccess) {
+            [UIAlertController alertWithString:@"订阅失败,检查liveUrl" inCurrentVC:self];
+        }
+        // 注意 * 当前block这里会回调两次,需要针对流类型处理
+        if (inputStream.mediaType == RTCMediaTypeVideo) {
+            StreamVideo *v = [self creatStreamVideoWithId:inputStream.userId];
+            [(RCRTCVideoInputStream *)inputStream setVideoView:(RCRTCRemoteVideoView *)v.canvesView];
+            [self.streamVideos addObject:v];
+            [self updateLayoutWithAnimation:YES];
+        }
+    }];
+}
+
+//取消订阅
+- (void)unSubscribeLiveStream{
+    if (!self.liveUrl.length) return;
+    [self.engine unsubscribeLiveStream:self.liveUrl completion:^(BOOL isSuccess, RCRTCCode code) {
+        if (code != RCRTCCodeSuccess) {
+            NSString *errorMsg = [NSString stringWithFormat:@"取消订阅失败code::%ld",(long)code];
+            [UIAlertController alertWithString:errorMsg inCurrentVC:self];
+        }
     }];
 }
 
@@ -191,10 +243,7 @@
     @WeakObj(self);
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
-        if (isSuccess && code == RCRTCCodeSuccess) {
-            [self.streamVideos removeAllObjects];
-            return;
-        }
+        if (isSuccess && code == RCRTCCodeSuccess) return;
         [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
     }];
 }
@@ -214,10 +263,21 @@
 }
 
 
+
+#pragma mark - RCIMClientReceiveMessageDelegate
+- (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object
+{
+    RCTextMessage *textMsg = (RCTextMessage *)message.content;
+    self.liveUrl = textMsg.content;
+    [UIAlertController alertWithString:@"收到liveUrl" inCurrentVC:self];    
+}
+
+
+
 #pragma mark - RCRTCRoomEventDelegate
 
 - (void)didOfflineUser:(RCRTCRemoteUser*)user{
-    NSLog(@"掉线");
+    NSLog(@"user:%@掉线",user.userId);
 }
 
 - (void)didLeaveUser:(RCRTCRemoteUser*)user{
@@ -239,9 +299,6 @@
         for (RCRTCInputStream *stream in streams) {
             if (stream.mediaType == RTCMediaTypeVideo) {
                 uid = stream.userId;
-                if ([stream.tag isEqualToString:@"RongRTCFileVideo"]) {
-                    uid = [uid stringByAppendingString:stream.tag];
-                }
             }
         }
     }
@@ -262,9 +319,6 @@
     for (RCRTCInputStream *stream in streams) {
         if (stream.mediaType == RTCMediaTypeVideo) {
             uid = stream.userId;
-            if ([stream.tag isEqualToString:@"RongRTCFileVideo"]) {
-                uid = [uid stringByAppendingString:stream.tag];
-            }
             StreamVideo *sVideo = [self creatStreamVideoWithId:uid];
             RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
             [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
@@ -313,7 +367,6 @@
 - (RCRTCEngine *)engine{
     if (!_engine) {
         _engine = [RCRTCEngine sharedInstance];
-//        [_engine enableSpeaker:YES];
     }
     return _engine;
 }
@@ -347,6 +400,17 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
+}
+
+- (void)setRoleType:(RCRTCRoleType)roleType{
+    _roleType = roleType;
+    if (_roleType == RCRTCRoleTypeHost) {
+        self.title = @"直播 Demo-主播端";
+        [self.engine enableSpeaker:NO];
+    }else if (_roleType == RCRTCRoleTypeAudience){
+        self.title = @"直播 Demo-观众端";
+        [self.engine enableSpeaker:YES];
+    }
 }
 
 

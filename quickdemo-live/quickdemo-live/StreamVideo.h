@@ -1,19 +1,22 @@
 //
+//  VideoLayout.h
+//  quickdemo-live-broadcaster
+//
+//  Created by RongCloud on 2020/10/29.
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <RongRTCLib/RongRTCLib.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StreamVideo: NSObject
+@interface StreamVideo : NSObject
 
-@property(nonatomic, copy) NSString *userId;
+@property (nonatomic, copy)NSString *userId;
 
 /// 包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
-@property(nonatomic, strong) RCRTCVideoPreviewView *canvesView;
+@property (nonatomic, strong)RCRTCVideoPreviewView *canvesView;
 
 /// RCRTCRemoteVideoView 初始化
 /// @param uid 用户id
