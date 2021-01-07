@@ -15,8 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *userBtn_C;
 @property (weak, nonatomic) IBOutlet UIButton *userBtn_D;
 
-@property (weak, nonatomic) IBOutlet UIButton *joinRoomBtn;
+@property (weak, nonatomic) IBOutlet UIButton *startLiveBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *wacthLiveBtn;
+@property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *closeCamera;
 @property (weak, nonatomic) IBOutlet UIButton *closeMicBtn;
 
@@ -32,45 +35,80 @@
 
 @implementation RCMenuView
 
-- (instancetype)initWithCoder:(NSCoder *)coder{
-    if (self = [super initWithCoder:coder]) {
-        
-    }
-    return self;
-}
-
 - (IBAction)userLogin:(UIButton *)sender {
-    [self updateButtonstate:sender.tag];
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
-    if ([self.delegate respondsToSelector:@selector(loginIMWithIndex:)]) {
-        [self.delegate loginIMWithIndex:sender.tag];
-    }
-}
-
-- (IBAction)joinRoomAction:(UIButton *)sender{
-    NSLog(@"%@",sender.titleLabel.text);
-    sender.selected = !sender.selected;
     if (sender.selected) {
-        if ([self.delegate respondsToSelector:@selector(startLive:)]) {
-            self.roleType = RCRTCRoleTypeHost;
-            [self.delegate startLive:self.roleType];
+        [self updateLoginState:sender.tag];
+        [self disableClickWith:@[self.connectHostBtn]];
+        if ([self.delegate respondsToSelector:@selector(loginIMWithIndex:)]) {
+            [self.delegate loginIMWithIndex:sender.tag];
         }
     }else{
-        if ([self.delegate respondsToSelector:@selector(startLive:)]) {
-            self.roleType = RCRTCRoleTypeAudience;
-            [self.delegate startLive:self.roleType];
+        if (self.roleType != RCRTCRoleTypeUnknown) {
+            sender.selected = !sender.selected;
+            return;
+        }
+        [self resetLoginBtnState];
+        [self disableClickWith:nil];
+        if ([self.delegate respondsToSelector:@selector(logout)]) {
+            [self.delegate logout];
         }
     }
+    self.isLogin = sender.selected;
 }
-- (IBAction)watchLiveAction:(UIButton *)sender{
+
+- (IBAction)startLiveAction:(UIButton *)sender{
+    
+    if (!self.isLogin) return;
+
     NSLog(@"%@",sender.titleLabel.text);
-    if ([self.delegate respondsToSelector:@selector(watchLive)]) {
-        self.roleType = RCRTCRoleTypeAudience;
-        [self.delegate watchLive];
+    sender.selected = !sender.selected;
+    if ([self.delegate respondsToSelector:@selector(startLiveWithState:)]) {
+        self.roleType = (sender.selected ? RCRTCRoleTypeHost : RCRTCRoleTypeUnknown);
+        [self.delegate startLiveWithState:sender.selected];
     }
 }
+
+- (IBAction)watchLiveAction:(UIButton *)sender{
+    
+    if (!self.isLogin) return;
+    
+    NSLog(@"%@",sender.titleLabel.text);
+    sender.selected = !sender.selected;
+    if ([self.delegate respondsToSelector:@selector(watchLiveWithState:)]) {
+        self.roleType = (sender.selected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
+        [self.delegate watchLiveWithState:sender.selected];
+    }
+}
+
+- (IBAction)connectHostAction:(UIButton *)sender {
+    
+    if (self.roleType != RCRTCRoleTypeAudience) return;
+    
+    NSLog(@"%@",sender.titleLabel.text);
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        [self disableClickWith:@[self.startLiveBtn,
+                                 self.wacthLiveBtn]];
+    }else{
+        [self disableClickWith:@[self.startLiveBtn,
+                                 self.closeCamera,
+                                 self.closeMicBtn,
+                                 self.streamLayoutBtn,
+                                 self.sendMsgBtn]];
+    }
+    if ([self.delegate respondsToSelector:@selector(connectHostWithState:)]) {
+        [self.delegate connectHostWithState:sender.selected];
+    }
+}
+
+
 - (IBAction)closeCameraAction:(UIButton *)sender{
+    
+    if (self.roleType != RCRTCRoleTypeHost) return;
+    
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
     if ([self.delegate respondsToSelector:@selector(cameraEnable:)]) {
@@ -78,15 +116,19 @@
     }
 }
 - (IBAction)closeMicAction:(UIButton *)sender{
+    
+    if (self.roleType != RCRTCRoleTypeHost) return;
+    
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
     if ([self.delegate respondsToSelector:@selector(micDisable:)]) {
         [self.delegate micDisable:sender.selected];
     }
 }
-
-
 - (IBAction)streamLayutAction:(UIButton *)sender{
+    
+    if (self.roleType != RCRTCRoleTypeHost) return;
+    
     NSLog(@"%@",sender.titleLabel.text);
     if ([self.delegate respondsToSelector:@selector(streamLayout:)]) {
         sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
@@ -108,18 +150,39 @@
 }
 
 - (IBAction)sendMsgAction:(UIButton *)sender{
+    
+    if (self.roleType != RCRTCRoleTypeHost) return;
+    
     NSLog(@"%@",sender.titleLabel.text);
     if ([self.delegate respondsToSelector:@selector(sendLiveUrl)]) {
         [self.delegate sendLiveUrl];
     }
 }
 
+
+
+
+#pragma mark - private method
+
 - (void)setRoleType:(RCRTCRoleType)roleType{
     _roleType = roleType;
-    if (_roleType == RCRTCRoleTypeHost) {
-        [self disableClickWith:@[self.wacthLiveBtn]];
-    }else if (_roleType == RCRTCRoleTypeAudience){
-        [self disableClickWith:@[self.closeCamera,self.closeMicBtn,self.streamLayoutBtn,self.sendMsgBtn]];
+    switch (_roleType) {
+        case RCRTCRoleTypeUnknown:
+            [self disableClickWith:@[self.connectHostBtn]];
+            break;
+        case RCRTCRoleTypeHost:
+            [self disableClickWith:@[self.wacthLiveBtn,
+                                     self.connectHostBtn]];
+            break;
+        case RCRTCRoleTypeAudience:
+            [self disableClickWith:@[self.startLiveBtn,
+                                     self.closeCamera,
+                                     self.closeMicBtn,
+                                     self.streamLayoutBtn,
+                                     self.sendMsgBtn]];
+            break;;
+        default:
+            break;
     }
 }
 
@@ -134,28 +197,38 @@
     }
 }
 
-- (void)updateButtonstate:(NSInteger)tag{
+- (void)updateLoginState:(NSInteger)tag{
     self.userBtns = @[
         self.userBtn_A,
         self.userBtn_B,
         self.userBtn_C,
         self.userBtn_D];
     self.funcBtns = @[
-        self.joinRoomBtn,
+        self.startLiveBtn,
         self.wacthLiveBtn,
+        self.connectHostBtn,
         self.closeCamera,
         self.closeMicBtn,
         self.streamLayoutBtn,
         self.sendMsgBtn];
     for (UIButton *btn in self.userBtns) {
-        btn.enabled = NO;
         if (btn.tag != tag) {
             btn.backgroundColor = [UIColor grayColor];
+            btn.enabled = NO;
         }
     }
 }
 
+- (void)resetLoginBtnState{
+    for (UIButton *btn in self.userBtns) {
+        btn.backgroundColor = [UIColor systemBlueColor];
+        btn.enabled = YES;
+    }
+}
+
+
 - (void)layoutSubviews{
+    self.liveUrlLabel.layer.borderColor = [UIColor grayColor].CGColor;
     for (UIView *subView in self.subviews) {
         if ([subView isKindOfClass:UIButton.class]) {
             UIButton *btn = (UIButton *)subView;

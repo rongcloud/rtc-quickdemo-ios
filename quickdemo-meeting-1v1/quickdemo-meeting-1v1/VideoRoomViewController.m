@@ -77,8 +77,22 @@
 
 // 加入房间
 - (void)joinRoom {
+    RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
+    //非黑屏、清晰度不够，造成鉴定师无法鉴别
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
+    //黑屏，
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
+    videoConfig.videoFps = 30;
+    [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
+
+    RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
+    config.roomType = RCRTCRoomTypeLive;
+    config.liveType = RCRTCLiveTypeAudioVideo;
+    [self.engine enableSpeaker:NO];
+    
     @WeakObj(self);
     [self.engine joinRoom:ROOM_ID
+                   config:config
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
         @StrongObj(self);
         if (code == RCRTCCodeSuccess) {

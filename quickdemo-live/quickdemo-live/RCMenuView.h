@@ -10,8 +10,9 @@
 #import <RongRTCLib/RCRTCMixConfig.h>
 
 typedef NS_ENUM (NSInteger, RCRTCRoleType) {
-    RCRTCRoleTypeAudience = 1,//观众
-    RCRTCRoleTypeHost = 2,//主播
+    RCRTCRoleTypeUnknown  = 0, //未确定身份
+    RCRTCRoleTypeAudience = 1, //观众
+    RCRTCRoleTypeHost     = 2, //主播
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,8 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RCMenuViewEventDelegate <NSObject>
 
 - (void)loginIMWithIndex:(NSInteger)index;
-- (void)startLive:(RCRTCRoleType)roleType;
-- (void)watchLive;
+- (void)logout;
+- (void)startLiveWithState:(BOOL)isSelected;
+- (void)watchLiveWithState:(BOOL)isSelected;
+- (void)connectHostWithState:(BOOL)isConnect;
 - (void)cameraEnable:(BOOL)enable;
 - (void)micDisable:(BOOL)disable;
 - (void)streamLayout:(RCRTCMixLayoutMode)mode;
@@ -31,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RCMenuView : UIView
 
 @property (nonatomic, weak)id<RCMenuViewEventDelegate> delegate;
+
+@property (weak, nonatomic) IBOutlet UILabel *liveUrlLabel;
 
 @end
 

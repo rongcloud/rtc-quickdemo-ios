@@ -47,8 +47,8 @@
     NSArray *tokens= @[
         @"B+QoHfaZ8F592THITdFJlyHLbdTpM60nEZoWTNCL1tU=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
         @"IrsKLk6XkuCQb+y5GEwd7SHLbdTpM60nX3loEGdZ8hk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
-        @"xxxx",
-        @"xxxx",];
+        @"gd53A2EPASG599DhkzBkXYkz7cO8IMg/C5d2RSwp7Gg=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
+        @"KiYAoEKLAlX9xKq4iUA8SnNUtXQ9DRCIMwz7NtmKqFk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com"];
     
     if (index >= tokens.count) return;
     
@@ -69,36 +69,56 @@
     }];
 }
 
-//开始直播/下麦
-- (void)startLive:(RCRTCRoleType)roleType{
-    if (self.roleType == RCRTCRoleTypeAudience && roleType == RCRTCRoleTypeHost) {
-        //如果从观众端切换到主播端,需要先取消订阅
-        [self unSubscribeLiveStream];
-    }
-    
-    //清空视图
-    [self.streamVideos removeAllObjects];
-    for (UIView *subview in self.remoteContainerView.subviews) {
-        [subview removeFromSuperview];
-    }
-    
-    if (roleType == RCRTCRoleTypeHost) {
-        //开始直播
+//退出
+- (void)logout{
+    //退出聊天室
+    [[RCIMClient sharedRCIMClient] quitChatRoom:roomId success:^{
+        NSLog(@"退出IM聊天室成功");
+        //退出IM
+        [[RCIMClient sharedRCIMClient] logout];
+    } error:^(RCErrorCode status) {
+        NSLog(@"退出IM聊天室失败:%ld",(long)status);
+    }];
+}
+
+//开始直播/结束直播
+- (void)startLiveWithState:(BOOL)isSelected{
+    self.roleType = (isSelected ? RCRTCRoleTypeHost : RCRTCRoleTypeUnknown);
+    if (isSelected) {
+        //加入房间
         [self setupLocalVideoView];
         [self joinLiveRoom];
     }else{
-        //下麦+订阅liveUrl
+        //退出房间
+        [self exitRoom];
+    }
+}
+
+//观看直播/结束观看
+- (void)watchLiveWithState:(BOOL)isSelected{
+    self.roleType = (isSelected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
+    if (isSelected) {
+        //订阅url
+        [self subscribeLiveStream];
+    }else{
+        [self cleanRemoteContainer];
+        //取消订阅
+        [self unSubscribeLiveStream];
+    }
+}
+
+//观众上下麦
+- (void)connectHostWithState:(BOOL)isConnect{
+    self.roleType = (isConnect ? RCRTCRoleTypeHost : RCRTCRoleTypeAudience);
+    if (isConnect) {//上麦
+        [self cleanRemoteContainer];
+        [self unSubscribeLiveStream];
+        [self setupLocalVideoView];
+        [self joinLiveRoom];
+    }else{//下麦
         [self exitRoom];
         [self subscribeLiveStream];
     }
-    
-    self.roleType = roleType;
-}
-
-//观看直播
-- (void)watchLive{
-    self.roleType = RCRTCRoleTypeAudience;
-    [self subscribeLiveStream];
 }
 
 //开启/关闭摄像头
@@ -135,11 +155,11 @@
 }
 
 
-#pragma mark - private func
+#pragma mark - private method
 // 加入IM聊天室(辅助流程收发直播地址)
 - (void)joinIMChatRoom{
     [[RCIMClient sharedRCIMClient] joinChatRoom:roomId
-                                    messageCount:1
+                                    messageCount:-1
                                         success:^{
         NSLog(@"加入IM聊天室成功");
     } error:^(RCErrorCode status) {
@@ -195,7 +215,6 @@
     [self.engine.defaultVideoStream setVideoView:view];
     //3.开始摄像头采集
     [self.engine.defaultVideoStream startCapture];
-    
     //4.发布本地流到房间
     [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo * _Nullable liveInfo) {
         if (desc == RCRTCCodeSuccess) {
@@ -219,8 +238,7 @@
         }
         // 注意 * 当前block这里会回调两次,需要针对流类型处理
         if (inputStream.mediaType == RTCMediaTypeVideo) {
-            StreamVideo *v = [self creatStreamVideoWithId:inputStream.userId];
-            [(RCRTCVideoInputStream *)inputStream setVideoView:(RCRTCRemoteVideoView *)v.canvesView];
+            StreamVideo *v = [self setupRemoteViewWithUid:inputStream.userId combineStream:inputStream];
             [self.streamVideos addObject:v];
             [self updateLayoutWithAnimation:YES];
         }
@@ -229,10 +247,9 @@
 
 //取消订阅
 - (void)unSubscribeLiveStream{
-    if (!self.liveUrl.length) return;
     [self.engine unsubscribeLiveStream:self.liveUrl completion:^(BOOL isSuccess, RCRTCCode code) {
         if (code != RCRTCCodeSuccess) {
-            NSString *errorMsg = [NSString stringWithFormat:@"取消订阅失败code::%ld",(long)code];
+            NSString *errorMsg = [NSString stringWithFormat:@"取消订阅失败code:%ld",(long)code];
             [UIAlertController alertWithString:errorMsg inCurrentVC:self];
         }
     }];
@@ -243,8 +260,11 @@
     @WeakObj(self);
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
-        if (isSuccess && code == RCRTCCodeSuccess) return;
-        [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
+        if (isSuccess && code == RCRTCCodeSuccess) {
+            [self cleanRemoteContainer];
+        }else{
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
+        }
     }];
 }
 
@@ -262,37 +282,6 @@
     }];
 }
 
-
-
-#pragma mark - RCIMClientReceiveMessageDelegate
-- (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object
-{
-    RCTextMessage *textMsg = (RCTextMessage *)message.content;
-    self.liveUrl = textMsg.content;
-    [UIAlertController alertWithString:@"收到liveUrl" inCurrentVC:self];    
-}
-
-
-
-#pragma mark - RCRTCRoomEventDelegate
-
-- (void)didOfflineUser:(RCRTCRemoteUser*)user{
-    NSLog(@"user:%@掉线",user.userId);
-}
-
-- (void)didLeaveUser:(RCRTCRemoteUser*)user{
-    [self unsubscribeRemoteResource:nil orUid:user.userId];
-}
-
-- (void)didPublishStreams:(NSArray <RCRTCInputStream *>*)streams{
-    [self subscribeRemoteResource:streams orUid:nil];
-}
-
-- (void)didUnpublishStreams:(NSArray<RCRTCInputStream *>*)streams{
-    [self unsubscribeRemoteResource:streams orUid:nil];
-}
-
-#pragma mark - private Method
 //取消订阅远端流
 - (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orUid:(NSString *)uid {
     if (!uid) {
@@ -319,15 +308,28 @@
     for (RCRTCInputStream *stream in streams) {
         if (stream.mediaType == RTCMediaTypeVideo) {
             uid = stream.userId;
-            StreamVideo *sVideo = [self creatStreamVideoWithId:uid];
-            RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
-            [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
+            [self setupRemoteViewWithUid:uid combineStream:stream];
             i++;
         }
     }
     if (i > 0) {
         [self updateLayoutWithAnimation:YES];
     }
+}
+
+//清空视图
+- (void)cleanRemoteContainer{
+    [self.streamVideos removeAllObjects];
+    for (UIView *subview in self.remoteContainerView.subviews) {
+        [subview removeFromSuperview];
+    }
+}
+
+- (StreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
+    StreamVideo *sVideo = [self creatStreamVideoWithId:uid];
+    RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
+    [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
+    return sVideo;
 }
 
 - (StreamVideo *)creatStreamVideoWithId:(NSString *)uid{
@@ -350,46 +352,12 @@
 
 - (void)updateLayoutWithAnimation:(BOOL)animation{
     if (animation) {
-        [UIView animateWithDuration:0.3 animations:^{
-            [self updateInterface];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
         }];
+    }else{
+        [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
     }
-    else {
-        [self updateInterface];
-    }
-}
-
-- (void)updateInterface{
-    [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
-}
-
-#pragma mark - lazy loading
-- (RCRTCEngine *)engine{
-    if (!_engine) {
-        _engine = [RCRTCEngine sharedInstance];
-    }
-    return _engine;
-}
-
-- (VideoLayoutTool *)layoutTool{
-    if (!_layoutTool) {
-        _layoutTool = [VideoLayoutTool new];
-    }
-    return _layoutTool;
-}
-
-- (NSMutableArray<StreamVideo *> *)streamVideos{
-    if (!_streamVideos) {
-        _streamVideos = [NSMutableArray array];
-    }
-    return _streamVideos;
-}
-
-- (StreamVideo *)localVideo{
-    if (!_localVideo) {
-        _localVideo = [StreamVideo LocalStreamVideo];
-    }
-    return _localVideo;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -404,14 +372,73 @@
 
 - (void)setRoleType:(RCRTCRoleType)roleType{
     _roleType = roleType;
-    if (_roleType == RCRTCRoleTypeHost) {
-        self.title = @"直播 Demo-主播端";
-        [self.engine enableSpeaker:NO];
-    }else if (_roleType == RCRTCRoleTypeAudience){
-        self.title = @"直播 Demo-观众端";
-        [self.engine enableSpeaker:YES];
+    switch (_roleType) {
+        case RCRTCRoleTypeUnknown:
+            self.title = @"直播 Demo";
+            break;
+        case RCRTCRoleTypeHost:
+            self.title = @"直播 Demo-主播端";
+            [self.engine enableSpeaker:NO];
+            break;
+        case RCRTCRoleTypeAudience:
+            self.title = @"直播 Demo-观众端";
+            [self.engine enableSpeaker:YES];
+            break;;
+        default:
+            break;
     }
 }
 
+#pragma mark - RCIMClientReceiveMessageDelegate
+- (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        RCTextMessage *textMsg = (RCTextMessage *)message.content;
+        self.liveUrl = textMsg.content;
+        NSString *text = [NSString stringWithFormat:@"liveUrl: %@",self.liveUrl];
+        [self.menuView.liveUrlLabel setText:text];
+    });
+}
 
+#pragma mark - RCRTCRoomEventDelegate
+- (void)didOfflineUser:(RCRTCRemoteUser*)user{
+    NSLog(@"user:%@掉线",user.userId);
+}
+
+- (void)didLeaveUser:(RCRTCRemoteUser*)user{
+    [self unsubscribeRemoteResource:nil orUid:user.userId];
+}
+
+- (void)didPublishStreams:(NSArray <RCRTCInputStream *>*)streams{
+    [self subscribeRemoteResource:streams orUid:nil];
+}
+
+- (void)didUnpublishStreams:(NSArray<RCRTCInputStream *>*)streams{
+    [self unsubscribeRemoteResource:streams orUid:nil];
+}
+
+#pragma mark - lazy loading
+- (RCRTCEngine *)engine{
+    if (!_engine) {
+        _engine = [RCRTCEngine sharedInstance];
+    }
+    return _engine;
+}
+- (VideoLayoutTool *)layoutTool{
+    if (!_layoutTool) {
+        _layoutTool = [VideoLayoutTool new];
+    }
+    return _layoutTool;
+}
+- (NSMutableArray<StreamVideo *> *)streamVideos{
+    if (!_streamVideos) {
+        _streamVideos = [NSMutableArray array];
+    }
+    return _streamVideos;
+}
+- (StreamVideo *)localVideo{
+    if (!_localVideo) {
+        _localVideo = [StreamVideo LocalStreamVideo];
+    }
+    return _localVideo;
+}
 @end
