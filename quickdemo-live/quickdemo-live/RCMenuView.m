@@ -113,7 +113,7 @@
 
 - (IBAction)closeCameraAction:(UIButton *)sender{
     
-    if (self.roleType != RCRTCRoleTypeHost) return;
+    if (self.roleType == RCRTCRoleTypeUnknown) return;
     
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
@@ -123,7 +123,7 @@
 }
 - (IBAction)closeMicAction:(UIButton *)sender{
     
-    if (self.roleType != RCRTCRoleTypeHost) return;
+    if (self.roleType == RCRTCRoleTypeUnknown) return;
     
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
@@ -133,7 +133,7 @@
 }
 - (IBAction)streamLayutAction:(UIButton *)sender{
     
-    if (self.roleType != RCRTCRoleTypeHost) return;
+    if (self.roleType == RCRTCRoleTypeUnknown) return;
     
     NSLog(@"%@",sender.titleLabel.text);
     if ([self.delegate respondsToSelector:@selector(streamLayout:)]) {
@@ -157,7 +157,7 @@
 
 - (IBAction)sendMsgAction:(UIButton *)sender{
     
-    if (self.roleType != RCRTCRoleTypeHost) return;
+    if (self.roleType == RCRTCRoleTypeUnknown) return;
     
     NSLog(@"%@",sender.titleLabel.text);
     if ([self.delegate respondsToSelector:@selector(sendLiveUrl)]) {

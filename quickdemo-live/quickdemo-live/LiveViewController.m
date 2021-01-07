@@ -35,7 +35,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //设置事件代理
     [self.menuView setDelegate:self];
 }
@@ -90,8 +89,9 @@
         [self setupLocalVideoView];
         [self joinLiveRoom];
     }else{
-        //退出房间
-        [self exitRoom];
+        [self cleanRemoteContainer];
+        [self exitRoom];//退出房间
+        self.liveUrl = @"";
     }
 }
 
@@ -99,20 +99,19 @@
 - (void)watchLiveWithState:(BOOL)isSelected{
     self.roleType = (isSelected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
     if (isSelected) {
-        //订阅url
-        [self subscribeLiveStream];
+        [self subscribeLiveStream];//订阅url
     }else{
         [self cleanRemoteContainer];
-        //取消订阅
-        [self unSubscribeLiveStream];
+        [self unSubscribeLiveStream];//取消订阅
     }
 }
 
 //观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect{
     self.roleType = (isConnect ? RCRTCRoleTypeHost : RCRTCRoleTypeAudience);
+    //先清理视图
+    [self cleanRemoteContainer];
     if (isConnect) {//上麦
-        [self cleanRemoteContainer];
         [self unSubscribeLiveStream];
         [self setupLocalVideoView];
         [self joinLiveRoom];
@@ -136,8 +135,9 @@
  主播设置合流布局,观众端看效果
 
  自定义布局 RCRTCMixLayoutModeCustom = 1
- 悬浮布局 RCRTCMixLayoutModeSuspension = 2 (默认)
+ 悬浮布局 RCRTCMixLayoutModeSuspension = 2
  自适应布局 RCRTCMixLayoutModeAdaptive = 3
+  **默认新创建的房间是悬浮布局**
  */
 - (void)streamLayout:(RCRTCMixLayoutMode)mode{
     [self streamlayoutMode:mode];
@@ -260,14 +260,7 @@
     @WeakObj(self);
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
-        if (isSuccess && code == RCRTCCodeSuccess) {
-            self.liveUrl = @"";
-//            //如果房间内没有主播了,需要通知房间内观众
-//            if (self.room.remoteUsers.count == 0) {
-//                [self sendLiveUrl];
-//            }
-            [self cleanRemoteContainer];
-        }else{
+        if (code != RCRTCCodeSuccess) {
             [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
         }
     }];
@@ -400,6 +393,7 @@
 #pragma mark - RCRTCRoomEventDelegate
 - (void)didOfflineUser:(RCRTCRemoteUser*)user{
     NSLog(@"user:%@掉线",user.userId);
+    [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
 
 - (void)didLeaveUser:(RCRTCRemoteUser*)user{
