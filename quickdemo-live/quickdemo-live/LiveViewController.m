@@ -59,12 +59,12 @@
     //登录IM
     [[RCIMClient sharedRCIMClient] connectWithToken:tokens[index] dbOpened:^(RCDBErrorCode code) {
     } success:^(NSString *userId) {
-        NSString *successMsg = [NSString stringWithFormat:@"IM登陆成功userId:%@",userId];
+        NSString *successMsg = [NSString stringWithFormat:@"IM登录成功:%@",userId];
         [UIAlertController alertWithString:successMsg inCurrentVC:self];
         //加入聊天室
         [self joinIMChatRoom];
     } error:^(RCConnectErrorCode errorCode) {
-        NSString *errorMsg = [NSString stringWithFormat:@"IM登陆失败code:%ld",(long)errorCode];
+        NSString *errorMsg = [NSString stringWithFormat:@"IM登录失败code:%ld",(long)errorCode];
         [UIAlertController alertWithString:errorMsg inCurrentVC:self];
     }];
 }
@@ -76,6 +76,7 @@
         NSLog(@"退出IM聊天室成功");
         //退出IM
         [[RCIMClient sharedRCIMClient] logout];
+        self.liveUrl = @"";
     } error:^(RCErrorCode status) {
         NSLog(@"退出IM聊天室失败:%ld",(long)status);
     }];
@@ -134,8 +135,8 @@
 /**
  主播设置合流布局,观众端看效果
 
- 自定义布局 RCRTCMixLayoutModeCustom = 1 (默认)
- 悬浮布局 RCRTCMixLayoutModeSuspension = 2
+ 自定义布局 RCRTCMixLayoutModeCustom = 1
+ 悬浮布局 RCRTCMixLayoutModeSuspension = 2 (默认)
  自适应布局 RCRTCMixLayoutModeAdaptive = 3
  */
 - (void)streamLayout:(RCRTCMixLayoutMode)mode{
@@ -146,9 +147,9 @@
 - (void)sendLiveUrl{
     //加入IM聊天室
     if (!self.liveInfo.liveUrl.length) return;
-    RCTextMessage *content = [RCTextMessage messageWithContent:self.liveInfo.liveUrl];
+    RCTextMessage *content = [RCTextMessage messageWithContent:self.liveUrl];
     [[RCIMClient sharedRCIMClient] sendMessage:ConversationType_CHATROOM targetId:roomId content:content pushContent:@"" pushData:@"" success:^(long messageId) {
-        [UIAlertController alertWithString:@"消息发送成功" inCurrentVC:nil];
+        NSLog(@"消息发送成功");
     } error:^(RCErrorCode nErrorCode, long messageId) {
         [UIAlertController alertWithString:@"消息发送失败" inCurrentVC:nil];
     }];
@@ -218,9 +219,8 @@
     //4.发布本地流到房间
     [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo * _Nullable liveInfo) {
         if (desc == RCRTCCodeSuccess) {
-            //默认设置一次自定义合流布局
             self.liveInfo = liveInfo;
-            [self streamlayoutMode:RCRTCMixLayoutModeCustom];
+            self.liveUrl = liveInfo.liveUrl;
             NSLog(@"本地发布成功:liveUrl:%@",liveInfo.liveUrl);
         }else {
             [UIAlertController alertWithString:@"本地流发布失败" inCurrentVC:nil];
@@ -261,6 +261,11 @@
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
         if (isSuccess && code == RCRTCCodeSuccess) {
+            self.liveUrl = @"";
+//            //如果房间内没有主播了,需要通知房间内观众
+//            if (self.room.remoteUsers.count == 0) {
+//                [self sendLiveUrl];
+//            }
             [self cleanRemoteContainer];
         }else{
             [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
@@ -274,10 +279,7 @@
     RCRTCMixConfig *config = [RCRTCMixStreamTool setOutputConfig:mode];
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
-        if (code == RCRTCCodeSuccess && isSuccess) {
-            [UIAlertController alertWithString:@"合流布局切换成功" inCurrentVC:self];
-            return;
-        }
+        if (code == RCRTCCodeSuccess && isSuccess) return;
         [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败code:%ld",(long)code] inCurrentVC:self];
     }];
 }
@@ -391,12 +393,8 @@
 
 #pragma mark - RCIMClientReceiveMessageDelegate
 - (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        RCTextMessage *textMsg = (RCTextMessage *)message.content;
-        self.liveUrl = textMsg.content;
-        NSString *text = [NSString stringWithFormat:@"liveUrl: %@",self.liveUrl];
-        [self.menuView.liveUrlLabel setText:text];
-    });
+    RCTextMessage *textMsg = (RCTextMessage *)message.content;
+    self.liveUrl = textMsg.content;
 }
 
 #pragma mark - RCRTCRoomEventDelegate
@@ -416,7 +414,19 @@
     [self unsubscribeRemoteResource:streams orUid:nil];
 }
 
-#pragma mark - lazy loading
+#pragma mark - setter & getter
+
+- (void)setLiveUrl:(NSString *)liveUrl{
+    _liveUrl = liveUrl;
+    NSString *text = @"liveUrl:";
+    if (_liveUrl.length) {
+        text = [text stringByAppendingString:_liveUrl];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.menuView.liveUrlLabel setText:text];
+    });
+}
+
 - (RCRTCEngine *)engine{
     if (!_engine) {
         _engine = [RCRTCEngine sharedInstance];

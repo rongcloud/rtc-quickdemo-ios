@@ -35,6 +35,11 @@
 
 @implementation RCMenuView
 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    self.liveUrlLabel.layer.borderColor = [UIColor grayColor].CGColor;
+}
+
 - (IBAction)userLogin:(UIButton *)sender {
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
@@ -73,6 +78,7 @@
 - (IBAction)watchLiveAction:(UIButton *)sender{
     
     if (!self.isLogin) return;
+    if ([self.liveUrlLabel.text isEqualToString:@"liveUrl:"] && !sender.selected) return;
     
     NSLog(@"%@",sender.titleLabel.text);
     sender.selected = !sender.selected;
@@ -226,16 +232,6 @@
     }
 }
 
-
-- (void)layoutSubviews{
-    self.liveUrlLabel.layer.borderColor = [UIColor grayColor].CGColor;
-    for (UIView *subView in self.subviews) {
-        if ([subView isKindOfClass:UIButton.class]) {
-            UIButton *btn = (UIButton *)subView;
-            btn.titleLabel.adjustsFontSizeToFitWidth = YES;
-        }
-    }
-}
 
 
 
