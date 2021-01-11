@@ -14,7 +14,7 @@ RTC Quick Start for iOS.
 
 1>.观众端
 - 观看直播(订阅)
-- 上麦
+- 上下麦
 
 1.申请完成之后在 **AppConfig.m**文件中填写 AppID , roomId, token(可以通过后台管理->服务管理->api调用->获取Token)
 **注意: 假设两个真机设备测试时,需要同一个AppID和两个token**

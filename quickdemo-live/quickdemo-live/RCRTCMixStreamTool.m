@@ -16,7 +16,7 @@
     RCRTCMixConfig *streamConfig = [[RCRTCMixConfig alloc] init];
     // 选择模式
     streamConfig.layoutMode = mode;
-    // 设置合流视频参数 ：宽：300 ，高：300 ，视频帧率 30， 视频码率 500；
+    // 设置合流视频参数 ：宽：300 ，高：300 ，视频帧率 20， 视频码率 500；
     streamConfig.mediaConfig.videoConfig.videoLayout.width = 300;
     streamConfig.mediaConfig.videoConfig.videoLayout.height = 300;
     streamConfig.mediaConfig.videoConfig.videoLayout.fps = 20;

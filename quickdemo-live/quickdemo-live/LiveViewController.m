@@ -297,7 +297,9 @@
 //订阅远端流
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orUid:(NSString *)uid{
     // 订阅房间中远端用户音视频流资源
-    [self.room.localUser subscribeStream:streams tinyStreams:nil completion:^(BOOL isSuccess, RCRTCCode desc) {}];
+    [self.room.localUser subscribeStream:streams
+                             tinyStreams:@[]
+                              completion:^(BOOL isSuccess, RCRTCCode desc) {}];
     // 创建并设置远端视频预览视图
     NSInteger i = 0;
     for (RCRTCInputStream *stream in streams) {
@@ -352,35 +354,6 @@
         }];
     }else{
         [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].idleTimerDisabled = NO;
-}
-
-- (void)setRoleType:(RCRTCRoleType)roleType{
-    _roleType = roleType;
-    switch (_roleType) {
-        case RCRTCRoleTypeUnknown:
-            self.title = @"直播 Demo";
-            break;
-        case RCRTCRoleTypeHost:
-            self.title = @"直播 Demo-主播端";
-            [self.engine enableSpeaker:NO];
-            break;
-        case RCRTCRoleTypeAudience:
-            self.title = @"直播 Demo-观众端";
-            [self.engine enableSpeaker:YES];
-            break;;
-        default:
-            break;
     }
 }
 
@@ -444,5 +417,33 @@
         _localVideo = [StreamVideo LocalStreamVideo];
     }
     return _localVideo;
+}
+
+- (void)setRoleType:(RCRTCRoleType)roleType{
+    _roleType = roleType;
+    switch (_roleType) {
+        case RCRTCRoleTypeUnknown:
+            self.title = @"直播 Demo";
+            break;
+        case RCRTCRoleTypeHost:
+            self.title = @"直播 Demo-主播端";
+            [self.engine enableSpeaker:NO];
+            break;
+        case RCRTCRoleTypeAudience:
+            self.title = @"直播 Demo-观众端";
+            [self.engine enableSpeaker:YES];
+            break;;
+        default:
+            break;
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 @end
