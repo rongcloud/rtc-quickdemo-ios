@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  quickdemo-meeting-beauty
 //
-//  Created by Zafer.Lee on 2021/1/4.
+//  Created by RongCloud on 2021/1/4.
 //
 
 #import "AppDelegate.h"

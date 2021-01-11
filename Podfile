@@ -38,8 +38,7 @@ abstract_target 'CommonPods' do
 
     target 'quickdemo-calllib' do
         project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
-        pod 'RongCloudIM/IMLib'
-        pod 'RongCloudRTC/RongCallLib'
+        pod 'RongCloudRTC'
     end
     
     target 'quickdemo-meeting-beauty' do

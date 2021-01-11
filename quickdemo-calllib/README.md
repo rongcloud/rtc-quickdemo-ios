@@ -29,7 +29,6 @@ CallLib Quick Start for iOS.
 
 2.运行之前请先执行 pod install 安装一下需要的依赖库（RongCloudIM/IMLib, RongCloudRTC/RongCallLib）
     podfile中添加  
-         pod 'RongCloudIM/IMLib'
          pod 'RongCloudRTC/RongCallLib'
 3.需要适当修改 Bundle Identifier 支持真机自签名
 
