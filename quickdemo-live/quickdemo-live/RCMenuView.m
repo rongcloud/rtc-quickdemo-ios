@@ -1,9 +1,5 @@
 //
-//  RCMenuView.m
-//  quickdemo-live-broadcaster
-//
-//  Created by huan xu on 2021/1/4.
-//  Copyright © 2021 huan xu. All rights reserved.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "RCMenuView.h"
@@ -16,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *userBtn_D;
 
 @property (weak, nonatomic) IBOutlet UIButton *startLiveBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *wacthLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
 
@@ -110,7 +105,6 @@
     }
 }
 
-
 - (IBAction)closeCameraAction:(UIButton *)sender{
     
     if (self.roleType == RCRTCRoleTypeUnknown) return;
@@ -164,9 +158,6 @@
         [self.delegate sendLiveUrl];
     }
 }
-
-
-
 
 #pragma mark - private method
 
@@ -231,9 +222,5 @@
         btn.enabled = YES;
     }
 }
-
-
-
-
 
 @end
