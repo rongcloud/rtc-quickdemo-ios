@@ -382,7 +382,6 @@
 }
 
 #pragma mark - setter & getter
-
 - (void)setLiveUrl:(NSString *)liveUrl{
     _liveUrl = liveUrl;
     NSString *text = @"liveUrl:";
