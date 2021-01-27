@@ -10,6 +10,9 @@
 #import "UIAlertController+RC.h"
 #import "RCMenuView.h"
 
+// ROOM_ID 所要加入的房间 ID
+#define ROOM_ID @"HelloRongCloud"
+
 @interface LiveViewController () <RCRTCRoomEventDelegate, RCMenuViewEventDelegate, RCIMClientReceiveMessageDelegate>
 
 @property(weak, nonatomic) IBOutlet UIView *remoteContainerView;
@@ -37,7 +40,7 @@
 
 #pragma mark - RCMenuViewEventDelegate
 
-// 前置条件,需要建立IM连接
+// 前置条件，需要建立IM连接
 - (void)loginIMWithIndex:(NSInteger)index {
     // 填写4个用户登录的 token 以数组形式存在
     NSArray *tokens = @[
@@ -49,7 +52,7 @@
     if (index >= tokens.count) return;
 
     // 设置 AppKey
-    [[RCIMClient sharedRCIMClient] initWithAppKey:AppID];
+    [[RCIMClient sharedRCIMClient] initWithAppKey:AppKey];
     // 接受消息回调
     [[RCIMClient sharedRCIMClient] setReceiveMessageDelegate:self object:nil];
     // 登录 IM
@@ -68,7 +71,7 @@
 // 退出
 - (void)logout {
     // 退出聊天室
-    [[RCIMClient sharedRCIMClient] quitChatRoom:roomId success:^{
+    [[RCIMClient sharedRCIMClient] quitChatRoom:ROOM_ID success:^{
         NSLog(@"退出 IM 聊天室成功");
         // 退出 IM
         [[RCIMClient sharedRCIMClient] logout];
@@ -91,7 +94,7 @@
     }
 }
 
-// 观看直播或结束观看
+// 观看直播/结束观看
 - (void)watchLiveWithState:(BOOL)isSelected {
     self.roleType = (isSelected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
     if (isSelected) {
@@ -107,7 +110,6 @@
 // 观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect {
     self.roleType = (isConnect ? RCRTCRoleTypeHost : RCRTCRoleTypeAudience);
-    // 先清理视图
     [self cleanRemoteContainer];
     if (isConnect) {
         // 上麦
@@ -133,23 +135,22 @@
 }
 
 /**
- 主播设置合流布局,观众端看效果
-
+ 主播设置合流布局，观众端看效果
  自定义布局 RCRTCMixLayoutModeCustom = 1
  悬浮布局 RCRTCMixLayoutModeSuspension = 2
  自适应布局 RCRTCMixLayoutModeAdaptive = 3
-  **默认新创建的房间是悬浮布局**
+ 默认新创建的房间是悬浮布局
  */
 - (void)streamLayout:(RCRTCMixLayoutMode)mode {
-    [self streamlayoutMode:mode];
+    [self streamLayoutMode:mode];
 }
 
-// 发送直播地址(*通过IM消息 这属于demo 辅助功能*)
+// 发送直播地址（通过IM消息 这属于demo 辅助功能）
 - (void)sendLiveUrl {
-    // 加入IM聊天室
+    // 加入 IM 聊天室
     if (!self.liveInfo.liveUrl.length) return;
     RCTextMessage *content = [RCTextMessage messageWithContent:self.liveUrl];
-    [[RCIMClient sharedRCIMClient] sendMessage:ConversationType_CHATROOM targetId:roomId content:content pushContent:@"" pushData:@"" success:^(long messageId) {
+    [[RCIMClient sharedRCIMClient] sendMessage:ConversationType_CHATROOM targetId:ROOM_ID content:content pushContent:@"" pushData:@"" success:^(long messageId) {
         NSLog(@"消息发送成功");
     }                                    error:^(RCErrorCode nErrorCode, long messageId) {
         [UIAlertController alertWithString:@"消息发送失败" inCurrentVC:nil];
@@ -160,7 +161,7 @@
 
 // 加入 IM 聊天室（辅助流程收发直播地址）
 - (void)joinIMChatRoom {
-    [[RCIMClient sharedRCIMClient] joinChatRoom:roomId
+    [[RCIMClient sharedRCIMClient] joinChatRoom:ROOM_ID
                                    messageCount:-1
                                         success:^{
                                             NSLog(@"加入IM聊天室成功");
@@ -175,7 +176,7 @@
     [self updateLayoutWithAnimation:YES];
 }
 
-// 加入RTC房间
+// 加入 RTC 房间
 - (void)joinLiveRoom {
     // 1. 配置房间
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
@@ -183,18 +184,17 @@
     config.liveType = RCRTCLiveTypeAudioVideo;
 
     @WeakObj(self);
-    [self.engine joinRoom:roomId config:config completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
+    [self.engine joinRoom:ROOM_ID config:config completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
         @StrongObj(self);
         if (code != RCRTCCodeSuccess) {
             [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败code:%ld", (long) code] inCurrentVC:self];
             return;
         }
-        // set delegate
         self.room = room;
         room.delegate = self;
         // 2. 发布本地默认流
         [self publishLocalLiveAVStream];
-        // 3. 如果已经有远端的流,需要订阅
+        // 3. 如果已经有远端的流，需要订阅
         if (room.remoteUsers.count) {
             NSMutableArray *streamArray = [NSMutableArray array];
             for (RCRTCRemoteUser *user in room.remoteUsers) {
@@ -266,7 +266,7 @@
 }
 
 // 自定义模式合流布局
-- (void)streamlayoutMode:(RCRTCMixLayoutMode)mode {
+- (void)streamLayoutMode:(RCRTCMixLayoutMode)mode {
     @WeakObj(self);
     RCRTCMixConfig *config = [RCRTCMixStreamTool setOutputConfig:mode];
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {

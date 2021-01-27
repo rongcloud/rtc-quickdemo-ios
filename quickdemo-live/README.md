@@ -16,12 +16,12 @@ RTC Quick Start for iOS.
 - 观看直播(订阅)
 - 上下麦
 
-1.申请完成之后在 **AppConfig.m**文件中填写 AppID , roomId, token(可以通过后台管理->服务管理->api调用->获取Token)
+1.申请完成之后在 **AppConfig.m**文件中填写 AppKey , RoomId, token(可以通过后台管理->服务管理->api调用->获取Token)
 **注意: 假设两个真机设备测试时,需要同一个AppID和两个token**
 
 ```
-   NSString *const AppID = @"<#这里填写你的appID#>";
-   NSString *const roomId = @"<#这里填写你的房间号#>";
+   NSString *const AppKey = @"<#这里填写你的appID#>";
+   NSString *const RoomId = @"<#这里填写你的房间号#>";
 ```
 
 2.运行之前请先执行 pod install 安装一下需要的依赖库（RongIMLib, RongRTCLib）

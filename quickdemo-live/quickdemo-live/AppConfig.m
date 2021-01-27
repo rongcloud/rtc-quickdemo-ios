@@ -4,7 +4,6 @@
 
 #import <Foundation/Foundation.h>
 
-// AppID 通过融云的后台管理创建的应用基本信息查看
-NSString *const AppID = @"<#这里填写你的appID#>";
-NSString *const roomId = @"<#这里填写你的roomId#>";
+// AppKey 通过融云的后台管理创建的应用基本信息查看
+NSString *const AppKey = @"<#这里填写你的 AppKey#>";
 
