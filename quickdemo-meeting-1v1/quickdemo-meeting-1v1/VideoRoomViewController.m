@@ -2,11 +2,10 @@
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
-#import <Masonry.h>
 #import <RongRTCLib/RongRTCLib.h>
 
 #import "VideoRoomViewController.h"
-#import "AppKeyToken.h"
+#import "AppConfig.h"
 
 #define kScreenWidth self.view.frame.size.width
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
@@ -17,7 +16,8 @@
 
 @interface VideoRoomViewController () <RCRTCRoomEventDelegate>
 
-@property(nonatomic, strong) UIView *menuView;
+@property(weak, nonatomic) IBOutlet UIView *menuView;
+@property(weak, nonatomic) IBOutlet UIView *containerView;
 
 @property(nonatomic, strong) RCRTCLocalVideoView *localView;
 @property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
@@ -34,7 +34,6 @@
     [self initIMSDK];
     [self setupLocalVideoView];
     [self setupRemoteVideoView];
-    [self setupRoomMenuView];
 }
 
 - (void)initIMSDK {
@@ -58,42 +57,46 @@
 - (void)setupLocalVideoView {
     RCRTCLocalVideoView *localView = [[RCRTCLocalVideoView alloc] initWithFrame:self.view.bounds];
     localView.fillMode = RCRTCVideoFillModeAspectFill;
-    [self.view addSubview:localView];
+    [self.containerView addSubview:localView];
     self.localView = localView;
+
+    //添加点击手势,可切换大小视图
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
+    [self.localView addGestureRecognizer:tap];
 }
 
 // 添加远端视频小窗口
 - (void)setupRemoteVideoView {
-    CGRect rect = CGRectMake(kScreenWidth - 120, 20, 100, 100 * 4 / 3);
+    CGRect rect = CGRectMake(kScreenWidth - 120, 40, 100, 100 * 4 / 3);
     _remoteView = [[RCRTCRemoteVideoView alloc] initWithFrame:rect];
     _remoteView.fillMode = RCRTCVideoFillModeAspectFill;
     [_remoteView setHidden:YES];
-    [self.view addSubview:_remoteView];
+    [self.containerView addSubview:_remoteView];
 }
-
-// 添加控制按钮层
-- (void)setupRoomMenuView {
-    [self.view addSubview:self.menuView];
-    [self.menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(0);
-        make.bottom.mas_equalTo(-50);
-        make.size.mas_offset(CGSizeMake(kScreenWidth, 50));
-    }];
-}
-
 
 // 加入房间
 - (void)joinRoom {
+    RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
+    videoConfig.videoFps = RCRTCVideoFPS30;
+    [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
+
+    RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
+    config.roomType = RCRTCRoomTypeLive;
+    config.liveType = RCRTCLiveTypeAudioVideo;
+    [self.engine enableSpeaker:NO];
+
     @WeakObj(self);
-    [self.engine useSpeaker:YES];
-    [self.engine joinRoom:ROOM_ID completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
-        @StrongObj(self);
-        if (code == RCRTCCodeSuccess) {
-            [self afterJoinRoom:room];
-        } else {
-            [self alertString:@"加入房间失败"];
-        }
-    }];
+    [self.engine joinRoom:ROOM_ID
+                   config:config
+               completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
+                   @StrongObj(self);
+                   if (code == RCRTCCodeSuccess) {
+                       [self afterJoinRoom:room];
+                   } else {
+                       [self alertString:@"加入房间失败"];
+                   }
+               }];
 }
 
 - (void)afterJoinRoom:(RCRTCRoom *)room {
@@ -122,21 +125,20 @@
     }
 }
 
-
 // 麦克风静音
-- (void)micMute:(UIButton *)btn {
-    btn.selected = !btn.selected;
-    [self.engine.defaultAudioStream setMicrophoneDisable:btn.selected];
+- (IBAction)micMute:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    [self.engine.defaultAudioStream setMicrophoneDisable:sender.selected];
 }
 
 // 本地摄像头切换
-- (void)changeCamera:(UIButton *)btn {
-    btn.selected = !btn.selected;
+- (IBAction)changeCamera:(UIButton *)sender {
+    sender.selected = !sender.selected;
     [self.engine.defaultVideoStream switchCamera];
 }
 
 // 挂断
-- (void)exitRoom {
+- (IBAction)hangupAction:(UIButton *)sender {
     // 取消本地发布
     [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
     }];
@@ -144,7 +146,7 @@
     [self.engine.defaultVideoStream stopCapture];
     [self.remoteView removeFromSuperview];
     // 退出房间
-    [self.engine leaveRoom:ROOM_ID completion:^(BOOL isSuccess, RCRTCCode code) {
+    [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
         }
@@ -152,7 +154,6 @@
 }
 
 #pragma mark - RCRTCRoomEventDelegate
-
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }
@@ -178,63 +179,40 @@
     }
 }
 
-#pragma lazy loading
-
-- (UIView *)menuView {
-    if (!_menuView) {
-        _menuView = [UIView new];
-        UIButton *muteBtn = [UIButton buttonWithType:0];
-        [muteBtn setImage:[UIImage imageNamed:@"mute"] forState:0];
-        [muteBtn setImage:[UIImage imageNamed:@"mute_hover"] forState:UIControlStateSelected];
-        [muteBtn addTarget:self action:@selector(micMute:) forControlEvents:UIControlEventTouchUpInside];
-        UIButton *exitBtn = [UIButton buttonWithType:0];
-        [exitBtn setImage:[UIImage imageNamed:@"hang_up"] forState:0];
-        [exitBtn addTarget:self action:@selector(exitRoom) forControlEvents:UIControlEventTouchUpInside];
-        UIButton *changeBtn = [UIButton buttonWithType:0];
-        [changeBtn setImage:[UIImage imageNamed:@"camera"] forState:0];
-        [changeBtn setImage:[UIImage imageNamed:@"camera_hover"] forState:UIControlStateSelected];
-        [changeBtn addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
-        [_menuView addSubview:muteBtn];
-        [_menuView addSubview:exitBtn];
-        [_menuView addSubview:changeBtn];
-
-        CGFloat padding = (kScreenWidth - 50 * 3) / 4;
-        CGSize btnSize = CGSizeMake(50, 50);
-
-        [muteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_offset(padding);
-            make.centerY.mas_equalTo(0);
-            make.size.mas_offset(btnSize);
-        }];
-        [exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(0);
-            make.size.mas_offset(btnSize);
-        }];
-        [changeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_offset(-padding);
-            make.centerY.mas_equalTo(0);
-            make.size.mas_offset(btnSize);
-        }];
-    }
-    return _menuView;
-}
-
-
+#pragma mark - private method
 - (void)alertString:(NSString *)string {
     if (!string.length) {
         return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertController *alert =
-            [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
+                [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
     });
 }
 
-- (RCRTCEngine *)engine {
-    return [RCRTCEngine sharedInstance];
+- (void)tapWithView:(UIGestureRecognizer *)ges {
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    CGRect frame = self.remoteView.frame;
+    self.remoteView.frame = self.localView.frame;
+    self.localView.frame = frame;
+    [CATransaction commit];
+
+    if (ges.view.frame.size.width >= kScreenWidth) {
+        [self.containerView bringSubviewToFront:self.remoteView];
+    } else {
+        [self.containerView bringSubviewToFront:self.localView];
+    }
 }
 
+- (RCRTCEngine *)engine {
+    if (!_engine) {
+        _engine = [RCRTCEngine sharedInstance];
+        [_engine enableSpeaker:YES];
+    }
+    return _engine;
+}
 
 @end

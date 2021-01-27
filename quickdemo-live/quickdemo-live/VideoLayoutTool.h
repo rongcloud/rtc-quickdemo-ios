@@ -1,10 +1,9 @@
 //
-//  Copyright © 2020 RongCloud. All rights reserved.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "StreamVideo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

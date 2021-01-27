@@ -1,4 +1,8 @@
 //
+//  AppDelegate.h
+//  quickdemo-live-broadcaster
+//
+//  Created by RongCloud on 2020/10/29.
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 

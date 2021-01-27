@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E1899CD259446CE00BFB60D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1899CC259446CE00BFB60D /* AppDelegate.m */; };
+		1E1899D3259446CE00BFB60D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1899D2259446CE00BFB60D /* ViewController.m */; };
+		1E1899D6259446CE00BFB60D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1899D4259446CE00BFB60D /* Main.storyboard */; };
+		1E1899D8259446D100BFB60D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E1899D7259446D100BFB60D /* Assets.xcassets */; };
+		1E1899DB259446D100BFB60D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1899D9259446D100BFB60D /* LaunchScreen.storyboard */; };
+		1E1899DE259446D100BFB60D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1899DD259446D100BFB60D /* main.m */; };
+		1E1899E92594685500BFB60D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899E82594685500BFB60D /* AssetsLibrary.framework */; };
+		1E1899EB2594685D00BFB60D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899EA2594685D00BFB60D /* MapKit.framework */; };
+		1E1899ED2594686300BFB60D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899EC2594686300BFB60D /* ImageIO.framework */; };
+		1E1899EF2594686900BFB60D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899EE2594686900BFB60D /* Security.framework */; };
+		1E1899F12594686E00BFB60D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899F02594686E00BFB60D /* SystemConfiguration.framework */; };
+		1E1899F32594687300BFB60D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899F22594687300BFB60D /* QuartzCore.framework */; };
+		1E1899F52594687800BFB60D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899F42594687800BFB60D /* AVFoundation.framework */; };
+		1E1899F72594687D00BFB60D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899F62594687D00BFB60D /* GLKit.framework */; };
+		1E1899F92594688200BFB60D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899F82594688200BFB60D /* OpenGLES.framework */; };
+		1E1899FB2594688800BFB60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899FA2594688800BFB60D /* CoreGraphics.framework */; };
+		1E1899FD2594688D00BFB60D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899FC2594688D00BFB60D /* CoreLocation.framework */; };
+		1E1899FF2594689200BFB60D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1899FE2594689200BFB60D /* CoreTelephony.framework */; };
+		1E189A012594689800BFB60D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A002594689800BFB60D /* CoreFoundation.framework */; };
+		1E189A032594689D00BFB60D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A022594689D00BFB60D /* CoreMedia.framework */; };
+		1E189A05259468A400BFB60D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A04259468A400BFB60D /* CoreAudio.framework */; };
+		1E189A07259468A900BFB60D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A06259468A900BFB60D /* CoreVideo.framework */; };
+		1E189A09259468AF00BFB60D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A08259468AF00BFB60D /* CFNetwork.framework */; };
+		1E189A0B259468B500BFB60D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A0A259468B500BFB60D /* AudioToolbox.framework */; };
+		1E189A0D259468BB00BFB60D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A0C259468BB00BFB60D /* VideoToolbox.framework */; };
+		1E189A13259468D100BFB60D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A12259468D100BFB60D /* libc++.tbd */; };
+		1E189A16259468D800BFB60D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A15259468D800BFB60D /* libz.tbd */; };
+		1E189A19259468E200BFB60D /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A18259468E200BFB60D /* libbz2.tbd */; };
+		1E189A1C259468E900BFB60D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A1B259468E900BFB60D /* libiconv.tbd */; };
+		1E189A1F259468F100BFB60D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A1E259468F100BFB60D /* libsqlite3.tbd */; };
+		1E4E0DA1259591A80082FE4F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1E4E0DA0259591A80082FE4F /* README.md */; };
+		589F5FADAA5423A6DDD0E7D7 /* Pods_CommonPods_quickdemo_calllib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD68815F5671099C43C397B /* Pods_CommonPods_quickdemo_calllib.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1E1899C8259446CE00BFB60D /* quickdemo-calllib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-calllib.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E1899CB259446CE00BFB60D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1E1899CC259446CE00BFB60D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1E1899D1259446CE00BFB60D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1E1899D2259446CE00BFB60D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1E1899D5259446CE00BFB60D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1E1899D7259446D100BFB60D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1E1899DA259446D100BFB60D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1E1899DC259446D100BFB60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E1899DD259446D100BFB60D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1E1899E82594685500BFB60D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		1E1899EA2594685D00BFB60D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1E1899EC2594686300BFB60D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1E1899EE2594686900BFB60D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1E1899F02594686E00BFB60D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1E1899F22594687300BFB60D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1E1899F42594687800BFB60D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1E1899F62594687D00BFB60D /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		1E1899F82594688200BFB60D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1E1899FA2594688800BFB60D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1E1899FC2594688D00BFB60D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1E1899FE2594689200BFB60D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1E189A002594689800BFB60D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		1E189A022594689D00BFB60D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1E189A04259468A400BFB60D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		1E189A06259468A900BFB60D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		1E189A08259468AF00BFB60D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1E189A0A259468B500BFB60D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1E189A0C259468BB00BFB60D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		1E189A0E259468C700BFB60D /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		1E189A12259468D100BFB60D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		1E189A15259468D800BFB60D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		1E189A18259468E200BFB60D /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		1E189A1B259468E900BFB60D /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		1E189A1E259468F100BFB60D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1E189A33259486B600BFB60D /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		1E4E0DA0259591A80082FE4F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		23283C273355FEC106EC85E3 /* Pods-CommonPods-quickdemo-calllib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-calllib.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib.debug.xcconfig"; sourceTree = "<group>"; };
+		50F6CC0040EEFF89C184A8D8 /* Pods-CommonPods-quickdemo-calllib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-calllib.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib.release.xcconfig"; sourceTree = "<group>"; };
+		CAD68815F5671099C43C397B /* Pods_CommonPods_quickdemo_calllib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_calllib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E1899C5259446CE00BFB60D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E189A1F259468F100BFB60D /* libsqlite3.tbd in Frameworks */,
+				1E189A1C259468E900BFB60D /* libiconv.tbd in Frameworks */,
+				1E189A19259468E200BFB60D /* libbz2.tbd in Frameworks */,
+				1E189A16259468D800BFB60D /* libz.tbd in Frameworks */,
+				1E189A13259468D100BFB60D /* libc++.tbd in Frameworks */,
+				1E1899F52594687800BFB60D /* AVFoundation.framework in Frameworks */,
+				1E189A0D259468BB00BFB60D /* VideoToolbox.framework in Frameworks */,
+				1E189A0B259468B500BFB60D /* AudioToolbox.framework in Frameworks */,
+				1E189A09259468AF00BFB60D /* CFNetwork.framework in Frameworks */,
+				1E189A07259468A900BFB60D /* CoreVideo.framework in Frameworks */,
+				1E189A05259468A400BFB60D /* CoreAudio.framework in Frameworks */,
+				1E189A032594689D00BFB60D /* CoreMedia.framework in Frameworks */,
+				1E189A012594689800BFB60D /* CoreFoundation.framework in Frameworks */,
+				1E1899FF2594689200BFB60D /* CoreTelephony.framework in Frameworks */,
+				1E1899FD2594688D00BFB60D /* CoreLocation.framework in Frameworks */,
+				1E1899FB2594688800BFB60D /* CoreGraphics.framework in Frameworks */,
+				1E1899F92594688200BFB60D /* OpenGLES.framework in Frameworks */,
+				1E1899F72594687D00BFB60D /* GLKit.framework in Frameworks */,
+				1E1899F32594687300BFB60D /* QuartzCore.framework in Frameworks */,
+				1E1899F12594686E00BFB60D /* SystemConfiguration.framework in Frameworks */,
+				1E1899EF2594686900BFB60D /* Security.framework in Frameworks */,
+				1E1899ED2594686300BFB60D /* ImageIO.framework in Frameworks */,
+				1E1899EB2594685D00BFB60D /* MapKit.framework in Frameworks */,
+				1E1899E92594685500BFB60D /* AssetsLibrary.framework in Frameworks */,
+				589F5FADAA5423A6DDD0E7D7 /* Pods_CommonPods_quickdemo_calllib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1519A57ACC2256C74895D087 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23283C273355FEC106EC85E3 /* Pods-CommonPods-quickdemo-calllib.debug.xcconfig */,
+				50F6CC0040EEFF89C184A8D8 /* Pods-CommonPods-quickdemo-calllib.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		1E1899BF259446CD00BFB60D = {
+			isa = PBXGroup;
+			children = (
+				1E4E0DA0259591A80082FE4F /* README.md */,
+				1E1899CA259446CE00BFB60D /* quickdemo-calllib */,
+				1E1899C9259446CE00BFB60D /* Products */,
+				1E1899E72594685500BFB60D /* Frameworks */,
+				1519A57ACC2256C74895D087 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		1E1899C9259446CE00BFB60D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E1899C8259446CE00BFB60D /* quickdemo-calllib.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E1899CA259446CE00BFB60D /* quickdemo-calllib */ = {
+			isa = PBXGroup;
+			children = (
+				1E189A33259486B600BFB60D /* AppConfig.h */,
+				1E1899CB259446CE00BFB60D /* AppDelegate.h */,
+				1E1899CC259446CE00BFB60D /* AppDelegate.m */,
+				1E1899D1259446CE00BFB60D /* ViewController.h */,
+				1E1899D2259446CE00BFB60D /* ViewController.m */,
+				1E1899D4259446CE00BFB60D /* Main.storyboard */,
+				1E1899D7259446D100BFB60D /* Assets.xcassets */,
+				1E1899D9259446D100BFB60D /* LaunchScreen.storyboard */,
+				1E1899DC259446D100BFB60D /* Info.plist */,
+				1E1899DD259446D100BFB60D /* main.m */,
+			);
+			path = "quickdemo-calllib";
+			sourceTree = "<group>";
+		};
+		1E1899E72594685500BFB60D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E189A1E259468F100BFB60D /* libsqlite3.tbd */,
+				1E189A1B259468E900BFB60D /* libiconv.tbd */,
+				1E189A18259468E200BFB60D /* libbz2.tbd */,
+				1E189A15259468D800BFB60D /* libz.tbd */,
+				1E189A12259468D100BFB60D /* libc++.tbd */,
+				1E189A0E259468C700BFB60D /* libc.tbd */,
+				1E189A0C259468BB00BFB60D /* VideoToolbox.framework */,
+				1E189A0A259468B500BFB60D /* AudioToolbox.framework */,
+				1E189A08259468AF00BFB60D /* CFNetwork.framework */,
+				1E189A06259468A900BFB60D /* CoreVideo.framework */,
+				1E189A04259468A400BFB60D /* CoreAudio.framework */,
+				1E189A022594689D00BFB60D /* CoreMedia.framework */,
+				1E189A002594689800BFB60D /* CoreFoundation.framework */,
+				1E1899FE2594689200BFB60D /* CoreTelephony.framework */,
+				1E1899FC2594688D00BFB60D /* CoreLocation.framework */,
+				1E1899FA2594688800BFB60D /* CoreGraphics.framework */,
+				1E1899F82594688200BFB60D /* OpenGLES.framework */,
+				1E1899F62594687D00BFB60D /* GLKit.framework */,
+				1E1899F42594687800BFB60D /* AVFoundation.framework */,
+				1E1899F22594687300BFB60D /* QuartzCore.framework */,
+				1E1899F02594686E00BFB60D /* SystemConfiguration.framework */,
+				1E1899EE2594686900BFB60D /* Security.framework */,
+				1E1899EC2594686300BFB60D /* ImageIO.framework */,
+				1E1899EA2594685D00BFB60D /* MapKit.framework */,
+				1E1899E82594685500BFB60D /* AssetsLibrary.framework */,
+				CAD68815F5671099C43C397B /* Pods_CommonPods_quickdemo_calllib.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1E1899C7259446CE00BFB60D /* quickdemo-calllib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E1899E1259446D100BFB60D /* Build configuration list for PBXNativeTarget "quickdemo-calllib" */;
+			buildPhases = (
+				870B382293BF1697A4D9A1A5 /* [CP] Check Pods Manifest.lock */,
+				1E1899C4259446CE00BFB60D /* Sources */,
+				1E1899C5259446CE00BFB60D /* Frameworks */,
+				1E1899C6259446CE00BFB60D /* Resources */,
+				DC74506CE9157B9371AB6FE8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "quickdemo-calllib";
+			productName = "quickdemo-calllib";
+			productReference = 1E1899C8259446CE00BFB60D /* quickdemo-calllib.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1E1899C0259446CD00BFB60D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					1E1899C7259446CE00BFB60D = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = 1E1899C3259446CD00BFB60D /* Build configuration list for PBXProject "quickdemo-calllib" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1E1899BF259446CD00BFB60D;
+			productRefGroup = 1E1899C9259446CE00BFB60D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1E1899C7259446CE00BFB60D /* quickdemo-calllib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1E1899C6259446CE00BFB60D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E1899DB259446D100BFB60D /* LaunchScreen.storyboard in Resources */,
+				1E4E0DA1259591A80082FE4F /* README.md in Resources */,
+				1E1899D8259446D100BFB60D /* Assets.xcassets in Resources */,
+				1E1899D6259446CE00BFB60D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		870B382293BF1697A4D9A1A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-quickdemo-calllib-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC74506CE9157B9371AB6FE8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E1899C4259446CE00BFB60D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E1899D3259446CE00BFB60D /* ViewController.m in Sources */,
+				1E1899CD259446CE00BFB60D /* AppDelegate.m in Sources */,
+				1E1899DE259446D100BFB60D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1E1899D4259446CE00BFB60D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E1899D5259446CE00BFB60D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1E1899D9259446D100BFB60D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E1899DA259446D100BFB60D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1E1899DF259446D100BFB60D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1E1899E0259446D100BFB60D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1E1899E2259446D100BFB60D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23283C273355FEC106EC85E3 /* Pods-CommonPods-quickdemo-calllib.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "quickdemo-calllib/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.rongcloud.quickdemo-calllib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1E1899E3259446D100BFB60D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F6CC0040EEFF89C184A8D8 /* Pods-CommonPods-quickdemo-calllib.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "quickdemo-calllib/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.rongcloud.quickdemo-calllib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1E1899C3259446CD00BFB60D /* Build configuration list for PBXProject "quickdemo-calllib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E1899DF259446D100BFB60D /* Debug */,
+				1E1899E0259446D100BFB60D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E1899E1259446D100BFB60D /* Build configuration list for PBXNativeTarget "quickdemo-calllib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E1899E2259446D100BFB60D /* Debug */,
+				1E1899E3259446D100BFB60D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1E1899C0259446CD00BFB60D /* Project object */;
+}

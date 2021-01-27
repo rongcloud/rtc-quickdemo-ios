@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		489B63D4255BF44000B1267E /* quickdemo-meeting-1v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-meeting-1v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48F55E5B255BF55700CD54E2 /* AppKeyToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeyToken.h; sourceTree = "<group>"; };
+		48F55E5B255BF55700CD54E2 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		5AC2DF67255BD8D000AF05B5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5AC2DF68255BD8D000AF05B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AC2DF69255BD8D000AF05B5 /* VideoRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRoomViewController.m; sourceTree = "<group>"; };
@@ -71,9 +71,9 @@
 		5AC2DF65255BD8D000AF05B5 /* quickdemo-meeting-1v1 */ = {
 			isa = PBXGroup;
 			children = (
+				48F55E5B255BF55700CD54E2 /* AppConfig.h */,
 				5AC2DF71255BD8D000AF05B5 /* VideoRoomViewController.h */,
 				5AC2DF69255BD8D000AF05B5 /* VideoRoomViewController.m */,
-				48F55E5B255BF55700CD54E2 /* AppKeyToken.h */,
 				5AC2DF7C255BD8F900AF05B5 /* Supporting Files */,
 			);
 			path = "quickdemo-meeting-1v1";
@@ -113,7 +113,6 @@
 				17CBEB4B22C9FDF40027D85C /* Frameworks */,
 				17CBEB4C22C9FDF40027D85C /* Resources */,
 				9209C68757B24FA9721401E3 /* [CP] Copy Pods Resources */,
-				BDE70A4F9F73744950402ED5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,23 +185,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BDE70A4F9F73744950402ED5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E90153A4C6DA78144D50E446 /* [CP] Check Pods Manifest.lock */ = {
@@ -314,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -368,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -382,7 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "quickdemo-meeting-1v1/Info.plist";
@@ -396,7 +378,7 @@
 					"$(PROJECT_DIR)/quickdemo-meeting-1v1/frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quickmeeting.1v1;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -408,7 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "quickdemo-meeting-1v1/Info.plist";
@@ -422,7 +404,7 @@
 					"$(PROJECT_DIR)/quickdemo-meeting-1v1/frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.quickmeeting.1v1;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

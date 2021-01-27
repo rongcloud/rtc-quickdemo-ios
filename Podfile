@@ -5,29 +5,44 @@ workspace 'rtc-quickdemo-ios'
 
 project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
 project 'quickdemo-live/quickdemo-live.xcodeproj'
+project 'quickdemo-live/quickdemo-liveAcross.xcodeproj'
 project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
+project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
+project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
 
 abstract_target 'CommonPods' do
     # Comment the next line if you don't want to use dynamic frameworks
     use_frameworks!
-
-    pod 'Masonry'
+    platform :ios, '9.0'
 
     target 'quickdemo-meeting-1v1' do
-        platform :ios, '9.0'
         project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
-        pod 'RongRTCLib'
+        pod 'RongRTCLib', '~> 4.1.0'
     end
 
     target 'quickdemo-live' do
-        platform :ios, '9.0'
         project 'quickdemo-live/quickdemo-live.xcodeproj'
-        pod 'RongRTCLib'
+        pod 'RongRTCLib', '~> 4.1.0'
+    end
+    
+    target 'quickdemo-liveAcross' do
+        platform :ios, '9.0'
+        project 'quickdemo-liveAcross/quickdemo-liveAcross.xcodeproj'
+        pod 'RongRTCLib', '~> 4.1.0'
     end
     
     target 'quickdemo-callkit' do
-        platform :ios, '9.0'
         project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
-        pod 'RongCloudRTC'
+        pod 'RongRTCLib', '~> 4.1.0'
+    end
+
+    target 'quickdemo-calllib' do
+        project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
+        pod 'RongRTCLib', '~> 4.1.0'
+    end
+    
+    target 'quickdemo-meeting-beauty' do
+      project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
+      pod 'RongRTCLib', '~> 4.1.0'
     end
 end

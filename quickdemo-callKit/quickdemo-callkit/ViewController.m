@@ -5,6 +5,7 @@
 #import "ViewController.h"
 #import <RongIMLib/RongIMLib.h>
 #import <RongCallKit/RongCallKit.h>
+#import "AppConfig.h"
 
 @interface ViewController ()
 
@@ -27,20 +28,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //User1
-    self.callUser1Id = @"<#userId1#>";
-    self.callUser1Token = @"<#请输入使用 userId1 生成的 Token#>";
+    self.callUser1Id = RCUserId1;
+    self.callUser1Token = RCUserToken1;
     
     //User2
-    self.callUser2Id = @"<#userId2#>";
-    self.callUser2Token =  @"<#请输入使用 userId2 生成的 Token#>";
+    self.callUser2Id = RCUserId2;
+    self.callUser2Token =  RCUserToken2;
     
-    self.targetId = @"<#groupId#>"; //群组ID, 只有在多人通话时才会用到, 单人通话时可以不填写, 发起多人通话时, 上面的两个用户必须在此群组targetId的群里, 且targetId不能为@"",否则无法正常通话
+    self.targetId = RCTargetID; //群组ID, 只有在多人通话时才会用到, 单人通话时可以不填写, 发起多人通话时, 上面的两个用户必须在此群组targetId的群里, 且targetId不能为@"",否则无法正常通话
     
     self.isContect1 = NO;
     self.isSingleCall = YES;
     self.mediaType = RCCallMediaVideo;
     
-    [[RCIMClient sharedRCIMClient] initWithAppKey:@"<#AppKey#>"]; //请登录融云官网获取AppKey
+    [[RCIMClient sharedRCIMClient] initWithAppKey:RCAppKey]; //请登录融云官网获取AppKey
     [RCIMClient sharedRCIMClient].logLevel = RC_Log_Level_Verbose;
     [RCCall sharedRCCall]; //必须初始化, 否则无法收到来电
     [self initUIView];
