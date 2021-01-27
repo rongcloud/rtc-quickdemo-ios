@@ -89,8 +89,8 @@
 		1E87640625BEBC7800125B13 /* CustomConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomConversationViewController.h; sourceTree = "<group>"; };
 		1E87640725BEBC7800125B13 /* CustomConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomConversationViewController.m; sourceTree = "<group>"; };
 		1E87640B25BEBE7900125B13 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
-		32544D4B0E94CA82A1DF03E4 /* Pods-quickdemo-imkit-callkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-imkit-callkit.release.xcconfig"; path = "Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit.release.xcconfig"; sourceTree = "<group>"; };
-		A254284CF36E91E663D7A19C /* Pods-quickdemo-imkit-callkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-imkit-callkit.debug.xcconfig"; path = "Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit.debug.xcconfig"; sourceTree = "<group>"; };
+		32544D4B0E94CA82A1DF03E4 /* Pods-quickdemo-imkit-callkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-imkit-callkit.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit.release.xcconfig"; sourceTree = "<group>"; };
+		A254284CF36E91E663D7A19C /* Pods-quickdemo-imkit-callkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-imkit-callkit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit.debug.xcconfig"; sourceTree = "<group>"; };
 		C45821649AD014490BCF5328 /* Pods_quickdemo_imkit_callkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_quickdemo_imkit_callkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -242,7 +242,6 @@
 				1E87636F25BE63D300125B13 /* Frameworks */,
 				1E87637025BE63D300125B13 /* Resources */,
 				16E75FA278E7F39D705D38EB /* [CP] Copy Pods Resources */,
-				425C574BC7A4D9E3DB0ABEF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -315,23 +314,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		425C574BC7A4D9E3DB0ABEF0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92B52AD381C8D3ABA0F4015D /* [CP] Check Pods Manifest.lock */ = {

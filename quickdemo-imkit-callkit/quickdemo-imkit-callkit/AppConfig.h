@@ -16,7 +16,7 @@
 #define RCUserId2 @"<#这是用户id#>"
 #define RCUserToken2 @"<#这是连接 IM 的 Token#>"
 
-#define RCUserId2 @"<#这是用户id#>"
+#define RCUserId3 @"<#这是用户id#>"
 #define RCUserToken3 @"<#这是连接 IM 的 Token#>"
 
 #define RCUserId4 @"<#这是用户id#>"
