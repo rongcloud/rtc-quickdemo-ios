@@ -9,6 +9,7 @@ project 'quickdemo-live/quickdemo-liveAcross.xcodeproj'
 project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
 project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
 project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
+project 'quickdemo-imkit-callkit/quickdemo-imkit-callkit.xcodeproj'
 
 abstract_target 'CommonPods' do
     # Comment the next line if you don't want to use dynamic frameworks
@@ -44,5 +45,11 @@ abstract_target 'CommonPods' do
     target 'quickdemo-meeting-beauty' do
       project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
       pod 'RongRTCLib', '~> 4.1.0'
+    end
+    
+    target 'quickdemo-imkit-callkit' do
+      pod 'RongCloudIM/IMKit', '~> 4.1.0.1'
+      pod 'RongCloudIM/IMLib', '~> 4.1.0.1'
+      pod 'RongCloudRTC', '~> 4.1.0.1'
     end
 end

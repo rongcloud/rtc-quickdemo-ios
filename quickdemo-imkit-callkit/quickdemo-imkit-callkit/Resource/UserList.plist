@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>userid</key>
+		<string>10001</string>
+		<key>usertoken</key>
+		<string>LasbGC4jLW94lD2PA0rEWYa9SsbEb6gR/erDkZ3DP70=@rf59.cn.rongnav.com;rf59.cn.rongcfg.com</string>
+		<key>username</key>
+		<string>苹果一号</string>
+		<key>useravatar</key>
+		<string>https://pics6.baidu.com/feed/f703738da9773912e78658d33157851f377ae2b2.jpeg?token=d427d6ca54e115dd7f13549cfb047168</string>
+	</dict>
+    <dict>
+        <key>userid</key>
+        <string>10002</string>
+        <key>usertoken</key>
+        <string>jwJLixyuK+t4lD2PA0rEWYa9SsbEb6gR9BcMHaaZlRg=@rf59.cn.rongnav.com;rf59.cn.rongcfg.com</string>
+        <key>username</key>
+        <string>二号选手</string>
+        <key>useravatar</key>
+        <string>https://up.enterdesk.com/edpic_source/5c/5d/4e/5c5d4eb27af795887437c292221b884c.jpg</string>
+    </dict>
+    <dict>
+        <key>userid</key>
+        <string>10003</string>
+        <key>usertoken</key>
+        <string>uRqolSe7r5Z4lD2PA0rEWQh6x/4SvlP5F+s3r1yLM0Q=@rf59.cn.rongnav.com;rf59.cn.rongcfg.com</string>
+        <key>username</key>
+        <string>黑乎乎3</string>
+        <key>useravatar</key>
+        <string>https://up.enterdesk.com/edpic_source/9c/ca/a7/9ccaa7cec2564a12a08be49ea65a1c75.jpg</string>
+    </dict>
+    <dict>
+        <key>userid</key>
+        <string>10004</string>
+        <key>usertoken</key>
+        <string>j+GFrzpL7Ix4lD2PA0rEWQh6x/4SvlP5UIw41SuAYn0=@rf59.cn.rongnav.com;rf59.cn.rongcfg.com</string>
+        <key>username</key>
+        <string>化妆妞4</string>
+        <key>useravatar</key>
+        <string>https://up.enterdesk.com/edpic_source/59/ed/db/59eddb1db5cc046ac41f5560aa18dbeb.jpg</string>
+    </dict>
+    <dict>
+        <key>userid</key>
+        <string>10005</string>
+        <key>usertoken</key>
+        <string>PqMZS9e7TWh4lD2PA0rEWe4P+Nl3ImJciOC27Gj5fMQ=@rf59.cn.rongnav.com;rf59.cn.rongcfg.com</string>
+        <key>username</key>
+        <string>卡通5</string>
+        <key>useravatar</key>
+        <string>https://up.enterdesk.com/edpic_source/5c/93/b9/5c93b911293a2dd1a80b8039719702cb.jpg</string>
+    </dict>
+</array>
+</plist>

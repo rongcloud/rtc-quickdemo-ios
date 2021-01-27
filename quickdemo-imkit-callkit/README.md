@@ -1,16 +1,17 @@
-# iOS-IMkitAndCallKit-quick-start
-IMkitAndCallKit Quick Start for iOS.
+# iOS-calllib-quick-start
+CallLib Quick Start for iOS.
 
-这个开源示例项目演示了如何快速集成聊天列表音视频聊天SDK。
+这个开源示例项目演示了如何快速集成RongCallLib视频聊天SDK。
 运行前需要申请融云开发者账号[开通地址](https://www.rongcloud.cn/docs/)，
 
 在这个示例项目中包含了以下功能：
 
 1>.A设备
-发起单聊，选择你配置的列表用户的一个创建单聊
+- 选择一个账户登录
+- 支持呼叫挂断接听
 
 2>.B设备
-- 登录1中被选的id
+- 选择另一个账户登录
 
 
 1.申请完成之后在 **AppConfig.h**文件中填写 RCAppKey , RCUserId1，RCUserToken1（id和token的获取也可参考demo中“helpImg.png”图片）
@@ -22,16 +23,13 @@ IMkitAndCallKit Quick Start for iOS.
 #define RCUserToken1 @"<#这里填写用户token#>"
 #define RCUserId2 @"<#这里填写用户id#>"
 #define RCUserToken2 @"<#这里填写用户token#>"
-...
 ```
 
 > 注意: 假设两个真机设备互通测试时，需要同一个 RCAppKey 和两个不同的 RCUserToken1
 
 2.运行之前请先执行 pod install 安装一下需要的依赖库（RongCloudIM/IMLib, RongCloudRTC/RongCallLib）
     podfile中添加  
-        pod 'RongCloudIM/IMKit', '~> 4.1.0.1'
-        pod 'RongCloudIM/IMLib', '~> 4.1.0.1'
-        pod 'RongCloudRTC', '~> 4.1.0.1'
+         pod 'RongCloudRTC/RongCallLib'
 3.需要适当修改 Bundle Identifier 支持真机自签名
 
 ## 环境准备
