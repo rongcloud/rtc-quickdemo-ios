@@ -44,10 +44,10 @@
 - (void)loginIMWithIndex:(NSInteger)index {
     // 填写4个用户登录的 token 以数组形式存在
     NSArray *tokens = @[
-            @"<#token1#>",
-            @"<#token2#>",
-            @"<#token3#>",
-            @"<#token4#>"];
+        @"B+QoHfaZ8F592THITdFJlyHLbdTpM60nEZoWTNCL1tU=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
+        @"IrsKLk6XkuCQb+y5GEwd7SHLbdTpM60nX3loEGdZ8hk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
+        @"gd53A2EPASG599DhkzBkXYkz7cO8IMg/C5d2RSwp7Gg=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
+        @"KiYAoEKLAlX9xKq4iUA8SnNUtXQ9DRCIMwz7NtmKqFk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com"];
 
     if (index >= tokens.count) return;
 
