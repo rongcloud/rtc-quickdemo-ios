@@ -19,7 +19,9 @@
 
 -(instancetype)init {
     if (self = [super init]) {
-        [self initBeautyFilter];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self initBeautyFilter];
+        });
     }
     return self;
 }
