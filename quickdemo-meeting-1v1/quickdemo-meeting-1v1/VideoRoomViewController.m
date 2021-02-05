@@ -2,7 +2,6 @@
 //  Copyright © 2020 RongCloud. All rights reserved.
 //
 
-//#import <Masonry.h>
 #import <RongRTCLib/RongRTCLib.h>
 
 #import "VideoRoomViewController.h"
@@ -17,8 +16,8 @@
 
 @interface VideoRoomViewController () <RCRTCRoomEventDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *menuView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property(weak, nonatomic) IBOutlet UIView *menuView;
+@property(weak, nonatomic) IBOutlet UIView *containerView;
 
 @property(nonatomic, strong) RCRTCLocalVideoView *localView;
 @property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
@@ -42,11 +41,12 @@
     [[RCIMClient sharedRCIMClient] initWithAppKey:APP_KEY];
     // 前置条件 IM 建立连接
     @WeakObj(self);
-    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {}                       success:^(NSString *userId) {
+    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {
+    }                                       success:^(NSString *userId) {
         NSLog(@"IM 连接成功 userId: %@", userId);
         @StrongObj(self);
         [self joinRoom];
-    }error:^(RCConnectErrorCode errorCode) {
+    }                                         error:^(RCConnectErrorCode errorCode) {
         // 无网络情况下，SDK 会反复尝试，并不会走该回调提示用户
         @StrongObj(self);
         [self alertString:[NSString stringWithFormat:@"IM 连接失败 errorCode: %ld", (long) errorCode]];
@@ -59,7 +59,7 @@
     localView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:localView];
     self.localView = localView;
-    
+
     //添加点击手势,可切换大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.localView addGestureRecognizer:tap];
@@ -74,33 +74,29 @@
     [self.containerView addSubview:_remoteView];
 }
 
-
 // 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
-    //非黑屏、清晰度不够，造成鉴定师无法鉴别
     videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
-    //黑屏，
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
-    videoConfig.videoFps = 30;
+    videoConfig.videoFps = RCRTCVideoFPS30;
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
 
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
     config.roomType = RCRTCRoomTypeLive;
     config.liveType = RCRTCLiveTypeAudioVideo;
     [self.engine enableSpeaker:NO];
-    
+
     @WeakObj(self);
     [self.engine joinRoom:ROOM_ID
                    config:config
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
-        @StrongObj(self);
-        if (code == RCRTCCodeSuccess) {
-            [self afterJoinRoom:room];
-        } else {
-            [self alertString:@"加入房间失败"];
-        }
-    }];
+                   @StrongObj(self);
+                   if (code == RCRTCCodeSuccess) {
+                       [self afterJoinRoom:room];
+                   } else {
+                       [self alertString:@"加入房间失败"];
+                   }
+               }];
 }
 
 - (void)afterJoinRoom:(RCRTCRoom *)room {
@@ -158,7 +154,6 @@
 }
 
 #pragma mark - RCRTCRoomEventDelegate
-
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }
@@ -184,36 +179,33 @@
     }
 }
 
-
 #pragma mark - private method
-
 - (void)alertString:(NSString *)string {
     if (!string.length) {
         return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertController *alert =
-            [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
+                [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
     });
 }
 
-- (void)tapWithView:(UIGestureRecognizer *)ges{
+- (void)tapWithView:(UIGestureRecognizer *)ges {
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     CGRect frame = self.remoteView.frame;
     self.remoteView.frame = self.localView.frame;
     self.localView.frame = frame;
     [CATransaction commit];
-    
+
     if (ges.view.frame.size.width >= kScreenWidth) {
         [self.containerView bringSubviewToFront:self.remoteView];
-    }else{
+    } else {
         [self.containerView bringSubviewToFront:self.localView];
     }
 }
-
 
 - (RCRTCEngine *)engine {
     if (!_engine) {
@@ -222,6 +214,5 @@
     }
     return _engine;
 }
-
 
 @end

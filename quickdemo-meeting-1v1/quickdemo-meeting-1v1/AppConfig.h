@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 RongCloud. All rights reserved.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 /// APP_KEY 通过融云的后台管理创建的应用 ID

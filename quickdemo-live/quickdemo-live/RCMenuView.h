@@ -1,18 +1,14 @@
 //
-//  RCMenuView.h
-//  quickdemo-live-broadcaster
-//
-//  Created by huan xu on 2021/1/4.
-//  Copyright © 2021 huan xu. All rights reserved.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <RongRTCLib/RCRTCMixConfig.h>
 
 typedef NS_ENUM (NSInteger, RCRTCRoleType) {
-    RCRTCRoleTypeUnknown  = 0, //未确定身份
-    RCRTCRoleTypeAudience = 1, //观众
-    RCRTCRoleTypeHost     = 2, //主播
+    RCRTCRoleTypeUnknown  = 0, // 未确定身份
+    RCRTCRoleTypeAudience = 1, // 观众
+    RCRTCRoleTypeHost     = 2, // 主播
 };
 
 NS_ASSUME_NONNULL_BEGIN

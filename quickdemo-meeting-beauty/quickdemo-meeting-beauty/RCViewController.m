@@ -2,7 +2,7 @@
 //  RCViewController.m
 //  quickdemo-meeting-beauty
 //
-//  Created by Zafer.Lee on 2021/1/4.
+//  Created by RongCloud on 2021/1/4.
 //
 
 #import "RCViewController.h"
@@ -11,9 +11,6 @@
 
 #import <RongRTCLib/RongRTCLib.h>
 #import "GPUImageHandle.h"
-
-#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
-#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
 @interface RCViewController ()<RCRTCRoomEventDelegate>
 @property (weak, nonatomic) IBOutlet RCRTCLocalVideoView *localVideoView;
@@ -152,7 +149,7 @@
     [self subscribeRemoteResource:streams];
 }
 
--(GPUImageHandle *)gpuImageHandler {
+- (GPUImageHandle *)gpuImageHandler {
     if (!_gpuImageHandler) {
         _gpuImageHandler = [[GPUImageHandle alloc]init];
     }

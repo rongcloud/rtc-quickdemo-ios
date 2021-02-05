@@ -2,7 +2,7 @@
 //  RCViewController+Image.m
 //  quickdemo-meeting-beauty
 //
-//  Created by Zafer.Lee on 2021/1/5.
+//  Created by RongCloud on 2021/1/5.
 //
 
 #import "RCViewController+Image.h"

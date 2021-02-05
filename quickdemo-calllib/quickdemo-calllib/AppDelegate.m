@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  CallLibQuickstart
 //
-//  Created by Zafer.Lee on 2020/12/24.
+//  Created by RongCloud on 2020/12/24.
 //
 
 #import "AppDelegate.h"
