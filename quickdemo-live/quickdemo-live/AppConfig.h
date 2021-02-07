@@ -6,6 +6,5 @@
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
 FOUNDATION_EXPORT NSString *const AppKey;
-FOUNDATION_EXPORT NSArray *const Tokens;
 
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5AFBE4FC25651BA10052F06E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBE4FB25651BA10052F06E /* AppDelegate.m */; };
-		5AFBE4FF25651BA10052F06E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBE4FE25651BA10052F06E /* SceneDelegate.m */; };
 		5AFBE50225651BA10052F06E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBE50125651BA10052F06E /* ViewController.m */; };
 		5AFBE50525651BA10052F06E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFBE50325651BA10052F06E /* Main.storyboard */; };
 		5AFBE50725651BA40052F06E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AFBE50625651BA40052F06E /* Assets.xcassets */; };
@@ -22,8 +21,6 @@
 		5AFBE4F725651BA10052F06E /* quickdemo-callkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickdemo-callkit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFBE4FA25651BA10052F06E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5AFBE4FB25651BA10052F06E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5AFBE4FD25651BA10052F06E /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		5AFBE4FE25651BA10052F06E /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		5AFBE50025651BA10052F06E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5AFBE50125651BA10052F06E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5AFBE50425651BA10052F06E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,8 +83,6 @@
 				1E4826F0259B3E9500801853 /* AppConfig.h */,
 				5AFBE4FA25651BA10052F06E /* AppDelegate.h */,
 				5AFBE4FB25651BA10052F06E /* AppDelegate.m */,
-				5AFBE4FD25651BA10052F06E /* SceneDelegate.h */,
-				5AFBE4FE25651BA10052F06E /* SceneDelegate.m */,
 				5AFBE50025651BA10052F06E /* ViewController.h */,
 				5AFBE50125651BA10052F06E /* ViewController.m */,
 				5AFBE50325651BA10052F06E /* Main.storyboard */,
@@ -142,7 +137,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callkit" */;
+			buildConfigurationList = 5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callKit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -223,7 +218,6 @@
 				5AFBE50225651BA10052F06E /* ViewController.m in Sources */,
 				5AFBE4FC25651BA10052F06E /* AppDelegate.m in Sources */,
 				5AFBE50D25651BA40052F06E /* main.m in Sources */,
-				5AFBE4FF25651BA10052F06E /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +402,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callkit" */ = {
+		5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AFBE52425651BA50052F06E /* Debug */,
