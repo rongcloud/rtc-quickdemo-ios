@@ -113,6 +113,7 @@
 				17CBEB4B22C9FDF40027D85C /* Frameworks */,
 				17CBEB4C22C9FDF40027D85C /* Resources */,
 				9209C68757B24FA9721401E3 /* [CP] Copy Pods Resources */,
+				65D6CE28F0626FC510EC8575 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +171,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		65D6CE28F0626FC510EC8575 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-1v1/Pods-CommonPods-quickdemo-meeting-1v1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9209C68757B24FA9721401E3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -241,6 +241,7 @@
 				1E51377525A2E91B007E68EE /* Frameworks */,
 				1E51377625A2E91B007E68EE /* Resources */,
 				3CD20087312E50A54B63995D /* [CP] Copy Pods Resources */,
+				86DB5B2D340F50E6A098E719 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,6 +313,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86DB5B2D340F50E6A098E719 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9A8EC5CD15EA86621FF020A /* [CP] Check Pods Manifest.lock */ = {

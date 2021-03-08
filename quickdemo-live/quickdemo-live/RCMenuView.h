@@ -1,14 +1,18 @@
 //
-//  Copyright © 2021 RongCloud. All rights reserved.
+//  RCMenuView.h
+//  quickdemo-live-broadcaster
+//
+//  Created by huan xu on 2021/1/4.
+//  Copyright © 2021 huan xu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <RongRTCLib/RCRTCMixConfig.h>
 
 typedef NS_ENUM (NSInteger, RCRTCRoleType) {
-    RCRTCRoleTypeUnknown  = 0, // 未确定身份
-    RCRTCRoleTypeAudience = 1, // 观众
-    RCRTCRoleTypeHost     = 2, // 主播
+    RCRTCRoleTypeUnknown  = 0, //未确定身份
+    RCRTCRoleTypeAudience = 1, //观众
+    RCRTCRoleTypeHost     = 2, //主播
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,15 +27,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cameraEnable:(BOOL)enable;
 - (void)micDisable:(BOOL)disable;
 - (void)streamLayout:(RCRTCMixLayoutMode)mode;
-- (void)sendLiveUrl;
+
+/// 切换大小流
+/// @param type  1:小流, 默认是 0:大流
+@optional
+- (void)subscribeType:(NSInteger)type;
+
+@optional
+- (void)switchCamera;
 
 @end
 
 @interface RCMenuView : UIView
 
 @property (nonatomic, weak)id<RCMenuViewEventDelegate> delegate;
-
-@property (weak, nonatomic) IBOutlet UILabel *liveUrlLabel;
 
 @end
 

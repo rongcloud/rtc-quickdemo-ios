@@ -114,6 +114,7 @@
 				5AFBE4F425651BA10052F06E /* Frameworks */,
 				5AFBE4F525651BA10052F06E /* Resources */,
 				9E8C31E8B73CF5A121DC89F7 /* [CP] Copy Pods Resources */,
+				910C50931C692D064A653D9C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -137,7 +138,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callKit" */;
+			buildConfigurationList = 5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callkit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -169,6 +170,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		910C50931C692D064A653D9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-callkit/Pods-CommonPods-quickdemo-callkit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-callkit/Pods-CommonPods-quickdemo-callkit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-callkit/Pods-CommonPods-quickdemo-callkit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9E8C31E8B73CF5A121DC89F7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,7 +420,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callKit" */ = {
+		5AFBE4F225651BA10052F06E /* Build configuration list for PBXProject "quickdemo-callkit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AFBE52425651BA50052F06E /* Debug */,

@@ -211,6 +211,7 @@
 				1E1899C5259446CE00BFB60D /* Frameworks */,
 				1E1899C6259446CE00BFB60D /* Resources */,
 				DC74506CE9157B9371AB6FE8 /* [CP] Copy Pods Resources */,
+				2DD72B065A138FD527F62E9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +268,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2DD72B065A138FD527F62E9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		870B382293BF1697A4D9A1A5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

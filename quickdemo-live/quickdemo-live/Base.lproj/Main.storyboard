@@ -28,180 +28,188 @@
                                 <rect key="frame" x="0.0" y="458" width="414" height="278"/>
                                 <subviews>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjJ-HI-UBE">
-                                        <rect key="frame" x="10" y="238" width="192" height="30"/>
+                                        <rect key="frame" x="10" y="211" width="192" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="r5h-Zq-G7x"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="悬浮布局">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="streamLayutAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="vn7-t2-eY8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvm-i3-Iag">
-                                        <rect key="frame" x="212" y="238" width="192" height="30"/>
+                                        <rect key="frame" x="212" y="211" width="192" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="B2G-u8-BU3"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="发送直播地址">
+                                        <state key="normal" title="切换摄像头">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <state key="selected" title="切换摄像头"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="sendMsgAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="02s-mT-mLM"/>
+                                            <action selector="switchStreamAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="fG4-ZS-Kfj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c67-jN-INv">
-                                        <rect key="frame" x="10.000000000000007" y="158" width="124.66666666666669" height="30"/>
+                                        <rect key="frame" x="10.000000000000007" y="77" width="124.66666666666669" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="GiX-Sd-A52"/>
-                                            <constraint firstAttribute="height" constant="30" id="OUk-Mh-1Ai"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="开始直播">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="结束直播"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="startLiveAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="tKy-ln-MV0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IL3-ZY-e7o">
-                                        <rect key="frame" x="144.66666666666666" y="158" width="124.66666666666666" height="30"/>
+                                        <rect key="frame" x="144.66666666666666" y="77" width="124.66666666666666" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="OgS-sx-Cwu"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="观看直播">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="结束观看"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="watchLiveAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="pl8-0R-xEP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkX-WN-tC9">
-                                        <rect key="frame" x="10" y="198" width="192" height="30"/>
+                                        <rect key="frame" x="10" y="144" width="192" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="lUK-ZD-KCT"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="关闭摄像头">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="开启摄像头"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="closeCameraAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="Iox-nB-gkl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-7e-Lao">
-                                        <rect key="frame" x="212" y="198" width="192" height="30"/>
+                                        <rect key="frame" x="212" y="144" width="192" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="xh1-K3-g3x"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="关闭麦克风">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="开启麦克风"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="closeMicAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="0zf-ME-bqg"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="liveUrl:" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoj-FK-ayY">
-                                        <rect key="frame" x="10" y="10" width="394" height="98"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="0.5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-9G-ukG">
-                                        <rect key="frame" x="279.33333333333331" y="158" width="124.66666666666669" height="30"/>
+                                        <rect key="frame" x="279.33333333333331" y="77" width="124.66666666666669" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="uLa-VF-waL"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="上麦">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="下麦"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="connectHostAction:" destination="flS-II-beI" eventType="touchUpInside" id="3jj-QK-w0B"/>
                                             <action selector="connectHostAction:" destination="jaM-lx-Ati" eventType="touchUpInside" id="KNU-QW-l4K"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvm-40-z1j">
-                                        <rect key="frame" x="10" y="118" width="91" height="30"/>
+                                        <rect key="frame" x="10" y="10" width="91" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Xzv-IG-nwp"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="用户A">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="退出"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="userLogin:" destination="jaM-lx-Ati" eventType="touchUpInside" id="JVS-jW-zeX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyA-Rq-pLQ">
-                                        <rect key="frame" x="111" y="118" width="91" height="30"/>
+                                        <rect key="frame" x="111" y="10" width="91" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="hky-3m-aAd"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="用户B">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="退出"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="userLogin:" destination="jaM-lx-Ati" eventType="touchUpInside" id="AjD-rl-cxy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZo-rk-AJX">
-                                        <rect key="frame" x="212" y="118" width="91" height="30"/>
+                                        <rect key="frame" x="212" y="10" width="91" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="hGd-Bg-QE6"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="用户C">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="退出"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="userLogin:" destination="jaM-lx-Ati" eventType="touchUpInside" id="6Em-J9-41x"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1D-hq-tg6">
-                                        <rect key="frame" x="313" y="118" width="91" height="30"/>
+                                        <rect key="frame" x="313" y="10" width="91" height="57"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="C7d-Zl-Gl5"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="用户D">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected" title="退出"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="userLogin:" destination="jaM-lx-Ati" eventType="touchUpInside" id="nnB-6t-vaq"/>
                                         </connections>
@@ -211,57 +219,62 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LfT-7e-Lao" secondAttribute="trailing" constant="10" id="0XO-ef-jtD"/>
                                     <constraint firstItem="tjJ-HI-UBE" firstAttribute="top" secondItem="LfT-7e-Lao" secondAttribute="bottom" constant="10" id="1bo-Gz-1O8"/>
+                                    <constraint firstItem="Yvm-40-z1j" firstAttribute="top" secondItem="jaM-lx-Ati" secondAttribute="top" constant="10" id="2Eg-mw-Q7k"/>
                                     <constraint firstItem="j1D-hq-tg6" firstAttribute="width" secondItem="Yvm-40-z1j" secondAttribute="width" id="2l1-6q-znW"/>
                                     <constraint firstItem="EyA-Rq-pLQ" firstAttribute="leading" secondItem="Yvm-40-z1j" secondAttribute="trailing" constant="10" id="3GB-a1-ewf"/>
+                                    <constraint firstItem="hvm-i3-Iag" firstAttribute="height" secondItem="tjJ-HI-UBE" secondAttribute="height" id="3K7-nQ-vuU"/>
                                     <constraint firstItem="LfT-7e-Lao" firstAttribute="leading" secondItem="xkX-WN-tC9" secondAttribute="trailing" constant="10" id="4ax-6K-iyo"/>
                                     <constraint firstItem="tjJ-HI-UBE" firstAttribute="top" secondItem="xkX-WN-tC9" secondAttribute="bottom" constant="10" id="4cC-7Y-5kE"/>
                                     <constraint firstItem="c67-jN-INv" firstAttribute="top" secondItem="EyA-Rq-pLQ" secondAttribute="bottom" constant="10" id="5Xf-Tt-lW0"/>
-                                    <constraint firstItem="eoj-FK-ayY" firstAttribute="leading" secondItem="jaM-lx-Ati" secondAttribute="leading" constant="10" id="9iP-PU-bG2"/>
+                                    <constraint firstItem="j1D-hq-tg6" firstAttribute="height" secondItem="Yvm-40-z1j" secondAttribute="height" id="9pS-SN-spg"/>
                                     <constraint firstAttribute="bottom" secondItem="hvm-i3-Iag" secondAttribute="bottom" constant="10" id="A1k-dr-G5x"/>
                                     <constraint firstItem="c67-jN-INv" firstAttribute="top" secondItem="Yvm-40-z1j" secondAttribute="bottom" constant="10" id="A3D-wF-ryN"/>
                                     <constraint firstItem="iZo-rk-AJX" firstAttribute="leading" secondItem="EyA-Rq-pLQ" secondAttribute="trailing" constant="10" id="AD1-JK-7hJ"/>
                                     <constraint firstItem="j1D-hq-tg6" firstAttribute="leading" secondItem="iZo-rk-AJX" secondAttribute="trailing" constant="10" id="AGG-YG-Fws"/>
-                                    <constraint firstAttribute="trailing" secondItem="eoj-FK-ayY" secondAttribute="trailing" constant="10" id="AJm-0Q-hu0"/>
                                     <constraint firstItem="IL3-ZY-e7o" firstAttribute="top" secondItem="j1D-hq-tg6" secondAttribute="bottom" constant="10" id="AxQ-iW-oRt"/>
                                     <constraint firstAttribute="trailing" secondItem="hvm-i3-Iag" secondAttribute="trailing" constant="10" id="By7-i5-da6"/>
+                                    <constraint firstItem="xkX-WN-tC9" firstAttribute="height" secondItem="Yvm-40-z1j" secondAttribute="height" id="ByT-EB-EkQ"/>
                                     <constraint firstItem="xkX-WN-tC9" firstAttribute="top" secondItem="tMI-9G-ukG" secondAttribute="bottom" constant="10" id="Dvi-1N-FSe"/>
-                                    <constraint firstItem="Yvm-40-z1j" firstAttribute="top" secondItem="eoj-FK-ayY" secondAttribute="bottom" constant="10" id="FS7-9d-Tc2"/>
                                     <constraint firstItem="xkX-WN-tC9" firstAttribute="leading" secondItem="jaM-lx-Ati" secondAttribute="leading" constant="10" id="IUK-P5-rFV"/>
                                     <constraint firstItem="xkX-WN-tC9" firstAttribute="top" secondItem="IL3-ZY-e7o" secondAttribute="bottom" constant="10" id="JnV-Aa-mhY"/>
                                     <constraint firstItem="hvm-i3-Iag" firstAttribute="leading" secondItem="tjJ-HI-UBE" secondAttribute="trailing" constant="10" id="Jt3-ct-jBf"/>
                                     <constraint firstItem="c67-jN-INv" firstAttribute="top" secondItem="iZo-rk-AJX" secondAttribute="bottom" constant="10" id="L7z-k6-IaW"/>
+                                    <constraint firstItem="LfT-7e-Lao" firstAttribute="height" secondItem="xkX-WN-tC9" secondAttribute="height" id="L8N-Ck-zGj"/>
                                     <constraint firstItem="c67-jN-INv" firstAttribute="leading" secondItem="jaM-lx-Ati" secondAttribute="leading" constant="10" id="OO6-Ma-YT6"/>
                                     <constraint firstItem="tMI-9G-ukG" firstAttribute="width" secondItem="c67-jN-INv" secondAttribute="width" id="Ort-co-RTj"/>
                                     <constraint firstItem="iZo-rk-AJX" firstAttribute="width" secondItem="Yvm-40-z1j" secondAttribute="width" id="QBA-kR-f6B"/>
                                     <constraint firstItem="LfT-7e-Lao" firstAttribute="leading" secondItem="xkX-WN-tC9" secondAttribute="trailing" constant="10" id="Qf1-Kc-GwE"/>
                                     <constraint firstItem="xkX-WN-tC9" firstAttribute="top" secondItem="c67-jN-INv" secondAttribute="bottom" constant="10" id="RDr-Bv-yQs"/>
                                     <constraint firstItem="tMI-9G-ukG" firstAttribute="leading" secondItem="IL3-ZY-e7o" secondAttribute="trailing" constant="10" id="RIv-yS-W1D"/>
+                                    <constraint firstItem="tjJ-HI-UBE" firstAttribute="height" secondItem="Yvm-40-z1j" secondAttribute="height" id="S5i-GS-0Di"/>
                                     <constraint firstItem="IL3-ZY-e7o" firstAttribute="leading" secondItem="c67-jN-INv" secondAttribute="trailing" constant="10" id="U7g-gF-5g2"/>
                                     <constraint firstItem="IL3-ZY-e7o" firstAttribute="leading" secondItem="c67-jN-INv" secondAttribute="trailing" constant="10" id="Xfi-Pw-exB"/>
                                     <constraint firstItem="iZo-rk-AJX" firstAttribute="leading" secondItem="EyA-Rq-pLQ" secondAttribute="trailing" constant="10" id="c9e-kv-hjX"/>
                                     <constraint firstItem="tMI-9G-ukG" firstAttribute="leading" secondItem="IL3-ZY-e7o" secondAttribute="trailing" constant="10" id="dEV-Vg-37q"/>
-                                    <constraint firstItem="eoj-FK-ayY" firstAttribute="top" secondItem="jaM-lx-Ati" secondAttribute="top" constant="10" id="eW8-Eo-5ag"/>
                                     <constraint firstItem="Yvm-40-z1j" firstAttribute="leading" secondItem="jaM-lx-Ati" secondAttribute="leading" constant="10" id="fWQ-3N-hAR"/>
+                                    <constraint firstItem="iZo-rk-AJX" firstAttribute="height" secondItem="Yvm-40-z1j" secondAttribute="height" id="fks-VI-MNn"/>
                                     <constraint firstItem="tjJ-HI-UBE" firstAttribute="leading" secondItem="jaM-lx-Ati" secondAttribute="leading" constant="10" id="idR-fa-dEQ"/>
                                     <constraint firstItem="IL3-ZY-e7o" firstAttribute="width" secondItem="c67-jN-INv" secondAttribute="width" id="jcu-xR-iCM"/>
+                                    <constraint firstItem="tMI-9G-ukG" firstAttribute="height" secondItem="c67-jN-INv" secondAttribute="height" id="lE7-xZ-7wQ"/>
                                     <constraint firstItem="LfT-7e-Lao" firstAttribute="width" secondItem="xkX-WN-tC9" secondAttribute="width" id="lbM-dG-Wh9"/>
                                     <constraint firstAttribute="trailing" secondItem="j1D-hq-tg6" secondAttribute="trailing" constant="10" id="oeP-Ed-PQ7"/>
                                     <constraint firstAttribute="trailing" secondItem="tMI-9G-ukG" secondAttribute="trailing" constant="10" id="omH-ZE-aRw"/>
                                     <constraint firstItem="EyA-Rq-pLQ" firstAttribute="width" secondItem="Yvm-40-z1j" secondAttribute="width" id="qUK-q2-wTm"/>
+                                    <constraint firstItem="c67-jN-INv" firstAttribute="height" secondItem="Yvm-40-z1j" secondAttribute="height" id="rqq-av-y6y"/>
                                     <constraint firstItem="hvm-i3-Iag" firstAttribute="leading" secondItem="tjJ-HI-UBE" secondAttribute="trailing" constant="10" id="saM-nV-s2e"/>
+                                    <constraint firstItem="EyA-Rq-pLQ" firstAttribute="height" secondItem="Yvm-40-z1j" secondAttribute="height" id="tYT-Ko-y47"/>
+                                    <constraint firstItem="IL3-ZY-e7o" firstAttribute="height" secondItem="c67-jN-INv" secondAttribute="height" id="tbH-8G-8e5"/>
                                     <constraint firstItem="hvm-i3-Iag" firstAttribute="width" secondItem="tjJ-HI-UBE" secondAttribute="width" id="tfb-Oq-Iq6"/>
                                     <constraint firstAttribute="bottom" secondItem="tjJ-HI-UBE" secondAttribute="bottom" constant="10" id="toi-Am-gBN"/>
-                                    <constraint firstItem="EyA-Rq-pLQ" firstAttribute="leading" secondItem="Yvm-40-z1j" secondAttribute="trailing" constant="10" id="wCh-2n-A9v"/>
                                     <constraint firstItem="j1D-hq-tg6" firstAttribute="leading" secondItem="iZo-rk-AJX" secondAttribute="trailing" constant="10" id="zqW-ck-8hT"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="closeCamera" destination="xkX-WN-tC9" id="dsB-cb-6Gu"/>
                                     <outlet property="closeMicBtn" destination="LfT-7e-Lao" id="Q1V-dE-3pG"/>
                                     <outlet property="connectHostBtn" destination="tMI-9G-ukG" id="JW3-tn-M9h"/>
-                                    <outlet property="liveUrlLabel" destination="eoj-FK-ayY" id="uHF-5w-1oA"/>
-                                    <outlet property="sendMsgBtn" destination="hvm-i3-Iag" id="4yM-Qx-rof"/>
                                     <outlet property="startLiveBtn" destination="c67-jN-INv" id="yHt-XJ-OHL"/>
                                     <outlet property="streamLayoutBtn" destination="tjJ-HI-UBE" id="XN3-MY-nPi"/>
+                                    <outlet property="switchStreamMode" destination="hvm-i3-Iag" id="ZYK-iI-sgx"/>
                                     <outlet property="userBtn_A" destination="Yvm-40-z1j" id="SdZ-r0-ORg"/>
                                     <outlet property="userBtn_B" destination="EyA-Rq-pLQ" id="9ev-H4-woH"/>
                                     <outlet property="userBtn_C" destination="iZo-rk-AJX" id="QdP-Rb-obJ"/>
@@ -321,9 +334,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

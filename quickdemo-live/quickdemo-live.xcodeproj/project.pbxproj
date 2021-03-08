@@ -245,6 +245,7 @@
 				5A8B9FBE254AB58000D415FC /* Frameworks */,
 				5A8B9FBF254AB58000D415FC /* Resources */,
 				177EBAD96CF3AD301A6C0B0A /* [CP] Copy Pods Resources */,
+				8CF26A1B9A79384BBAEFA8B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,6 +318,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CF26A1B9A79384BBAEFA8B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8E37F965B1A2E3438CDAA01 /* [CP] Check Pods Manifest.lock */ = {
