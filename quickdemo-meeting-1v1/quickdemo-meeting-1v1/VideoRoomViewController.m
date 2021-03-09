@@ -38,10 +38,10 @@
 
 - (void)initIMSDK {
     // 初始化融云 SDK
-    [[RCIMClient sharedRCIMClient] initWithAppKey:APP_KEY];
+    [[RCCoreClient sharedCoreClient] initWithAppKey:APP_KEY];
     // 前置条件 IM 建立连接
     @WeakObj(self);
-    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {
+    [[RCCoreClient sharedCoreClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {
     }                                       success:^(NSString *userId) {
         NSLog(@"IM 连接成功 userId: %@", userId);
         @StrongObj(self);

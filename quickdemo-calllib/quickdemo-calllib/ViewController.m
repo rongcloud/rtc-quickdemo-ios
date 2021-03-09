@@ -22,7 +22,7 @@
     [super viewDidLoad];
     self.loginUID = @"";
     // RCAppKey 设置
-    [[RCIMClient sharedRCIMClient] initWithAppKey:RCAppKey];
+    [[RCCoreClient sharedCoreClient] initWithAppKey:RCAppKey];
     //设置链接协议
     [[RCCallClient sharedRCCallClient] setDelegate:self];
 }
@@ -30,7 +30,7 @@
 //建立链接=即登录
 - (void)createConnect:(NSString *)token {
     __weak typeof(self)weakSelf = self;
-    [[RCIMClient sharedRCIMClient] connectWithToken:token dbOpened:^(RCDBErrorCode code) {} success:^(NSString *userId) {
+    [[RCCoreClient sharedCoreClient] connectWithToken:token dbOpened:^(RCDBErrorCode code) {} success:^(NSString *userId) {
         __strong typeof(weakSelf)strongSelf = weakSelf;
         dispatch_async(dispatch_get_main_queue(), ^{
             [strongSelf updateLoginUI:userId];
@@ -72,7 +72,7 @@
 //建立通话成功
 - (void)callDidConnect {
     [self.callSession setVideoView:self.localVideo
-                            userId:[RCIMClient sharedRCIMClient].currentUserInfo.userId];
+                            userId:[RCCoreClient sharedCoreClient].currentUserInfo.userId];
     [self.callSession setVideoView:self.remoteVideo userId:self.callSession.targetId];
     
     [self updateUI:YES select:YES];

@@ -7,7 +7,7 @@
 
 #define APP_KEY @"<#这里填写你的 App Key#>"
 #define TOKEN @"<#这是连接 IM 的 Token#>"
-#define RoomId @"<#填写一个roomId#>"
+#define RoomId @"HelloRongCloud"
 
 
 

@@ -1,5 +1,9 @@
 //
-//  Copyright © 2021 RongCloud. All rights reserved.
+//  RCMenuView.m
+//  quickdemo-live
+//
+//  Created by RongCloud on 2020/10/29.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import "RCMenuView.h"
@@ -19,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeMicBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *streamLayoutBtn;
-@property (weak, nonatomic) IBOutlet UIButton *sendMsgBtn;
+@property (weak, nonatomic) IBOutlet UIButton *switchStreamMode;
 
 @property (nonatomic, copy)NSArray *userBtns;
 @property (nonatomic, copy)NSArray *funcBtns;
@@ -32,7 +36,6 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    self.liveUrlLabel.layer.borderColor = [UIColor grayColor].CGColor;
 }
 
 - (IBAction)userLogin:(UIButton *)sender {
@@ -71,10 +74,7 @@
 }
 
 - (IBAction)watchLiveAction:(UIButton *)sender{
-    
     if (!self.isLogin) return;
-    if ([self.liveUrlLabel.text isEqualToString:@"liveUrl:"] && !sender.selected) return;
-    
     NSLog(@"%@",sender.titleLabel.text);
     sender.selected = !sender.selected;
     if ([self.delegate respondsToSelector:@selector(watchLiveWithState:)]) {
@@ -98,12 +98,13 @@
                                  self.closeCamera,
                                  self.closeMicBtn,
                                  self.streamLayoutBtn,
-                                 self.sendMsgBtn]];
+                                 self.switchStreamMode]];
     }
     if ([self.delegate respondsToSelector:@selector(connectHostWithState:)]) {
         [self.delegate connectHostWithState:sender.selected];
     }
 }
+
 
 - (IBAction)closeCameraAction:(UIButton *)sender{
     
@@ -149,15 +150,25 @@
     }
 }
 
-- (IBAction)sendMsgAction:(UIButton *)sender{
+
+
+- (IBAction)switchStreamAction:(UIButton *)sender{
     
     if (self.roleType == RCRTCRoleTypeUnknown) return;
     
+    sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
-    if ([self.delegate respondsToSelector:@selector(sendLiveUrl)]) {
-        [self.delegate sendLiveUrl];
+    
+    if ([self.delegate respondsToSelector:@selector(switchCamera)]) {
+        [self.delegate switchCamera];
     }
+//    if ([self.delegate respondsToSelector:@selector(subscribeType:)]) {
+//        [self.delegate subscribeType:sender.isSelected];
+//    }
 }
+
+
+
 
 #pragma mark - private method
 
@@ -176,7 +187,7 @@
                                      self.closeCamera,
                                      self.closeMicBtn,
                                      self.streamLayoutBtn,
-                                     self.sendMsgBtn]];
+                                     self.switchStreamMode]];
             break;;
         default:
             break;
@@ -207,7 +218,7 @@
         self.closeCamera,
         self.closeMicBtn,
         self.streamLayoutBtn,
-        self.sendMsgBtn];
+        self.switchStreamMode];
     for (UIButton *btn in self.userBtns) {
         if (btn.tag != tag) {
             btn.backgroundColor = [UIColor grayColor];
@@ -222,5 +233,14 @@
         btn.enabled = YES;
     }
 }
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+}
+
+
+
+
 
 @end

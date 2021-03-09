@@ -3,7 +3,7 @@
 //  quickdemo-callkit
 
 #import "ViewController.h"
-#import <RongIMLib/RongIMLib.h>
+#import <RongIMLibCore/RongIMLibCore.h>
 #import <RongCallKit/RongCallKit.h>
 #import "AppConfig.h"
 
