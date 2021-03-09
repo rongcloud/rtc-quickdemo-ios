@@ -47,25 +47,18 @@ RCRTCStatusReportDelegate>
 //前置条件,需要建立IM连接
 - (void)loginIMWithIndex:(NSInteger)index{
     //填写4个用户登录的 token 以数组形式存在
-    NSArray *tokens= @[
-        @"B+QoHfaZ8F592THITdFJlyHLbdTpM60nEZoWTNCL1tU=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
-        @"IrsKLk6XkuCQb+y5GEwd7SHLbdTpM60nX3loEGdZ8hk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
-        @"gd53A2EPASG599DhkzBkXYkz7cO8IMg/C5d2RSwp7Gg=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com",
-        @"KiYAoEKLAlX9xKq4iUA8SnNUtXQ9DRCIMwz7NtmKqFk=@2h9z.cn.rongnav.com;2h9z.cn.rongcfg.com"];
-    
-//    NSArray *tokens = @[
-//        @"7dMPpxzoDjZCLXB/cBac1djRdM+2ZFkiQZdNJ4BpzW6qrAG4/ozWvd5KRQaO4srh@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
-//        @"V9MR45srtlHbkgNkpdRdkdjRdM+2ZFkiQZdNJ4BpzW4PhkF/4Og6Sk37pNFya77Y@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
-//        @"PEo6UkBiE/k9BW2tFhSkMdjRdM+2ZFkiQZdNJ4BpzW6WmrWZmhTaidrr3F6+Dq6n@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
-//        @"Y+9H80Th/tN2AcJ9A0OUsdjRdM+2ZFkiQZdNJ4BpzW7oov7oDeTaZSHNONkytaIG@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
-//    ];
+    NSArray *tokens = @[
+        @"7dMPpxzoDjZCLXB/cBac1djRdM+2ZFkiQZdNJ4BpzW6qrAG4/ozWvd5KRQaO4srh@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
+        @"V9MR45srtlHbkgNkpdRdkdjRdM+2ZFkiQZdNJ4BpzW4PhkF/4Og6Sk37pNFya77Y@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
+        @"PEo6UkBiE/k9BW2tFhSkMdjRdM+2ZFkiQZdNJ4BpzW6WmrWZmhTaidrr3F6+Dq6n@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
+        @"Y+9H80Th/tN2AcJ9A0OUsdjRdM+2ZFkiQZdNJ4BpzW7oov7oDeTaZSHNONkytaIG@mwga.dy01-navqa.cn.ronghub.com;mwga.dy02-navqa.cn.ronghub.com",
+    ];
     
     if (index >= tokens.count) return;
-    
-//    [[RCCoreClient sharedCoreClient] setServerInfo:@"http://navqa.cn.ronghub.com" fileServer:nil];
-    
     //设置 APPKEY
     [[RCCoreClient sharedCoreClient] initWithAppKey:AppID];
+    //设置导航
+    [[RCCoreClient sharedCoreClient] setServerInfo:@"http://navqa.cn.ronghub.com" fileServer:nil];
     //登录IM
     [[RCCoreClient sharedCoreClient] connectWithToken:tokens[index] dbOpened:^(RCDBErrorCode code) {
     } success:^(NSString *userId) {
@@ -113,7 +106,8 @@ RCRTCStatusReportDelegate>
     [self cleanRemoteContainer];
     //退出房间
     [self exitRoom];
-    if (isConnect) {//上麦
+    if (isConnect) {
+        //上麦
         [self setupLocalVideoView];
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
     }else{//下麦
@@ -153,7 +147,6 @@ RCRTCStatusReportDelegate>
     [self subscribeRemoteResource:liveStreams isTiny:type];
 }
 
-
 //添加本地采集预览界面
 - (void)setupLocalVideoView{
     [self.streamVideos addObject:self.localVideo];
@@ -167,7 +160,7 @@ RCRTCStatusReportDelegate>
     config.roomType = RCRTCRoomTypeLive;
     config.liveType = RCRTCLiveTypeAudioVideo;
     config.roleType = roleType;
-//    [self.engine setStatusReportDelegate:self];
+    [self.engine setStatusReportDelegate:self];
     @WeakObj(self);
     [self.engine joinRoom:roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
         @StrongObj(self);
@@ -200,8 +193,6 @@ RCRTCStatusReportDelegate>
         }
     }];
 }
-
-
 
 //发布本地音视频流
 - (void)publishLocalLiveAVStream{
@@ -337,83 +328,44 @@ RCRTCStatusReportDelegate>
 }
 
 #pragma mark - RCRTCRoomEventDelegate
-
+//直播合流发布
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
     NSLog(@"已发布liveStream:%@",streams);
     [self subscribeRemoteResource:streams orUid:nil];
 }
-
+//直播合流取消发布
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
     NSLog(@"取消发布liveStream:%@",streams);
     [self unsubscribeRemoteResource:streams orUid:nil];
 }
-
 //新用户加入
 - (void)didJoinUser:(RCRTCRemoteUser *)user{
     NSLog(@"didJoinUser:%@",user);
 }
 //离开
 - (void)didLeaveUser:(RCRTCRemoteUser *)user{
+    NSLog(@"didLeaveUser:%@",user);
     [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
-//有新发布流
-- (void)didPublishStreams:(NSArray <RCRTCInputStream *>*)streams{
-    NSLog(@"didPublishStreams:%@",streams);
-    [self subscribeRemoteResource:streams orUid:nil];
-}
-//取消发布流
-- (void)didUnpublishStreams:(NSArray<RCRTCInputStream *>*)streams{
-    [self unsubscribeRemoteResource:streams orUid:nil];
-}
-
 //远端掉线
 - (void)didOfflineUser:(RCRTCRemoteUser*)user{
     NSLog(@"didOfflineUser:%@",user.userId);
     [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
-//
-- (void)didKickedOutOfTheRoom:(RCRTCRoom *)room{
-    NSLog(@"didKickedOutOfTheRoom:%@",room);
-}
-//被服务端提出房间
-- (void)didKickedByServer:(RCRTCBaseRoom *)room{
-    NSLog(@"didKickedByServer:%@",room);
-}
-/*!
- 流连接成功
- */
+//流连接成功
 - (void)didConnectToStream:(RCRTCInputStream *)stream{
-    NSLog(@"%@",stream);
-}
-/*!
- 第一个关键帧到达通知
- */
-- (void)didReportFirstKeyframe:(RCRTCInputStream *)stream{
-    NSLog(@"%@",stream);
-}
-
-- (void)didReceiveMessage:(RCMessage *)message{
-    NSLog(@"%@",message);
-}
-
-- (void)stream:(RCRTCInputStream *)stream didAudioMute:(BOOL)mute{
-    NSLog(@"didAudioMute:%ld",(long)mute);
-}
-
-- (void)stream:(RCRTCInputStream *)stream didVideoEnable:(BOOL)enable{
-    NSLog(@"didVideoEnable:%ld",(long)enable);
+    NSLog(@"didConnectToStream:%@",stream);
 }
 
 - (void)didReportStatusForm:(RCRTCStatusForm *)form{
-    NSLog(@"--xuhuan--recvStats:%@",form.recvStats);
+    NSLog(@"--recvStats:%@",form.recvStats);
 }
 
 #pragma mark - setter & getter
 - (RCRTCEngine *)engine{
     if (!_engine) {
         _engine = [RCRTCEngine sharedInstance];
-//        [_engine setMediaServerUrl:@"https://rce-ceshi.rongcloud.net:8447"];
-//        [_engine setMediaServerUrl:@"https://rtc-data-bdcbj.rongcloud.net"];
+        [_engine setMediaServerUrl:@"https://rtc-data-bdcbj.rongcloud.net"];
     }
     return _engine;
 }
@@ -454,7 +406,6 @@ RCRTCStatusReportDelegate>
             break;
     }
 }
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = YES;

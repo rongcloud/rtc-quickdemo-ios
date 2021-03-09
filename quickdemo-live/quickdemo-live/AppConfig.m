@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-NSString *const AppID = @"6tnym1brnzcx7";
-//NSString *const AppID = @"c9kqb3rdkbb8j";
+NSString *const AppID = @"c9kqb3rdkbb8j";
 NSString *const roomId = @"777777";
 
 ////AppID通过融云的后台管理创建的应用基本信息查看
