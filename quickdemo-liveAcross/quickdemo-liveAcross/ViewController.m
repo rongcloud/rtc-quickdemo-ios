@@ -83,7 +83,11 @@
 #pragma mark - 加入主房间
 - (void)joinMainRoom {
     NSString *roomId = [NSString stringWithFormat:@"%zd", [self getRandomNumber:100000 to:999999]];
+    RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
+    config.roomType = RCRTCRoomTypeLive;
+    
     [[RCRTCEngine sharedInstance] joinRoom:roomId
+                                    config:config
                                 completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
         if (code == 0) {
             self.room = room;
