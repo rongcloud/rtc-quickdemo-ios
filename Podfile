@@ -8,6 +8,7 @@ project 'quickdemo-live/quickdemo-live.xcodeproj'
 project 'quickdemo-live/quickdemo-liveAcross.xcodeproj'
 project 'quickdemo-callKit/quickdemo-callKit.xcodeproj'
 project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
+project 'quickdemo-imkit-callkit/quickdemo-imkit-callkit.xcodeproj'
 project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
 
 abstract_target 'CommonPods' do
@@ -31,6 +32,11 @@ abstract_target 'CommonPods' do
         pod 'RongRTCLib', '~> 5.1.0'
     end
     
+    target 'quickdemo-imkit-callkit' do
+       project 'quickdemo-imkit-callkit/quickdemo-imkit-callkit.xcodeproj'
+       pod 'RongCloudRTC/RongCallKit', '~> 5.1.0'
+    end
+
     target 'quickdemo-callkit' do
         project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
         pod 'RongCloudRTC/RongCallKit', '~> 5.1.0'
