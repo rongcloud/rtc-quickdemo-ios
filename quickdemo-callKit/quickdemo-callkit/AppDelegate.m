@@ -1,6 +1,7 @@
 //
-//  AppDelegate.m
-//  quickdemo-callkit
+//  Copyright © 2021 RongCloud. All rights reserved.
+//
+
 #import "AppDelegate.h"
 
 @interface AppDelegate ()

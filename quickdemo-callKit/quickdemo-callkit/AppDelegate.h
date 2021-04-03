@@ -1,7 +1,5 @@
 //
-//  AppDelegate.h
-//  quickdemo-callkit//
-//  Created by huan xu on 2020/11/18.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

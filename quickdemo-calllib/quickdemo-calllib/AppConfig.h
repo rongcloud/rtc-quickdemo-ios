@@ -1,9 +1,7 @@
 //
-//  RCConfig.h
-//  CallLibQuickstart
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
-//  Created by RongCloud on 2020/12/24.
-//
+
 
 #ifndef AppConfig_h
 #define AppConfig_h

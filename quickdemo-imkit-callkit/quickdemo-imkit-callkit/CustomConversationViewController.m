@@ -1,9 +1,6 @@
 //
-//  CustomConversationViewController.m
-//  ImKitDemo
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
-//  Created by RongCloud on 2021/1/25.
-// 会话页面
 
 #import "CustomConversationViewController.h"
 

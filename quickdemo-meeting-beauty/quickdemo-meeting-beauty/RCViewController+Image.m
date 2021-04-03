@@ -1,8 +1,5 @@
 //
-//  RCViewController+Image.m
-//  quickdemo-meeting-beauty
-//
-//  Created by RongCloud on 2021/1/5.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "RCViewController+Image.h"

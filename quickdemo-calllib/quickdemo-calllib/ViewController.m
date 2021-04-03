@@ -1,9 +1,7 @@
 //
-//  ViewController.m
-//  CallLibQuickstart
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
-//  Created by RongCloud on 2020/12/24.
-//
+
 
 #import "ViewController.h"
 #import <RongCallLib/RongCallLib.h>

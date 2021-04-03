@@ -1,10 +1,12 @@
+//
+//  Copyright © 2021 RongCloud. All rights reserved.
+//
+
 #ifndef AppConfig_h
 #define AppConfig_h
 
 //https://developer.rongcloud.cn/app/appkey/voKJ5Sx3FogpbvvqQSKHqg
 #define RCAppKey @"<#请在开发者平台获取AppKey#>"
-
-
 
 //https://developer.rongcloud.cn/apitool/6Y_sn-hH728d8oUEPSGy3w
 #define RCUserId1 @"<#userId1#>"

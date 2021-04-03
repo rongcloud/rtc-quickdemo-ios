@@ -1,8 +1,5 @@
 //
-//  AppConfig.h
-//  quickdemo-meeting-beauty
-//
-//  Created by RongCloud on 2021/1/4.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #define APP_KEY @"<#这里填写你的 App Key#>"

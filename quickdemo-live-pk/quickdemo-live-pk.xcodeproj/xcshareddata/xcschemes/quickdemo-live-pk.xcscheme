@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5AFBE4F625651BA10052F06E"
-               BuildableName = "quickdemo-callkit.app"
-               BlueprintName = "quickdemo-callkit"
-               ReferencedContainer = "container:quickdemo-callkit.xcodeproj">
+               BlueprintIdentifier = "390FFAF725946E4B00DDC179"
+               BuildableName = "quickdemo-live-pk.app"
+               BlueprintName = "quickdemo-live-pk"
+               ReferencedContainer = "container:quickdemo-live-pk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5AFBE4F625651BA10052F06E"
-            BuildableName = "quickdemo-callkit.app"
-            BlueprintName = "quickdemo-callkit"
-            ReferencedContainer = "container:quickdemo-callkit.xcodeproj">
+            BlueprintIdentifier = "390FFAF725946E4B00DDC179"
+            BuildableName = "quickdemo-live-pk.app"
+            BlueprintName = "quickdemo-live-pk"
+            ReferencedContainer = "container:quickdemo-live-pk.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5AFBE4F625651BA10052F06E"
-            BuildableName = "quickdemo-callkit.app"
-            BlueprintName = "quickdemo-callkit"
-            ReferencedContainer = "container:quickdemo-callkit.xcodeproj">
+            BlueprintIdentifier = "390FFAF725946E4B00DDC179"
+            BuildableName = "quickdemo-live-pk.app"
+            BlueprintName = "quickdemo-live-pk"
+            ReferencedContainer = "container:quickdemo-live-pk.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
