@@ -42,7 +42,7 @@
 		1E8763F525BEB2DE00125B13 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8763F425BEB2DE00125B13 /* libiconv.tbd */; };
 		1E8763F825BEB2E400125B13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8763F725BEB2E400125B13 /* libsqlite3.tbd */; };
 		1E87640825BEBC7900125B13 /* CustomConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E87640725BEBC7800125B13 /* CustomConversationViewController.m */; };
-		B43B3E3779F5E98071308542 /* Pods_quickdemo_imkit_callkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45821649AD014490BCF5328 /* Pods_quickdemo_imkit_callkit.framework */; };
+		4EE157FCB70743207A5B36B2 /* Pods_CommonPods_quickdemo_imkit_callkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FD7A03A8C1E5AA7D2DCF0E /* Pods_CommonPods_quickdemo_imkit_callkit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,9 +89,11 @@
 		1E87640625BEBC7800125B13 /* CustomConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomConversationViewController.h; sourceTree = "<group>"; };
 		1E87640725BEBC7800125B13 /* CustomConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomConversationViewController.m; sourceTree = "<group>"; };
 		1E87640B25BEBE7900125B13 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		2F55E65FAC07A4C1A803D7A9 /* Pods-CommonPods-quickdemo-imkit-callkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-imkit-callkit.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit.release.xcconfig"; sourceTree = "<group>"; };
 		32544D4B0E94CA82A1DF03E4 /* Pods-quickdemo-imkit-callkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-imkit-callkit.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit.release.xcconfig"; sourceTree = "<group>"; };
+		35FD7A03A8C1E5AA7D2DCF0E /* Pods_CommonPods_quickdemo_imkit_callkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_imkit_callkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A254284CF36E91E663D7A19C /* Pods-quickdemo-imkit-callkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-imkit-callkit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit.debug.xcconfig"; sourceTree = "<group>"; };
-		C45821649AD014490BCF5328 /* Pods_quickdemo_imkit_callkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_quickdemo_imkit_callkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA809C9284EDE458A496E01A /* Pods-CommonPods-quickdemo-imkit-callkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-imkit-callkit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +125,7 @@
 				1E8763CA25BEB25D00125B13 /* ImageIO.framework in Frameworks */,
 				1E8763C825BEB25800125B13 /* MapKit.framework in Frameworks */,
 				1E8763C625BEB25200125B13 /* AssetsLibrary.framework in Frameworks */,
-				B43B3E3779F5E98071308542 /* Pods_quickdemo_imkit_callkit.framework in Frameworks */,
+				4EE157FCB70743207A5B36B2 /* Pods_CommonPods_quickdemo_imkit_callkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +196,8 @@
 			children = (
 				A254284CF36E91E663D7A19C /* Pods-quickdemo-imkit-callkit.debug.xcconfig */,
 				32544D4B0E94CA82A1DF03E4 /* Pods-quickdemo-imkit-callkit.release.xcconfig */,
+				AA809C9284EDE458A496E01A /* Pods-CommonPods-quickdemo-imkit-callkit.debug.xcconfig */,
+				2F55E65FAC07A4C1A803D7A9 /* Pods-CommonPods-quickdemo-imkit-callkit.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -225,7 +229,7 @@
 				1E8763C925BEB25D00125B13 /* ImageIO.framework */,
 				1E8763C725BEB25800125B13 /* MapKit.framework */,
 				1E8763C525BEB25200125B13 /* AssetsLibrary.framework */,
-				C45821649AD014490BCF5328 /* Pods_quickdemo_imkit_callkit.framework */,
+				35FD7A03A8C1E5AA7D2DCF0E /* Pods_CommonPods_quickdemo_imkit_callkit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,6 +246,7 @@
 				1E87636F25BE63D300125B13 /* Frameworks */,
 				1E87637025BE63D300125B13 /* Resources */,
 				16E75FA278E7F39D705D38EB /* [CP] Copy Pods Resources */,
+				779055CC586B94399A815436 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,15 +310,32 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-quickdemo-imkit-callkit/Pods-quickdemo-imkit-callkit-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		779055CC586B94399A815436 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-imkit-callkit/Pods-CommonPods-quickdemo-imkit-callkit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92B52AD381C8D3ABA0F4015D /* [CP] Check Pods Manifest.lock */ = {
@@ -331,7 +353,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-quickdemo-imkit-callkit-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-quickdemo-imkit-callkit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -490,7 +512,7 @@
 		};
 		1E87638C25BE63D400125B13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A254284CF36E91E663D7A19C /* Pods-quickdemo-imkit-callkit.debug.xcconfig */;
+			baseConfigurationReference = AA809C9284EDE458A496E01A /* Pods-CommonPods-quickdemo-imkit-callkit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -511,7 +533,7 @@
 		};
 		1E87638D25BE63D400125B13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32544D4B0E94CA82A1DF03E4 /* Pods-quickdemo-imkit-callkit.release.xcconfig */;
+			baseConfigurationReference = 2F55E65FAC07A4C1A803D7A9 /* Pods-CommonPods-quickdemo-imkit-callkit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

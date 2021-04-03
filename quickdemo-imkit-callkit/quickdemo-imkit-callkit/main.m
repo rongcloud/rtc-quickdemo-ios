@@ -1,8 +1,5 @@
 //
-//  main.m
-//  ImKitDemo
-//
-//  Created by RongCloud on 2021/1/25.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

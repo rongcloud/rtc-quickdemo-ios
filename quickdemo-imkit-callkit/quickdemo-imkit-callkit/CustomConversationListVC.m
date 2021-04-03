@@ -1,9 +1,6 @@
 //
-//  ConversationListVC.m
-//  ImKitDemo
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
-//  Created by RongCloud on 2021/1/25.
-//会话列表
 
 #import "CustomConversationListVC.h"
 #import "UIViewController+SelectUser.h"

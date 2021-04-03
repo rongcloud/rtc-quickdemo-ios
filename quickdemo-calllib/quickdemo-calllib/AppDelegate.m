@@ -1,8 +1,5 @@
 //
-//  AppDelegate.m
-//  CallLibQuickstart
-//
-//  Created by RongCloud on 2020/12/24.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "AppDelegate.h"

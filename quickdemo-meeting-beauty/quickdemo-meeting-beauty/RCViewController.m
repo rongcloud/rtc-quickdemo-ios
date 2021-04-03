@@ -1,8 +1,5 @@
 //
-//  RCViewController.m
-//  quickdemo-meeting-beauty
-//
-//  Created by RongCloud on 2021/1/4.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "RCViewController.h"
@@ -77,9 +74,9 @@
 #pragma mark- Api something
 - (void)initIMSDK {
     // 初始化融云 SDK
-    [[RCIMClient sharedRCIMClient] initWithAppKey:APP_KEY];
+    [[RCCoreClient sharedCoreClient] initWithAppKey:APP_KEY];
     // 前置条件 IM 建立连接
-    [[RCIMClient sharedRCIMClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {}
+    [[RCCoreClient sharedCoreClient] connectWithToken:TOKEN dbOpened:^(RCDBErrorCode code) {}
                                             success:^(NSString *userId) {
         NSLog(@"IM 连接成功 userId: %@", userId);
     } error:^(RCConnectErrorCode errorCode) {

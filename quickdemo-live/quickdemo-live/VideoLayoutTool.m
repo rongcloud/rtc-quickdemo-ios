@@ -1,5 +1,5 @@
 //
-//  Copyright © 2021 RongCloud. All rights reserved.
+//  Copyright © 2020 RongCloud. All rights reserved.
 //
 
 #import "VideoLayoutTool.h"
@@ -58,13 +58,17 @@
 
 
 - (NSArray<NSLayoutConstraint *> *)layoutFullScreenView:(UIView *)view inContainerView:(UIView *)contianer {
+    
     NSMutableArray *layouts = [[NSMutableArray alloc] init];
     [contianer addSubview:view];
+    
     NSArray<NSLayoutConstraint *> *constraintsH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": view}];
+    
     NSArray<NSLayoutConstraint *> *constraintsV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": view}];
     
     [layouts addObjectsFromArray:constraintsH];
     [layouts addObjectsFromArray:constraintsV];
+    
     return layouts.copy;
 }
 
@@ -143,7 +147,11 @@
         [layouts addObjectsFromArray:v2];
         [layouts addObjectsFromArray:@[equalWidth1, equalWidth2, equalHeight1, equalHeight2]];
     }
+    
     return [layouts copy];
 }
+
+
+
 
 @end

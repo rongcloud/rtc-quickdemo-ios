@@ -1,9 +1,9 @@
 //
-//  ViewController.m
-//  quickdemo-callkit
+//  Copyright © 2021 RongCloud. All rights reserved.
+//
 
 #import "ViewController.h"
-#import <RongIMLib/RongIMLib.h>
+#import <RongIMLibCore/RongIMLibCore.h>
 #import <RongCallKit/RongCallKit.h>
 #import "AppConfig.h"
 

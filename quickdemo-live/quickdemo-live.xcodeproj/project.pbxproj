@@ -44,7 +44,7 @@
 		5A8BA013254AB78B00D415FC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BA012254AB78100D415FC /* libsqlite3.tbd */; };
 		5A8BA025254C0EE700D415FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BA024254C0EE700D415FC /* README.md */; };
 		5AA8195325555B080049B51F /* UIAlertController+RC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8195225555B080049B51F /* UIAlertController+RC.m */; };
-		F4816AC4694BA0BBB37DDB86 /* Pods_quickdemo_live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FE367881DBABAAF7E88C49 /* Pods_quickdemo_live.framework */; };
+		7546F9CDEEAF1DE7C61B3019 /* Pods_CommonPods_quickdemo_live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD4BEE7390974EAE569ED3A /* Pods_CommonPods_quickdemo_live.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,10 +96,9 @@
 		5A8BA024254C0EE700D415FC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5AA8195125555B080049B51F /* UIAlertController+RC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RC.h"; sourceTree = "<group>"; };
 		5AA8195225555B080049B51F /* UIAlertController+RC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RC.m"; sourceTree = "<group>"; };
-		62FE367881DBABAAF7E88C49 /* Pods_quickdemo_live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_quickdemo_live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7907B69E6AF6C1CF501833A6 /* Pods-quickdemo-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-live.debug.xcconfig"; path = "Target Support Files/Pods-quickdemo-live/Pods-quickdemo-live.debug.xcconfig"; sourceTree = "<group>"; };
 		914232221E2591E315969845 /* Pods-CommonPods-quickdemo-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.release.xcconfig"; sourceTree = "<group>"; };
-		9C745610D0E200A798A435B3 /* Pods_CommonPods_quickdemo_live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADD4BEE7390974EAE569ED3A /* Pods_CommonPods_quickdemo_live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA8D2484B63319F3FFE3E135 /* Pods-CommonPods-quickdemo-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-live.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,7 +131,7 @@
 				5A8B9FF6254AB6B500D415FC /* CoreGraphics.framework in Frameworks */,
 				5A8B9FE4254AB65E00D415FC /* AssetsLibrary.framework in Frameworks */,
 				5A8BA006254AB6F700D415FC /* AudioToolbox.framework in Frameworks */,
-				F4816AC4694BA0BBB37DDB86 /* Pods_quickdemo_live.framework in Frameworks */,
+				7546F9CDEEAF1DE7C61B3019 /* Pods_CommonPods_quickdemo_live.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +232,7 @@
 				5A8B9FE7254AB67900D415FC /* ImageIO.framework */,
 				5A8B9FE5254AB66A00D415FC /* MapKit.framework */,
 				5A8B9FE3254AB65E00D415FC /* AssetsLibrary.framework */,
-				62FE367881DBABAAF7E88C49 /* Pods_quickdemo_live.framework */,
+				ADD4BEE7390974EAE569ED3A /* Pods_CommonPods_quickdemo_live.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,6 +249,7 @@
 				5A8B9FBE254AB58000D415FC /* Frameworks */,
 				5A8B9FBF254AB58000D415FC /* Resources */,
 				177EBAD96CF3AD301A6C0B0A /* [CP] Copy Pods Resources */,
+				8CF26A1B9A79384BBAEFA8B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,7 +317,24 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-live/Pods-quickdemo-live-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CF26A1B9A79384BBAEFA8B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-live/Pods-CommonPods-quickdemo-live-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -12,7 +12,7 @@
     RCRTCMixConfig *streamConfig = [[RCRTCMixConfig alloc] init];
     // 选择模式
     streamConfig.layoutMode = mode;
-    // 设置合流视频参数：宽 300 ，高 300 ，视频帧率 20， 视频码率 500
+    // 设置合流视频参数 ：宽：300 ，高：300 ，视频帧率 20， 视频码率 500；
     streamConfig.mediaConfig.videoConfig.videoLayout.width = 300;
     streamConfig.mediaConfig.videoConfig.videoLayout.height = 300;
     streamConfig.mediaConfig.videoConfig.videoLayout.fps = 20;
@@ -25,7 +25,7 @@
     
     
     NSMutableArray *streamArr = [NSMutableArray array];
-    // 添加本地输出流
+    //添加本地输出流
     NSArray<RCRTCOutputStream *> *localStreams
     = RCRTCEngine.sharedInstance.room.localUser.streams;
     for (RCRTCOutputStream *vStream in localStreams) {
@@ -36,7 +36,7 @@
     
     switch (mode) {
         case RCRTCMixLayoutModeCustom:
-            // 自定义布局
+            //自定义布局
         {
             // 如果是自定义布局需要设置下面这些
             NSArray<RCRTCRemoteUser *> *remoteUsers = RCRTCEngine.sharedInstance.room.remoteUsers;
@@ -51,14 +51,14 @@
         }
             break;
         case RCRTCMixLayoutModeSuspension:
-            // 悬浮布局
+            //悬浮布局
         {
             RCRTCOutputStream *vStream = [streamArr lastObject];
             streamConfig.hostVideoStream = vStream;
         }
             break;
         case RCRTCMixLayoutModeAdaptive:
-            // 自适应布局
+            //自适应布局
         {
             RCRTCOutputStream *vStream = [streamArr lastObject];
             streamConfig.hostVideoStream = vStream;

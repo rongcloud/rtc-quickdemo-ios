@@ -38,7 +38,7 @@
 		1E189A1C259468E900BFB60D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A1B259468E900BFB60D /* libiconv.tbd */; };
 		1E189A1F259468F100BFB60D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E189A1E259468F100BFB60D /* libsqlite3.tbd */; };
 		1E4E0DA1259591A80082FE4F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1E4E0DA0259591A80082FE4F /* README.md */; };
-		A2915E6B52AA75CE843BF7C6 /* Pods_quickdemo_calllib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C535473A906FF2774434CC5D /* Pods_quickdemo_calllib.framework */; };
+		929BC877E9C96BAF353CD973 /* Pods_CommonPods_quickdemo_calllib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C6A5D4835BDFACC243A635 /* Pods_CommonPods_quickdemo_calllib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,7 +83,7 @@
 		2BE696EA8057444BF93DB7E4 /* Pods-quickdemo-calllib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-calllib.release.xcconfig"; path = "Target Support Files/Pods-quickdemo-calllib/Pods-quickdemo-calllib.release.xcconfig"; sourceTree = "<group>"; };
 		50F6CC0040EEFF89C184A8D8 /* Pods-CommonPods-quickdemo-calllib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-calllib.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib.release.xcconfig"; sourceTree = "<group>"; };
 		C0860806574B385D8C43E36B /* Pods-quickdemo-calllib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-calllib.debug.xcconfig"; path = "Target Support Files/Pods-quickdemo-calllib/Pods-quickdemo-calllib.debug.xcconfig"; sourceTree = "<group>"; };
-		C535473A906FF2774434CC5D /* Pods_quickdemo_calllib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_quickdemo_calllib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C6A5D4835BDFACC243A635 /* Pods_CommonPods_quickdemo_calllib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_calllib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 				1E1899ED2594686300BFB60D /* ImageIO.framework in Frameworks */,
 				1E1899EB2594685D00BFB60D /* MapKit.framework in Frameworks */,
 				1E1899E92594685500BFB60D /* AssetsLibrary.framework in Frameworks */,
-				A2915E6B52AA75CE843BF7C6 /* Pods_quickdemo_calllib.framework in Frameworks */,
+				929BC877E9C96BAF353CD973 /* Pods_CommonPods_quickdemo_calllib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +198,7 @@
 				1E1899EC2594686300BFB60D /* ImageIO.framework */,
 				1E1899EA2594685D00BFB60D /* MapKit.framework */,
 				1E1899E82594685500BFB60D /* AssetsLibrary.framework */,
-				C535473A906FF2774434CC5D /* Pods_quickdemo_calllib.framework */,
+				F4C6A5D4835BDFACC243A635 /* Pods_CommonPods_quickdemo_calllib.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,6 +215,7 @@
 				1E1899C5259446CE00BFB60D /* Frameworks */,
 				1E1899C6259446CE00BFB60D /* Resources */,
 				DC74506CE9157B9371AB6FE8 /* [CP] Copy Pods Resources */,
+				2DD72B065A138FD527F62E9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,6 +272,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2DD72B065A138FD527F62E9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		870B382293BF1697A4D9A1A5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,7 +304,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-quickdemo-calllib-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-quickdemo-calllib-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -299,15 +317,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-calllib/Pods-quickdemo-calllib-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-calllib/Pods-quickdemo-calllib-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-quickdemo-calllib/Pods-quickdemo-calllib-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-calllib/Pods-CommonPods-quickdemo-calllib-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -459,12 +477,12 @@
 		};
 		1E1899E2259446D100BFB60D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0860806574B385D8C43E36B /* Pods-quickdemo-calllib.debug.xcconfig */;
+			baseConfigurationReference = 23283C273355FEC106EC85E3 /* Pods-CommonPods-quickdemo-calllib.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-calllib/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -472,7 +490,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.rongcloud.quickdemo-calllib";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -480,12 +498,12 @@
 		};
 		1E1899E3259446D100BFB60D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BE696EA8057444BF93DB7E4 /* Pods-quickdemo-calllib.release.xcconfig */;
+			baseConfigurationReference = 50F6CC0040EEFF89C184A8D8 /* Pods-CommonPods-quickdemo-calllib.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "quickdemo-calllib/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -493,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.rongcloud.quickdemo-calllib";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

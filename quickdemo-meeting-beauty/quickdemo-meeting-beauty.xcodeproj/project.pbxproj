@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00C62CD9B05C60C29EE2DEC2 /* Pods_CommonPods_quickdemo_meeting_beauty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD16AAE47E21AA5958A2BAA /* Pods_CommonPods_quickdemo_meeting_beauty.framework */; };
 		1E51377D25A2E91B007E68EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E51377C25A2E91B007E68EE /* AppDelegate.m */; };
 		1E51378625A2E91B007E68EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E51378425A2E91B007E68EE /* Main.storyboard */; };
 		1E51378825A2E91E007E68EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E51378725A2E91E007E68EE /* Assets.xcassets */; };
@@ -43,7 +44,6 @@
 		1E937BD625A403B800B7C3D1 /* GPUImageHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E937BD525A403B800B7C3D1 /* GPUImageHandle.m */; };
 		1E937BDA25A4060E00B7C3D1 /* RCViewController+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E937BD925A4060E00B7C3D1 /* RCViewController+Image.m */; };
 		1E937C1C25A46C5700B7C3D1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1E937C1B25A46C5700B7C3D1 /* README.md */; };
-		5832A34018FD896F135E89EE /* Pods_quickdemo_meeting_beauty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE308F334E2F81E5B560C69 /* Pods_quickdemo_meeting_beauty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,8 +93,8 @@
 		1E937BD925A4060E00B7C3D1 /* RCViewController+Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RCViewController+Image.m"; sourceTree = "<group>"; };
 		1E937C1B25A46C5700B7C3D1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2BA39B5B45B921234B3B02CC /* Pods-quickdemo-meeting-beauty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-meeting-beauty.release.xcconfig"; path = "Target Support Files/Pods-quickdemo-meeting-beauty/Pods-quickdemo-meeting-beauty.release.xcconfig"; sourceTree = "<group>"; };
+		4AD16AAE47E21AA5958A2BAA /* Pods_CommonPods_quickdemo_meeting_beauty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_quickdemo_meeting_beauty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA7BE1787311B580B2907A0 /* Pods-CommonPods-quickdemo-meeting-beauty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-meeting-beauty.release.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty.release.xcconfig"; sourceTree = "<group>"; };
-		BBE308F334E2F81E5B560C69 /* Pods_quickdemo_meeting_beauty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_quickdemo_meeting_beauty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1711B0447E9F50734A8520F /* Pods-quickdemo-meeting-beauty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quickdemo-meeting-beauty.debug.xcconfig"; path = "Target Support Files/Pods-quickdemo-meeting-beauty/Pods-quickdemo-meeting-beauty.debug.xcconfig"; sourceTree = "<group>"; };
 		FD1E1933D71988355A61EA28 /* Pods-CommonPods-quickdemo-meeting-beauty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-quickdemo-meeting-beauty.debug.xcconfig"; path = "Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +129,7 @@
 				1E5137B825A2EEEA007E68EE /* ImageIO.framework in Frameworks */,
 				1E5137B625A2EEE4007E68EE /* MapKit.framework in Frameworks */,
 				1E5137B425A2EED8007E68EE /* AssetsLibrary.framework in Frameworks */,
-				5832A34018FD896F135E89EE /* Pods_quickdemo_meeting_beauty.framework in Frameworks */,
+				00C62CD9B05C60C29EE2DEC2 /* Pods_CommonPods_quickdemo_meeting_beauty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +216,7 @@
 				1E5137B725A2EEEA007E68EE /* ImageIO.framework */,
 				1E5137B525A2EEE4007E68EE /* MapKit.framework */,
 				1E5137B325A2EED8007E68EE /* AssetsLibrary.framework */,
-				BBE308F334E2F81E5B560C69 /* Pods_quickdemo_meeting_beauty.framework */,
+				4AD16AAE47E21AA5958A2BAA /* Pods_CommonPods_quickdemo_meeting_beauty.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,6 +245,7 @@
 				1E51377525A2E91B007E68EE /* Frameworks */,
 				1E51377625A2E91B007E68EE /* Resources */,
 				3CD20087312E50A54B63995D /* [CP] Copy Pods Resources */,
+				86DB5B2D340F50E6A098E719 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,15 +308,32 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-meeting-beauty/Pods-quickdemo-meeting-beauty-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-quickdemo-meeting-beauty/Pods-quickdemo-meeting-beauty-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-quickdemo-meeting-beauty/Pods-quickdemo-meeting-beauty-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86DB5B2D340F50E6A098E719 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-quickdemo-meeting-beauty/Pods-CommonPods-quickdemo-meeting-beauty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9A8EC5CD15EA86621FF020A /* [CP] Check Pods Manifest.lock */ = {
@@ -333,7 +351,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-quickdemo-meeting-beauty-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-quickdemo-meeting-beauty-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -493,12 +511,12 @@
 		};
 		1E51379225A2E91E007E68EE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1711B0447E9F50734A8520F /* Pods-quickdemo-meeting-beauty.debug.xcconfig */;
+			baseConfigurationReference = FD1E1933D71988355A61EA28 /* Pods-CommonPods-quickdemo-meeting-beauty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -510,7 +528,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.rongcloud.quickdemo-meeting-beauty";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -518,12 +536,12 @@
 		};
 		1E51379325A2E91E007E68EE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BA39B5B45B921234B3B02CC /* Pods-quickdemo-meeting-beauty.release.xcconfig */;
+			baseConfigurationReference = 8CA7BE1787311B580B2907A0 /* Pods-CommonPods-quickdemo-meeting-beauty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQJSB93Y3D;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -535,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.rongcloud.quickdemo-meeting-beauty";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.RTCQuickStartDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
