@@ -66,6 +66,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="融云 RTC 示例" id="zp7-z9-JH8"/>
+                    <connections>
+                        <outlet property="useridTextField" destination="MWQ-zB-59R" id="370-da-trX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

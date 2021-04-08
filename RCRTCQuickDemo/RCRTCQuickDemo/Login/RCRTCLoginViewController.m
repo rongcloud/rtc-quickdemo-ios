@@ -6,9 +6,13 @@
 //
 
 #import "RCRTCLoginViewController.h"
+#import "RCRTCRequestToken.h"
+#import <RongIMKit/RCIM.h>
 #import "RCRTCHomeViewController.h"
 
+
 @interface RCRTCLoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *useridTextField;
 
 @end
 
@@ -22,8 +26,20 @@
 
 - (IBAction)connectIMServer:(UIButton *)sender {
 
-    RCRTCHomeViewController *mainVC = [[RCRTCHomeViewController alloc] init];
-    [self.navigationController pushViewController:mainVC animated:YES];
+    if (!self.useridTextField.text ||self.useridTextField.text.length == 0) {
+        return;
+    }
+    
+    [self.useridTextField resignFirstResponder];
+    
+
+    [RCRTCRequestToken requestToken:@"1" name:@"woshi" portraitUrl:nil completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+    }];
+    
+//    [RCIM sharedRCIM] connectWithToken:<#(NSString *)#> dbOpened:<#^(RCDBErrorCode code)dbOpenedBlock#> success:<#^(NSString *userId)successBlock#> error:<#^(RCConnectErrorCode errorCode)errorBlock#>
+//    RCRTCHomeViewController *mainVC = [[RCRTCHomeViewController alloc] init];
+//    [self.navigationController pushViewController:mainVC animated:YES];
 }
 
 /*

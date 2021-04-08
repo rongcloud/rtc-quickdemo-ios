@@ -20,6 +20,8 @@ extern NSString * const AppKey;
 
 extern NSString * const AppSecret;
 
+extern NSString * const RequestTokenUrl;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -14,6 +14,7 @@
 		DD24DF54261EEB3900DC4665 /* RCRTCMeetingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD24DF52261EEB3900DC4665 /* RCRTCMeetingViewController.xib */; };
 		DD24DF5A261EEB5A00DC4665 /* RCRTCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF58261EEB5A00DC4665 /* RCRTCHomeViewController.m */; };
 		DD24DF5B261EEB5A00DC4665 /* RCRTCHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD24DF59261EEB5A00DC4665 /* RCRTCHomeViewController.xib */; };
+		DD24DF6D261EFC1700DC4665 /* RCRTCRequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF6C261EFC1700DC4665 /* RCRTCRequestToken.m */; };
 		DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD81211B261DC26B00AF7D35 /* AppDelegate.m */; };
 		DD812125261DC26B00AF7D35 /* RCRTCLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD812123261DC26B00AF7D35 /* RCRTCLogin.storyboard */; };
 		DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD812126261DC26F00AF7D35 /* Assets.xcassets */; };
@@ -35,6 +36,8 @@
 		DD24DF57261EEB5A00DC4665 /* RCRTCHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCHomeViewController.h; sourceTree = "<group>"; };
 		DD24DF58261EEB5A00DC4665 /* RCRTCHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCHomeViewController.m; sourceTree = "<group>"; };
 		DD24DF59261EEB5A00DC4665 /* RCRTCHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RCRTCHomeViewController.xib; sourceTree = "<group>"; };
+		DD24DF6B261EFC1700DC4665 /* RCRTCRequestToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCRequestToken.h; sourceTree = "<group>"; };
+		DD24DF6C261EFC1700DC4665 /* RCRTCRequestToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCRequestToken.m; sourceTree = "<group>"; };
 		DD812117261DC26B00AF7D35 /* RCRTCQuickDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCRTCQuickDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD81211A261DC26B00AF7D35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DD81211B261DC26B00AF7D35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +100,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		DD24DF6A261EFBF300DC4665 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DD24DF6B261EFC1700DC4665 /* RCRTCRequestToken.h */,
+				DD24DF6C261EFC1700DC4665 /* RCRTCRequestToken.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		DD81210E261DC26B00AF7D35 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 			children = (
 				DD81211A261DC26B00AF7D35 /* AppDelegate.h */,
 				DD81211B261DC26B00AF7D35 /* AppDelegate.m */,
+				DD24DF6A261EFBF300DC4665 /* Request */,
 				DD24DF46261EAC1E00DC4665 /* Signature */,
 				DD24DF32261E9C0100DC4665 /* RCConstant */,
 				DD812134261DC29900AF7D35 /* Login */,
@@ -300,6 +313,7 @@
 				DD812138261DC32900AF7D35 /* RCRTCLoginViewController.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* RCRTCHomeViewController.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */,
+				DD24DF6D261EFC1700DC4665 /* RCRTCRequestToken.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

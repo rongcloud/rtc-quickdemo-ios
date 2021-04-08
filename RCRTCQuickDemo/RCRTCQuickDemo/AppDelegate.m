@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [RCRTCSignatureTool getSignature];
+    
     
     [[RCIM sharedRCIM] initWithAppKey:AppKey];
     

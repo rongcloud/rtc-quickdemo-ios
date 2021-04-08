@@ -21,7 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
  
  如果调用的数据签名验证失败，接口调用会返回 HTTP 状态码 401
  */
-+ (NSString *)getSignature;
++ (NSString *)getSignature:(NSString *)nonce Timestamp:(NSString *)timestamp;
+
++ (NSString *)getNonce;
+
++ (NSString *)getTimestamp;
 
 @end
 

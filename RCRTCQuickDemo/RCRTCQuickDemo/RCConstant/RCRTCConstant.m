@@ -14,12 +14,14 @@
  获取地址(https:developer.rongcloud.cn/app/appkey)
  */
 
-NSString * const AppKey = @"";
+NSString * const AppKey = @"cpj2xarlctx9n";
 
 //#error 请填写 App Secret
 /**
  获取地址(https:developer.rongcloud.cn/app/appkey)
  */
-NSString * const AppSecret = @"";
+NSString * const AppSecret = @"fIjvrkQC77qow";
 
+
+NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getToken.json";
 @end
