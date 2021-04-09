@@ -11,7 +11,8 @@
 
 @implementation RCRTCRequestToken
 
-+ (void)requestToken:(NSString *)userId name:(NSString *)name portraitUrl:(NSString *)portraitUrl completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler{
+
++ (void)requestToken:(NSString *)userId name:(NSString *)name portraitUrl:(NSString * _Nullable)portraitUrl completionHandler:(void (^)(BOOL isSuccess, NSString * _Nullable tokenString))completionHandler{
     
     NSURL *url = [NSURL URLWithString:RequestTokenUrl];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -27,23 +28,24 @@
     NSString *bodyStr = [NSString stringWithFormat:@"userId=%@&name=%@&portraitUri=%@",userId,name,portraitUrl];
     request.HTTPBody = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
     
-
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error: %@", error);
+            completionHandler(NO,nil);
         } else {
             NSError *__error = nil;
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&__error];
             NSLog(@"result:%@", result);
             
             if (result && result[@"token"]) {
-                <#statements#>
+                completionHandler(YES,result[@"token"]);
+            }else{
+                completionHandler(NO,nil);
             }
         }
     }];
     [sessionDataTask resume];
 }
 
-    
 @end

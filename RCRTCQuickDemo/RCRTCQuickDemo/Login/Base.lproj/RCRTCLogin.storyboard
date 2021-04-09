@@ -32,6 +32,7 @@
                                 <rect key="frame" x="30" y="267" width="354" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Khz-L6-xqZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dM6-av-t4J"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -55,7 +56,9 @@
                         <constraints>
                             <constraint firstItem="9Dz-7Z-8kW" firstAttribute="top" secondItem="MWQ-zB-59R" secondAttribute="bottom" constant="50" id="0SP-mV-xwJ"/>
                             <constraint firstItem="MWQ-zB-59R" firstAttribute="top" secondItem="01K-3y-iRU" secondAttribute="bottom" constant="30" id="6dJ-6E-mFu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MWQ-zB-59R" secondAttribute="trailing" constant="30" id="JxM-Mu-N0K"/>
                             <constraint firstItem="01K-3y-iRU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Yvm-5L-YUA"/>
+                            <constraint firstItem="MWQ-zB-59R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="cyN-0r-vR1"/>
                             <constraint firstItem="01K-3y-iRU" firstAttribute="top" secondItem="1sE-qh-9XU" secondAttribute="bottom" constant="60" id="euy-1h-5Ku"/>
                             <constraint firstItem="9Dz-7Z-8kW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fWb-m9-STC"/>
                             <constraint firstItem="1sE-qh-9XU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="nRe-tY-vpc"/>
@@ -84,6 +87,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gQa-wS-yVk">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ATl-ZY-jYI"/>
                     </connections>

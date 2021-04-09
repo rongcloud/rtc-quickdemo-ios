@@ -6,11 +6,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RCRTCConstant.h"
-#import <RongIMKit/RCIM.h>
-
-
-#import "RCRTCSignatureTool.h"
 
 @interface AppDelegate ()
 
@@ -21,13 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    
-    [[RCIM sharedRCIM] initWithAppKey:AppKey];
-    
     return YES;
 }
-
 
 @end

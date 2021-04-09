@@ -6,8 +6,12 @@
 //
 
 #import "RCRTCHomeViewController.h"
+#import <RongIMKit/RCIM.h>
+
+#import "RCRTCMeetingViewController.h"
 
 @interface RCRTCHomeViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *currentUserLabel;
 
 @end
 
@@ -17,7 +21,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self initUI];
+}
 
+- (void)initUI{
+    self.navigationItem.hidesBackButton = YES;
+    
+    self.currentUserLabel.text = [NSString stringWithFormat:@"UserID：%@",[RCIM sharedRCIM].currentUserInfo.userId];
+}
+
+/**
+ * 点击会议按钮
+ */
+- (IBAction)clickMeetingBtn:(UIButton *)sender {
+    
+    RCRTCMeetingViewController *meetingVC = [[RCRTCMeetingViewController alloc] init];
+    [self.navigationController pushViewController:meetingVC animated:YES];
+}
+
+/**
+ * 注销当前账户
+ */
+- (IBAction)logout:(UIButton *)sender {
+    
+    [[RCIM sharedRCIM] logout];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 /*

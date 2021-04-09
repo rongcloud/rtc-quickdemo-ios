@@ -3,6 +3,6 @@
 //
 
 /// APP_KEY 通过融云的后台管理创建的应用 ID
-#define APP_KEY @"<#请在开发者平台获取 AppKey#>"
+#define APP_KEY @"cpj2xarlctx9n"
 /// TOKEN 是通过融云服务器请求返回的用户凭证
-#define TOKEN @"<#token#>"
+#define TOKEN @"gVS98KCTmKSYQQAnnQSgJwp77ogZkLhe@b0fu.cn.rongnav.com;b0fu.cn.rongcfg.com"
