@@ -10,6 +10,7 @@ project 'quickdemo-callKit/quickdemo-callkit.xcodeproj'
 project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
 project 'quickdemo-imkit-callkit/quickdemo-imkit-callkit.xcodeproj'
 project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
+project 'quickdemo-zoomvideoview/quickdemo-zoomvideoview.xcodeproj'
 
 abstract_target 'CommonPods' do
     use_frameworks!
@@ -50,4 +51,10 @@ abstract_target 'CommonPods' do
         project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
         pod 'RongCloudRTC', '~> 5.1.0'
     end
+
+    target 'quickdemo-zoomvideoview' do
+			project 'quickdemo-zoomvideoview/quickdemo-zoomvideoview.xcodeproj'
+  		pod 'RongRTCLib', '~> 5.1.0'
+			pod 'Masonry'
+		end
 end
