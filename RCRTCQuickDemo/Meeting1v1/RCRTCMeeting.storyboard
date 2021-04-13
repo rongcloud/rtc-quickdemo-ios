@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pre Pare Meeting View Controller-->
+        <scene sceneID="f3w-Hs-x7I">
+            <objects>
+                <viewController storyboardIdentifier="RCRTCPrePareMeetingViewController" id="EY1-rt-wU2" customClass="RCRTCPrePareMeetingViewController" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ltF-9a-eb3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-gO-XaC">
+                                <rect key="frame" x="275.5" y="40" width="49" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yk7-Lw-opp">
+                                <rect key="frame" x="30" y="179" width="540" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dBH-WW-7V2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvd-fO-l8z">
+                                <rect key="frame" x="30" y="269" width="540" height="45"/>
+                                <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="TqY-Q6-wMI"/>
+                                </constraints>
+                                <state key="normal" title="加入会议">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="joinMeeting:" destination="EY1-rt-wU2" eventType="touchUpInside" id="YLi-lT-ZUp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入会议 ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yl-UF-aqs">
+                                <rect key="frame" x="30" y="129" width="540" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Dcm-56-wyT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Dcm-56-wyT" firstAttribute="trailing" secondItem="Yk7-Lw-opp" secondAttribute="trailing" constant="30" id="1NN-Vo-vXI"/>
+                            <constraint firstItem="1MF-gO-XaC" firstAttribute="centerX" secondItem="Dcm-56-wyT" secondAttribute="centerX" id="1aJ-fT-R85"/>
+                            <constraint firstItem="Dcm-56-wyT" firstAttribute="trailing" secondItem="9Yl-UF-aqs" secondAttribute="trailing" constant="30" id="41s-un-wM6"/>
+                            <constraint firstItem="Dcm-56-wyT" firstAttribute="trailing" secondItem="Gvd-fO-l8z" secondAttribute="trailing" constant="30" id="8zY-dO-vJm"/>
+                            <constraint firstItem="1MF-gO-XaC" firstAttribute="top" secondItem="Dcm-56-wyT" secondAttribute="top" constant="40" id="FaC-JM-eho"/>
+                            <constraint firstItem="Yk7-Lw-opp" firstAttribute="leading" secondItem="Dcm-56-wyT" secondAttribute="leading" constant="30" id="Pko-B3-9YV"/>
+                            <constraint firstItem="Gvd-fO-l8z" firstAttribute="top" secondItem="Yk7-Lw-opp" secondAttribute="bottom" constant="50" id="Zlq-ba-PKv"/>
+                            <constraint firstItem="9Yl-UF-aqs" firstAttribute="top" secondItem="1MF-gO-XaC" secondAttribute="bottom" constant="60" id="bK0-gQ-1MC"/>
+                            <constraint firstItem="Gvd-fO-l8z" firstAttribute="leading" secondItem="Dcm-56-wyT" secondAttribute="leading" constant="30" id="ekz-Jh-RDL"/>
+                            <constraint firstItem="Yk7-Lw-opp" firstAttribute="top" secondItem="9Yl-UF-aqs" secondAttribute="bottom" constant="30" id="jwt-62-ccF"/>
+                            <constraint firstItem="9Yl-UF-aqs" firstAttribute="leading" secondItem="Dcm-56-wyT" secondAttribute="leading" constant="30" id="mhB-bn-n5c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="roomIdTextField" destination="Yk7-Lw-opp" id="06q-xu-rqm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yUG-SE-Vc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1335" y="-773"/>
+        </scene>
+        <!--Meeting View Controller-->
+        <scene sceneID="wEf-PW-vka">
+            <objects>
+                <viewController storyboardIdentifier="RCRTCMeetingViewController" autoresizesArchivedViewToFullSize="NO" id="pY0-Ax-EWp" customClass="RCRTCMeetingViewController" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4Am-X5-Zfa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwU-ZI-52v" customClass="RCRTCLocalVideoView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ckf-k6-mJj" customClass="RCRTCRemoteVideoView">
+                                <rect key="frame" x="294" y="64" width="100" height="133"/>
+                                <color key="backgroundColor" red="0.65747684240000004" green="0.78333252669999998" blue="0.98042136430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="ZIW-LF-YfY"/>
+                                    <constraint firstAttribute="width" constant="100" id="kJX-2C-ShK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hav-wt-6rh">
+                                <rect key="frame" x="0.0" y="796" width="414" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKt-xB-ejC">
+                                        <rect key="frame" x="77" y="7.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="lS4-Uf-el6"/>
+                                            <constraint firstAttribute="height" constant="50" id="x0h-fG-EIf"/>
+                                        </constraints>
+                                        <state key="normal" image="mute.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-0H-Yex">
+                                        <rect key="frame" x="177" y="2.5" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="FT7-nB-Ybj"/>
+                                            <constraint firstAttribute="width" constant="60" id="yzZ-3k-Ilr"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="hang_up.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbB-Hz-awh">
+                                        <rect key="frame" x="287" y="7.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="hw8-ok-TeE"/>
+                                            <constraint firstAttribute="height" constant="50" id="wqI-OO-osj"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="camera.png"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wdq-0H-Yex" firstAttribute="centerY" secondItem="hav-wt-6rh" secondAttribute="centerY" id="7Kz-2M-cgO"/>
+                                    <constraint firstItem="wdq-0H-Yex" firstAttribute="centerX" secondItem="hav-wt-6rh" secondAttribute="centerX" id="I6V-B1-JSl"/>
+                                    <constraint firstItem="wdq-0H-Yex" firstAttribute="leading" secondItem="LKt-xB-ejC" secondAttribute="trailing" constant="50" id="Xgk-D3-ckb"/>
+                                    <constraint firstItem="LKt-xB-ejC" firstAttribute="centerY" secondItem="wdq-0H-Yex" secondAttribute="centerY" id="gCf-VW-1Al"/>
+                                    <constraint firstAttribute="height" constant="65" id="oaS-w4-U9p"/>
+                                    <constraint firstItem="NbB-Hz-awh" firstAttribute="leading" secondItem="wdq-0H-Yex" secondAttribute="trailing" constant="50" id="pYi-W7-qfG"/>
+                                    <constraint firstItem="NbB-Hz-awh" firstAttribute="centerY" secondItem="wdq-0H-Yex" secondAttribute="centerY" id="sWK-jH-3dz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mFF-Dn-e5y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GwU-ZI-52v" firstAttribute="width" secondItem="4Am-X5-Zfa" secondAttribute="width" id="0M8-Zx-mxi"/>
+                            <constraint firstItem="mFF-Dn-e5y" firstAttribute="bottom" secondItem="hav-wt-6rh" secondAttribute="bottom" constant="35" id="78d-3L-RXd"/>
+                            <constraint firstItem="GwU-ZI-52v" firstAttribute="height" secondItem="4Am-X5-Zfa" secondAttribute="height" id="AEt-do-UZJ"/>
+                            <constraint firstItem="hav-wt-6rh" firstAttribute="leading" secondItem="mFF-Dn-e5y" secondAttribute="leading" id="OaJ-nH-0e3"/>
+                            <constraint firstItem="mFF-Dn-e5y" firstAttribute="trailing" secondItem="GwU-ZI-52v" secondAttribute="trailing" id="Yv5-M4-KLn"/>
+                            <constraint firstItem="Ckf-k6-mJj" firstAttribute="top" secondItem="4Am-X5-Zfa" secondAttribute="top" constant="64" id="cq2-yE-m9K"/>
+                            <constraint firstItem="hav-wt-6rh" firstAttribute="trailing" secondItem="mFF-Dn-e5y" secondAttribute="trailing" id="eSz-5h-YLi"/>
+                            <constraint firstItem="GwU-ZI-52v" firstAttribute="top" secondItem="4Am-X5-Zfa" secondAttribute="top" id="gjy-Y9-kjK"/>
+                            <constraint firstItem="mFF-Dn-e5y" firstAttribute="trailing" secondItem="Ckf-k6-mJj" secondAttribute="trailing" constant="20" id="wwC-hX-F6m"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="localView" destination="GwU-ZI-52v" id="91D-4Z-pCy"/>
+                        <outlet property="remoteView" destination="Ckf-k6-mJj" id="t5A-9V-YiR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAF-KO-RxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-565.60000000000002" y="-774.06296851574223"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.png" width="60" height="60"/>
+        <image name="hang_up.png" width="65" height="65"/>
+        <image name="mute.png" width="60" height="60"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
