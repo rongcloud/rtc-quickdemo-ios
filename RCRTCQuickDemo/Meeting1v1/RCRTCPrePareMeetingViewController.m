@@ -10,6 +10,9 @@
 
 @interface RCRTCPrePareMeetingViewController ()
 
+/**
+ 房间ID输入框
+ */
 @property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
 
 @end
@@ -20,6 +23,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+
+/**
+ 加入会议
+ */
 - (IBAction)joinMeeting:(UIButton *)sender {
     
     if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0) {

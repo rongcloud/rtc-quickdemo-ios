@@ -7,17 +7,18 @@
 
 #import "RCRTCMeetingViewController.h"
 #import <RongRTCLib/RongRTCLib.h>
+#define kScreenWidth self.view.frame.size.width
 
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
 @interface RCRTCMeetingViewController () <RCRTCRoomEventDelegate>
-@property (weak, nonatomic) IBOutlet RCRTCRemoteVideoView *remoteView;
-@property (weak, nonatomic) IBOutlet RCRTCLocalVideoView *localView;
+@property (weak, nonatomic) IBOutlet RCRTCLocalVideoView *containerView;
+
+@property(nonatomic, strong) RCRTCLocalVideoView *localView;
+@property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
 @property(nonatomic, strong) RCRTCRoom *room;
 @property(nonatomic, strong) RCRTCEngine *engine;
-
-@property(nonatomic, assign) BOOL isFull;
 
 @end
 
@@ -34,13 +35,34 @@
     [self joinRoom];
 }
 
-- (void)initView{
-    self.navigationController.navigationBarHidden = YES;
-    self.localView.fillMode = RCRTCVideoFillModeAspectFill;
-    //添加点击手势,可切换大小视图
+// 添加本地采集预览界面
+- (void)setupLocalVideoView {
+    RCRTCLocalVideoView *localView = [[RCRTCLocalVideoView alloc] initWithFrame:self.view.bounds];
+    localView.fillMode = RCRTCVideoFillModeAspectFill;
+    [self.containerView addSubview:localView];
+    self.localView = localView;
+
+    //添加点击手势,可切换`a大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.localView addGestureRecognizer:tap];
-    self.remoteView.fillMode = RCRTCVideoFillModeAspectFill;
+}
+
+// 添加远端视频小窗口
+- (void)setupRemoteVideoView {
+    CGRect rect = CGRectMake(kScreenWidth - 120, 40, 100, 100 * 4 / 3);
+    _remoteView = [[RCRTCRemoteVideoView alloc] initWithFrame:rect];
+    _remoteView.fillMode = RCRTCVideoFillModeAspectFill;
+    [_remoteView setHidden:YES];
+    [self.containerView addSubview:_remoteView];
+}
+
+
+- (void)initView{
+    self.navigationController.navigationBarHidden = YES;
+
+    [self setupLocalVideoView];
+    [self setupRemoteVideoView];
+    
 }
 
 // 加入房间
@@ -68,23 +90,45 @@
                }];
 }
 
-- (void)viewDidLayoutSubviews{
-    NSLog(@"");
-}
+
 
 - (void)tapWithView:(UIGestureRecognizer *)ges {
-////    [CATransaction begin];
-////    [CATransaction setDisableActions:YES];
-//    CGRect frame = self.remoteView.frame;
-//    CGRect frame1 = self.localView.frame;
-//    self.remoteView.frame = CGRectMake(100, 100, 100, 100);
-//    self.localView.frame = frame;
-////    [CATransaction commit];
-//    self.isFull = !self.isFull;
-//
-////    [self viewDidLayoutSubviews];
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    CGRect frame = self.remoteView.frame;
+    self.remoteView.frame = self.localView.frame;
+    self.localView.frame = frame;
+    [CATransaction commit];
 
+    if (ges.view.frame.size.width >= kScreenWidth) {
+        [self.containerView bringSubviewToFront:self.remoteView];
+    } else {
+        [self.containerView bringSubviewToFront:self.localView];
+    }
 
+}
+- (IBAction)micMute:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    [self.engine.defaultAudioStream setMicrophoneDisable:sender.selected];
+}
+- (IBAction)changeCamera:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    [self.engine.defaultVideoStream switchCamera];
+}
+- (IBAction)clickHangup:(id)sender {
+    
+    // 取消本地发布
+    [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
+    }];
+    // 关闭摄像头采集
+    [self.engine.defaultVideoStream stopCapture];
+    [self.remoteView removeFromSuperview];
+    // 退出房间
+    [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
+        if (isSuccess && code == RCRTCCodeSuccess) {
+            NSLog(@"退出房间成功 code: %ld", (long) code);
+        }
+    }];
 }
 
 - (void)alertString:(NSString *)string {

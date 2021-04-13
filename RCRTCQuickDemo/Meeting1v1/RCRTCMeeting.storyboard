@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-gO-XaC">
-                                <rect key="frame" x="275.5" y="40" width="49" height="29"/>
+                                <rect key="frame" x="182.5" y="84" width="49" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yk7-Lw-opp">
-                                <rect key="frame" x="30" y="179" width="540" height="40"/>
+                                <rect key="frame" x="30" y="223" width="354" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dBH-WW-7V2"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvd-fO-l8z">
-                                <rect key="frame" x="30" y="269" width="540" height="45"/>
+                                <rect key="frame" x="30" y="313" width="354" height="45"/>
                                 <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="TqY-Q6-wMI"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入会议 ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yl-UF-aqs">
-                                <rect key="frame" x="30" y="129" width="540" height="20"/>
+                                <rect key="frame" x="30" y="173" width="354" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -82,25 +82,17 @@
         <!--Meeting View Controller-->
         <scene sceneID="wEf-PW-vka">
             <objects>
-                <viewController storyboardIdentifier="RCRTCMeetingViewController" autoresizesArchivedViewToFullSize="NO" id="pY0-Ax-EWp" customClass="RCRTCMeetingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RCRTCMeetingViewController" id="pY0-Ax-EWp" customClass="RCRTCMeetingViewController" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4Am-X5-Zfa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwU-ZI-52v" customClass="RCRTCLocalVideoView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ckf-k6-mJj" customClass="RCRTCRemoteVideoView">
-                                <rect key="frame" x="294" y="64" width="100" height="133"/>
-                                <color key="backgroundColor" red="0.65747684240000004" green="0.78333252669999998" blue="0.98042136430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="133" id="ZIW-LF-YfY"/>
-                                    <constraint firstAttribute="width" constant="100" id="kJX-2C-ShK"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hav-wt-6rh">
-                                <rect key="frame" x="0.0" y="796" width="414" height="65"/>
+                                <rect key="frame" x="0.0" y="762" width="414" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKt-xB-ejC">
                                         <rect key="frame" x="77" y="7.5" width="50" height="50"/>
@@ -109,6 +101,9 @@
                                             <constraint firstAttribute="height" constant="50" id="x0h-fG-EIf"/>
                                         </constraints>
                                         <state key="normal" image="mute.png"/>
+                                        <connections>
+                                            <action selector="micMute:" destination="pY0-Ax-EWp" eventType="touchUpInside" id="Upg-vh-rrt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-0H-Yex">
                                         <rect key="frame" x="177" y="2.5" width="60" height="60"/>
@@ -117,6 +112,9 @@
                                             <constraint firstAttribute="width" constant="60" id="yzZ-3k-Ilr"/>
                                         </constraints>
                                         <state key="normal" title=" " image="hang_up.png"/>
+                                        <connections>
+                                            <action selector="clickHangup:" destination="pY0-Ax-EWp" eventType="touchUpInside" id="b5C-I5-pkh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbB-Hz-awh">
                                         <rect key="frame" x="287" y="7.5" width="50" height="50"/>
@@ -125,6 +123,9 @@
                                             <constraint firstAttribute="height" constant="50" id="wqI-OO-osj"/>
                                         </constraints>
                                         <state key="normal" title=" " image="camera.png"/>
+                                        <connections>
+                                            <action selector="changeCamera:" destination="pY0-Ax-EWp" eventType="touchUpInside" id="gg8-Dt-PoS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,23 +143,17 @@
                         <viewLayoutGuide key="safeArea" id="mFF-Dn-e5y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GwU-ZI-52v" firstAttribute="width" secondItem="4Am-X5-Zfa" secondAttribute="width" id="0M8-Zx-mxi"/>
+                            <constraint firstAttribute="bottom" secondItem="GwU-ZI-52v" secondAttribute="bottom" id="0G5-nr-W57"/>
                             <constraint firstItem="mFF-Dn-e5y" firstAttribute="bottom" secondItem="hav-wt-6rh" secondAttribute="bottom" constant="35" id="78d-3L-RXd"/>
-                            <constraint firstItem="GwU-ZI-52v" firstAttribute="height" secondItem="4Am-X5-Zfa" secondAttribute="height" id="AEt-do-UZJ"/>
+                            <constraint firstItem="GwU-ZI-52v" firstAttribute="leading" secondItem="mFF-Dn-e5y" secondAttribute="leading" id="7Ly-uS-9Rv"/>
+                            <constraint firstItem="GwU-ZI-52v" firstAttribute="trailing" secondItem="mFF-Dn-e5y" secondAttribute="trailing" id="8Rt-l9-0Iq"/>
+                            <constraint firstItem="GwU-ZI-52v" firstAttribute="top" secondItem="4Am-X5-Zfa" secondAttribute="top" id="GeK-B2-wCF"/>
                             <constraint firstItem="hav-wt-6rh" firstAttribute="leading" secondItem="mFF-Dn-e5y" secondAttribute="leading" id="OaJ-nH-0e3"/>
-                            <constraint firstItem="mFF-Dn-e5y" firstAttribute="trailing" secondItem="GwU-ZI-52v" secondAttribute="trailing" id="Yv5-M4-KLn"/>
-                            <constraint firstItem="Ckf-k6-mJj" firstAttribute="top" secondItem="4Am-X5-Zfa" secondAttribute="top" constant="64" id="cq2-yE-m9K"/>
                             <constraint firstItem="hav-wt-6rh" firstAttribute="trailing" secondItem="mFF-Dn-e5y" secondAttribute="trailing" id="eSz-5h-YLi"/>
-                            <constraint firstItem="GwU-ZI-52v" firstAttribute="top" secondItem="4Am-X5-Zfa" secondAttribute="top" id="gjy-Y9-kjK"/>
-                            <constraint firstItem="mFF-Dn-e5y" firstAttribute="trailing" secondItem="Ckf-k6-mJj" secondAttribute="trailing" constant="20" id="wwC-hX-F6m"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="896"/>
                     <connections>
-                        <outlet property="localView" destination="GwU-ZI-52v" id="91D-4Z-pCy"/>
-                        <outlet property="remoteView" destination="Ckf-k6-mJj" id="t5A-9V-YiR"/>
+                        <outlet property="containerView" destination="GwU-ZI-52v" id="wbQ-I6-WYF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAF-KO-RxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
