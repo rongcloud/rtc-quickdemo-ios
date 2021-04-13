@@ -39,11 +39,7 @@
      */
     [RCRTCRequestToken requestToken:self.useridTextField.text name:self.useridTextField.text portraitUrl:nil completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
         
-        if (!isSuccess) {
-            NSLog(@"请求 token 失败");
-            return;
-        }
-        
+        if (!isSuccess) return;
         [self connectRongCloud:tokenString];
     }];
 }
@@ -58,7 +54,7 @@
     
     [[RCIM sharedRCIM] connectWithToken:token dbOpened:nil success:^(NSString *userId) {
         
-        NSLog(@"IM连接成功,用户ID：%@",userId);
+        NSLog(@"IM connect success,user ID : %@",userId);
         /**
          * 回调处于子线程，需要回调到主线程进行 UI 处理。
          */
@@ -68,7 +64,7 @@
         });
         
     } error:^(RCConnectErrorCode errorCode) {
-        NSLog(@"IM连接失败 %ld",(long)errorCode);
+        NSLog(@"IM connect failed, error code : %ld",(long)errorCode);
     }];
 }
 

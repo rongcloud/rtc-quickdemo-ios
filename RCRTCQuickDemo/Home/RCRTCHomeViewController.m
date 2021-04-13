@@ -26,8 +26,8 @@
 }
 
 - (void)initUI{
-    self.navigationItem.hidesBackButton = YES;
     
+    self.navigationItem.hidesBackButton = YES;
     self.currentUserLabel.text = [NSString stringWithFormat:@"UserID：%@",[RCIM sharedRCIM].currentUserInfo.userId];
 }
 

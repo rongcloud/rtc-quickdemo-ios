@@ -17,7 +17,7 @@ static NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getTo
 
 + (NSString *)getNonce{
     int randomNum = arc4random_uniform(RAND_MAX);
-    NSLog(@"生成的随机数为 %d",randomNum);
+    NSLog(@"randomNum : %d",randomNum);
     return [NSString stringWithFormat:@"%d",randomNum];
 }
 
@@ -25,7 +25,7 @@ static NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getTo
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
     NSInteger time = interval;
     NSString *timestamp = [NSString stringWithFormat:@"%zd",time];
-    NSLog(@"生成的时间戳为 %@",timestamp);
+    NSLog(@"timestamp : %@",timestamp);
     return timestamp;
 }
 
@@ -66,12 +66,12 @@ static NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getTo
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"Error: %@", error);
+            NSLog(@"request token failed, Error: %@", error);
             completionHandler(NO,nil);
         } else {
             NSError *__error = nil;
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&__error];
-            NSLog(@"result:%@", result);
+            NSLog(@"result : %@", result);
             
             if (result && result[@"token"]) {
                 completionHandler(YES,result[@"token"]);
