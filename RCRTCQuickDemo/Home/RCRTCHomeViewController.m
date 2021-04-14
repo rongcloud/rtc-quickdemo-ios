@@ -8,9 +8,10 @@
 #import "RCRTCHomeViewController.h"
 #import <RongIMKit/RCIM.h>
 
-#import "RCRTCPrePareMeetingViewController.h"
+#import "RCRTCPrepareMeetingViewController.h"
+#import "UIViewController+AlertView.h"
 
-@interface RCRTCHomeViewController ()
+@interface RCRTCHomeViewController () <RCIMConnectionStatusDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *currentUserLabel;
 
@@ -23,6 +24,8 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initUI];
+    
+    [self setRongCloudDelegate];
 }
 
 - (void)initUI{
@@ -31,13 +34,17 @@
     self.currentUserLabel.text = [NSString stringWithFormat:@"UserID：%@",[RCIM sharedRCIM].currentUserInfo.userId];
 }
 
+- (void)setRongCloudDelegate{
+    [RCIM sharedRCIM].connectionStatusDelegate = self;
+}
+
 /**
  * 点击会议按钮
  */
 - (IBAction)clickMeetingBtn:(UIButton *)sender {
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RCRTCMeeting" bundle:nil];
-    RCRTCPrePareMeetingViewController *prePareMeetingVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCPrePareMeetingViewController"];
+    RCRTCPrepareMeetingViewController *prePareMeetingVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCPrePareMeetingViewController"];
     [self.navigationController pushViewController:prePareMeetingVC animated:YES];
 }
 
@@ -48,6 +55,17 @@
     
     [[RCIM sharedRCIM] logout];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status{
+ 
+    if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
+ 
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication].keyWindow.rootViewController showAlertView:@"当前用户在其他设备登陆"];
+        });
+    }
 }
 
 /*

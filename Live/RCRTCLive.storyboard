@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Prepare Live View Controller-->
+        <scene sceneID="nir-xS-Hc7">
+            <objects>
+                <viewController id="nN8-l9-ovc" customClass="RCRTCPrepareLiveViewController" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dse-Cf-MhH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDl-jO-Orh">
+                                <rect key="frame" x="182.5" y="84" width="49" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sqt-r2-YMg">
+                                <rect key="frame" x="30" y="223" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="r8v-W9-5c9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-Gx-cSc">
+                                <rect key="frame" x="30" y="313" width="167" height="45"/>
+                                <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="6Vc-dA-RBJ"/>
+                                </constraints>
+                                <state key="normal" title="开始直播">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入房间 ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-p8-bcU">
+                                <rect key="frame" x="30" y="173" width="354" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-GK-bKF">
+                                <rect key="frame" x="217" y="313" width="167" height="45"/>
+                                <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="t5l-PK-ME3"/>
+                                </constraints>
+                                <state key="normal" title="观看直播">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cVh-Cy-vVy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xPO-p8-bcU" firstAttribute="leading" secondItem="cVh-Cy-vVy" secondAttribute="leading" constant="30" id="74E-Co-Uj1"/>
+                            <constraint firstItem="Sqt-r2-YMg" firstAttribute="top" secondItem="xPO-p8-bcU" secondAttribute="bottom" constant="30" id="9D7-le-idF"/>
+                            <constraint firstItem="b5K-Gx-cSc" firstAttribute="top" secondItem="Sqt-r2-YMg" secondAttribute="bottom" constant="50" id="ALx-tr-imP"/>
+                            <constraint firstItem="b5K-Gx-cSc" firstAttribute="leading" secondItem="cVh-Cy-vVy" secondAttribute="leading" constant="30" id="GRo-nE-uxS"/>
+                            <constraint firstItem="Sqt-r2-YMg" firstAttribute="leading" secondItem="cVh-Cy-vVy" secondAttribute="leading" constant="30" id="IeC-7B-2s8"/>
+                            <constraint firstItem="NqY-GK-bKF" firstAttribute="centerY" secondItem="b5K-Gx-cSc" secondAttribute="centerY" id="Ign-F6-ehM"/>
+                            <constraint firstItem="NqY-GK-bKF" firstAttribute="height" secondItem="b5K-Gx-cSc" secondAttribute="height" id="MwW-dX-D0l"/>
+                            <constraint firstItem="NqY-GK-bKF" firstAttribute="leading" secondItem="b5K-Gx-cSc" secondAttribute="trailing" constant="20" id="Nx2-cY-s7h"/>
+                            <constraint firstItem="cVh-Cy-vVy" firstAttribute="trailing" secondItem="Sqt-r2-YMg" secondAttribute="trailing" constant="30" id="PS0-sQ-zIl"/>
+                            <constraint firstItem="NqY-GK-bKF" firstAttribute="width" secondItem="b5K-Gx-cSc" secondAttribute="width" id="ZoU-pF-rfe"/>
+                            <constraint firstItem="cVh-Cy-vVy" firstAttribute="trailing" secondItem="NqY-GK-bKF" secondAttribute="trailing" constant="30" id="b30-vp-j1D"/>
+                            <constraint firstItem="kDl-jO-Orh" firstAttribute="top" secondItem="cVh-Cy-vVy" secondAttribute="top" constant="40" id="sSl-qf-f6s"/>
+                            <constraint firstItem="kDl-jO-Orh" firstAttribute="centerX" secondItem="cVh-Cy-vVy" secondAttribute="centerX" id="xEi-8p-3JC"/>
+                            <constraint firstItem="cVh-Cy-vVy" firstAttribute="trailing" secondItem="xPO-p8-bcU" secondAttribute="trailing" constant="30" id="yEa-cv-knR"/>
+                            <constraint firstItem="xPO-p8-bcU" firstAttribute="top" secondItem="kDl-jO-Orh" secondAttribute="bottom" constant="60" id="yhW-hP-Ovy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b6D-WJ-0jT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-262.31884057971018" y="79.6875"/>
+        </scene>
+        <!--Live View Controller-->
+        <scene sceneID="0AW-qZ-651">
+            <objects>
+                <viewController id="X66-9M-lVh" customClass="RCRTCLiveViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6O5-ZE-D7I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0TQ-DJ-Azb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bb4-a8-86b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="404" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

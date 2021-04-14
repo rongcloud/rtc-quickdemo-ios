@@ -11,6 +11,7 @@
 
 #define kScreenWidth self.view.frame.size.width
 #define kScreenHeight self.view.frame.size.height
+
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
@@ -48,7 +49,18 @@
     [self joinRoom];
 }
 
-// 添加本地采集预览界面
+
+- (void)initView{
+    
+    self.navigationController.navigationBarHidden = YES;
+
+    [self setupLocalVideoView];
+    [self setupRemoteVideoView];
+}
+
+/**
+ * 添加本地采集预览界面
+ */
 - (void)setupLocalVideoView {
     self.localView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight/2)];
     self.localView.fillMode = RCRTCVideoFillModeAspectFill;
@@ -59,7 +71,9 @@
     [self.localView addGestureRecognizer:tap];
 }
 
-// 添加远端视频小窗口
+/**
+ * 添加远端视频小窗口
+ */
 - (void)setupRemoteVideoView {
     self.remoteView = [[RCRTCRemoteVideoView alloc] initWithFrame:CGRectMake(0, kScreenHeight/2, kScreenWidth, kScreenHeight/2)];
     self.remoteView.fillMode = RCRTCVideoFillModeAspectFill;
@@ -71,15 +85,9 @@
 }
 
 
-- (void)initView{
-    
-    self.navigationController.navigationBarHidden = YES;
-
-    [self setupLocalVideoView];
-    [self setupRemoteVideoView];
-}
-
-// 加入房间
+/**
+ * 加入房间
+ */
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
     videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
@@ -190,6 +198,7 @@
 
 
 #pragma mark - RCRTCRoomEventDelegate
+
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }

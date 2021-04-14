@@ -1,14 +1,14 @@
 //
-//  RCRTCPrePareMeetingViewController.m
+//  RCRTCPrepareMeetingViewController.m
 //  RCRTCQuickDemo
 //
 //  Created by yifan on 2021/4/8.
 //
 
-#import "RCRTCPrePareMeetingViewController.h"
+#import "RCRTCPrepareMeetingViewController.h"
 #import "RCRTCMeetingViewController.h"
 
-@interface RCRTCPrePareMeetingViewController ()
+@interface RCRTCPrepareMeetingViewController ()
 
 /**
  房间ID输入框
@@ -17,11 +17,16 @@
 
 @end
 
-@implementation RCRTCPrePareMeetingViewController
+@implementation RCRTCPrepareMeetingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 
@@ -34,6 +39,7 @@
         return;
     }
     
+    [self.roomIdTextField resignFirstResponder];
     RCRTCMeetingViewController *meetingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCMeetingViewController"];
     meetingVC.roomId = self.roomIdTextField.text;
     [self.navigationController pushViewController:meetingVC animated:YES];

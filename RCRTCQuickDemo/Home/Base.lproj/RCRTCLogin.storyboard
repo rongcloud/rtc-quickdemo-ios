@@ -145,7 +145,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.65747684240000004" green="0.78333252669999998" blue="0.98042136430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.6588235294117647" green="0.81568627450980391" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="WpT-pd-xlf" secondAttribute="bottom" constant="20" id="2eu-It-Icf"/>
                                     <constraint firstAttribute="bottom" secondItem="WZd-K7-TgN" secondAttribute="bottom" constant="8" id="8N3-DU-Tn6"/>
@@ -202,7 +202,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-sM-SvX">
                                 <rect key="frame" x="100" y="494" width="214" height="45"/>
-                                <color key="backgroundColor" red="0.88632981229999996" green="0.5408684735" blue="0.61313057540000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.58039215686274503" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="LXt-mg-NtQ"/>
                                 </constraints>
@@ -317,6 +317,9 @@
                             <constraint firstItem="ofU-sM-SvX" firstAttribute="top" secondItem="dil-wb-HpT" secondAttribute="bottom" constant="60" id="zoV-Jb-NMv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentUserLabel" destination="j7m-Xg-Cga" id="Nyf-JJ-84P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNX-xk-X1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
