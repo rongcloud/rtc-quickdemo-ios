@@ -14,6 +14,7 @@
 		DD24DF6D261EFC1700DC4665 /* RCRTCRequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF6C261EFC1700DC4665 /* RCRTCRequestToken.m */; };
 		DD24DFE426202F5100DC4665 /* RCRTCMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DFE226202F5100DC4665 /* RCRTCMeetingViewController.m */; };
 		DD24DFF0262045C000DC4665 /* RCRTCMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD24DFEF262045C000DC4665 /* RCRTCMeeting.storyboard */; };
+		DD4C6CF32626C70000408C19 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */; };
 		DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD81211B261DC26B00AF7D35 /* AppDelegate.m */; };
 		DD812125261DC26B00AF7D35 /* RCRTCLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD812123261DC26B00AF7D35 /* RCRTCLogin.storyboard */; };
 		DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD812126261DC26F00AF7D35 /* Assets.xcassets */; };
@@ -36,6 +37,8 @@
 		DD24DFE126202F5100DC4665 /* RCRTCMeetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCMeetingViewController.h; sourceTree = "<group>"; };
 		DD24DFE226202F5100DC4665 /* RCRTCMeetingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCMeetingViewController.m; sourceTree = "<group>"; };
 		DD24DFEF262045C000DC4665 /* RCRTCMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RCRTCMeeting.storyboard; sourceTree = "<group>"; };
+		DD4C6CF12626C70000408C19 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
+		DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
 		DD812117261DC26B00AF7D35 /* RCRTCQuickDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCRTCQuickDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD81211A261DC26B00AF7D35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DD81211B261DC26B00AF7D35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -100,9 +103,29 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		DD4C6CEF2626C68900408C19 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				DD4C6CF02626C6D600408C19 /* Category */,
+				DD24DF6A261EFBF300DC4665 /* Request */,
+				DD24DF32261E9C0100DC4665 /* Constant */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		DD4C6CF02626C6D600408C19 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				DD4C6CF12626C70000408C19 /* UIViewController+AlertView.h */,
+				DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		DD81210E261DC26B00AF7D35 = {
 			isa = PBXGroup;
 			children = (
+				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
 				DD812118261DC26B00AF7D35 /* Products */,
 				AE23833E4788BB5B11B8782D /* Pods */,
@@ -124,9 +147,7 @@
 				DD81211A261DC26B00AF7D35 /* AppDelegate.h */,
 				DD81211B261DC26B00AF7D35 /* AppDelegate.m */,
 				DD24DF56261EEB4600DC4665 /* Home */,
-				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
-				DD24DF6A261EFBF300DC4665 /* Request */,
-				DD24DF32261E9C0100DC4665 /* Constant */,
+				DD4C6CEF2626C68900408C19 /* Tool */,
 				DD812126261DC26F00AF7D35 /* Assets.xcassets */,
 				DD812128261DC26F00AF7D35 /* LaunchScreen.storyboard */,
 				DD81212B261DC26F00AF7D35 /* Info.plist */,
@@ -289,6 +310,7 @@
 			files = (
 				DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */,
 				DD24DF53261EEB3900DC4665 /* RCRTCPrePareMeetingViewController.m in Sources */,
+				DD4C6CF32626C70000408C19 /* UIViewController+AlertView.m in Sources */,
 				DD812138261DC32900AF7D35 /* RCRTCLoginViewController.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* RCRTCHomeViewController.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */,

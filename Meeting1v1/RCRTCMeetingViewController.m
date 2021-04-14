@@ -7,16 +7,20 @@
 
 #import "RCRTCMeetingViewController.h"
 #import <RongRTCLib/RongRTCLib.h>
+#import "UIViewController+AlertView.h"
+
 #define kScreenWidth self.view.frame.size.width
 #define kScreenHeight self.view.frame.size.height
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
 @interface RCRTCMeetingViewController () <RCRTCRoomEventDelegate>
+
 @property (weak, nonatomic) IBOutlet RCRTCLocalVideoView *containerView;
 
 @property(nonatomic, strong) RCRTCLocalVideoView *localView;
 @property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
+
 @property(nonatomic, strong) RCRTCRoom *room;
 @property(nonatomic, strong) RCRTCEngine *engine;
 
@@ -26,13 +30,21 @@
 
 @implementation RCRTCMeetingViewController
 
+- (RCRTCEngine *)engine {
+    if (!_engine) {
+        _engine = [RCRTCEngine sharedInstance];
+        [_engine enableSpeaker:YES];
+    }
+    return _engine;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
+
     NSLog(@"room id %@",self.roomId);
+    // ① 初始化 UI 视图
     [self initView];
+    // ② 加入房间
     [self joinRoom];
 }
 
@@ -49,9 +61,10 @@
 
 // 添加远端视频小窗口
 - (void)setupRemoteVideoView {
-    self.remoteView = [[RCRTCRemoteVideoView alloc] initWithFrame:CGRectMake(0, kScreenHeight/2, kScreenWidth, kScreenWidth/2)];
+    self.remoteView = [[RCRTCRemoteVideoView alloc] initWithFrame:CGRectMake(0, kScreenHeight/2, kScreenWidth, kScreenHeight/2)];
     self.remoteView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:self.remoteView];
+    
     //添加点击手势,可切换`a大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.remoteView addGestureRecognizer:tap];
@@ -59,11 +72,11 @@
 
 
 - (void)initView{
+    
     self.navigationController.navigationBarHidden = YES;
 
     [self setupLocalVideoView];
     [self setupRemoteVideoView];
-    
 }
 
 // 加入房间
@@ -86,13 +99,14 @@
                    if (code == RCRTCCodeSuccess) {
                        [self afterJoinRoom:room];
                    } else {
-                       [self alertString:@"加入房间失败"];
+                       [self showAlertView:@"加入房间失败"];
                    }
                }];
 }
 
-
-
+/**
+ * 点击视图进行大小窗口切换
+ */
 - (void)tapWithView:(UIGestureRecognizer *)ges {
     self.isFullScreen = !self.isFullScreen;
 
@@ -104,7 +118,7 @@
         if (self.isFullScreen) {
             self.remoteView.frame = frame;
         }else{
-            self.remoteView.frame = CGRectMake(0, kScreenHeight/2, kScreenWidth, kScreenWidth/2);
+            self.remoteView.frame = CGRectMake(0, kScreenHeight/2, kScreenWidth, kScreenHeight/2);
         }
     } else if ([ges.view isKindOfClass:[RCRTCLocalVideoView class]]){
         if (self.isFullScreen) {
@@ -121,6 +135,7 @@
         [self.containerView bringSubviewToFront:ges.view];
     }
 }
+
 
 - (IBAction)micMute:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -145,18 +160,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];
-}
-
-- (void)alertString:(NSString *)string {
-    if (!string.length) {
-        return;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController *alert =
-                [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:alert animated:YES completion:nil];
-    });
 }
 
 - (void)afterJoinRoom:(RCRTCRoom *)room {
@@ -212,13 +215,7 @@
     }
 }
 
-- (RCRTCEngine *)engine {
-    if (!_engine) {
-        _engine = [RCRTCEngine sharedInstance];
-        [_engine enableSpeaker:YES];
-    }
-    return _engine;
-}
+
 
 /*
 #pragma mark - Navigation
