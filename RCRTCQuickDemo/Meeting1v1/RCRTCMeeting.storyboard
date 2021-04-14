@@ -101,6 +101,7 @@
                                             <constraint firstAttribute="height" constant="50" id="x0h-fG-EIf"/>
                                         </constraints>
                                         <state key="normal" image="mute.png"/>
+                                        <state key="selected" image="mute_hover.png"/>
                                         <connections>
                                             <action selector="micMute:" destination="pY0-Ax-EWp" eventType="touchUpInside" id="Upg-vh-rrt"/>
                                         </connections>
@@ -123,6 +124,7 @@
                                             <constraint firstAttribute="height" constant="50" id="wqI-OO-osj"/>
                                         </constraints>
                                         <state key="normal" title=" " image="camera.png"/>
+                                        <state key="selected" image="camera_hover"/>
                                         <connections>
                                             <action selector="changeCamera:" destination="pY0-Ax-EWp" eventType="touchUpInside" id="gg8-Dt-PoS"/>
                                         </connections>
@@ -163,8 +165,10 @@
     </scenes>
     <resources>
         <image name="camera.png" width="60" height="60"/>
+        <image name="camera_hover" width="60" height="60"/>
         <image name="hang_up.png" width="65" height="65"/>
         <image name="mute.png" width="60" height="60"/>
+        <image name="mute_hover.png" width="60" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
