@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187F9E302628504A002E5288 /* RCRTCMixStreamTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2A2628504A002E5288 /* RCRTCMixStreamTool.m */; };
+		187F9E312628504A002E5288 /* RCRTCVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* RCRTCVideoLayoutTool.m */; };
+		187F9E322628504A002E5288 /* RCRTCStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* RCRTCStreamVideo.m */; };
+		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* RCRTCConstant.m */; };
 		DD24DF53261EEB3900DC4665 /* RCRTCPrepareMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF51261EEB3900DC4665 /* RCRTCPrepareMeetingViewController.m */; };
@@ -29,6 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		187F9E2A2628504A002E5288 /* RCRTCMixStreamTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCMixStreamTool.m; sourceTree = "<group>"; };
+		187F9E2B2628504A002E5288 /* RCRTCVideoLayoutTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCVideoLayoutTool.m; sourceTree = "<group>"; };
+		187F9E2C2628504A002E5288 /* RCRTCMixStreamTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCMixStreamTool.h; sourceTree = "<group>"; };
+		187F9E2D2628504A002E5288 /* RCRTCStreamVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCStreamVideo.m; sourceTree = "<group>"; };
+		187F9E2E2628504A002E5288 /* RCRTCVideoLayoutTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCVideoLayoutTool.h; sourceTree = "<group>"; };
+		187F9E2F2628504A002E5288 /* RCRTCStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCStreamVideo.h; sourceTree = "<group>"; };
+		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
+		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* RCRTCConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCConstant.h; sourceTree = "<group>"; };
@@ -129,6 +141,8 @@
 		DD4C6CF02626C6D600408C19 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */,
+				187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */,
 				DD4C6CF12626C70000408C19 /* UIViewController+AlertView.h */,
 				DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */,
 			);
@@ -186,6 +200,12 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				187F9E2C2628504A002E5288 /* RCRTCMixStreamTool.h */,
+				187F9E2A2628504A002E5288 /* RCRTCMixStreamTool.m */,
+				187F9E2F2628504A002E5288 /* RCRTCStreamVideo.h */,
+				187F9E2D2628504A002E5288 /* RCRTCStreamVideo.m */,
+				187F9E2E2628504A002E5288 /* RCRTCVideoLayoutTool.h */,
+				187F9E2B2628504A002E5288 /* RCRTCVideoLayoutTool.m */,
 				DDEC583526270E810067D692 /* RCRTCPrepareLiveViewController.h */,
 				DDEC583626270E810067D692 /* RCRTCPrepareLiveViewController.m */,
 				DDEC583A26270ECA0067D692 /* RCRTCLiveViewController.h */,
@@ -354,11 +374,15 @@
 				DD812138261DC32900AF7D35 /* RCRTCLoginViewController.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* RCRTCHomeViewController.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */,
+				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RCRTCRequestToken.m in Sources */,
+				187F9E312628504A002E5288 /* RCRTCVideoLayoutTool.m in Sources */,
 				DD24DFE426202F5100DC4665 /* RCRTCMeetingViewController.m in Sources */,
 				DDEC583C26270ECA0067D692 /* RCRTCLiveViewController.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
+				187F9E322628504A002E5288 /* RCRTCStreamVideo.m in Sources */,
 				DDEC58472627EC120067D692 /* RCRTCCallLibViewController.m in Sources */,
+				187F9E302628504A002E5288 /* RCRTCMixStreamTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
