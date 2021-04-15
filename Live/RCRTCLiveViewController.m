@@ -53,6 +53,13 @@ RCRTCStatusReportDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setRoleType];
+    self.funcBtns = @[
+        self.closeLiveBtn,
+        self.connectHostBtn,
+        self.closeCamera,
+        self.closeMicBtn,
+        self.streamLayoutBtn,
+        self.switchStreamMode];
 }
 #pragma mark - setter & getter
 - (RCRTCEngine *)engine{
@@ -87,6 +94,7 @@ RCRTCStatusReportDelegate>
             self.title = @"直播 Demo-主播端";
             [self disableClickWith:@[self.connectHostBtn]];
             [self.engine enableSpeaker:NO];
+            //开直播
             [self startLiveWithState];
             break;
         case RCRTCLiveRoleTypeAudience:
@@ -97,6 +105,7 @@ RCRTCStatusReportDelegate>
                                      self.streamLayoutBtn,
                                      self.switchStreamMode]];
             [self.engine enableSpeaker:YES];
+            [self watchLiveWithState];
             break;;
         default:
             break;
@@ -104,25 +113,28 @@ RCRTCStatusReportDelegate>
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
-- (void)viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    [UIApplication sharedApplication].idleTimerDisabled = NO;
+
+//    [self cleanRemoteContainer];
+//    [self exitRoom];//退出房间
+    
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
+
+
 
 #pragma mark - button func
 
 - (IBAction)closeLiveAction:(UIButton *)sender{
-    
-//    if (!self.isLogin) return;
-//
-//    NSLog(@"%@",sender.titleLabel.text);
-//    sender.selected = !sender.selected;
-//    if ([self.delegate respondsToSelector:@selector(startLiveWithState:)]) {
-//        self.roleType = (sender.selected ? RCRTCRoleTypeHost : RCRTCRoleTypeUnknown);
-//        [self.delegate startLiveWithState:sender.selected];
-//    }
+     
+    sender.selected = !sender.selected;
+
+    self.liveRoleType = (sender.selected ?RCRTCLiveRoleTypeAudience : RCRTCLiveRoleTypeBroadcaster);
+        [self startLiveWithState];
+
 }
 
 - (IBAction)watchLiveAction:(UIButton *)sender{
@@ -135,12 +147,9 @@ RCRTCStatusReportDelegate>
 //    }
 }
 
-//上麦
+//上麦 下麦
 - (IBAction)connectHostAction:(UIButton *)sender {
-    
-    if (self.liveRoleType != RCRTCLiveRoleTypeAudience) return;
-    
-   
+       
     sender.selected = !sender.selected;
     
     if (sender.selected) {
@@ -152,74 +161,65 @@ RCRTCStatusReportDelegate>
                                  self.streamLayoutBtn,
                                  self.switchStreamMode]];
     }
-//    if ([self.delegate respondsToSelector:@selector(connectHostWithState:)]) {
-//        [self.delegate connectHostWithState:sender.selected];
-//    }
+    
+    [self connectHostWithState:sender.selected];
+   
 }
 
 //关闭摄像头
 - (IBAction)closeCameraAction:(UIButton *)sender{
     
-//    if (self.roleType == RCRTCRoleTypeUnknown) return;
-//
-//    sender.selected = !sender.selected;
-//    NSLog(@"%@",sender.titleLabel.text);
-//    if ([self.delegate respondsToSelector:@selector(cameraEnable:)]) {
-//        [self.delegate cameraEnable:!sender.selected];
-//    }
+    if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
+    
+    sender.selected = !sender.selected;
+    NSLog(@"%@",sender.titleLabel.text);
+    [self cameraEnable:!sender.selected];
+    
 }
 
 //关闭麦克风
 - (IBAction)closeMicAction:(UIButton *)sender{
-//
-//    if (self.roleType == RCRTCRoleTypeUnknown) return;
-//
-//    sender.selected = !sender.selected;
-//    NSLog(@"%@",sender.titleLabel.text);
-//    if ([self.delegate respondsToSelector:@selector(micDisable:)]) {
-//        [self.delegate micDisable:sender.selected];
-//    }
+    
+    sender.selected = !sender.selected;
+    if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
+    [self micDisable:sender.selected];
+
 }
 //自定义布局
 - (IBAction)streamLayutAction:(UIButton *)sender{
     
-//    if (self.roleType == RCRTCRoleTypeUnknown) return;
-//
-//    NSLog(@"%@",sender.titleLabel.text);
-//    if ([self.delegate respondsToSelector:@selector(streamLayout:)]) {
-//        sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
-//        [self.delegate streamLayout:(RCRTCMixLayoutMode)sender.tag];
-//        switch (sender.tag) {
-//            case 1:
-//                [sender setTitle:@"自定义布局" forState:0];
-//                break;
-//            case 2:
-//                [sender setTitle:@"悬浮布局" forState:0];
-//                break;
-//            case 3:
-//                [sender setTitle:@"自适应布局" forState:0];
-//                break;
-//            default:
-//                break;
-//        }
-//    }
+    if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
+
+    NSLog(@"%@",sender.titleLabel.text);
+   
+        sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
+        [self streamLayout:(RCRTCMixLayoutMode)sender.tag];
+        switch (sender.tag) {
+            case 1:
+                [sender setTitle:@"自定义布局" forState:0];
+                break;
+            case 2:
+                [sender setTitle:@"悬浮布局" forState:0];
+                break;
+            case 3:
+                [sender setTitle:@"自适应布局" forState:0];
+                break;
+            default:
+                break;
+    }
 }
 
 //切换摄像头
 
 - (IBAction)switchStreamAction:(UIButton *)sender{
     
-//    if (self.roleType == RCRTCRoleTypeUnknown) return;
-//
-//    sender.selected = !sender.selected;
-//    NSLog(@"%@",sender.titleLabel.text);
-//
-//    if ([self.delegate respondsToSelector:@selector(switchCamera)]) {
-//        [self.delegate switchCamera];
-//    }
-//    if ([self.delegate respondsToSelector:@selector(subscribeType:)]) {
-//        [self.delegate subscribeType:sender.isSelected];
-//    }
+    if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
+
+    sender.selected = !sender.selected;
+    NSLog(@"%@",sender.titleLabel.text);
+    [self switchCamera];
+    
+    [self subscribeType:sender.isSelected];
 }
 
 
@@ -300,17 +300,16 @@ RCRTCStatusReportDelegate>
         [self setupLocalVideoView];
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
     }else{
-//        [self cleanRemoteContainer];
-//        [self exitRoom];//退出房间
-        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+        [self cleanRemoteContainer];
+        [self exitRoom];//退出房间
     }
 }
 
 //观看直播/结束观看
-- (void)watchLiveWithState:(BOOL)isSelected{
+- (void)watchLiveWithState{
 //    self.roleType = (isSelected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
 //    if (isSelected) {
-//        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
 //    }else{
 //        [self cleanRemoteContainer];
 //        [self exitRoom];
@@ -319,10 +318,12 @@ RCRTCStatusReportDelegate>
 //观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect{
     self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
+    
     //先清理视图
     [self cleanRemoteContainer];
     //退出房间
     [self exitRoom];
+
     if (isConnect) {
         //上麦
         [self setupLocalVideoView];
