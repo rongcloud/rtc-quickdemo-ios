@@ -9,6 +9,7 @@
 #import <RongIMKit/RCIM.h>
 
 #import "RCRTCPrepareMeetingViewController.h"
+#import "RCRTCPrepareLiveViewController.h"
 #import "UIViewController+AlertView.h"
 
 @interface RCRTCHomeViewController () <RCIMConnectionStatusDelegate>
@@ -47,6 +48,13 @@
     RCRTCPrepareMeetingViewController *prePareMeetingVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCPrePareMeetingViewController"];
     [self.navigationController pushViewController:prePareMeetingVC animated:YES];
 }
+
+- (IBAction)clickLiveBtn:(UIButton *)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RCRTCLive" bundle:nil];
+    RCRTCPrepareLiveViewController *prePareLiveVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCPrepareLiveViewController"];
+    [self.navigationController pushViewController:prePareLiveVC animated:YES];
+}
+
 
 /**
  * 注销当前账户

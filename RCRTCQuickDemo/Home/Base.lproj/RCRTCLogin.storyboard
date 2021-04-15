@@ -123,7 +123,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wI4-ed-iQX">
                                 <rect key="frame" x="30" y="204" width="167" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pua-RQ-5nD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议 1v1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pua-RQ-5nD">
                                         <rect key="frame" x="10" y="20" width="147" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="dMb-KT-DFw"/>
@@ -139,7 +139,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZd-K7-TgN">
-                                        <rect key="frame" x="6" y="8" width="153" height="84"/>
+                                        <rect key="frame" x="8" y="8" width="151" height="84"/>
                                         <connections>
                                             <action selector="clickMeetingBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="04r-Zq-dw4"/>
                                         </connections>
@@ -155,7 +155,7 @@
                                     <constraint firstAttribute="trailing" secondItem="WpT-pd-xlf" secondAttribute="trailing" constant="10" id="ceE-Px-FRM"/>
                                     <constraint firstAttribute="trailing" secondItem="pua-RQ-5nD" secondAttribute="trailing" constant="10" id="dHw-11-lIe"/>
                                     <constraint firstAttribute="height" constant="100" id="gUJ-K9-lvw"/>
-                                    <constraint firstItem="WZd-K7-TgN" firstAttribute="leading" secondItem="wI4-ed-iQX" secondAttribute="leading" constant="6" id="jph-yC-Vpy"/>
+                                    <constraint firstItem="WZd-K7-TgN" firstAttribute="leading" secondItem="wI4-ed-iQX" secondAttribute="leading" constant="8" id="jph-yC-Vpy"/>
                                     <constraint firstItem="pua-RQ-5nD" firstAttribute="leading" secondItem="wI4-ed-iQX" secondAttribute="leading" constant="10" id="q7c-Yp-Wd2"/>
                                     <constraint firstAttribute="trailing" secondItem="WZd-K7-TgN" secondAttribute="trailing" constant="8" id="r7q-q1-k5q"/>
                                     <constraint firstItem="WpT-pd-xlf" firstAttribute="top" secondItem="pua-RQ-5nD" secondAttribute="bottom" constant="10" id="tqK-Rc-Ggw"/>
@@ -168,7 +168,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkE-JL-GQG">
                                 <rect key="frame" x="217" y="204" width="167" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实时音视频" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hug-tC-5Ul">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hug-tC-5Ul">
                                         <rect key="frame" x="10" y="20" width="147" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="0eQ-DL-haU"/>
@@ -183,17 +183,28 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tls-kh-XQe">
+                                        <rect key="frame" x="8" y="8" width="151" height="84"/>
+                                        <connections>
+                                            <action selector="clickLiveBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="QBh-W9-QL5"/>
+                                            <action selector="clickMeetingBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="In1-PH-eJv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.65747684240000004" green="0.78333252669999998" blue="0.98042136430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="w9b-IP-NWt" firstAttribute="top" secondItem="hug-tC-5Ul" secondAttribute="bottom" constant="10" id="1pb-ff-gAi"/>
                                     <constraint firstItem="hug-tC-5Ul" firstAttribute="top" secondItem="SkE-JL-GQG" secondAttribute="top" constant="20" id="9cM-QV-Pec"/>
                                     <constraint firstAttribute="trailing" secondItem="w9b-IP-NWt" secondAttribute="trailing" constant="10" id="EQT-qk-zP0"/>
+                                    <constraint firstItem="tls-kh-XQe" firstAttribute="leading" secondItem="SkE-JL-GQG" secondAttribute="leading" constant="8" id="GD0-0i-uCe"/>
                                     <constraint firstAttribute="trailing" secondItem="hug-tC-5Ul" secondAttribute="trailing" constant="10" id="MbL-05-C0Q"/>
                                     <constraint firstAttribute="bottom" secondItem="w9b-IP-NWt" secondAttribute="bottom" constant="20" id="P0A-tJ-G1I"/>
                                     <constraint firstAttribute="height" constant="100" id="RVc-qD-ZrS"/>
                                     <constraint firstItem="hug-tC-5Ul" firstAttribute="leading" secondItem="SkE-JL-GQG" secondAttribute="leading" constant="10" id="e1s-eS-CvT"/>
+                                    <constraint firstItem="tls-kh-XQe" firstAttribute="top" secondItem="SkE-JL-GQG" secondAttribute="top" constant="8" id="h31-Od-Gv3"/>
                                     <constraint firstItem="w9b-IP-NWt" firstAttribute="leading" secondItem="SkE-JL-GQG" secondAttribute="leading" constant="10" id="jMf-ee-1jh"/>
+                                    <constraint firstAttribute="bottom" secondItem="tls-kh-XQe" secondAttribute="bottom" constant="8" id="kdS-ac-8lG"/>
+                                    <constraint firstAttribute="trailing" secondItem="tls-kh-XQe" secondAttribute="trailing" constant="8" id="qSl-jK-tCl"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
