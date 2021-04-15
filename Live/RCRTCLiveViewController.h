@@ -6,10 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RongRTCLib/RongRTCLib.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RCRTCLiveViewController : UIViewController
+
+/**
+ * 加入的房间 ID
+ */
+@property(nonatomic, strong) NSString *roomId;
+
+@property(nonatomic, assign) RCRTCLiveRoleType liveRoleType;
 
 @end
 

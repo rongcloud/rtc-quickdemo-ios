@@ -12,7 +12,7 @@
         <!--Prepare Live View Controller-->
         <scene sceneID="nir-xS-Hc7">
             <objects>
-                <viewController id="nN8-l9-ovc" customClass="RCRTCPrepareLiveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RCRTCPrepareLiveViewController" id="nN8-l9-ovc" customClass="RCRTCPrepareLiveViewController" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dse-Cf-MhH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +44,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startLive:" destination="nN8-l9-ovc" eventType="touchUpInside" id="2nY-3t-Ssq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入房间 ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-p8-bcU">
                                 <rect key="frame" x="30" y="173" width="354" height="20"/>
@@ -64,6 +67,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="watchLive:" destination="nN8-l9-ovc" eventType="touchUpInside" id="tCh-Pc-gAr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cVh-Cy-vVy"/>
@@ -86,6 +92,9 @@
                             <constraint firstItem="xPO-p8-bcU" firstAttribute="top" secondItem="kDl-jO-Orh" secondAttribute="bottom" constant="60" id="yhW-hP-Ovy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="roomIdTextField" destination="Sqt-r2-YMg" id="DPz-Os-Stb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6D-WJ-0jT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,7 +103,7 @@
         <!--Live View Controller-->
         <scene sceneID="0AW-qZ-651">
             <objects>
-                <viewController id="X66-9M-lVh" customClass="RCRTCLiveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RCRTCLiveViewController" id="X66-9M-lVh" customClass="RCRTCLiveViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6O5-ZE-D7I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -187,7 +187,6 @@
                                         <rect key="frame" x="8" y="8" width="151" height="84"/>
                                         <connections>
                                             <action selector="clickLiveBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="QBh-W9-QL5"/>
-                                            <action selector="clickMeetingBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="In1-PH-eJv"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -6,8 +6,11 @@
 //
 
 #import "RCRTCPrepareLiveViewController.h"
+#import "RCRTCLiveViewController.h"
 
 @interface RCRTCPrepareLiveViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
 
 @end
 
@@ -16,6 +19,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+/**
+ * 主播身份：开始直播
+ */
+- (IBAction)startLive:(UIButton *)sender {
+    
+    if (![self checkTextField]) return;
+    
+    [self.roomIdTextField resignFirstResponder];
+    
+    [self.roomIdTextField resignFirstResponder];
+    RCRTCLiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
+    liveVC.roomId = self.roomIdTextField.text;
+    liveVC.liveRoleType = RCRTCLiveRoleTypeBroadcaster;
+    [self.navigationController pushViewController:liveVC animated:YES];
+}
+
+/**
+ * 观众身份：观看直播
+ */
+- (IBAction)watchLive:(UIButton *)sender {
+    
+    if (![self checkTextField]) return;
+    
+    [self.roomIdTextField resignFirstResponder];
+    
+    [self.roomIdTextField resignFirstResponder];
+    RCRTCLiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
+    liveVC.roomId = self.roomIdTextField.text;
+    liveVC.liveRoleType = RCRTCLiveRoleTypeAudience;
+    [self.navigationController pushViewController:liveVC animated:YES];
+}
+
+- (BOOL)checkTextField{
+    
+    if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0 ){
+        return NO;
+    }
+    return YES;
 }
 
 /*
