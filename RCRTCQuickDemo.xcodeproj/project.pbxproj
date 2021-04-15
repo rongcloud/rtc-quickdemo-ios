@@ -24,6 +24,8 @@
 		DDEC583726270E810067D692 /* RCRTCPrepareLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEC583626270E810067D692 /* RCRTCPrepareLiveViewController.m */; };
 		DDEC583C26270ECA0067D692 /* RCRTCLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEC583B26270ECA0067D692 /* RCRTCLiveViewController.m */; };
 		DDEC583F26270EDA0067D692 /* RCRTCLive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDEC583E26270EDA0067D692 /* RCRTCLive.storyboard */; };
+		DDEC58472627EC120067D692 /* RCRTCCallLibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEC58462627EC120067D692 /* RCRTCCallLibViewController.m */; };
+		DDEC584B2627EC290067D692 /* RCRTCCallLib.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDEC584A2627EC290067D692 /* RCRTCCallLib.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,9 @@
 		DDEC583A26270ECA0067D692 /* RCRTCLiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCLiveViewController.h; sourceTree = "<group>"; };
 		DDEC583B26270ECA0067D692 /* RCRTCLiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCLiveViewController.m; sourceTree = "<group>"; };
 		DDEC583E26270EDA0067D692 /* RCRTCLive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RCRTCLive.storyboard; sourceTree = "<group>"; };
+		DDEC58452627EC120067D692 /* RCRTCCallLibViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCCallLibViewController.h; sourceTree = "<group>"; };
+		DDEC58462627EC120067D692 /* RCRTCCallLibViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCCallLibViewController.m; sourceTree = "<group>"; };
+		DDEC584A2627EC290067D692 /* RCRTCCallLib.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RCRTCCallLib.storyboard; sourceTree = "<group>"; };
 		DE3564F81C055A832EE564F2 /* Pods-RCRTCQuickDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.release.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +138,7 @@
 		DD81210E261DC26B00AF7D35 = {
 			isa = PBXGroup;
 			children = (
+				DDEC58412627E43B0067D692 /* CallLib */,
 				DDEC58132626DBF80067D692 /* Live */,
 				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
@@ -187,6 +193,16 @@
 				DDEC583E26270EDA0067D692 /* RCRTCLive.storyboard */,
 			);
 			path = Live;
+			sourceTree = "<group>";
+		};
+		DDEC58412627E43B0067D692 /* CallLib */ = {
+			isa = PBXGroup;
+			children = (
+				DDEC58452627EC120067D692 /* RCRTCCallLibViewController.h */,
+				DDEC58462627EC120067D692 /* RCRTCCallLibViewController.m */,
+				DDEC584A2627EC290067D692 /* RCRTCCallLib.storyboard */,
+			);
+			path = CallLib;
 			sourceTree = "<group>";
 		};
 		FEC3B326876A92E37BD3485E /* Frameworks */ = {
@@ -257,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD81212A261DC26F00AF7D35 /* LaunchScreen.storyboard in Resources */,
+				DDEC584B2627EC290067D692 /* RCRTCCallLib.storyboard in Resources */,
 				DDEC583F26270EDA0067D692 /* RCRTCLive.storyboard in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
 				DD24DFF0262045C000DC4665 /* RCRTCMeeting.storyboard in Resources */,
@@ -341,6 +358,7 @@
 				DD24DFE426202F5100DC4665 /* RCRTCMeetingViewController.m in Sources */,
 				DDEC583C26270ECA0067D692 /* RCRTCLiveViewController.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
+				DDEC58472627EC120067D692 /* RCRTCCallLibViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

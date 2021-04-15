@@ -55,6 +55,11 @@
     [self.navigationController pushViewController:prePareLiveVC animated:YES];
 }
 
+- (IBAction)clickCallLibBtn:(UIButton *)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RCRTCCallLib" bundle:nil];
+    RCRTCPrepareLiveViewController *callLibVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCCallLibViewController"];
+    [self.navigationController pushViewController:callLibVC animated:YES];
+}
 
 /**
  * 注销当前账户

@@ -31,7 +31,7 @@
 
 
 /**
- 加入会议
+ 加入会议 
  */
 - (IBAction)joinMeeting:(UIButton *)sender {
     

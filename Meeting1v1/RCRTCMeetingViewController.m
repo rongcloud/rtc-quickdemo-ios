@@ -95,8 +95,8 @@
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
 
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
-    config.roomType = RCRTCRoomTypeLive;
-    config.liveType = RCRTCLiveTypeAudioVideo;
+    config.roomType = RCRTCRoomTypeNormal;
+    
     [self.engine enableSpeaker:NO];
 
     @WeakObj(self);

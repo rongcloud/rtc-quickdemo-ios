@@ -29,14 +29,14 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWQ-zB-59R">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWQ-zB-59R">
                                 <rect key="frame" x="30" y="310" width="354" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Khz-L6-xqZ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dM6-av-t4J"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dz-7Z-8kW">
                                 <rect key="frame" x="30" y="390" width="354" height="45"/>
@@ -251,6 +251,12 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt8-sy-Jhf">
+                                        <rect key="frame" x="8" y="8" width="151" height="84"/>
+                                        <connections>
+                                            <action selector="clickCallLibBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="POz-QB-748"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.65747684240000004" green="0.78333252669999998" blue="0.98042136430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -258,8 +264,12 @@
                                     <constraint firstItem="tTW-vV-YqS" firstAttribute="top" secondItem="FyS-bY-KoP" secondAttribute="bottom" constant="10" id="1xQ-qd-51N"/>
                                     <constraint firstAttribute="trailing" secondItem="FyS-bY-KoP" secondAttribute="trailing" constant="10" id="4Nn-V0-gQL"/>
                                     <constraint firstItem="FyS-bY-KoP" firstAttribute="leading" secondItem="dil-wb-HpT" secondAttribute="leading" constant="10" id="CLf-71-Rp9"/>
+                                    <constraint firstItem="Dt8-sy-Jhf" firstAttribute="leading" secondItem="dil-wb-HpT" secondAttribute="leading" constant="8" id="G9y-GQ-gpa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dt8-sy-Jhf" secondAttribute="bottom" constant="8" id="P5p-95-myl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dt8-sy-Jhf" secondAttribute="trailing" constant="8" id="ZxG-j2-g2I"/>
                                     <constraint firstAttribute="trailing" secondItem="tTW-vV-YqS" secondAttribute="trailing" constant="10" id="iRn-lH-S1p"/>
                                     <constraint firstItem="tTW-vV-YqS" firstAttribute="leading" secondItem="dil-wb-HpT" secondAttribute="leading" constant="10" id="miz-Be-rZa"/>
+                                    <constraint firstItem="Dt8-sy-Jhf" firstAttribute="top" secondItem="dil-wb-HpT" secondAttribute="top" constant="8" id="rX4-Ci-w0q"/>
                                     <constraint firstItem="FyS-bY-KoP" firstAttribute="top" secondItem="dil-wb-HpT" secondAttribute="top" constant="20" id="wjH-eF-MCR"/>
                                     <constraint firstAttribute="bottom" secondItem="tTW-vV-YqS" secondAttribute="bottom" constant="20" id="xEy-JJ-KX3"/>
                                 </constraints>
