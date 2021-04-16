@@ -31,7 +31,7 @@ RCRTCStatusReportDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *streamLayoutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLable;
 //音频配置
 @property (strong, nonatomic) RCRTCEngine *engine;
 
@@ -110,14 +110,14 @@ RCRTCStatusReportDelegate>
     
     switch (_liveRoleType) {
         case RCRTCLiveRoleTypeBroadcaster:
-            self.title = @"直播 Demo-主播端";
+            _titleLable.text = @"直播 Demo-主播端";
             [self disableClickWith:@[self.connectHostBtn]];
             [self.engine enableSpeaker:NO];
             //开直播
             [self startLive];
             break;
         case RCRTCLiveRoleTypeAudience:
-            self.title = @"直播 Demo-观众端";
+            _titleLable.text = @"直播 Demo-观众端";
             [self disableClickWith:@[self.closeCamera,
                                      self.closeMicBtn,
                                      self.streamLayoutBtn,
@@ -149,6 +149,7 @@ RCRTCStatusReportDelegate>
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
+    self.navigationController.navigationBarHidden = NO;
 }
 
 
