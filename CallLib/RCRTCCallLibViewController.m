@@ -8,6 +8,9 @@
 #import "RCRTCCallLibViewController.h"
 #import <RongCallLib/RongCallLib.h>
 
+/**
+ * 当前 UI 的几种状态
+ */
 typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     /**
      * 默认，可呼叫状态
@@ -31,16 +34,18 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
 
 @property (weak, nonatomic) IBOutlet UITextField *targetIdTextField;
 
+/**
+ * 本地和远端视图
+ */
 @property (weak, nonatomic) IBOutlet UIView *localView;
-
 @property (weak, nonatomic) IBOutlet UIView *remoteView;
 
+/**
+ * 操作按钮
+ */
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *accpetBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *rejectBtn;
-
 @property (weak, nonatomic) IBOutlet UILabel *sessionDescription;
 
 @property (nonatomic,strong)RCCallSession *callSession;
@@ -57,14 +62,24 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self initCallLib];
 }
 
+#pragma mark Init
+
+/**
+ * 初始化相关 UI
+ */
 - (void)initUI{
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
 }
+
+/**
+ * 初始化相关配置
+ */
 - (void)initCallLib{
     //设置链接协议
     [[RCCallClient sharedRCCallClient] setDelegate:self];
 }
 
+#pragma mark Button Action
 /**
  * 发起呼叫
  */
@@ -92,6 +107,11 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
 }
 
+#pragma mark RCCallReceiveDelegate
+
+/**
+ * 接收到通话呼入的回调
+ */
 - (void)didReceiveCall:(RCCallSession *)callSession{
     _callSession = callSession;
     [_callSession addDelegate:self];
@@ -99,6 +119,11 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self updateUIWithStatus:RCRTCCallStatus_Incoming];
 }
 
+#pragma mark  RCCallSessionDelegate
+
+/**
+ * 通话已接通
+ */
 - (void)callDidConnect{
     
     [self.callSession setVideoView:self.localView
@@ -107,15 +132,17 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self updateUIWithStatus:RCRTCCallStatus_Active];
 }
 
+/**
+ * 通话已结束
+ */
 - (void)callDidDisconnect{
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
- 
-    [self.targetIdTextField resignFirstResponder];
-}
-
+#pragma mark UI Status
+/**
+ * UI 状态控制
+ */
 - (void)updateUIWithStatus:(RCRTCCallStatus)status{
     
     [self.targetIdTextField resignFirstResponder];
@@ -163,6 +190,11 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     }
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+ 
+    [self.targetIdTextField resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 
