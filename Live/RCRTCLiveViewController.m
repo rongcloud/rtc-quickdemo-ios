@@ -55,7 +55,7 @@ RCRTCStatusReportDelegate>
     //初始化UI
     [self initView];
     
-    //根据用户状态区分主播/观众
+    //直播类型下的角色区分：主播/观众
     [self setRoleType];
     
 }
@@ -65,7 +65,9 @@ RCRTCStatusReportDelegate>
 #pragma mark - startLive & watchLive
 
 /**
- * 用户状态功能区分
+ * 直播类型下的角色区分
+ *1.主播开启直播
+ *2.观众观看直播
  */
 -(void)setRoleType{
     
@@ -77,11 +79,18 @@ RCRTCStatusReportDelegate>
             self.title = @"直播 Demo-主播端";
             [self disableClickWith:@[self.connectHostBtn]];
             
+            /*!
+             当前直播角色为主播
+             */
+            
             //1.设置不切换听筒为扬声器
             [self.engine enableSpeaker:NO];
             
-            //2.开始直播
-            [self startLive];
+            //2.添加本地采集预览界面
+            [self setupLocalVideoView];
+            
+            //3.加入RTC房间
+            [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
             
             break;
         case RCRTCLiveRoleTypeAudience:
@@ -91,38 +100,19 @@ RCRTCStatusReportDelegate>
                                      self.streamLayoutBtn,
                                      self.switchStreamMode]];
             
-            //1.设置切换听筒为扬声
+            /*!
+             当前直播角色为观众
+             */
+            
+            //1.设置切换听筒为扬声器
             [self.engine enableSpeaker:YES];
             
-            //2.观看直播
-            [self watchLive];
+            //2.加入RTC房间
+            [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
             break;;
         default:
             break;
     }
-}
-
-
-/**
- * 开始直播
- */
-- (void)startLive{
-    
-    //1.添加本地采集预览界面
-    [self setupLocalVideoView];
-    
-    //2.加入RTC房间
-    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-}
-
-
-/**
- * 观看直播
- */
-- (void)watchLive{
-    
-    //加入RTC房间
-    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
 }
 
 
@@ -134,7 +124,6 @@ RCRTCStatusReportDelegate>
     
     //1.先清理视图
     [self cleanRemoteContainer];
-    
     
     //2.退出房间
     [self exitRoom];
