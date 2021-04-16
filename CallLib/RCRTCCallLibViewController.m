@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self initCallLib];
 }
 
-#pragma mark Init
+#pragma mark - Init
 
 /**
  * 初始化相关 UI
@@ -79,7 +79,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [[RCCallClient sharedRCCallClient] setDelegate:self];
 }
 
-#pragma mark Button Action
+#pragma mark - Button Action
 /**
  * 发起呼叫
  */
@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
 }
 
-#pragma mark RCCallReceiveDelegate
+#pragma mark - RCCallReceiveDelegate
 
 /**
  * 接收到通话呼入的回调
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self updateUIWithStatus:RCRTCCallStatus_Incoming];
 }
 
-#pragma mark  RCCallSessionDelegate
+#pragma mark - RCCallSessionDelegate
 
 /**
  * 通话已接通
@@ -139,7 +139,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
 }
 
-#pragma mark UI Status
+#pragma mark - UI Status
 /**
  * UI 状态控制
  */

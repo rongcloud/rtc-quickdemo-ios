@@ -54,6 +54,7 @@ RCRTCStatusReportDelegate>
     //初始化UI
     [self initView];
 }
+
 #pragma mark - setter & getter
 - (RCRTCEngine *)engine{
     if (!_engine) {

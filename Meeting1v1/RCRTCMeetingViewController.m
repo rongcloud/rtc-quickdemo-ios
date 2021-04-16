@@ -31,24 +31,20 @@
 
 @implementation RCRTCMeetingViewController
 
-- (RCRTCEngine *)engine {
-    if (!_engine) {
-        _engine = [RCRTCEngine sharedInstance];
-        [_engine enableSpeaker:YES];
-    }
-    return _engine;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     NSLog(@"room id %@",self.roomId);
-    // ① 初始化 UI 视图
+    // 初始化 UI
     [self initView];
-    // ② 加入房间
+    /**
+     * ① 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     * ② 加入房间
+     */
     [self joinRoom];
 }
 
+#pragma mark - UI
 
 - (void)initView{
     
@@ -84,6 +80,7 @@
     [self.remoteView addGestureRecognizer:tap];
 }
 
+#pragma mark - RTC
 
 /**
  * 加入房间
@@ -105,6 +102,10 @@
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
                    @StrongObj(self);
                    if (code == RCRTCCodeSuccess) {
+                       
+                       /**
+                        * ③ 加入成功后进行资源的发布和订阅
+                        */
                        [self afterJoinRoom:room];
                    } else {
                        [self showAlertView:@"加入房间失败"];
@@ -112,6 +113,54 @@
                }];
 }
 
+/**
+ * 加入成功后进行资源发布和订阅
+ */
+- (void)afterJoinRoom:(RCRTCRoom *)room {
+    // 1. 设置房间代理
+    self.room = room;
+    room.delegate = self;
+
+    // 2. 开始本地视频采集
+    [[self.engine defaultVideoStream] setVideoView:self.localView];
+    [[self.engine defaultVideoStream] startCapture];
+
+    // 3. 发布本地视频流
+    [room.localUser publishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
+        if (isSuccess && desc == RCRTCCodeSuccess) {
+            NSLog(@"本地流发布成功");
+        }
+    }];
+
+    // 4. 如果已经有远端用户在房间中, 需要订阅远端流
+    if ([room.remoteUsers count] > 0) {
+        NSMutableArray *streamArray = [NSMutableArray array];
+        for (RCRTCRemoteUser *user in room.remoteUsers) {
+            [streamArray addObjectsFromArray:user.remoteStreams];
+        }
+        [self subscribeRemoteResource:streamArray];
+    }
+}
+
+/**
+ * 订阅房间中远端用户音视频流资源
+ */
+- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
+     
+    [self.room.localUser subscribeStream:streams tinyStreams:nil completion:^(BOOL isSuccess, RCRTCCode desc) {
+        
+    }];
+    // 创建并设置远端视频预览视图
+    for (RCRTCInputStream *stream in streams) {
+        if (stream.mediaType == RTCMediaTypeVideo) {
+            [(RCRTCVideoInputStream *) stream setVideoView:self.remoteView];
+            [self.remoteView setHidden:NO];
+        }
+    }
+}
+
+
+#pragma mark - Event
 /**
  * 点击视图进行大小窗口切换
  */
@@ -144,24 +193,39 @@
     }
 }
 
-
+/**
+ * 麦克风静音
+ */
 - (IBAction)micMute:(UIButton *)sender {
     sender.selected = !sender.selected;
     [self.engine.defaultAudioStream setMicrophoneDisable:sender.selected];
 }
+
+/**
+ * 切换摄像头
+ */
 - (IBAction)changeCamera:(UIButton *)sender {
     sender.selected = !sender.selected;
     [self.engine.defaultVideoStream switchCamera];
 }
+
+/**
+ * 挂断并离开
+ */
 - (IBAction)clickHangup:(id)sender {
     
-    // 取消本地发布
+    /**
+     * ④ 取消本地发布并关闭摄像头采集
+     */
     [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
     }];
-    // 关闭摄像头采集
     [self.engine.defaultVideoStream stopCapture];
     [self.remoteView removeFromSuperview];
-    // 退出房间
+    
+    
+    /**
+     * ⑤ 退出房间
+     */
     [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
@@ -170,58 +234,39 @@
     }];
 }
 
-- (void)afterJoinRoom:(RCRTCRoom *)room {
-    // 1. 设置房间代理
-    self.room = room;
-    room.delegate = self;
-
-    // 2. 开始本地视频采集
-    [[self.engine defaultVideoStream] setVideoView:self.localView];
-    [[self.engine defaultVideoStream] startCapture];
-
-    // 3. 发布本地视频流
-    [room.localUser publishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
-        if (isSuccess && desc == RCRTCCodeSuccess) {
-            NSLog(@"本地流发布成功");
-        }
-    }];
-
-    // 4. 如果已经有远端用户在房间中, 需要订阅远端流
-    if ([room.remoteUsers count] > 0) {
-        NSMutableArray *streamArray = [NSMutableArray array];
-        for (RCRTCRemoteUser *user in room.remoteUsers) {
-            [streamArray addObjectsFromArray:user.remoteStreams];
-        }
-        [self subscribeRemoteResource:streamArray];
-    }
-}
 
 
 #pragma mark - RCRTCRoomEventDelegate
 
+/**
+ * 远端用户发布资源通知
+ */
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }
 
+/**
+ * 远端用户取消发布资源通知
+ */
 - (void)didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self.remoteView setHidden:YES];
 }
 
+/**
+ * 远端用户离开通知
+ */
 - (void)didLeaveUser:(RCRTCRemoteUser *)user {
     [self.remoteView setHidden:YES];
 }
 
-- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
-    // 订阅房间中远端用户音视频流资源
-    [self.room.localUser subscribeStream:streams tinyStreams:nil completion:^(BOOL isSuccess, RCRTCCode desc) {
-    }];
-    // 创建并设置远端视频预览视图
-    for (RCRTCInputStream *stream in streams) {
-        if (stream.mediaType == RTCMediaTypeVideo) {
-            [(RCRTCVideoInputStream *) stream setVideoView:self.remoteView];
-            [self.remoteView setHidden:NO];
-        }
+#pragma mark - lazy load
+
+- (RCRTCEngine *)engine {
+    if (!_engine) {
+        _engine = [RCRTCEngine sharedInstance];
+        [_engine enableSpeaker:YES];
     }
+    return _engine;
 }
 
 

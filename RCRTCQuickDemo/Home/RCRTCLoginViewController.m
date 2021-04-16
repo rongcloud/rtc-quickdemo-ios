@@ -45,8 +45,7 @@
 }
 
 /**
- * ① 初始化 Appkey
- * ② 连接 IM
+ * ① 初始化 Appkey 并 连接 IM
  */
 - (void)connectRongCloud:(NSString *)token{
 
