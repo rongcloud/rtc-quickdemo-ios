@@ -51,9 +51,8 @@ RCRTCStatusReportDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //根据用户状态区分功能显示
-    [self setRoleType];
-
+    //初始化UI
+    [self initView];
 }
 #pragma mark - setter & getter
 - (RCRTCEngine *)engine{
@@ -92,7 +91,13 @@ RCRTCStatusReportDelegate>
     }
     return _funcBtns;
 }
-
+- (void)initView{
+    
+    self.navigationController.navigationBarHidden = YES;
+    //根据用户状态区分功能显示
+    [self setRoleType];
+    
+}
 //用户状态功能区分
 -(void)setRoleType{
     
@@ -137,16 +142,6 @@ RCRTCStatusReportDelegate>
 - (IBAction)closeLiveAction:(UIButton *)sender{
      [self leaveRomeClick];
 
-}
-
-- (IBAction)watchLiveAction:(UIButton *)sender{
-//    if (!self.isLogin) return;
-//    NSLog(@"%@",sender.titleLabel.text);
-//    sender.selected = !sender.selected;
-//    if ([self.delegate respondsToSelector:@selector(watchLiveWithState:)]) {
-//        self.roleType = (sender.selected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
-//        [self.delegate watchLiveWithState:sender.selected];
-//    }
 }
 
 //上麦 下麦
