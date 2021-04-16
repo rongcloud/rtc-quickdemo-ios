@@ -118,8 +118,8 @@ RCRTCStatusReportDelegate>
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 
-//    [self cleanRemoteContainer];
-//    [self exitRoom];//退出房间
+    [self cleanRemoteContainer];
+    [self exitRoom];//退出房间
     
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
@@ -219,7 +219,7 @@ RCRTCStatusReportDelegate>
     NSLog(@"%@",sender.titleLabel.text);
     [self switchCamera];
     
-    [self subscribeType:sender.isSelected];
+//    [self subscribeType:sender.isSelected];
 }
 
 
