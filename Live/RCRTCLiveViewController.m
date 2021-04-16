@@ -523,6 +523,7 @@ RCRTCStatusReportDelegate>
 
 
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams isTiny:(BOOL)isTiny{
+    
     // 订阅房间中远端用户音视频流资源
     NSArray *tinyStream = isTiny ? streams : @[];
     NSArray *ordinaryStream = isTiny ? @[] : streams;
@@ -535,7 +536,9 @@ RCRTCStatusReportDelegate>
             return;
         }
         NSLog(@"切换成功");
-        // 创建并设置远端视频预览视图
+        
+        
+    // 创建并设置远端视频预览视图
         NSInteger i = 0;
         for (RCRTCInputStream *stream in streams) {
             if (stream.mediaType == RTCMediaTypeVideo) {
@@ -549,14 +552,23 @@ RCRTCStatusReportDelegate>
     }];
 }
 
-
+/**
+ * 创建并设置远端视频预览视图
+ */
 -(RCRTCStreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
+    
     RCRTCStreamVideo *sVideo = [self creatStreamVideoWithId:uid];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
+    
+    //设置视频流的渲染视图
     [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
     return sVideo;
 }
 
+
+/*
+ *判断是否已有预览视图
+ */
 - (RCRTCStreamVideo *)creatStreamVideoWithId:(NSString *)uid{
     RCRTCStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
     if (!sVideo) {
