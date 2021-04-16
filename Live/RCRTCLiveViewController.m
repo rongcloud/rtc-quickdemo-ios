@@ -35,7 +35,7 @@ RCRTCStatusReportDelegate>
 //音频配置
 @property (strong, nonatomic) RCRTCEngine *engine;
 
-//功能按钮区分
+//功能按钮容器
 @property (nonatomic, copy)NSArray *funcBtns;
 
 @property (nonatomic, strong)RCRTCRoom *room;
@@ -44,6 +44,7 @@ RCRTCStatusReportDelegate>
 
 @property (nonatomic)NSMutableArray <RCRTCStreamVideo *>*streamVideos;
 @property (nonatomic, strong)RCRTCVideoLayoutTool *layoutTool;
+
 @end
 
 @implementation RCRTCLiveViewController
@@ -51,11 +52,116 @@ RCRTCStatusReportDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     //初始化UI
     [self initView];
+    
+    //根据用户状态区分主播/观众
+    [self setRoleType];
+    
 }
 
+
+
+#pragma mark - startLive & watchLive
+
+/**
+ * 用户状态功能区分
+ */
+-(void)setRoleType{
+    
+    //判断用户状态改变退出按钮显示
+    _closeLiveBtn.selected = _liveRoleType;
+    
+    switch (_liveRoleType) {
+        case RCRTCLiveRoleTypeBroadcaster:
+            self.title = @"直播 Demo-主播端";
+            [self disableClickWith:@[self.connectHostBtn]];
+            
+            //1.设置不切换听筒为扬声器
+            [self.engine enableSpeaker:NO];
+            
+            //2.开始直播
+            [self startLive];
+            
+            break;
+        case RCRTCLiveRoleTypeAudience:
+            self.title = @"直播 Demo-观众端";
+            [self disableClickWith:@[self.closeCamera,
+                                     self.closeMicBtn,
+                                     self.streamLayoutBtn,
+                                     self.switchStreamMode]];
+            
+            //1.设置切换听筒为扬声
+            [self.engine enableSpeaker:YES];
+            
+            //2.观看直播
+            [self watchLive];
+            break;;
+        default:
+            break;
+    }
+}
+
+
+/**
+ * 开始直播
+ */
+- (void)startLive{
+    
+    //1.添加本地采集预览界面
+    [self setupLocalVideoView];
+    
+    //2.加入RTC房间
+    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
+}
+
+
+/**
+ * 观看直播
+ */
+- (void)watchLive{
+    
+    //加入RTC房间
+    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+}
+
+
+/**
+ * 观众上下麦
+ */
+- (void)connectHostWithState:(BOOL)isConnect{
+    self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
+    
+    //1.先清理视图
+    [self cleanRemoteContainer];
+    
+    
+    //2.退出房间
+    [self exitRoom];
+
+    if (isConnect) {
+        
+        /**
+         * 观众上麦
+         * 1.添加本地采集预览界面
+         * 2.加入RTC房间
+         */
+        
+        [self setupLocalVideoView];
+
+        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
+        
+    }else{
+        
+        //下麦：加入RTC房间
+        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+    }
+}
+
+
 #pragma mark - setter & getter
+
 - (RCRTCEngine *)engine{
     if (!_engine) {
         _engine = [RCRTCEngine sharedInstance];
@@ -94,45 +200,29 @@ RCRTCStatusReportDelegate>
 }
 
 
-#pragma mark - private method
+#pragma mark - UI
 
 - (void)initView{
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    //根据用户状态区分功能显示
-    [self setRoleType];
     
-}
-//用户状态功能区分
--(void)setRoleType{
-    
-    //根据用户状态 显示不同退出按钮
-    _closeLiveBtn.selected = _liveRoleType;
-    
-    switch (_liveRoleType) {
-        case RCRTCLiveRoleTypeBroadcaster:
-            self.title = @"直播 Demo-主播端";
-            [self disableClickWith:@[self.connectHostBtn]];
-            [self.engine enableSpeaker:NO];
-            //开直播
-            [self startLive];
-            break;
-        case RCRTCLiveRoleTypeAudience:
-            self.title = @"直播 Demo-观众端";
-            [self disableClickWith:@[self.closeCamera,
-                                     self.closeMicBtn,
-                                     self.streamLayoutBtn,
-                                     self.switchStreamMode]];
-            [self.engine enableSpeaker:YES];
-            [self watchLive];
-            break;;
-        default:
-            break;
-    }
 }
 
-//功能按钮状态切换
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
+}
+
+/**
+ * 功能按钮状态切换
+ */
 - (void)disableClickWith:(NSArray *)btns{
     for (UIButton *btn in self.funcBtns) {
         [btn setBackgroundColor:[UIColor colorWithRed:29.0/255.0 green:183.0/255.0 blue:1.0 alpha:1]];
@@ -144,24 +234,57 @@ RCRTCStatusReportDelegate>
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
+/**
+ *添加本地采集预览界面
+ */
+- (void)setupLocalVideoView{
+    [self.streamVideos addObject:self.localVideo];
+    [self updateLayoutWithAnimation:YES];
 }
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].idleTimerDisabled = NO;
+
+
+/**
+ * 自定义布局刷新
+ */
+- (void)streamLayout:(RCRTCMixLayoutMode)mode{
+    [self streamlayoutMode:mode];
 }
 
 
-#pragma mark - button func
+/**
+ * 清空视图
+ */
+- (void)cleanRemoteContainer{
+    [self.streamVideos removeAllObjects];
+    for (UIView *subview in self.remoteContainerView.subviews) {
+        [subview removeFromSuperview];
+    }
+}
 
+
+#pragma mark - Event
+
+
+/**
+ * 离开房间
+ */
 - (IBAction)closeLiveAction:(UIButton *)sender{
-     [self leaveRomeClick];
-
+    
+    
+    //1.清理视图
+    [self cleanRemoteContainer];
+    
+    //2.退出房间
+    [self exitRoom];
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-//上麦 下麦
+
+/**
+ * 上麦/下麦状态判断
+ */
 - (IBAction)connectHostAction:(UIButton *)sender {
        
     sender.selected = !sender.selected;
@@ -175,30 +298,48 @@ RCRTCStatusReportDelegate>
                                  self.switchStreamMode]];
     }
     
+    //上麦/下麦
     [self connectHostWithState:sender.selected];
    
 }
 
-//关闭摄像头
+
+/**
+ * 开关摄像头
+ */
 - (IBAction)closeCameraAction:(UIButton *)sender{
     
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
     
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
-    [self cameraEnable:!sender.selected];
+    
+    //开关摄像头
+    RCRTCCameraOutputStream *DVStream = self.engine.defaultVideoStream;
+    !sender.selected ? [DVStream startCapture] : [DVStream stopCapture];
     
 }
 
-//关闭麦克风
+
+/**
+ * 开/关麦克风
+ */
 - (IBAction)closeMicAction:(UIButton *)sender{
     
     sender.selected = !sender.selected;
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
-    [self micDisable:sender.selected];
-
+    
+    /**
+     *关闭/打开麦克风
+     *@param disable YES 关闭，NO 打开
+     */
+    [self.engine.defaultAudioStream setMicrophoneDisable:sender.selected];
 }
-//自定义布局
+
+
+/**
+ * 自定义布局状态判断
+ */
 - (IBAction)streamLayutAction:(UIButton *)sender{
     
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
@@ -206,6 +347,8 @@ RCRTCStatusReportDelegate>
     NSLog(@"%@",sender.titleLabel.text);
    
         sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
+    
+        //自定义布局刷新
         [self streamLayout:(RCRTCMixLayoutMode)sender.tag];
         switch (sender.tag) {
             case 1:
@@ -222,71 +365,40 @@ RCRTCStatusReportDelegate>
     }
 }
 
-//切换摄像头
 
+
+/**
+ * 切换摄像头状态判断
+ */
 - (IBAction)switchStreamAction:(UIButton *)sender{
     
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
 
     sender.selected = !sender.selected;
     NSLog(@"%@",sender.titleLabel.text);
-    [self switchCamera];
     
+    //切换摄像头
+    [self.engine.defaultVideoStream switchCamera];
 }
 
 
-
-#pragma mark - 详细实现
-
-//开始直播
-- (void)startLive{
-    [self setupLocalVideoView];
-    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-}
-
-//观看直播
-- (void)watchLive{
-    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
-}
-
-//观众上下麦
-- (void)connectHostWithState:(BOOL)isConnect{
-    self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
-    
-    //先清理视图
-    [self cleanRemoteContainer];
-    //退出房间
-    [self exitRoom];
-
-    if (isConnect) {
-        //上麦
-        [self setupLocalVideoView];
-        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-    }else{//下麦
-        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+/**
+ * 布局视图动画
+ */
+- (void)updateLayoutWithAnimation:(BOOL)animation{
+    if (animation) {
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
+        }];
+    }else{
+        [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
     }
 }
 
-//开启/关闭摄像头
-- (void)cameraEnable:(BOOL)enable{
-    RCRTCCameraOutputStream *DVStream = self.engine.defaultVideoStream;
-    enable ? [DVStream startCapture] : [DVStream stopCapture];
-}
-
-//开启/关闭麦克风
-- (void)micDisable:(BOOL)disable{
-    [self.engine.defaultAudioStream setMicrophoneDisable:disable];
-}
-
-//结束直播/退出房间
--(void)leaveRomeClick{
-    [self cleanRemoteContainer];
-    [self exitRoom];
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
-#pragma mark - 主播设置合流布局,观众端看效果
+#pragma mark - RTC
+
 /**
  主播设置合流布局,观众端看效果
 
@@ -295,27 +407,10 @@ RCRTCStatusReportDelegate>
  自适应布局 RCRTCMixLayoutModeAdaptive = 3
   **默认新创建的房间是悬浮布局**
  */
-- (void)streamLayout:(RCRTCMixLayoutMode)mode{
-    [self streamlayoutMode:mode];
-}
 
-/// 切换摄像头
-- (void)switchCamera{
-    [self.engine.defaultVideoStream switchCamera];
-}
-
-- (void)subscribeType:(NSInteger)type{
-    NSArray *liveStreams = [self.room getLiveStreams];
-    [self subscribeRemoteResource:liveStreams isTiny:type];
-}
-
-//添加本地采集预览界面
-- (void)setupLocalVideoView{
-    [self.streamVideos addObject:self.localVideo];
-    [self updateLayoutWithAnimation:YES];
-}
-
-//加入RTC房间
+/**
+ * 加入RTC房间
+ */
 -(void)joinLiveRoomWithRole:(RCRTCLiveRoleType)roleType{
     //1.配置房间
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
@@ -356,7 +451,26 @@ RCRTCStatusReportDelegate>
     }];
 }
 
-//发布本地音视频流
+
+
+/**
+ * 退出房间
+ */
+- (void)exitRoom{
+    @WeakObj(self);
+    [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
+        @StrongObj(self);
+        if (code != RCRTCCodeSuccess) {
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
+        }
+    }];
+}
+
+
+
+/**
+ * 发布本地音视频流
+ */
 - (void)publishLocalLiveAVStream{
     //1.视频预览
     RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
@@ -374,18 +488,10 @@ RCRTCStatusReportDelegate>
     }];
 }
 
-//退出房间
-- (void)exitRoom{
-    @WeakObj(self);
-    [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
-        @StrongObj(self);
-        if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
-        }
-    }];
-}
 
-//自定义模式合流布局
+/**
+ * 自定义合流布局
+ */
 - (void)streamlayoutMode:(RCRTCMixLayoutMode)mode{
     @WeakObj(self);
     RCRTCMixConfig *config = [RCRTCMixStreamTool setOutputConfig:mode];
@@ -396,7 +502,9 @@ RCRTCStatusReportDelegate>
     }];
 }
 
-//取消订阅远端流
+/**
+ * 取消订阅远端流
+ */
 -(void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orUid:(NSString *)uid {
     if (!uid) {
         for (RCRTCInputStream *stream in streams) {
@@ -414,10 +522,13 @@ RCRTCStatusReportDelegate>
 }
 
 
-//订阅远端流
+/**
+ * 订阅远端流
+ */
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orUid:(NSString *)uid{
     [self subscribeRemoteResource:streams isTiny:NO];
 }
+
 
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams isTiny:(BOOL)isTiny{
     // 订阅房间中远端用户音视频流资源
@@ -446,13 +557,6 @@ RCRTCStatusReportDelegate>
     }];
 }
 
-//清空视图
-- (void)cleanRemoteContainer{
-    [self.streamVideos removeAllObjects];
-    for (UIView *subview in self.remoteContainerView.subviews) {
-        [subview removeFromSuperview];
-    }
-}
 
 -(RCRTCStreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
     RCRTCStreamVideo *sVideo = [self creatStreamVideoWithId:uid];
@@ -479,43 +583,56 @@ RCRTCStatusReportDelegate>
     return nil;
 }
 
-- (void)updateLayoutWithAnimation:(BOOL)animation{
-    if (animation) {
-        [UIView animateWithDuration:0.25 animations:^{
-            [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
-        }];
-    }else{
-        [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
-    }
-}
 
 
 #pragma mark - RCRTCRoomEventDelegate
-//直播合流发布
+
+
+/**
+ * 直播合流发布
+ */
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
     NSLog(@"已发布liveStream:%@",streams);
     [self subscribeRemoteResource:streams orUid:nil];
 }
-//直播合流取消发布
+
+/**
+ * 直播合流取消发布
+ */
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
     NSLog(@"取消发布liveStream:%@",streams);
     [self unsubscribeRemoteResource:streams orUid:nil];
 }
-//新用户加入
+
+
+/**
+ * 新用户加入
+ */
 - (void)didJoinUser:(RCRTCRemoteUser *)user{
     NSLog(@"didJoinUser:%@",user);
 }
-//离开
+
+
+/**
+ * 离开
+ */
 - (void)didLeaveUser:(RCRTCRemoteUser *)user{
     NSLog(@"didLeaveUser:%@",user);
     [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
-//远端掉线
+
+
+/**
+ * 远端掉线
+ */
 - (void)didOfflineUser:(RCRTCRemoteUser*)user{
     NSLog(@"didOfflineUser:%@",user.userId);
     [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
-//流连接成功
+
+/**
+ * 流连接成功
+ */
 - (void)didConnectToStream:(RCRTCInputStream *)stream{
     NSLog(@"didConnectToStream:%@",stream);
 }
