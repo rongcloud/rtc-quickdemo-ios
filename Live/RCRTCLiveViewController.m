@@ -39,9 +39,8 @@ RCRTCStatusReportDelegate>
 @property (nonatomic, copy)NSArray *funcBtns;
 
 @property (nonatomic, strong)RCRTCRoom *room;
-@property (nonatomic, strong)RCRTCStreamVideo *localVideo;
 @property (nonatomic, strong)RCRTCLiveInfo *liveInfo;
-
+@property (nonatomic, strong)RCRTCStreamVideo *localVideo;
 @property (nonatomic)NSMutableArray <RCRTCStreamVideo *>*streamVideos;
 @property (nonatomic, strong)RCRTCVideoLayoutTool *layoutTool;
 
@@ -243,13 +242,6 @@ RCRTCStatusReportDelegate>
 }
 
 
-/**
- * 自定义布局刷新
- */
-- (void)streamLayout:(RCRTCMixLayoutMode)mode{
-    [self streamlayoutMode:mode];
-}
-
 
 /**
  * 清空视图
@@ -303,7 +295,6 @@ RCRTCStatusReportDelegate>
    
 }
 
-
 /**
  * 开关摄像头
  */
@@ -349,7 +340,8 @@ RCRTCStatusReportDelegate>
         sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
     
         //自定义布局刷新
-        [self streamLayout:(RCRTCMixLayoutMode)sender.tag];
+        [self streamlayoutMode:(RCRTCMixLayoutMode)sender.tag];
+    
         switch (sender.tag) {
             case 1:
                 [sender setTitle:@"自定义布局" forState:0];

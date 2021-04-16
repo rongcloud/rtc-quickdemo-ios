@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, strong) NSString *roomId;
 
+/**
+ *身份状态 主播/观众
+ */
 @property(nonatomic, assign) RCRTCLiveRoleType liveRoleType;
 
 @end
