@@ -31,7 +31,7 @@ RCRTCStatusReportDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *streamLayoutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
-@property (weak, nonatomic) IBOutlet UILabel *titleLable;
+
 //音频配置
 @property (strong, nonatomic) RCRTCEngine *engine;
 
@@ -98,7 +98,8 @@ RCRTCStatusReportDelegate>
 
 - (void)initView{
     
-    self.navigationController.navigationBarHidden = YES;
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     //根据用户状态区分功能显示
     [self setRoleType];
     
@@ -111,14 +112,14 @@ RCRTCStatusReportDelegate>
     
     switch (_liveRoleType) {
         case RCRTCLiveRoleTypeBroadcaster:
-            _titleLable.text = @"直播 Demo-主播端";
+            self.title = @"直播 Demo-主播端";
             [self disableClickWith:@[self.connectHostBtn]];
             [self.engine enableSpeaker:NO];
             //开直播
             [self startLive];
             break;
         case RCRTCLiveRoleTypeAudience:
-            _titleLable.text = @"直播 Demo-观众端";
+            self.title = @"直播 Demo-观众端";
             [self disableClickWith:@[self.closeCamera,
                                      self.closeMicBtn,
                                      self.streamLayoutBtn,
@@ -150,7 +151,6 @@ RCRTCStatusReportDelegate>
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
-    self.navigationController.navigationBarHidden = NO;
 }
 
 
