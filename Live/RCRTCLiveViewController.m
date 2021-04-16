@@ -91,6 +91,10 @@ RCRTCStatusReportDelegate>
     }
     return _funcBtns;
 }
+
+
+#pragma mark - private method
+
 - (void)initView{
     
     self.navigationController.navigationBarHidden = YES;
@@ -110,8 +114,7 @@ RCRTCStatusReportDelegate>
             [self disableClickWith:@[self.connectHostBtn]];
             [self.engine enableSpeaker:NO];
             //开直播
-            [self setupLocalVideoView];
-            [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
+            [self startLive];
             break;
         case RCRTCLiveRoleTypeAudience:
             self.title = @"直播 Demo-观众端";
@@ -120,12 +123,25 @@ RCRTCStatusReportDelegate>
                                      self.streamLayoutBtn,
                                      self.switchStreamMode]];
             [self.engine enableSpeaker:YES];
-            [self watchLiveWithState];
+            [self watchLive];
             break;;
         default:
             break;
     }
 }
+
+//功能按钮状态切换
+- (void)disableClickWith:(NSArray *)btns{
+    for (UIButton *btn in self.funcBtns) {
+        [btn setBackgroundColor:[UIColor colorWithRed:29.0/255.0 green:183.0/255.0 blue:1.0 alpha:1]];
+        btn.enabled = YES;
+    }
+    for (UIButton *btn in btns) {
+        [btn setBackgroundColor:[UIColor grayColor]];
+        btn.enabled = NO;
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -134,7 +150,6 @@ RCRTCStatusReportDelegate>
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
-
 
 
 #pragma mark - button func
@@ -215,102 +230,23 @@ RCRTCStatusReportDelegate>
     NSLog(@"%@",sender.titleLabel.text);
     [self switchCamera];
     
-//    [self subscribeType:sender.isSelected];
 }
-
-
-#pragma mark - private method
-
-//- (void)setRoleType:(RCRTCRoleType)roleType{
-//    _roleType = roleType;
-//    switch (_roleType) {
-//        case RCRTCRoleTypeUnknown:
-//            [self disableClickWith:@[self.connectHostBtn]];
-//            break;
-//        case RCRTCRoleTypeHost:
-//
-//            break;
-//        case RCRTCRoleTypeAudience:
-//
-//            break;;
-//        default:
-//            break;
-//    }
-//}
-
-//功能按钮状态切换
-- (void)disableClickWith:(NSArray *)btns{
-    for (UIButton *btn in self.funcBtns) {
-        [btn setBackgroundColor:[UIColor colorWithRed:29.0/255.0 green:183.0/255.0 blue:1.0 alpha:1]];
-        btn.enabled = YES;
-    }
-    for (UIButton *btn in btns) {
-        [btn setBackgroundColor:[UIColor grayColor]];
-        btn.enabled = NO;
-    }
-}
-
-//- (void)updateLoginState:(NSInteger)tag{
-//    self.userBtns = @[
-//        self.userBtn_A,
-//        self.userBtn_B,
-//        self.userBtn_C,
-//        self.userBtn_D];
-//    self.funcBtns = @[
-//        self.startLiveBtn,
-//        self.wacthLiveBtn,
-//        self.connectHostBtn,
-//        self.closeCamera,
-//        self.closeMicBtn,
-//        self.streamLayoutBtn,
-//        self.switchStreamMode];
-//    for (UIButton *btn in self.userBtns) {
-//        if (btn.tag != tag) {
-//            btn.backgroundColor = [UIColor grayColor];
-//            btn.enabled = NO;
-//        }
-//    }
-//}
-//
-//- (void)resetLoginBtnState{
-//    for (UIButton *btn in self.userBtns) {
-//        btn.backgroundColor = [UIColor systemBlueColor];
-//        btn.enabled = YES;
-//    }
-//}
-//
-//- (void)layoutSubviews{
-//    [super layoutSubviews];
-//
-//}
 
 
 
 #pragma mark - 详细实现
 
-////开始直播/结束直播
-//- (void)startLiveWithState{
-////    self.liveRoleType = (isSelected ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
-//    if (!self.liveRoleType) {
-//        //加入房间
-//        [self setupLocalVideoView];
-//        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-//    }else{
-//        [self cleanRemoteContainer];
-//        [self exitRoom];//退出房间
-//    }
-//}
-
-//观看直播/结束观看
-- (void)watchLiveWithState{
-//    self.roleType = (isSelected ? RCRTCRoleTypeAudience : RCRTCRoleTypeUnknown);
-//    if (isSelected) {
-        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
-//    }else{
-//        [self cleanRemoteContainer];
-//        [self exitRoom];
-//    }
+//开始直播
+- (void)startLive{
+    [self setupLocalVideoView];
+    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
 }
+
+//观看直播
+- (void)watchLive{
+    [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+}
+
 //观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect{
     self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
@@ -346,6 +282,9 @@ RCRTCStatusReportDelegate>
     [self exitRoom];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+#pragma mark - 主播设置合流布局,观众端看效果
 /**
  主播设置合流布局,观众端看效果
 
@@ -547,6 +486,7 @@ RCRTCStatusReportDelegate>
         [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
     }
 }
+
 
 #pragma mark - RCRTCRoomEventDelegate
 //直播合流发布
