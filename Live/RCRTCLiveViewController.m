@@ -6,7 +6,6 @@
 //
 
 #import "RCRTCLiveViewController.h"
-#import <RongIMLibCore/RongIMLibCore.h>
 #import <RongChatRoom/RongChatRoom.h>
 #import "RCRTCStreamVideo.h"
 #import "RCRTCVideoLayoutTool.h"
