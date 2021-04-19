@@ -30,6 +30,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                <connections>
+                                    <action selector="keyboardHide:" destination="9uf-2y-U8d" eventType="editingDidEndOnExit" id="7yy-ih-m66"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8t-FY-7aZ">
                                 <rect key="frame" x="30" y="262" width="152" height="54.5"/>
@@ -42,6 +45,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="callMediaAudio:" destination="9uf-2y-U8d" eventType="touchUpInside" id="G8H-wo-Gms"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UU0-ZZ-ODL">
                                 <rect key="frame" x="232" y="262" width="152" height="54.5"/>
@@ -51,6 +57,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="callMediaVideo:" destination="9uf-2y-U8d" eventType="touchUpInside" id="2p9-w6-7ix"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="15Z-tf-NQd"/>
@@ -71,6 +80,11 @@
                             <constraint firstItem="q8t-FY-7aZ" firstAttribute="top" secondItem="kOT-HX-VcI" secondAttribute="bottom" constant="50" id="ya1-8O-jd5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="callMediaAudio" destination="q8t-FY-7aZ" id="NFF-gV-cok"/>
+                        <outlet property="callMediaVideo" destination="UU0-ZZ-ODL" id="mqw-TQ-Pa3"/>
+                        <outlet property="useridTextField" destination="kOT-HX-VcI" id="LoD-Q2-55p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ok4-L4-cVT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
