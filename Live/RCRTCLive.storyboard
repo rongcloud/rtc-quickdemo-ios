@@ -108,19 +108,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ez3-CS-DEt">
-                                <rect key="frame" x="0.0" y="64" width="390" height="610"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ez3-CS-DEt">
+                                <rect key="frame" x="0.0" y="44" width="390" height="630"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XPE-NH-vbB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPE-NH-vbB">
                                 <rect key="frame" x="0.0" y="674" width="390" height="170"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGW-LZ-Xtg">
-                                        <rect key="frame" x="147" y="30" width="101" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGW-LZ-Xtg">
+                                        <rect key="frame" x="147" y="30" width="96" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ocv-jN-2E8"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="关闭麦克风">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -134,10 +134,12 @@
                                             <action selector="closeMicAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="eIL-bg-w92"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4I-gu-zsT">
-                                        <rect key="frame" x="266" y="30" width="101" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4I-gu-zsT">
+                                        <rect key="frame" x="263" y="30" width="97" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="xFP-kx-iDp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="切换摄像头"/>
                                         <userDefinedRuntimeAttributes>
@@ -148,10 +150,12 @@
                                             <action selector="switchStreamAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="Kaz-B1-NI4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEk-cu-8QP">
-                                        <rect key="frame" x="30" y="30" width="100" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEk-cu-8QP">
+                                        <rect key="frame" x="30" y="30" width="97" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3j3-dw-agi"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="关闭摄像头">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,10 +169,12 @@
                                             <action selector="closeCameraAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="Kdx-8U-7H4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgH-XB-RsV">
-                                        <rect key="frame" x="30" y="90" width="100" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgH-XB-RsV">
+                                        <rect key="frame" x="30" y="90" width="97" height="40"/>
                                         <color key="backgroundColor" red="0.1492772996" green="0.7105588317" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2mQ-hk-ZPO"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="悬浮布局"/>
                                         <userDefinedRuntimeAttributes>
@@ -179,10 +185,12 @@
                                             <action selector="streamLayutAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="S64-p7-amv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-lz-NL8">
-                                        <rect key="frame" x="147" y="90" width="101" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-lz-NL8">
+                                        <rect key="frame" x="147" y="90" width="96" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Gyg-aM-Ah8"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="结束直播"/>
                                         <state key="selected" title="退出房间"/>
@@ -194,10 +202,12 @@
                                             <action selector="closeLiveAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="aaA-ka-gIY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yux-aa-mAM">
-                                        <rect key="frame" x="266" y="90" width="101" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yux-aa-mAM">
+                                        <rect key="frame" x="263" y="90" width="97" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="xjR-KY-qnp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="上麦"/>
                                         <state key="selected" title="下麦"/>
@@ -211,10 +221,50 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="IgH-XB-RsV" secondAttribute="bottom" constant="40" id="5Ph-hQ-xV9"/>
+                                    <constraint firstAttribute="bottom" secondItem="LfT-lz-NL8" secondAttribute="bottom" constant="40" id="7re-7O-bhT"/>
+                                    <constraint firstAttribute="bottom" secondItem="yux-aa-mAM" secondAttribute="bottom" constant="40" id="BLs-80-jcW"/>
+                                    <constraint firstItem="G4I-gu-zsT" firstAttribute="leading" secondItem="xGW-LZ-Xtg" secondAttribute="trailing" constant="20" id="Ckj-wy-1Mx"/>
+                                    <constraint firstItem="xGW-LZ-Xtg" firstAttribute="leading" secondItem="gEk-cu-8QP" secondAttribute="trailing" constant="20" id="D7J-GD-nYh"/>
+                                    <constraint firstItem="yux-aa-mAM" firstAttribute="top" secondItem="xGW-LZ-Xtg" secondAttribute="bottom" constant="20" id="DuC-UO-MOt"/>
+                                    <constraint firstItem="LfT-lz-NL8" firstAttribute="top" secondItem="G4I-gu-zsT" secondAttribute="bottom" constant="20" id="FEZ-E8-hPT"/>
+                                    <constraint firstItem="xGW-LZ-Xtg" firstAttribute="top" secondItem="XPE-NH-vbB" secondAttribute="top" constant="30" id="ImH-K3-JoJ"/>
+                                    <constraint firstItem="xGW-LZ-Xtg" firstAttribute="width" secondItem="gEk-cu-8QP" secondAttribute="width" id="LQc-sH-Ni7"/>
+                                    <constraint firstItem="yux-aa-mAM" firstAttribute="leading" secondItem="LfT-lz-NL8" secondAttribute="trailing" constant="20" id="Lew-4Q-6kT"/>
+                                    <constraint firstItem="gEk-cu-8QP" firstAttribute="top" secondItem="XPE-NH-vbB" secondAttribute="top" constant="30" id="MgV-fd-kkE"/>
+                                    <constraint firstItem="yux-aa-mAM" firstAttribute="width" secondItem="LfT-lz-NL8" secondAttribute="width" id="OtQ-0J-uMq"/>
+                                    <constraint firstAttribute="trailing" secondItem="yux-aa-mAM" secondAttribute="trailing" constant="30" id="PFn-J9-TiF"/>
+                                    <constraint firstItem="LfT-lz-NL8" firstAttribute="leading" secondItem="IgH-XB-RsV" secondAttribute="trailing" constant="20" id="QSj-Jp-97n"/>
+                                    <constraint firstAttribute="trailing" secondItem="G4I-gu-zsT" secondAttribute="trailing" constant="30" id="RHb-Xw-ne5"/>
+                                    <constraint firstItem="gEk-cu-8QP" firstAttribute="leading" secondItem="XPE-NH-vbB" secondAttribute="leading" constant="30" id="TMr-P7-yyM"/>
+                                    <constraint firstItem="G4I-gu-zsT" firstAttribute="width" secondItem="xGW-LZ-Xtg" secondAttribute="width" id="XUF-bR-xEP"/>
+                                    <constraint firstAttribute="height" constant="170" id="Xrh-u8-kiK"/>
+                                    <constraint firstItem="yux-aa-mAM" firstAttribute="leading" secondItem="LfT-lz-NL8" secondAttribute="trailing" constant="20" id="Xrz-CG-09v"/>
+                                    <constraint firstItem="IgH-XB-RsV" firstAttribute="top" secondItem="gEk-cu-8QP" secondAttribute="bottom" constant="20" id="cY7-I4-bsu"/>
+                                    <constraint firstItem="LfT-lz-NL8" firstAttribute="width" secondItem="IgH-XB-RsV" secondAttribute="width" id="eh9-hG-Qdj"/>
+                                    <constraint firstItem="IgH-XB-RsV" firstAttribute="top" secondItem="gEk-cu-8QP" secondAttribute="bottom" constant="20" id="lxz-rx-Bi2"/>
+                                    <constraint firstItem="G4I-gu-zsT" firstAttribute="top" secondItem="XPE-NH-vbB" secondAttribute="top" constant="30" id="mus-he-sSZ"/>
+                                    <constraint firstItem="LfT-lz-NL8" firstAttribute="top" secondItem="xGW-LZ-Xtg" secondAttribute="bottom" constant="20" id="neW-95-fgW"/>
+                                    <constraint firstItem="IgH-XB-RsV" firstAttribute="leading" secondItem="XPE-NH-vbB" secondAttribute="leading" constant="30" id="qBl-gq-krV"/>
+                                    <constraint firstItem="xGW-LZ-Xtg" firstAttribute="leading" secondItem="gEk-cu-8QP" secondAttribute="trailing" constant="20" id="svW-eh-S6i"/>
+                                    <constraint firstItem="LfT-lz-NL8" firstAttribute="leading" secondItem="IgH-XB-RsV" secondAttribute="trailing" constant="20" id="tUH-je-iy4"/>
+                                    <constraint firstItem="LfT-lz-NL8" firstAttribute="top" secondItem="xGW-LZ-Xtg" secondAttribute="bottom" constant="20" id="vqU-P5-aKU"/>
+                                    <constraint firstItem="G4I-gu-zsT" firstAttribute="leading" secondItem="xGW-LZ-Xtg" secondAttribute="trailing" constant="20" id="yX0-4R-xVL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0TQ-DJ-Azb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="XPE-NH-vbB" secondAttribute="bottom" id="1be-NP-seI"/>
+                            <constraint firstItem="Ez3-CS-DEt" firstAttribute="trailing" secondItem="0TQ-DJ-Azb" secondAttribute="trailing" id="8Xx-aV-l1a"/>
+                            <constraint firstItem="XPE-NH-vbB" firstAttribute="top" secondItem="Ez3-CS-DEt" secondAttribute="bottom" id="CeQ-vz-FLr"/>
+                            <constraint firstItem="XPE-NH-vbB" firstAttribute="leading" secondItem="0TQ-DJ-Azb" secondAttribute="leading" id="Kd7-4I-ECH"/>
+                            <constraint firstItem="Ez3-CS-DEt" firstAttribute="top" secondItem="0TQ-DJ-Azb" secondAttribute="top" id="Nsm-OT-BjF"/>
+                            <constraint firstItem="XPE-NH-vbB" firstAttribute="trailing" secondItem="0TQ-DJ-Azb" secondAttribute="trailing" id="RZA-Zp-2hS"/>
+                            <constraint firstItem="Ez3-CS-DEt" firstAttribute="leading" secondItem="0TQ-DJ-Azb" secondAttribute="leading" id="Xvb-VJ-zhq"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="closeCamera" destination="gEk-cu-8QP" id="kF3-Gj-Adh"/>
