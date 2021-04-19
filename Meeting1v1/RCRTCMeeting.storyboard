@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Prepare Meeting View Controller-->
+        <!--Create Meeting View Controller-->
         <scene sceneID="f3w-Hs-x7I">
             <objects>
-                <viewController storyboardIdentifier="RCRTCPrePareMeetingViewController" id="EY1-rt-wU2" customClass="RCRTCPrepareMeetingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RCRTCCreateMeetingViewController" id="EY1-rt-wU2" customClass="RCRTCCreateMeetingViewController" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ltF-9a-eb3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

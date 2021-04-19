@@ -1,14 +1,14 @@
 //
-//  RCRTCPrepareMeetingViewController.m
+//  RCRTCCreateMeetingViewController.m
 //  RCRTCQuickDemo
 //
 //  Created by yifan on 2021/4/8.
 //
 
-#import "RCRTCPrepareMeetingViewController.h"
+#import "RCRTCCreateMeetingViewController.h"
 #import "RCRTCMeetingViewController.h"
 
-@interface RCRTCPrepareMeetingViewController ()
+@interface RCRTCCreateMeetingViewController ()
 
 /**
  房间ID输入框
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation RCRTCPrepareMeetingViewController
+@implementation RCRTCCreateMeetingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

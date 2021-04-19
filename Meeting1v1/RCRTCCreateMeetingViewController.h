@@ -1,5 +1,5 @@
 //
-//  RCRTCPrepareMeetingViewController.h
+//  RCRTCCreateMeetingViewController.h
 //  RCRTCQuickDemo
 //
 //  Created by yifan on 2021/4/8.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCPrepareMeetingViewController : UIViewController
+@interface RCRTCCreateMeetingViewController : UIViewController
 
 @end
 

@@ -296,16 +296,26 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyX-5Z-z0R">
+                                        <rect key="frame" x="8" y="8" width="151" height="84"/>
+                                        <connections>
+                                            <action selector="clickCallKitBtn:" destination="umn-28-n0s" eventType="touchUpInside" id="lZn-Hl-CrD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.65747684240000004" green="0.78333252669999998" blue="0.98042136430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Ilv-9h-Zlf" secondAttribute="trailing" constant="10" id="Af5-gI-lhg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jyX-5Z-z0R" secondAttribute="trailing" constant="8" id="NvU-dX-idN"/>
                                     <constraint firstItem="Ilv-9h-Zlf" firstAttribute="top" secondItem="hj6-KQ-f7A" secondAttribute="bottom" constant="10" id="PBg-Df-PYQ"/>
                                     <constraint firstAttribute="trailing" secondItem="hj6-KQ-f7A" secondAttribute="trailing" constant="10" id="Xdj-da-F4w"/>
+                                    <constraint firstAttribute="bottom" secondItem="jyX-5Z-z0R" secondAttribute="bottom" constant="8" id="aIh-cr-r5Y"/>
                                     <constraint firstAttribute="bottom" secondItem="Ilv-9h-Zlf" secondAttribute="bottom" constant="20" id="cX2-Vm-Rbl"/>
+                                    <constraint firstItem="jyX-5Z-z0R" firstAttribute="leading" secondItem="yFz-yP-K8d" secondAttribute="leading" constant="8" id="d3W-gI-EMC"/>
                                     <constraint firstItem="Ilv-9h-Zlf" firstAttribute="leading" secondItem="yFz-yP-K8d" secondAttribute="leading" constant="10" id="dXu-cg-FLh"/>
                                     <constraint firstItem="hj6-KQ-f7A" firstAttribute="leading" secondItem="yFz-yP-K8d" secondAttribute="leading" constant="10" id="fDa-UY-G7L"/>
                                     <constraint firstItem="hj6-KQ-f7A" firstAttribute="top" secondItem="yFz-yP-K8d" secondAttribute="top" constant="20" id="rY9-yz-LxK"/>
+                                    <constraint firstItem="jyX-5Z-z0R" firstAttribute="top" secondItem="yFz-yP-K8d" secondAttribute="top" constant="8" id="sOj-Wk-k1p"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>

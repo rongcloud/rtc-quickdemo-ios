@@ -8,9 +8,11 @@
 #import "RCRTCHomeViewController.h"
 #import <RongIMKit/RCIM.h>
 
-#import "RCRTCPrepareMeetingViewController.h"
+#import "RCRTCCreateMeetingViewController.h"
 #import "RCRTCPrepareLiveViewController.h"
 #import "UIViewController+AlertView.h"
+#import "RCRTCCallLibViewController.h"
+#import "RCRTCCallKitViewController.h"
 
 @interface RCRTCHomeViewController () <RCIMConnectionStatusDelegate>
 
@@ -45,7 +47,7 @@
 - (IBAction)clickMeetingBtn:(UIButton *)sender {
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RCRTCMeeting" bundle:nil];
-    RCRTCPrepareMeetingViewController *prePareMeetingVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCPrePareMeetingViewController"];
+    RCRTCCreateMeetingViewController *prePareMeetingVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCCreateMeetingViewController"];
     [self.navigationController pushViewController:prePareMeetingVC animated:YES];
 }
 
@@ -57,8 +59,13 @@
 
 - (IBAction)clickCallLibBtn:(UIButton *)sender {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RCRTCCallLib" bundle:nil];
-    RCRTCPrepareLiveViewController *callLibVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCCallLibViewController"];
+    RCRTCCallLibViewController *callLibVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCCallLibViewController"];
     [self.navigationController pushViewController:callLibVC animated:YES];
+}
+- (IBAction)clickCallKitBtn:(UIButton *)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RCRTCCallKit" bundle:nil];
+    RCRTCCallKitViewController *callKitVC = [sb instantiateViewControllerWithIdentifier:@"RCRTCCallKitViewController"];
+    [self.navigationController pushViewController:callKitVC animated:YES];
 }
 
 /**
