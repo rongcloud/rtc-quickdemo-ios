@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="674" width="390" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGW-LZ-Xtg">
-                                        <rect key="frame" x="147" y="30" width="96" height="40"/>
+                                        <rect key="frame" x="146.66666666666666" y="30" width="96.666666666666657" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ocv-jN-2E8"/>
@@ -135,7 +135,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4I-gu-zsT">
-                                        <rect key="frame" x="263" y="30" width="97" height="40"/>
+                                        <rect key="frame" x="263.33333333333331" y="30" width="96.666666666666686" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="xFP-kx-iDp"/>
@@ -151,7 +151,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEk-cu-8QP">
-                                        <rect key="frame" x="30" y="30" width="97" height="40"/>
+                                        <rect key="frame" x="30.000000000000007" y="30" width="96.666666666666686" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3j3-dw-agi"/>
@@ -170,7 +170,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgH-XB-RsV">
-                                        <rect key="frame" x="30" y="90" width="97" height="40"/>
+                                        <rect key="frame" x="30.000000000000007" y="90" width="96.666666666666686" height="40"/>
                                         <color key="backgroundColor" red="0.1492772996" green="0.7105588317" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2mQ-hk-ZPO"/>
@@ -186,7 +186,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-lz-NL8">
-                                        <rect key="frame" x="147" y="90" width="96" height="40"/>
+                                        <rect key="frame" x="146.66666666666666" y="90" width="96.666666666666657" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Gyg-aM-Ah8"/>
@@ -203,7 +203,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yux-aa-mAM">
-                                        <rect key="frame" x="263" y="90" width="97" height="40"/>
+                                        <rect key="frame" x="263.33333333333331" y="90" width="96.666666666666686" height="40"/>
                                         <color key="backgroundColor" red="0.080387227239999998" green="0.71460038420000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="xjR-KY-qnp"/>
