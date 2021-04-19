@@ -6,7 +6,9 @@
 //
 
 #import "RCRTCCallKitViewController.h"
+#import "UIViewController+AlertView.h"
 #import <RongCallKit/RongCallKit.h>
+
 
 @interface RCRTCCallKitViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *useridTextField;
@@ -21,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
  
+
     //必须初始化, 否则无法收到来电
     [RCCall sharedRCCall];
 }
@@ -34,7 +37,15 @@
     }
     [self.useridTextField resignFirstResponder];
     
+    //呼叫自己过滤
+    if ([[RCIM sharedRCIM].currentUserInfo.userId isEqualToString:self.useridTextField.text]) {
+        [self showAlertView:@"不允许呼叫自己"];
+        return;
+    }
+  
+    //音频通话
     [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaAudio];
+    
 }
 
 
@@ -48,7 +59,13 @@
     }
     [self.useridTextField resignFirstResponder];
     
+    //呼叫自己过滤
+    if ([[RCIM sharedRCIM].currentUserInfo.userId isEqual:self.useridTextField.text]) {
+        [self showAlertView:@"不允许呼叫自己"];
+        return;
+    }
     
+    //视频通话
     [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaVideo];
 }
 
