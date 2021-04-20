@@ -1,4 +1,7 @@
 //
+//  RCRTCLiveViewController.m
+//  RCRTCQuickDemo
+//
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
@@ -288,7 +291,6 @@ RCRTCStatusReportDelegate>
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
     
     sender.selected = !sender.selected;
-    NSLog(@"%@",sender.titleLabel.text);
     
     //开关摄像头
     RCRTCCameraOutputStream *DVStream = self.engine.defaultVideoStream;
@@ -320,7 +322,6 @@ RCRTCStatusReportDelegate>
     
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
 
-    NSLog(@"%@",sender.titleLabel.text);
    
         sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
     
@@ -352,7 +353,6 @@ RCRTCStatusReportDelegate>
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
 
     sender.selected = !sender.selected;
-    NSLog(@"%@",sender.titleLabel.text);
     
     //切换摄像头
     [self.engine.defaultVideoStream switchCamera];
@@ -399,7 +399,7 @@ RCRTCStatusReportDelegate>
     [self.engine joinRoom:_roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
         @StrongObj(self);
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败code:%ld",(long)code] inCurrentVC:self];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentVC:self];
             return;
         }
         // set delegate
@@ -475,7 +475,7 @@ RCRTCStatusReportDelegate>
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
         if (code == RCRTCCodeSuccess && isSuccess) return;
-        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败code:%ld",(long)code] inCurrentVC:self];
+        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentVC:self];
     }];
 }
 
@@ -520,7 +520,6 @@ RCRTCStatusReportDelegate>
             [UIAlertController alertWithString:errorStr inCurrentVC:nil];
             return;
         }
-        NSLog(@"切换成功");
         
         
     // 创建并设置远端视频预览视图
@@ -581,7 +580,7 @@ RCRTCStatusReportDelegate>
  * 直播合流发布
  */
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
-    NSLog(@"已发布liveStream:%@",streams);
+
     [self subscribeRemoteResource:streams orUid:nil];
 }
 
@@ -589,7 +588,7 @@ RCRTCStatusReportDelegate>
  * 直播合流取消发布
  */
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
-    NSLog(@"取消发布liveStream:%@",streams);
+
     [self unsubscribeRemoteResource:streams orUid:nil];
 }
 
@@ -598,7 +597,7 @@ RCRTCStatusReportDelegate>
  * 新用户加入
  */
 - (void)didJoinUser:(RCRTCRemoteUser *)user{
-    NSLog(@"didJoinUser:%@",user);
+
 }
 
 
@@ -606,7 +605,6 @@ RCRTCStatusReportDelegate>
  * 离开
  */
 - (void)didLeaveUser:(RCRTCRemoteUser *)user{
-    NSLog(@"didLeaveUser:%@",user);
     [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
 
@@ -615,7 +613,6 @@ RCRTCStatusReportDelegate>
  * 远端掉线
  */
 - (void)didOfflineUser:(RCRTCRemoteUser*)user{
-    NSLog(@"didOfflineUser:%@",user.userId);
     [self unsubscribeRemoteResource:nil orUid:user.userId];
 }
 
@@ -623,21 +620,12 @@ RCRTCStatusReportDelegate>
  * 流连接成功
  */
 - (void)didConnectToStream:(RCRTCInputStream *)stream{
-    NSLog(@"didConnectToStream:%@",stream);
+
 }
 
 - (void)didReportStatusForm:(RCRTCStatusForm *)form{
-    NSLog(@"--recvStats:%@",form.recvStats);
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

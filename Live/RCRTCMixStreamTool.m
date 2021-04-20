@@ -1,4 +1,7 @@
 //
+//  RCRTCMixStreamTool.m
+//  RCRTCQuickDemo
+//
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
@@ -6,25 +9,34 @@
 
 @implementation RCRTCMixStreamTool
 
-// 设置合流布局
+/**
+ * 设置合流布局
+ */
+
 + (RCRTCMixConfig *)setOutputConfig:(RCRTCMixLayoutMode)mode{
+    
     // 布局配置类
     RCRTCMixConfig *streamConfig = [[RCRTCMixConfig alloc] init];
+    
     // 选择模式
     streamConfig.layoutMode = mode;
+    
     // 设置合流视频参数 ：宽：300 ，高：300 ，视频帧率 20， 视频码率 500；
     streamConfig.mediaConfig.videoConfig.videoLayout.width = 300;
     streamConfig.mediaConfig.videoConfig.videoLayout.height = 300;
     streamConfig.mediaConfig.videoConfig.videoLayout.fps = 20;
     streamConfig.mediaConfig.videoConfig.videoLayout.bitrate = 500;
     [streamConfig.mediaConfig.videoConfig setBackgroundColor:0x778899];
+    
     // 音频配置
     streamConfig.mediaConfig.audioConfig.bitrate = 300;
+    
     // 设置是否裁剪
     streamConfig.mediaConfig.videoConfig.videoExtend.renderMode = 1;
     
     
     NSMutableArray *streamArr = [NSMutableArray array];
+    
     //添加本地输出流
     NSArray<RCRTCOutputStream *> *localStreams
     = RCRTCEngine.sharedInstance.room.localUser.streams;
@@ -35,8 +47,9 @@
     }
     
     switch (mode) {
+            
+        //自定义布局
         case RCRTCMixLayoutModeCustom:
-            //自定义布局
         {
             // 如果是自定义布局需要设置下面这些
             NSArray<RCRTCRemoteUser *> *remoteUsers = RCRTCEngine.sharedInstance.room.remoteUsers;
