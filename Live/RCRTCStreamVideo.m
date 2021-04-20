@@ -9,6 +9,7 @@
 
 @implementation RCRTCStreamVideo
 
+//根据 uid 创建并设置远端视频预览视图
 - (instancetype)initWithUid:(NSString *)uid {
     if (self = [super init]) {
         self.userId = uid;
