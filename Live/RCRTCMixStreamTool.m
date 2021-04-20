@@ -78,14 +78,16 @@
     NSInteger streamCount = streams.count;
     NSInteger itemWidth = 150;
     NSInteger itemHeight = itemWidth;
+    
+    // 坐标示例，具体根据自己布局设置
     if (streamCount == 1) {
         RCRTCStream *firstStream = [streams firstObject];
         RCRTCCustomLayout *inputConfig = [[RCRTCCustomLayout alloc] init];
         inputConfig.videoStream = firstStream;
-        inputConfig.x = (300-itemWidth)/2;   // 坐标示例，具体根据自己布局设置
-        inputConfig.y = 0; // 坐标示例，具体根据自己布局设置
-        inputConfig.width = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig.height = itemHeight;  // 坐标示例，具体根据自己布局设置
+        inputConfig.x = (300-itemWidth)/2;
+        inputConfig.y = 0;
+        inputConfig.width = itemWidth;
+        inputConfig.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig];
     }else if (streamCount == 2){
         RCRTCStream *firstStream = [streams firstObject];
@@ -93,18 +95,18 @@
         
         RCRTCCustomLayout *inputConfig1 = [[RCRTCCustomLayout alloc] init];
         inputConfig1.videoStream = firstStream;
-        inputConfig1.x = (300-itemWidth)/2;   // 坐标示例，具体根据自己布局设置
-        inputConfig1.y = 0; // 坐标示例，具体根据自己布局设置
-        inputConfig1.width = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig1.height = itemHeight;  // 坐标示例，具体根据自己布局设置
+        inputConfig1.x = (300-itemWidth)/2;
+        inputConfig1.y = 0;
+        inputConfig1.width = itemWidth;
+        inputConfig1.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig1];
         
         RCRTCCustomLayout *inputConfig2 = [[RCRTCCustomLayout alloc] init];
         inputConfig2.videoStream = lastStream;
-        inputConfig2.x = 0;   // 坐标示例，具体根据自己布局设置
-        inputConfig2.y = itemHeight; // 坐标示例，具体根据自己布局设置
-        inputConfig2.width = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig2.height = itemHeight;  // 坐标示例，具体根据自己布局设置
+        inputConfig2.x = 0;
+        inputConfig2.y = itemHeight;
+        inputConfig2.width = itemWidth;
+        inputConfig2.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig2];
     }else if (streamCount == 3){
         RCRTCStream *firstStream = [streams firstObject];
@@ -113,26 +115,26 @@
         
         RCRTCCustomLayout *inputConfig1 = [[RCRTCCustomLayout alloc] init];
         inputConfig1.videoStream = firstStream;
-        inputConfig1.x = (300-itemWidth)/2;   // 坐标示例，具体根据自己布局设置
-        inputConfig1.y = 0; // 坐标示例，具体根据自己布局设置
-        inputConfig1.width = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig1.height = itemHeight;  // 坐标示例，具体根据自己布局设置
+        inputConfig1.x = (300-itemWidth)/2;
+        inputConfig1.y = 0;
+        inputConfig1.width = itemWidth;
+        inputConfig1.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig1];
         
         RCRTCCustomLayout *inputConfig2 = [[RCRTCCustomLayout alloc] init];
         inputConfig2.videoStream = secondStream;
-        inputConfig2.x = 0;   // 坐标示例，具体根据自己布局设置
-        inputConfig2.y = itemHeight; // 坐标示例，具体根据自己布局设置
-        inputConfig2.width = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig2.height = itemHeight;  // 坐标示例，具体根据自己布局设置
+        inputConfig2.x = 0;
+        inputConfig2.y = itemHeight;
+        inputConfig2.width = itemWidth;
+        inputConfig2.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig2];
         
         RCRTCCustomLayout *inputConfig3 = [[RCRTCCustomLayout alloc] init];
         inputConfig3.videoStream = lastStream;
-        inputConfig3.x = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig3.y = itemHeight; // 坐标示例，具体根据自己布局设置
-        inputConfig3.width = itemWidth;   // 坐标示例，具体根据自己布局设置
-        inputConfig3.height = itemHeight;  // 坐标示例，具体根据自己布局设置
+        inputConfig3.x = itemWidth;   
+        inputConfig3.y = itemHeight;
+        inputConfig3.width = itemWidth;
+        inputConfig3.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig3];
         
     }else{
@@ -140,10 +142,10 @@
         for (RCRTCStream *stream in streams) {
             RCRTCCustomLayout *inputConfig = [[RCRTCCustomLayout alloc] init];
             inputConfig.videoStream = stream;
-            inputConfig.x = 100 * i;   // 坐标示例，具体根据自己布局设置
-            inputConfig.y = 100 * (i/3); // 坐标示例，具体根据自己布局设置
-            inputConfig.width = 100;   // 坐标示例，具体根据自己布局设置
-            inputConfig.height = 100;  // 坐标示例，具体根据自己布局设置
+            inputConfig.x = 100 * i;
+            inputConfig.y = 100 * (i/3);
+            inputConfig.width = 100;
+            inputConfig.height = 100;
             [streamConfig.customLayouts addObject:inputConfig];
             i++;
         }

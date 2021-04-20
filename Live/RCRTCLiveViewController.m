@@ -51,7 +51,7 @@ RCRTCStatusReportDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //初始化UI
+    //初始化 UI
     [self initView];
     
     //直播类型下的角色区分：主播/观众
@@ -132,7 +132,7 @@ RCRTCStatusReportDelegate>
         /**
          * 观众上麦
          * 1.添加本地采集预览界面
-         * 2.加入RTC房间
+         * 2.加入 RTC 房间
          */
         
         [self setupLocalVideoView];
@@ -141,7 +141,7 @@ RCRTCStatusReportDelegate>
         
     }else{
         
-        //下麦：加入RTC房间
+        //下麦：加入 RTC 房间
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
     }
 }
@@ -389,7 +389,7 @@ RCRTCStatusReportDelegate>
  */
 
 /**
- * 加入RTC房间
+ * 加入 RTC 房间
  */
 -(void)joinLiveRoomWithRole:(RCRTCLiveRoleType)roleType{
     //1.配置房间
