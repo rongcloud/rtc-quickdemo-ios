@@ -8,7 +8,7 @@
 
 #import "RCRTCMeetingViewController.h"
 #import <RongRTCLib/RongRTCLib.h>
-#import "UIViewController+AlertView.h"
+#import "UIAlertController+RCRTC.h"
 
 #define kScreenWidth self.view.frame.size.width
 #define kScreenHeight self.view.frame.size.height
@@ -109,7 +109,7 @@
                         */
                        [self afterJoinRoom:room];
                    } else {
-                       [self showAlertView:@"加入房间失败"];
+                       [UIAlertController alertWithString:@"加入房间失败" inCurrentViewController:self];
                    }
                }];
 }

@@ -6,7 +6,7 @@
 //
 
 #import "RCRTCCallKitViewController.h"
-#import "UIViewController+AlertView.h"
+#import "UIAlertController+RCRTC.h"
 #import <RongCallKit/RongCallKit.h>
 
 /**
@@ -47,7 +47,7 @@
     
     //呼叫自己过滤
     if ([[RCIM sharedRCIM].currentUserInfo.userId isEqualToString:self.useridTextField.text]) {
-        [self showAlertView:@"不允许呼叫自己"];
+        [UIAlertController alertWithString:@"不允许呼叫自己" inCurrentViewController:self];
         return;
     }
   
@@ -69,7 +69,7 @@
     
     //呼叫自己过滤
     if ([[RCIM sharedRCIM].currentUserInfo.userId isEqualToString:self.useridTextField.text]) {
-        [self showAlertView:@"不允许呼叫自己"];
+        [UIAlertController alertWithString:@"不允许呼叫自己" inCurrentViewController:self];
         return;
     }
     

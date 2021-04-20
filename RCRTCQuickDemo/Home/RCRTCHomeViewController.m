@@ -8,7 +8,7 @@
 #import "RCRTCHomeViewController.h"
 #import "RCRTCCreateMeetingViewController.h"
 #import "RCRTCPrepareLiveViewController.h"
-#import "UIViewController+AlertView.h"
+#import "UIAlertController+RCRTC.h"
 #import "RCRTCCallLibViewController.h"
 #import "RCRTCCallKitViewController.h"
 
@@ -120,9 +120,9 @@ static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewControll
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
         
         [self.navigationController popToRootViewControllerAnimated:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[UIApplication sharedApplication].keyWindow.rootViewController showAlertView:@"当前用户在其他设备登陆"];
-        });
+
+        [UIAlertController alertWithString:@"当前用户在其他设备登陆" inCurrentViewController:nil];
+
     }
 }
 

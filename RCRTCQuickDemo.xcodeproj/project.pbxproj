@@ -18,7 +18,6 @@
 		DD24DF6D261EFC1700DC4665 /* RCRTCRequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF6C261EFC1700DC4665 /* RCRTCRequestToken.m */; };
 		DD24DFE426202F5100DC4665 /* RCRTCMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DFE226202F5100DC4665 /* RCRTCMeetingViewController.m */; };
 		DD24DFF0262045C000DC4665 /* RCRTCMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD24DFEF262045C000DC4665 /* RCRTCMeeting.storyboard */; };
-		DD4C6CF32626C70000408C19 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */; };
 		DD59DE01262D5BCD00A0C940 /* RCRTCCallKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD59DE00262D5BCD00A0C940 /* RCRTCCallKit.storyboard */; };
 		DD59DE05262D5BD900A0C940 /* RCRTCCallKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD59DE04262D5BD900A0C940 /* RCRTCCallKitViewController.m */; };
 		DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD81211B261DC26B00AF7D35 /* AppDelegate.m */; };
@@ -56,8 +55,6 @@
 		DD24DFE126202F5100DC4665 /* RCRTCMeetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCMeetingViewController.h; sourceTree = "<group>"; };
 		DD24DFE226202F5100DC4665 /* RCRTCMeetingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCMeetingViewController.m; sourceTree = "<group>"; };
 		DD24DFEF262045C000DC4665 /* RCRTCMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RCRTCMeeting.storyboard; sourceTree = "<group>"; };
-		DD4C6CF12626C70000408C19 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
-		DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
 		DD59DE00262D5BCD00A0C940 /* RCRTCCallKit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RCRTCCallKit.storyboard; sourceTree = "<group>"; };
 		DD59DE03262D5BD900A0C940 /* RCRTCCallKitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCCallKitViewController.h; sourceTree = "<group>"; };
 		DD59DE04262D5BD900A0C940 /* RCRTCCallKitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCCallKitViewController.m; sourceTree = "<group>"; };
@@ -148,8 +145,6 @@
 			children = (
 				187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */,
 				187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */,
-				DD4C6CF12626C70000408C19 /* UIViewController+AlertView.h */,
-				DD4C6CF22626C70000408C19 /* UIViewController+AlertView.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -387,7 +382,6 @@
 				DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */,
 				DD24DF53261EEB3900DC4665 /* RCRTCCreateMeetingViewController.m in Sources */,
 				DDEC583726270E810067D692 /* RCRTCPrepareLiveViewController.m in Sources */,
-				DD4C6CF32626C70000408C19 /* UIViewController+AlertView.m in Sources */,
 				DD812138261DC32900AF7D35 /* RCRTCLoginViewController.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* RCRTCHomeViewController.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */,

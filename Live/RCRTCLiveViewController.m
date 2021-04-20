@@ -11,7 +11,6 @@
 #import "RCRTCStreamVideo.h"
 #import "RCRTCVideoLayoutTool.h"
 #import "UIAlertController+RCRTC.h"
-#import "UIViewController+AlertView.h"
 #import "RCRTCMixStreamTool.h"
 
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
@@ -430,7 +429,7 @@ RCRTCStatusReportDelegate>
     [self.engine joinRoom:_roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
         @StrongObj(self);
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentVC:self];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentViewController:self];
             return;
         }
         // set delegate
@@ -469,7 +468,7 @@ RCRTCStatusReportDelegate>
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentVC:self];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentViewController:self];
         }
     }];
 }
@@ -491,7 +490,7 @@ RCRTCStatusReportDelegate>
         if (desc == RCRTCCodeSuccess) {
             self.liveInfo = liveInfo;
         }else {
-            [UIAlertController alertWithString:@"本地流发布失败" inCurrentVC:nil];
+            [UIAlertController alertWithString:@"本地流发布失败" inCurrentViewController:nil];
         }
     }];
 }
@@ -506,7 +505,7 @@ RCRTCStatusReportDelegate>
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
         if (code == RCRTCCodeSuccess && isSuccess) return;
-        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentVC:self];
+        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentViewController:self];
     }];
 }
 
@@ -548,7 +547,7 @@ RCRTCStatusReportDelegate>
                               completion:^(BOOL isSuccess, RCRTCCode desc) {
         if (desc != RCRTCCodeSuccess) {
             NSString *errorStr = [NSString stringWithFormat:@"订阅远端流失败:%ld",(long)desc];
-            [UIAlertController alertWithString:errorStr inCurrentVC:nil];
+            [UIAlertController alertWithString:errorStr inCurrentViewController:nil];
             return;
         }
         
