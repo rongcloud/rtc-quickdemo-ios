@@ -2,7 +2,7 @@
 //  RCRTCRequestToken.m
 //  RCRTCQuickDemo
 //
-//  Created by yifan on 2021/4/8.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "RCRTCRequestToken.h"
