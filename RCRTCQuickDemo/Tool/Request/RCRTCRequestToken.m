@@ -14,7 +14,6 @@ static NSString * const RequestTokenURL = @"http://api-cn.ronghub.com/user/getTo
 
 @implementation RCRTCRequestToken
 
-
 + (NSString *)getNonce{
     int randomNum = arc4random_uniform(RAND_MAX);
     NSLog(@"randomNum : %d",randomNum);

@@ -52,10 +52,17 @@ static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewControll
     [self setRongCloudDelegate];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)initUI{
-    
-    self.navigationItem.hidesBackButton = YES;
-    self.currentUserLabel.text = [NSString stringWithFormat:@"UserID：%@",[RCIM sharedRCIM].currentUserInfo.userId];
+    self.currentUserLabel.text = [NSString stringWithFormat:@"当前 UserID：%@",[RCIM sharedRCIM].currentUserInfo.userId];
 }
 
 - (void)setRongCloudDelegate{

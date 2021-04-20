@@ -9,6 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ * 此类用于帮助开发者在客户端生成 Token
+ *
+ * 正式环境请勿在客户端请求 Token，您的客户端代码一旦被反编译，会导致您的 AppSecret 泄露。
+ * 请务必确保在服务端获取 Token。 参考文档：https://docs.rongcloud.cn/v4/views/im/server/user/register.html
+ */
 @interface RCRTCRequestToken : NSObject
 
 /**

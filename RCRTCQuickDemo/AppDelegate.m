@@ -15,7 +15,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
     /**
      未进行任何操作，直接进入 RCRTCLoginViewController 
