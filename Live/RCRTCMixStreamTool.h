@@ -5,24 +5,24 @@
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-/**
- * RCRTCMixStreamTool.m
- *
- * 12
- * 2
- * 2
- * 2
- * 2
- * 2
- * 2
- * 2
- */
+
 #import <Foundation/Foundation.h>
 #import <RongRTCLib/RongRTCLib.h>
+
+/**
+ *  合流布局 UI 实现类
+ *
+ */
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RCRTCMixStreamTool : NSObject
-// 设置合流布局
+
+/**
+ * 设置合流布局
+ */
+
+
 + (RCRTCMixConfig *)setOutputConfig:(RCRTCMixLayoutMode)mode;
 
 @end

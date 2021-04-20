@@ -15,14 +15,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy)NSString *userId;
 
-/// 包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
+/**
+ * 包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
+ */
+
 @property (nonatomic, strong)RCRTCVideoPreviewView *canvesView;
 
-/// RCRTCRemoteVideoView 初始化
-/// @param uid 用户id
+/**
+ * RCRTCRemoteVideoView 初始化
+ * @param uid 用户id
+ */
+
 - (instancetype)initWithUid:(NSString *)uid;
 
-/// 本地 RCRTCLocalVideoView 初始化
+/**
+ * 本地 RCRTCLocalVideoView 初始化
+ */
+
 + (instancetype)LocalStreamVideo;
 
 @end

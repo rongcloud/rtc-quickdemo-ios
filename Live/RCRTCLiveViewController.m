@@ -17,6 +17,36 @@
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
+/**
+ *  主播直播显 /观众观看直播
+ *  - setRoleType   自定义的私有方法，区分主播/观众进入不同 UI 显示
+ *
+ *  - 加入房间：
+ *  - 主播
+ *  - 1.设置不切换听筒为扬声器
+ *  - 2.添加本地采集预览界面
+ *  - 3.加入RTC房间
+ *
+ *  - 观众
+ *  - 1.设置切换听筒为扬声器
+ *  - 2.加入RTC房间
+ *
+ *  -  观众上麦：
+ *  - 1.先清理视图
+ *  - 2.退出房间
+ *  - 3.添加本地采集预览界面
+ *  - 4.加入 RTC 房间
+ *
+ *  -  观众下麦：
+ *  - 1.先清理视图
+ *  - 2.退出房间
+ *  - 3.加入 RTC 房间
+ *
+ *  - 退出房间：主播/观众
+ *  - 1.先清理视图
+ *  - 2.退出房间
+ */
+
 @interface RCRTCLiveViewController ()<
 RCRTCRoomEventDelegate,
 RCRTCStatusReportDelegate>

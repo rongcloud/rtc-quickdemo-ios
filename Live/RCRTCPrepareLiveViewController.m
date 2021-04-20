@@ -8,6 +8,15 @@
 #import "RCRTCPrepareLiveViewController.h"
 #import "RCRTCLiveViewController.h"
 
+/**
+ * 主播/观众 区分身份直播入口类
+ *
+ * 根据身份不同参数不同
+ * 主播 RCRTCLiveRoleTypeBroadcaster
+ * 观众 RCRTCLiveRoleTypeAudience
+ *
+ */
+
 @interface RCRTCPrepareLiveViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;

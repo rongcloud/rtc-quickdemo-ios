@@ -9,6 +9,13 @@
 #import "UIViewController+AlertView.h"
 #import <RongCallKit/RongCallKit.h>
 
+/**
+ * - 含 UI 的音视频通话
+ *
+ * - 获取 CallKit 的单例，必须实现
+ * - 音频通话  类型：RCCallMediaAudio
+ * - 视频通话  类型：RCCallMediaVideo
+ */
 
 @interface RCRTCCallKitViewController ()
 

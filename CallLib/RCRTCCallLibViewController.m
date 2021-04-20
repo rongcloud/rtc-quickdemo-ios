@@ -1,5 +1,5 @@
 //
-//  RCRTCCallKitViewController.m
+//  RCRTCCallLibViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -7,6 +7,20 @@
 
 #import "RCRTCCallLibViewController.h"
 #import <RongCallLib/RongCallLib.h>
+
+/**
+ * - 无 UI 的音视频通话
+ *
+ * - 设置链接协议
+ * - 发起呼叫 需配置 RCCallSession 对象并设置代理
+ * - 接听回话
+ * - 挂断会话
+ * - 通话已接通/已结束   实现 RCCallSessionDelegate 的代理方法
+ * - 接收到通话呼入 实现 RCCallReceiveDelegate 的回调方法
+ *
+ */
+
+
 
 /**
  * 当前 UI 的几种状态
