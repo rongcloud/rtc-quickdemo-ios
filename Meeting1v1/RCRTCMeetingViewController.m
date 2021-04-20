@@ -16,6 +16,16 @@
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
+/**
+ * 会议类
+ *
+ * 基本步骤包括：
+ * - 加入会议房间
+ * - 发布本地资源
+ * - 订阅远端资源
+ * - 取消本地发布并关闭摄像头
+ * - 退出房间
+ */
 @interface RCRTCMeetingViewController () <RCRTCRoomEventDelegate>
 
 @property (weak, nonatomic) IBOutlet RCRTCLocalVideoView *containerView;
@@ -63,7 +73,7 @@
     self.localView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:self.localView];
 
-    //添加点击手势,可切换`a大小视图
+    //添加点击手势,可切换大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.localView addGestureRecognizer:tap];
 }
@@ -76,7 +86,7 @@
     self.remoteView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:self.remoteView];
     
-    //添加点击手势,可切换`a大小视图
+    //添加点击手势,可切换大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.remoteView addGestureRecognizer:tap];
 }
@@ -160,7 +170,6 @@
     }
 }
 
-
 #pragma mark - Event
 /**
  * 点击视图进行大小窗口切换
@@ -223,7 +232,6 @@
     [self.engine.defaultVideoStream stopCapture];
     [self.remoteView removeFromSuperview];
     
-    
     /**
      * ⑤ 退出房间
      */
@@ -270,16 +278,5 @@
     return _engine;
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
