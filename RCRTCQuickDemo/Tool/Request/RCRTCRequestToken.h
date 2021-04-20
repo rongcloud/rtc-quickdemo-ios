@@ -12,11 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RCRTCRequestToken : NSObject
 
 /**
- * 请求 token
+ * 获取 token
  *
- * 此方法只用于测试环境使用，正式环境需要使用 server 进行处理。
+ * 注意：获取 Token 逻辑应部署在应用服务器上，客户端不要存储 AppSecret，此函数仅供演示使用。
  */
-+ (void)requestToken:(NSString *)userId name:(NSString *)name portraitUrl:(NSString * _Nullable)portraitUrl completionHandler:(void (^)(BOOL isSuccess, NSString * _Nullable tokenString))completionHandler;
++ (void)requestToken:(NSString *)userId
+                name:(NSString *)name
+         portraitUrl:(NSString * _Nullable)portraitUrl
+   completionHandler:(void (^)(BOOL isSuccess, NSString * _Nullable tokenString))completionHandler;
 
 @end
 

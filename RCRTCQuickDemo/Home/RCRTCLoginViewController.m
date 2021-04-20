@@ -5,12 +5,6 @@
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-/**
- * RCRTCLoginViewController.m
- *
- * 登录页面，用来处理 IM 登录逻辑
- */
-
 #import "RCRTCLoginViewController.h"
 #import "RCRTCRequestToken.h"
 #import "RCRTCConstant.h"
@@ -18,6 +12,13 @@
 
 #import <RongIMKit/RCIM.h>
 
+/**
+ * 登录页面，用来处理 IM 登录逻辑
+ *
+ * - 请求 Token
+ * - 初始化 Appkey
+ * - 连接 IM
+ */
 @interface RCRTCLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *useridTextField;
@@ -41,11 +42,18 @@
     [self.useridTextField resignFirstResponder];
     
     /**
-     * 请求 token 值
+     * 获取 Token
      */
-    [RCRTCRequestToken requestToken:self.useridTextField.text name:self.useridTextField.text portraitUrl:nil completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
+    [RCRTCRequestToken requestToken:self.useridTextField.text
+                               name:self.useridTextField.text
+                        portraitUrl:nil
+                  completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
         
         if (!isSuccess) return;
+        
+        /**
+         * 拿到 token 后去连接 IM 服务
+         */
         [self connectRongCloud:tokenString];
     }];
 }

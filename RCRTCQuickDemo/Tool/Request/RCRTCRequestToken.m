@@ -10,7 +10,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 
-static NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getToken.json";
+static NSString * const RequestTokenURL = @"http://api-cn.ronghub.com/user/getToken.json";
 
 @implementation RCRTCRequestToken
 
@@ -47,9 +47,12 @@ static NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getTo
     return output;
 }
 
-+ (void)requestToken:(NSString *)userId name:(NSString *)name portraitUrl:(NSString * _Nullable)portraitUrl completionHandler:(void (^)(BOOL isSuccess, NSString * _Nullable tokenString))completionHandler{
++ (void)requestToken:(NSString *)userId
+                name:(NSString *)name
+         portraitUrl:(NSString * _Nullable)portraitUrl
+   completionHandler:(void (^)(BOOL isSuccess, NSString * _Nullable tokenString))completionHandler{
     
-    NSURL *url = [NSURL URLWithString:RequestTokenUrl];
+    NSURL *url = [NSURL URLWithString:RequestTokenURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
     [request setValue:AppKey forHTTPHeaderField:@"App-Key"];
@@ -66,12 +69,12 @@ static NSString * const RequestTokenUrl = @"http://api-cn.ronghub.com/user/getTo
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"request token failed, Error: %@", error);
+            NSLog(@"request completed,Error: \n%@", error);
             completionHandler(NO,nil);
         } else {
             NSError *__error = nil;
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&__error];
-            NSLog(@"result : %@", result);
+            NSLog(@"request completed,Result: \n%@", result);
             
             if (result && result[@"token"]) {
                 completionHandler(YES,result[@"token"]);
