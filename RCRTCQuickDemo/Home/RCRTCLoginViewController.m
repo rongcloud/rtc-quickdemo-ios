@@ -1,6 +1,15 @@
 //
+//  RCRTCLoginViewController.m
+//  RCRTCQuickDemo
+//
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
+
+/**
+ * RCRTCLoginViewController.m
+ *
+ * 登录页面，用来处理 IM 登录逻辑
+ */
 
 #import "RCRTCLoginViewController.h"
 #import "RCRTCRequestToken.h"
