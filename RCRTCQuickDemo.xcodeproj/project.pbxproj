@@ -11,6 +11,10 @@
 		187F9E312628504A002E5288 /* RCRTCVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* RCRTCVideoLayoutTool.m */; };
 		187F9E322628504A002E5288 /* RCRTCStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* RCRTCStreamVideo.m */; };
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
+		4F82965C262EDACC00DC9B97 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F82965B262EDACC00DC9B97 /* GPUImage.framework */; };
+		4F829664262EDAEC00DC9B97 /* GPUImageOutputCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F829661262EDAEC00DC9B97 /* GPUImageOutputCamera.m */; };
+		4F829665262EDAEC00DC9B97 /* GPUImageHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F829662262EDAEC00DC9B97 /* GPUImageHandle.m */; };
+		4F829666262EDAEC00DC9B97 /* GPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F829663262EDAEC00DC9B97 /* GPUImageBeautyFilter.m */; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* RCRTCConstant.m */; };
 		DD24DF53261EEB3900DC4665 /* RCRTCCreateMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF51261EEB3900DC4665 /* RCRTCCreateMeetingViewController.m */; };
@@ -42,6 +46,13 @@
 		187F9E2F2628504A002E5288 /* RCRTCStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCStreamVideo.h; sourceTree = "<group>"; };
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
+		4F82965B262EDACC00DC9B97 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		4F82965E262EDAEC00DC9B97 /* GPUImageOutputCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageOutputCamera.h; sourceTree = "<group>"; };
+		4F82965F262EDAEC00DC9B97 /* GPUImageHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageHandle.h; sourceTree = "<group>"; };
+		4F829660262EDAEC00DC9B97 /* GPUImageBeautyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautyFilter.h; sourceTree = "<group>"; };
+		4F829661262EDAEC00DC9B97 /* GPUImageOutputCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageOutputCamera.m; sourceTree = "<group>"; };
+		4F829662262EDAEC00DC9B97 /* GPUImageHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageHandle.m; sourceTree = "<group>"; };
+		4F829663262EDAEC00DC9B97 /* GPUImageBeautyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautyFilter.m; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* RCRTCConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCConstant.h; sourceTree = "<group>"; };
@@ -85,12 +96,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */,
+				4F82965C262EDACC00DC9B97 /* GPUImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F82965D262EDAEC00DC9B97 /* GPUImage */ = {
+			isa = PBXGroup;
+			children = (
+				4F82965E262EDAEC00DC9B97 /* GPUImageOutputCamera.h */,
+				4F82965F262EDAEC00DC9B97 /* GPUImageHandle.h */,
+				4F829660262EDAEC00DC9B97 /* GPUImageBeautyFilter.h */,
+				4F829661262EDAEC00DC9B97 /* GPUImageOutputCamera.m */,
+				4F829662262EDAEC00DC9B97 /* GPUImageHandle.m */,
+				4F829663262EDAEC00DC9B97 /* GPUImageBeautyFilter.m */,
+			);
+			path = GPUImage;
+			sourceTree = "<group>";
+		};
 		AE23833E4788BB5B11B8782D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +236,7 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				4F82965D262EDAEC00DC9B97 /* GPUImage */,
 				187F9E2C2628504A002E5288 /* RCRTCMixStreamTool.h */,
 				187F9E2A2628504A002E5288 /* RCRTCMixStreamTool.m */,
 				187F9E2F2628504A002E5288 /* RCRTCStreamVideo.h */,
@@ -239,6 +265,7 @@
 		FEC3B326876A92E37BD3485E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F82965B262EDACC00DC9B97 /* GPUImage.framework */,
 				89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */,
 			);
 			name = Frameworks;
@@ -384,10 +411,13 @@
 				DDEC583726270E810067D692 /* RCRTCPrepareLiveViewController.m in Sources */,
 				DD812138261DC32900AF7D35 /* RCRTCLoginViewController.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* RCRTCHomeViewController.m in Sources */,
+				4F829666262EDAEC00DC9B97 /* GPUImageBeautyFilter.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* RCRTCConstant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RCRTCRequestToken.m in Sources */,
+				4F829665262EDAEC00DC9B97 /* GPUImageHandle.m in Sources */,
 				187F9E312628504A002E5288 /* RCRTCVideoLayoutTool.m in Sources */,
+				4F829664262EDAEC00DC9B97 /* GPUImageOutputCamera.m in Sources */,
 				DD59DE05262D5BD900A0C940 /* RCRTCCallKitViewController.m in Sources */,
 				DD24DFE426202F5100DC4665 /* RCRTCMeetingViewController.m in Sources */,
 				DDEC583C26270ECA0067D692 /* RCRTCLiveViewController.m in Sources */,
@@ -542,6 +572,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = RCRTCQuickDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -565,6 +599,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = RCRTCQuickDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

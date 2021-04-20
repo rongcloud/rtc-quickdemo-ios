@@ -12,6 +12,7 @@
 #import "RCRTCVideoLayoutTool.h"
 #import "UIAlertController+RCRTC.h"
 #import "RCRTCMixStreamTool.h"
+#import "GPUImageHandle.h"
 
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
@@ -61,6 +62,10 @@ RCRTCStatusReportDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *beautyButton;
+
+@property(nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
+
 //音频配置
 @property (strong, nonatomic) RCRTCEngine *engine;
 
@@ -72,6 +77,9 @@ RCRTCStatusReportDelegate>
 @property (nonatomic, strong)RCRTCStreamVideo *localVideo;
 @property (nonatomic)NSMutableArray <RCRTCStreamVideo *>*streamVideos;
 @property (nonatomic, strong)RCRTCVideoLayoutTool *layoutTool;
+
+//美颜开关
+@property(nonatomic, assign) BOOL openBeauty;
 
 @end
 
@@ -216,13 +224,19 @@ RCRTCStatusReportDelegate>
     return _funcBtns;
 }
 
-
+-(GPUImageHandle *)gpuImageHandler {
+    if (!_gpuImageHandler) {
+        _gpuImageHandler = [[GPUImageHandle alloc]init];
+    }
+    return _gpuImageHandler;
+}
 #pragma mark - UI
 
 - (void)initView{
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBarButton];
+
     
 }
 
@@ -388,6 +402,15 @@ RCRTCStatusReportDelegate>
     [self.engine.defaultVideoStream switchCamera];
 }
 
+/**
+ * 切换美颜
+ */
+- (IBAction)beautyAction:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    self.openBeauty = sender.selected;
+    
+}
 
 /**
  * 布局视图动画
@@ -456,6 +479,21 @@ RCRTCStatusReportDelegate>
             [self subscribeRemoteResource:liveStreams orUid:nil];
         }
     }];
+    
+    
+    //获取采集的 buffer 回调
+    __weak typeof(self) weakSelf = self;
+    [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
+        ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf || !strongSelf.openBeauty) {
+                return sampleBuffer;
+            }
+
+            //处理美颜，可以更换成第三方的 api
+            CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
+            return processedSampleBuffer ?: sampleBuffer;
+        };
 }
 
 

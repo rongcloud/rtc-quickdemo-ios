@@ -22,6 +22,7 @@
 
 + (instancetype)LocalStreamVideo{
     RCRTCStreamVideo *localStreamVideo = [[RCRTCStreamVideo alloc] init];
+    //初始化 这里的 userId 推荐 0
     localStreamVideo.userId = @"0";
     localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] init];
     localStreamVideo.canvesView.translatesAutoresizingMaskIntoConstraints = NO;

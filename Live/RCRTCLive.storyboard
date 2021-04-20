@@ -219,6 +219,14 @@
                                             <action selector="connectHostAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="kKP-B8-Cdt"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaV-dj-XoT">
+                                        <rect key="frame" x="263" y="138" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="beautyAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="VRA-Sk-fcJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -267,6 +275,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beautyButton" destination="LaV-dj-XoT" id="NdP-5h-lxO"/>
                         <outlet property="closeCamera" destination="gEk-cu-8QP" id="kF3-Gj-Adh"/>
                         <outlet property="closeLiveBtn" destination="LfT-lz-NL8" id="wQR-m2-4dE"/>
                         <outlet property="closeMicBtn" destination="xGW-LZ-Xtg" id="fad-qc-4qg"/>
