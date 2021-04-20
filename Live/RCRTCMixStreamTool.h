@@ -1,8 +1,5 @@
 //
-//  RCRTCMixStreamTool.h
-//  RCRTCQuickDemo
-//
-//  Created by apple on 2021/4/15.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

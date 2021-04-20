@@ -1,8 +1,5 @@
 //
-//  RCRTCCallKitViewController.m
-//  RCRTCQuickDemo
-//
-//  Created by yifan on 2021/4/19.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "RCRTCCallKitViewController.h"
