@@ -1,18 +1,16 @@
 //
-//  RCRTCLoginViewController.m
-//  RCRTCQuickDemo
-//
-//  Created by yifan on 2021/4/7.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "RCRTCLoginViewController.h"
 #import "RCRTCRequestToken.h"
-#import <RongIMKit/RCIM.h>
 #import "RCRTCConstant.h"
 #import "RCRTCHomeViewController.h"
 
+#import <RongIMKit/RCIM.h>
 
 @interface RCRTCLoginViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *useridTextField;
 
 @end
@@ -21,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 /**
@@ -48,7 +45,7 @@
  * ① 初始化 Appkey 并 连接 IM
  */
 - (void)connectRongCloud:(NSString *)token{
-
+    
     [[RCIM sharedRCIM] initWithAppKey:AppKey];
     
     [[RCIM sharedRCIM] connectWithToken:token dbOpened:nil success:^(NSString *userId) {

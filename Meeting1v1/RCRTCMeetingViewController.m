@@ -1,9 +1,7 @@
 //
-//  RCRTCMeetingViewController.m
-//  RCRTCQuickDemo
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
-//  Created by yifan on 2021/4/9.
-//
+
 
 #import "RCRTCMeetingViewController.h"
 #import <RongRTCLib/RongRTCLib.h>

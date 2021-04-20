@@ -1,8 +1,5 @@
 //
-//  AppDelegate.m
-//  RCRTCQuickDemo
-//
-//  Created by yifan on 2021/4/7.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "AppDelegate.h"
