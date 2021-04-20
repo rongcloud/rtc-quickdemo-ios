@@ -45,6 +45,12 @@
  *  - 退出房间：主播/观众
  *  - 1.先清理视图
  *  - 2.退出房间
+ *
+ *  - 美颜
+ *  - 1.导入 GPUImage.framework
+ *  - 2.引入头文件 GPUImageHandle.h
+ *  - 3.初始化 GPUImageHandle
+ *  - 4.在加入 RTC 房间逻辑里设置获取采集的 buffer 回调
  */
 
 @interface RCRTCLiveViewController ()<
@@ -62,7 +68,8 @@ RCRTCStatusReportDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
 
-@property (weak, nonatomic) IBOutlet UIButton *beautyButton;
+//美颜开关
+@property (strong, nonatomic) UIButton *beautyButton;
 
 @property(nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
 
@@ -135,7 +142,8 @@ RCRTCStatusReportDelegate>
             [self disableClickWith:@[self.closeCamera,
                                      self.closeMicBtn,
                                      self.streamLayoutBtn,
-                                     self.switchStreamMode]];
+                                     self.switchStreamMode,
+                                     self.beautyButton]];
             
             /*!
              当前直播角色为观众
@@ -219,7 +227,8 @@ RCRTCStatusReportDelegate>
             self.closeCamera,
             self.closeMicBtn,
             self.streamLayoutBtn,
-            self.switchStreamMode];
+            self.switchStreamMode,
+            self.beautyButton];
     }
     return _funcBtns;
 }
@@ -231,13 +240,22 @@ RCRTCStatusReportDelegate>
     return _gpuImageHandler;
 }
 #pragma mark - UI
-
+/**
+ * 隐藏左边导航返回按钮
+ * 设置导航右侧美颜按钮
+ */
 - (void)initView{
     
     UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBarButton];
 
-    
+    _beautyButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
+    [_beautyButton setTitle:@"打开美颜" forState:UIControlStateNormal];
+    [_beautyButton setTitle:@"关闭美颜" forState:UIControlStateSelected];
+    [_beautyButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+    [_beautyButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
+    [_beautyButton addTarget:self action:@selector(beautyAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_beautyButton];
 }
 
 
@@ -256,10 +274,18 @@ RCRTCStatusReportDelegate>
  */
 - (void)disableClickWith:(NSArray *)btns{
     for (UIButton *btn in self.funcBtns) {
+        if (btn == _beautyButton) {
+            _beautyButton.alpha = 1;
+            continue;
+        }
         [btn setBackgroundColor:[UIColor colorWithRed:29.0/255.0 green:183.0/255.0 blue:1.0 alpha:1]];
         btn.enabled = YES;
     }
     for (UIButton *btn in btns) {
+        if (btn == _beautyButton) {
+            _beautyButton.alpha = 0;
+            continue;
+        }
         [btn setBackgroundColor:[UIColor grayColor]];
         btn.enabled = NO;
     }
@@ -319,7 +345,8 @@ RCRTCStatusReportDelegate>
         [self disableClickWith:@[self.closeCamera,
                                  self.closeMicBtn,
                                  self.streamLayoutBtn,
-                                 self.switchStreamMode]];
+                                 self.switchStreamMode,
+                                 self.beautyButton]];
     }
     
     //上麦/下麦
@@ -405,10 +432,11 @@ RCRTCStatusReportDelegate>
 /**
  * 切换美颜
  */
-- (IBAction)beautyAction:(UIButton *)sender {
+- (void)beautyAction:(UIButton *)sender {
     
     sender.selected = !sender.selected;
     self.openBeauty = sender.selected;
+    
     
 }
 
@@ -481,7 +509,7 @@ RCRTCStatusReportDelegate>
     }];
     
     
-    //获取采集的 buffer 回调
+    //美颜获取采集的 buffer 回调
     __weak typeof(self) weakSelf = self;
     [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
         ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {

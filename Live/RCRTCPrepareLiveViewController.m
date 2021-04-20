@@ -16,7 +16,6 @@
  * 观众 RCRTCLiveRoleTypeAudience
  *
  */
-
 @interface RCRTCPrepareLiveViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
