@@ -30,8 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
- 
-
+    
+    
     //必须初始化, 否则无法收到来电
     [RCCall sharedRCCall];
 }
@@ -50,7 +50,7 @@
         [UIAlertController alertWithString:@"不允许呼叫自己" inCurrentViewController:self];
         return;
     }
-  
+    
     //音频通话
     [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaAudio];
     

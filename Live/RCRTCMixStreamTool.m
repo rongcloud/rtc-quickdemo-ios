@@ -48,7 +48,7 @@
     
     switch (mode) {
             
-        //自定义布局
+            //自定义布局
         case RCRTCMixLayoutModeCustom:
         {
             // 如果是自定义布局需要设置下面这些
@@ -80,7 +80,7 @@
         default:
             break;
     }
-
+    
     return streamConfig;
 }
 

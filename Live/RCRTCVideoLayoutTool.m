@@ -34,7 +34,7 @@
     for (RCRTCStreamVideo *video in videos) {
         [video.canvesView removeFromSuperview];
     }
-
+    
     NSArray *allViews = [self viewListFromVideos:videos maxCount:4 ignorVideo:nil];
     [self.layoutConstraints addObjectsFromArray:[self layoutGridViews:allViews inContainerView:container]];
     
@@ -77,7 +77,7 @@
 
 
 - (NSArray<NSLayoutConstraint *> *)layoutGridViews:(NSArray<UIView *> *)allViews inContainerView:(UIView *)container {
-   
+    
     NSMutableArray *layouts = [[NSMutableArray alloc] init];
     NSUInteger viewCount = allViews.count;
     if (viewCount == 1) {

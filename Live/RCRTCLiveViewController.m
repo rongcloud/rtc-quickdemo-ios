@@ -156,7 +156,7 @@ RCRTCStatusReportDelegate>
     
     //2.退出房间
     [self exitRoom];
-
+    
     if (isConnect) {
         
         /**
@@ -166,7 +166,7 @@ RCRTCStatusReportDelegate>
          */
         
         [self setupLocalVideoView];
-
+        
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
         
     }else{
@@ -222,7 +222,7 @@ RCRTCStatusReportDelegate>
 - (void)initView{
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     
 }
 
@@ -296,7 +296,7 @@ RCRTCStatusReportDelegate>
  * 上麦/下麦状态判断
  */
 - (IBAction)connectHostAction:(UIButton *)sender {
-       
+    
     sender.selected = !sender.selected;
     
     if (sender.selected) {
@@ -310,7 +310,7 @@ RCRTCStatusReportDelegate>
     
     //上麦/下麦
     [self connectHostWithState:sender.selected];
-   
+    
 }
 
 /**
@@ -351,25 +351,25 @@ RCRTCStatusReportDelegate>
 - (IBAction)streamLayutAction:(UIButton *)sender{
     
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
-
-   
-        sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
     
-        //自定义布局刷新
-        [self streamlayoutMode:(RCRTCMixLayoutMode)sender.tag];
     
-        switch (sender.tag) {
-            case 1:
-                [sender setTitle:@"自定义布局" forState:0];
-                break;
-            case 2:
-                [sender setTitle:@"悬浮布局" forState:0];
-                break;
-            case 3:
-                [sender setTitle:@"自适应布局" forState:0];
-                break;
-            default:
-                break;
+    sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
+    
+    //自定义布局刷新
+    [self streamlayoutMode:(RCRTCMixLayoutMode)sender.tag];
+    
+    switch (sender.tag) {
+        case 1:
+            [sender setTitle:@"自定义布局" forState:0];
+            break;
+        case 2:
+            [sender setTitle:@"悬浮布局" forState:0];
+            break;
+        case 3:
+            [sender setTitle:@"自适应布局" forState:0];
+            break;
+        default:
+            break;
     }
 }
 
@@ -381,7 +381,7 @@ RCRTCStatusReportDelegate>
 - (IBAction)switchStreamAction:(UIButton *)sender{
     
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
-
+    
     sender.selected = !sender.selected;
     
     //切换摄像头
@@ -408,11 +408,11 @@ RCRTCStatusReportDelegate>
 
 /**
  主播设置合流布局,观众端看效果
-
+ 
  自定义布局 RCRTCMixLayoutModeCustom = 1
  悬浮布局 RCRTCMixLayoutModeSuspension = 2
  自适应布局 RCRTCMixLayoutModeAdaptive = 3
-  **默认新创建的房间是悬浮布局**
+ **默认新创建的房间是悬浮布局**
  */
 
 /**
@@ -552,7 +552,7 @@ RCRTCStatusReportDelegate>
         }
         
         
-    // 创建并设置远端视频预览视图
+        // 创建并设置远端视频预览视图
         NSInteger i = 0;
         for (RCRTCInputStream *stream in streams) {
             if (stream.mediaType == RTCMediaTypeVideo) {
@@ -610,7 +610,7 @@ RCRTCStatusReportDelegate>
  * 直播合流发布
  */
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
-
+    
     [self subscribeRemoteResource:streams orUid:nil];
 }
 
@@ -618,7 +618,7 @@ RCRTCStatusReportDelegate>
  * 直播合流取消发布
  */
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
-
+    
     [self unsubscribeRemoteResource:streams orUid:nil];
 }
 
@@ -627,7 +627,7 @@ RCRTCStatusReportDelegate>
  * 新用户加入
  */
 - (void)didJoinUser:(RCRTCRemoteUser *)user{
-
+    
 }
 
 
@@ -650,11 +650,11 @@ RCRTCStatusReportDelegate>
  * 流连接成功
  */
 - (void)didConnectToStream:(RCRTCInputStream *)stream{
-
+    
 }
 
 - (void)didReportStatusForm:(RCRTCStatusForm *)form{
-
+    
 }
 
 

@@ -206,7 +206,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
- 
+    
     [self.targetIdTextField resignFirstResponder];
 }
 
