@@ -15,17 +15,6 @@
 
 #import <RongIMKit/RongIMKit.h>
 
-static NSString * const MeetingStoryboardName = @"RCRTCMeeting";
-static NSString * const MeetingControllerIdentifier = @"RCRTCCreateMeetingViewController";
-
-static NSString * const LiveStoryboardName = @"RCRTCLive";
-static NSString * const LiveControllerIdentifier = @"RCRTCPrepareLiveViewController";
-
-static NSString * const CallLibStoryboardName = @"RCRTCCallLib";
-static NSString * const CallLibControllerIdentifier = @"RCRTCCallLibViewController";
-
-static NSString * const CallKitStoryboardName = @"RCRTCCallKit";
-static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewController";
 /**
  * 首页 包含集成的多种场景功能
  *
@@ -96,7 +85,7 @@ static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewControll
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    HomeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"RCRTCHomeTableViewCell"];
+    HomeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCell"];
     [cell setDataModel:self.sourceArray[indexPath.row]];
     return cell;
 }

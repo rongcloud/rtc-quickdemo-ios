@@ -9,20 +9,6 @@
 #import <RongCallLib/RongCallLib.h>
 
 /**
- * - 无 UI 的音视频通话
- *
- * - 设置链接协议
- * - 发起呼叫 需配置 RCCallSession 对象并设置代理
- * - 接听回话
- * - 挂断会话
- * - 通话已接通/已结束   实现 RCCallSessionDelegate 的代理方法
- * - 接收到通话呼入 实现 RCCallReceiveDelegate 的回调方法
- *
- */
-
-
-
-/**
  * 当前 UI 的几种状态
  */
 typedef NS_ENUM(NSInteger,RCRTCCallStatus){
@@ -44,6 +30,17 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     RCRTCCallStatus_Active = 3,
 };
 
+/**
+ * - 无 UI 的音视频通话
+ *
+ * - 设置链接协议
+ * - 发起呼叫 需配置 RCCallSession 对象并设置代理
+ * - 接听回话
+ * - 挂断会话
+ * - 通话已接通/已结束   实现 RCCallSessionDelegate 的代理方法
+ * - 接收到通话呼入 实现 RCCallReceiveDelegate 的回调方法
+ *
+ */
 @interface CallLibViewController () <RCCallReceiveDelegate,RCCallSessionDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *targetIdTextField;
