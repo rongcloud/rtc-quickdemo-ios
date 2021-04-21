@@ -38,7 +38,7 @@
     }
     
     [self.roomIdTextField resignFirstResponder];
-    MeetingViewController *meetingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCMeetingViewController"];
+    MeetingViewController *meetingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MeetingViewController"];
     meetingVC.roomId = self.roomIdTextField.text;
     [self.navigationController pushViewController:meetingVC animated:YES];
 }

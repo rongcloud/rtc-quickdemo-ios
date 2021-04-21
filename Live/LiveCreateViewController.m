@@ -38,7 +38,7 @@
     [self.roomIdTextField resignFirstResponder];
     
     [self.roomIdTextField resignFirstResponder];
-    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
+    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveViewController"];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeBroadcaster;
     [self.navigationController pushViewController:liveVC animated:YES];
@@ -54,7 +54,7 @@
     [self.roomIdTextField resignFirstResponder];
     
     [self.roomIdTextField resignFirstResponder];
-    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
+    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveViewController"];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeAudience;
     [self.navigationController pushViewController:liveVC animated:YES];
