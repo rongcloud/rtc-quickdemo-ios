@@ -72,7 +72,7 @@
          * 回调处于子线程，需要回调到主线程进行 UI 处理。
          */
         dispatch_async(dispatch_get_main_queue(), ^{
-            HomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCHomeViewController"];
+            HomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
             [self.navigationController pushViewController:homeVC animated:YES];
         });
         
