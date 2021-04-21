@@ -671,6 +671,13 @@ RCRTCStatusReportDelegate>
 
 #pragma mark - RCRTCRoomEventDelegate
 
+/**
+ * 远端用户发布资源通知
+ */
+-(void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams{
+    
+        [self subscribeRemoteResource:streams orUid:nil];
+}
 
 /**
  * 直播合流发布
