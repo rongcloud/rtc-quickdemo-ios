@@ -10,7 +10,7 @@
 #import <RongRTCLib/RongRTCLib.h>
 
 /**
- *  合流布局 UI 实现类
+ *  合流布局配置类
  */
 NS_ASSUME_NONNULL_BEGIN
 

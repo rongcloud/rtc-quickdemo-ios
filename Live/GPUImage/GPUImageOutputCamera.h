@@ -2,8 +2,9 @@
 //  GPUImageOutputCamera.h
 //  RCRTCQuickDemo
 //
-//  Created by Zafer.Lee on 2021/1/5.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
+
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>

@@ -83,6 +83,9 @@
     return streamConfig;
 }
 
+/**
+ *自定义布局在此方法配置
+ */
 + (void)customLayoutWithStreams:(NSMutableArray *)streams streamConfig:(RCRTCMixConfig *)streamConfig{
     NSInteger streamCount = streams.count;
     NSInteger itemWidth = 150;

@@ -7,6 +7,8 @@
 
 #import "LiveStreamVideo.h"
 
+static NSString *zero  = @"0";
+
 @implementation LiveStreamVideo
 
 //根据 uid 创建并设置远端视频预览视图
@@ -23,7 +25,7 @@
 + (instancetype)LocalStreamVideo{
     LiveStreamVideo *localStreamVideo = [[LiveStreamVideo alloc] init];
     //初始化 这里的 userId 推荐 0
-    localStreamVideo.userId = @"0";
+    localStreamVideo.userId = zero;
     localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] init];
     localStreamVideo.canvesView.translatesAutoresizingMaskIntoConstraints = NO;
     localStreamVideo.canvesView.fillMode = RCRTCVideoFillModeAspectFill;

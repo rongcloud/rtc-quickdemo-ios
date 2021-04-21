@@ -248,7 +248,7 @@ RCRTCStatusReportDelegate>
     
     UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBarButton];
-
+    
     _beautyButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
     [_beautyButton setTitle:@"打开美颜" forState:UIControlStateNormal];
     [_beautyButton setTitle:@"关闭美颜" forState:UIControlStateSelected];
@@ -489,7 +489,24 @@ RCRTCStatusReportDelegate>
         
         //2.发布本地默认流
         if (roleType == RCRTCLiveRoleTypeBroadcaster) {
+            
             [self publishLocalLiveAVStream];
+            
+            
+            //如果需要美颜，可以在此获取采集的 buffer 回调
+            __weak typeof(self) weakSelf = self;
+            [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
+            ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf || !strongSelf.openBeauty) {
+                    return sampleBuffer;
+                }
+                
+                //处理美颜，可以更换成第三方的 api
+                CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
+                return processedSampleBuffer ?: sampleBuffer;
+            };
+            
         }
         //3.1 单独订阅主播流
         if (room.remoteUsers.count) {
@@ -508,20 +525,6 @@ RCRTCStatusReportDelegate>
         }
     }];
     
-    
-    //美颜获取采集的 buffer 回调
-    __weak typeof(self) weakSelf = self;
-    [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
-        ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            if (!strongSelf || !strongSelf.openBeauty) {
-                return sampleBuffer;
-            }
-
-            //处理美颜，可以更换成第三方的 api
-            CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
-            return processedSampleBuffer ?: sampleBuffer;
-        };
 }
 
 
@@ -676,7 +679,7 @@ RCRTCStatusReportDelegate>
  */
 -(void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams{
     
-        [self subscribeRemoteResource:streams orUid:nil];
+    [self subscribeRemoteResource:streams orUid:nil];
 }
 
 /**

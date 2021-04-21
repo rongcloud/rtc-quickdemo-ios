@@ -7,7 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+/**
+ * 约束布局
+ */
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LiveVideoLayoutTool : NSObject
