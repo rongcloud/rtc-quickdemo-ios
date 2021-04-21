@@ -1,12 +1,12 @@
 //
-//  RCRTCPrepareLiveViewController.m
+//  LiveCreateViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCPrepareLiveViewController.h"
-#import "RCRTCLiveViewController.h"
+#import "LiveCreateViewController.h"
+#import "LiveViewController.h"
 
 /**
  * 主播/观众 区分身份直播入口类
@@ -16,13 +16,13 @@
  * 观众 RCRTCLiveRoleTypeAudience
  *
  */
-@interface RCRTCPrepareLiveViewController ()
+@interface LiveCreateViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
 
 @end
 
-@implementation RCRTCPrepareLiveViewController
+@implementation LiveCreateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +38,7 @@
     [self.roomIdTextField resignFirstResponder];
     
     [self.roomIdTextField resignFirstResponder];
-    RCRTCLiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
+    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeBroadcaster;
     [self.navigationController pushViewController:liveVC animated:YES];
@@ -54,7 +54,7 @@
     [self.roomIdTextField resignFirstResponder];
     
     [self.roomIdTextField resignFirstResponder];
-    RCRTCLiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
+    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCLiveViewController"];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeAudience;
     [self.navigationController pushViewController:liveVC animated:YES];

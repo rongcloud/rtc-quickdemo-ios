@@ -1,5 +1,5 @@
 //
-//  RCRTCCreateMeetingViewController.h
+//  CallKitViewController.h
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCCreateMeetingViewController : UIViewController
+@interface CallKitViewController : UIViewController
 
 @end
 

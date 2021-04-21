@@ -12,7 +12,7 @@
         <!--Call Kit View Controller-->
         <scene sceneID="NA1-xJ-70o">
             <objects>
-                <viewController storyboardIdentifier="RCRTCCallKitViewController" id="9uf-2y-U8d" customClass="RCRTCCallKitViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CallKitViewController" id="9uf-2y-U8d" customClass="CallKitViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AMu-3h-4Xk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

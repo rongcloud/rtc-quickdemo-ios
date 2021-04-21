@@ -1,13 +1,13 @@
 //
-//  RCRTCMixStreamTool.m
+//  LiveMixStreamTool.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCMixStreamTool.h"
+#import "LiveMixStreamTool.h"
 
-@implementation RCRTCMixStreamTool
+@implementation LiveMixStreamTool
 
 /**
  * 设置合流布局

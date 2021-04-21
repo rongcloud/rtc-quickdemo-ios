@@ -1,5 +1,5 @@
 //
-//  RCRTCVideoLayoutTool.h
+//  LiveVideoLayoutTool.h
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCVideoLayoutTool : NSObject
+@interface LiveVideoLayoutTool : NSObject
 
 - (void)layoutVideos:(NSMutableArray *)videos
          inContainer:(UIView *)container;

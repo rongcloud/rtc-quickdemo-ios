@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  运行项目前，请先填写 App Key 与 App Secret
  */
-@interface RCRTCConstant : NSObject
+@interface Constant : NSObject
 
 extern NSString * const AppKey;
 

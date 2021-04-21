@@ -6,11 +6,11 @@
 //
 
 #import "HomeViewController.h"
-#import "RCRTCCreateMeetingViewController.h"
-#import "RCRTCPrepareLiveViewController.h"
+#import "MeetingCreateViewController.h"
+#import "LiveCreateViewController.h"
 #import "UIAlertController+RCRTC.h"
-#import "RCRTCCallLibViewController.h"
-#import "RCRTCCallKitViewController.h"
+#import "CallLibViewController.h"
+#import "CallKitViewController.h"
 #import "HomeTableViewCell.h"
 
 #import <RongIMKit/RongIMKit.h>

@@ -1,11 +1,11 @@
 //
-//  RCRTCCallLibViewController.m
+//  CallLibViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCCallLibViewController.h"
+#import "CallLibViewController.h"
 #import <RongCallLib/RongCallLib.h>
 
 /**
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
     RCRTCCallStatus_Active = 3,
 };
 
-@interface RCRTCCallLibViewController () <RCCallReceiveDelegate,RCCallSessionDelegate>
+@interface CallLibViewController () <RCCallReceiveDelegate,RCCallSessionDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *targetIdTextField;
 
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
 
 @end
 
-@implementation RCRTCCallLibViewController
+@implementation CallLibViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

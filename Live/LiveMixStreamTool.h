@@ -1,5 +1,5 @@
 //
-//  RCRTCMixStreamTool.h
+//  LiveMixStreamTool.h
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -11,18 +11,14 @@
 
 /**
  *  合流布局 UI 实现类
- *
  */
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCMixStreamTool : NSObject
+@interface LiveMixStreamTool : NSObject
 
 /**
  * 设置合流布局
  */
-
-
 + (RCRTCMixConfig *)setOutputConfig:(RCRTCMixLayoutMode)mode;
 
 @end

@@ -5,12 +5,12 @@
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCConstant.h"
+#import "Constant.h"
 
 /**
  *  填写信息之后可删除 #error
  */
-@implementation RCRTCConstant
+@implementation Constant
 
 
 

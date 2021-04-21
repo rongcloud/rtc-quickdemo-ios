@@ -1,20 +1,20 @@
 //
-//  RCRTCVideoLayoutTool.m
+//  LiveVideoLayoutTool.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCVideoLayoutTool.h"
-#import "RCRTCStreamVideo.h"
+#import "LiveVideoLayoutTool.h"
+#import "LiveStreamVideo.h"
 
-@interface RCRTCVideoLayoutTool()
+@interface LiveVideoLayoutTool()
 
 @property (nonatomic, strong)NSMutableArray<NSLayoutConstraint *> *layoutConstraints;
 
 @end
 
-@implementation RCRTCVideoLayoutTool
+@implementation LiveVideoLayoutTool
 
 - (NSMutableArray<NSLayoutConstraint *> *)layoutConstraints {
     if (!_layoutConstraints) {
@@ -31,7 +31,7 @@
     [NSLayoutConstraint deactivateConstraints:self.layoutConstraints];
     [self.layoutConstraints removeAllObjects];
     
-    for (RCRTCStreamVideo *video in videos) {
+    for (LiveStreamVideo *video in videos) {
         [video.canvesView removeFromSuperview];
     }
     
@@ -45,9 +45,9 @@
 
 - (NSArray<UIView *> *)viewListFromVideos:(NSArray *)videos
                                  maxCount:(NSUInteger)maxCount
-                               ignorVideo:(RCRTCStreamVideo *)ignorVideo {
+                               ignorVideo:(LiveStreamVideo *)ignorVideo {
     NSMutableArray *views = [[NSMutableArray alloc] init];
-    for (RCRTCStreamVideo *v in videos) {
+    for (LiveStreamVideo *v in videos) {
         if (v == ignorVideo) {
             continue;
         }

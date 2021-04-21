@@ -1,14 +1,14 @@
 //
-//  RCRTCCreateMeetingViewController.m
+//  MeetingCreateViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCCreateMeetingViewController.h"
-#import "RCRTCMeetingViewController.h"
+#import "MeetingCreateViewController.h"
+#import "MeetingViewController.h"
 
-@interface RCRTCCreateMeetingViewController ()
+@interface MeetingCreateViewController ()
 
 /**
  房间ID输入框
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation RCRTCCreateMeetingViewController
+@implementation MeetingCreateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +38,7 @@
     }
     
     [self.roomIdTextField resignFirstResponder];
-    RCRTCMeetingViewController *meetingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCMeetingViewController"];
+    MeetingViewController *meetingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCMeetingViewController"];
     meetingVC.roomId = self.roomIdTextField.text;
     [self.navigationController pushViewController:meetingVC animated:YES];
 }

@@ -1,5 +1,5 @@
 //
-//  RCRTCMeetingViewController.h
+//  CallLibViewController.h
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -9,9 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCMeetingViewController : UIViewController
-
-@property (nonatomic, strong) NSString *roomId;
+@interface CallLibViewController : UIViewController
 
 @end
 

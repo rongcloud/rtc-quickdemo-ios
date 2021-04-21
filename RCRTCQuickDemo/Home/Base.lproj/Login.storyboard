@@ -114,7 +114,7 @@
         <!--Home View Controller-->
         <scene sceneID="v6A-Wx-MWk">
             <objects>
-                <viewController storyboardIdentifier="RCRTCHomeViewController" id="umn-28-n0s" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="umn-28-n0s" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Bfl-Ne-te7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

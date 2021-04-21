@@ -12,7 +12,7 @@
         <!--Call Lib View Controller-->
         <scene sceneID="zcO-Xt-C6F">
             <objects>
-                <viewController storyboardIdentifier="RCRTCCallLibViewController" id="Rfw-26-kfW" customClass="RCRTCCallLibViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CallLibViewController" id="Rfw-26-kfW" customClass="CallLibViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3wd-AN-Bnp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

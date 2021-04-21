@@ -1,12 +1,12 @@
 //
-//  RCRTCMeetingViewController.m
+//  MeetingViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 
-#import "RCRTCMeetingViewController.h"
+#import "MeetingViewController.h"
 #import <RongRTCLib/RongRTCLib.h>
 #import "UIAlertController+RCRTC.h"
 
@@ -26,7 +26,7 @@
  * - 取消本地发布并关闭摄像头
  * - 退出房间
  */
-@interface RCRTCMeetingViewController () <RCRTCRoomEventDelegate>
+@interface MeetingViewController () <RCRTCRoomEventDelegate>
 
 @property (weak, nonatomic) IBOutlet RCRTCLocalVideoView *containerView;
 
@@ -40,7 +40,7 @@
 
 @end
 
-@implementation RCRTCMeetingViewController
+@implementation MeetingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -5,14 +5,14 @@
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCRequestToken.h"
-#import "RCRTCConstant.h"
+#import "RequestToken.h"
+#import "Constant.h"
 #import <CommonCrypto/CommonDigest.h>
 
 
 static NSString * const RequestTokenURL = @"http://api-cn.ronghub.com/user/getToken.json";
 
-@implementation RCRTCRequestToken
+@implementation RequestToken
 
 + (NSString *)getNonce{
     int randomNum = arc4random_uniform(RAND_MAX);

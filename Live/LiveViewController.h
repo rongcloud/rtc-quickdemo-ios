@@ -1,5 +1,5 @@
 //
-//  RCRTCLiveViewController.h
+//  LiveViewController.h
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCLiveViewController : UIViewController
+@interface LiveViewController : UIViewController
 
 /**
  * 加入的房间 ID

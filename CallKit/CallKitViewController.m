@@ -1,11 +1,11 @@
 //
-//  RCRTCCallKitViewController.m
+//  CallKitViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCCallKitViewController.h"
+#import "CallKitViewController.h"
 #import "UIAlertController+RCRTC.h"
 #import <RongCallKit/RongCallKit.h>
 
@@ -16,7 +16,7 @@
  * - 音频通话  类型：RCCallMediaAudio
  * - 视频通话  类型：RCCallMediaVideo
  */
-@interface RCRTCCallKitViewController ()
+@interface CallKitViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *useridTextField;
 @property (weak, nonatomic) IBOutlet UIButton *callMediaAudio;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation RCRTCCallKitViewController
+@implementation CallKitViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

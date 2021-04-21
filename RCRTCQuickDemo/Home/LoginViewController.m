@@ -6,8 +6,8 @@
 //
 
 #import "LoginViewController.h"
-#import "RCRTCRequestToken.h"
-#import "RCRTCConstant.h"
+#import "RequestToken.h"
+#import "Constant.h"
 #import "HomeViewController.h"
 
 #import <RongIMKit/RCIM.h>
@@ -44,7 +44,7 @@
     /**
      * 获取 Token
      */
-    [RCRTCRequestToken requestToken:self.useridTextField.text
+    [RequestToken requestToken:self.useridTextField.text
                                name:self.useridTextField.text
                         portraitUrl:nil
                   completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {

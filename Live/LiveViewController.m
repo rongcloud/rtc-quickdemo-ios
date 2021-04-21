@@ -1,17 +1,17 @@
 //
-//  RCRTCLiveViewController.m
+//  LiveViewController.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 
-#import "RCRTCLiveViewController.h"
+#import "LiveViewController.h"
 #import <RongChatRoom/RongChatRoom.h>
-#import "RCRTCStreamVideo.h"
-#import "RCRTCVideoLayoutTool.h"
+#import "LiveStreamVideo.h"
+#import "LiveVideoLayoutTool.h"
 #import "UIAlertController+RCRTC.h"
-#import "RCRTCMixStreamTool.h"
+#import "LiveMixStreamTool.h"
 #import "GPUImageHandle.h"
 
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
@@ -53,7 +53,7 @@
  *  - 4.在加入 RTC 房间逻辑里设置获取采集的 buffer 回调
  */
 
-@interface RCRTCLiveViewController ()<
+@interface LiveViewController ()<
 RCRTCRoomEventDelegate,
 RCRTCStatusReportDelegate>
 
@@ -81,16 +81,16 @@ RCRTCStatusReportDelegate>
 
 @property (nonatomic, strong)RCRTCRoom *room;
 @property (nonatomic, strong)RCRTCLiveInfo *liveInfo;
-@property (nonatomic, strong)RCRTCStreamVideo *localVideo;
-@property (nonatomic)NSMutableArray <RCRTCStreamVideo *>*streamVideos;
-@property (nonatomic, strong)RCRTCVideoLayoutTool *layoutTool;
+@property (nonatomic, strong)LiveStreamVideo *localVideo;
+@property (nonatomic)NSMutableArray <LiveStreamVideo *>*streamVideos;
+@property (nonatomic, strong)LiveVideoLayoutTool *layoutTool;
 
 //美颜开关
 @property(nonatomic, assign) BOOL openBeauty;
 
 @end
 
-@implementation RCRTCLiveViewController
+@implementation LiveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -201,21 +201,21 @@ RCRTCStatusReportDelegate>
     }
     return _engine;
 }
-- (RCRTCVideoLayoutTool *)layoutTool{
+- (LiveVideoLayoutTool *)layoutTool{
     if (!_layoutTool) {
-        _layoutTool = [RCRTCVideoLayoutTool new];
+        _layoutTool = [LiveVideoLayoutTool new];
     }
     return _layoutTool;
 }
-- (NSMutableArray<RCRTCStreamVideo *> *)streamVideos{
+- (NSMutableArray<LiveStreamVideo *> *)streamVideos{
     if (!_streamVideos) {
         _streamVideos = [NSMutableArray array];
     }
     return _streamVideos;
 }
-- (RCRTCStreamVideo *)localVideo{
+- (LiveStreamVideo *)localVideo{
     if (!_localVideo) {
-        _localVideo = [RCRTCStreamVideo LocalStreamVideo];
+        _localVideo = [LiveStreamVideo LocalStreamVideo];
     }
     return _localVideo;
 }
@@ -567,7 +567,7 @@ RCRTCStatusReportDelegate>
  */
 - (void)streamlayoutMode:(RCRTCMixLayoutMode)mode{
     @WeakObj(self);
-    RCRTCMixConfig *config = [RCRTCMixStreamTool setOutputConfig:mode];
+    RCRTCMixConfig *config = [LiveMixStreamTool setOutputConfig:mode];
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {
         @StrongObj(self);
         if (code == RCRTCCodeSuccess && isSuccess) return;
@@ -586,7 +586,7 @@ RCRTCStatusReportDelegate>
             }
         }
     }
-    RCRTCStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
+    LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
     if (sVideo) {
         [sVideo.canvesView removeFromSuperview];
         [self.streamVideos removeObject:sVideo];
@@ -635,9 +635,9 @@ RCRTCStatusReportDelegate>
 /**
  * 创建并设置远端视频预览视图
  */
--(RCRTCStreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
+-(LiveStreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
     
-    RCRTCStreamVideo *sVideo = [self creatStreamVideoWithId:uid];
+    LiveStreamVideo *sVideo = [self creatStreamVideoWithId:uid];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
     
     //设置视频流的渲染视图
@@ -649,17 +649,17 @@ RCRTCStatusReportDelegate>
 /*
  *判断是否已有预览视图
  */
-- (RCRTCStreamVideo *)creatStreamVideoWithId:(NSString *)uid{
-    RCRTCStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
+- (LiveStreamVideo *)creatStreamVideoWithId:(NSString *)uid{
+    LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
     if (!sVideo) {
-        sVideo = [[RCRTCStreamVideo alloc] initWithUid:uid];
+        sVideo = [[LiveStreamVideo alloc] initWithUid:uid];
         [self.streamVideos insertObject:sVideo atIndex:0];
     }
     return sVideo;
 }
 
-- (RCRTCStreamVideo *)fetchStreamVideoWithId:(NSString *)uid{
-    for (RCRTCStreamVideo *sVideo in self.streamVideos) {
+- (LiveStreamVideo *)fetchStreamVideoWithId:(NSString *)uid{
+    for (LiveStreamVideo *sVideo in self.streamVideos) {
         if ([uid isEqualToString:sVideo.userId]) {
             return sVideo;
         }

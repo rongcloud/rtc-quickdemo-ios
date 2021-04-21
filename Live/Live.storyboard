@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Prepare Live View Controller-->
+        <!--Live Create View Controller-->
         <scene sceneID="nir-xS-Hc7">
             <objects>
-                <viewController storyboardIdentifier="RCRTCPrepareLiveViewController" id="nN8-l9-ovc" customClass="RCRTCPrepareLiveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LiveCreateViewController" id="nN8-l9-ovc" customClass="LiveCreateViewController" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dse-Cf-MhH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,7 +103,7 @@
         <!--Live View Controller-->
         <scene sceneID="0AW-qZ-651">
             <objects>
-                <viewController storyboardIdentifier="RCRTCLiveViewController" id="X66-9M-lVh" customClass="RCRTCLiveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LiveViewController" id="X66-9M-lVh" customClass="LiveViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6O5-ZE-D7I">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

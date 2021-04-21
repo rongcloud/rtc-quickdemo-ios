@@ -1,13 +1,13 @@
 //
-//  RCRTCStreamVideo.m
+//  LiveStreamVideo.m
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCStreamVideo.h"
+#import "LiveStreamVideo.h"
 
-@implementation RCRTCStreamVideo
+@implementation LiveStreamVideo
 
 //根据 uid 创建并设置远端视频预览视图
 - (instancetype)initWithUid:(NSString *)uid {
@@ -21,7 +21,7 @@
 }
 
 + (instancetype)LocalStreamVideo{
-    RCRTCStreamVideo *localStreamVideo = [[RCRTCStreamVideo alloc] init];
+    LiveStreamVideo *localStreamVideo = [[LiveStreamVideo alloc] init];
     //初始化 这里的 userId 推荐 0
     localStreamVideo.userId = @"0";
     localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] init];
