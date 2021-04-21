@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>meeting</string>
+		<key>title</key>
+		<string>会议 1v1</string>
+		<key>description</key>
+		<string>会议 1v1</string>
+		<key>storyboardName</key>
+		<string>RCRTCMeeting</string>
+		<key>controllerIdentifier</key>
+		<string>RCRTCCreateMeetingViewController</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>live</string>
+		<key>title</key>
+		<string>Live</string>
+		<key>description</key>
+		<string>直播</string>
+		<key>storyboardName</key>
+		<string>RCRTCLive</string>
+		<key>controllerIdentifier</key>
+		<string>RCRTCPrepareLiveViewController</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>meeting</string>
+		<key>title</key>
+		<string>CallLib</string>
+		<key>description</key>
+		<string>会议 1v1</string>
+		<key>storyboardName</key>
+		<string>RCRTCCallLib</string>
+		<key>controllerIdentifier</key>
+		<string>RCRTCCallLibViewController</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>callkit</string>
+		<key>title</key>
+		<string>CallKit</string>
+		<key>description</key>
+		<string>会议 1v1</string>
+		<key>storyboardName</key>
+		<string>RCRTCCallKit</string>
+		<key>controllerIdentifier</key>
+		<string>RCRTCCallKitViewController</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>meeting</string>
+		<key>title</key>
+		<string>会议 1v1</string>
+		<key>description</key>
+		<string>会议 1v1</string>
+		<key>storyboardName</key>
+		<string>RCRTCMeeting</string>
+		<key>controllerIdentifier</key>
+		<string>RCRTCCreateMeetingViewController</string>
+	</dict>
+</array>
+</plist>

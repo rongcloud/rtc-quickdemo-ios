@@ -5,12 +5,13 @@
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCHomeViewController.h"
+#import "HomeViewController.h"
 #import "RCRTCCreateMeetingViewController.h"
 #import "RCRTCPrepareLiveViewController.h"
 #import "UIAlertController+RCRTC.h"
 #import "RCRTCCallLibViewController.h"
 #import "RCRTCCallKitViewController.h"
+#import "HomeTableViewCell.h"
 
 #import <RongIMKit/RongIMKit.h>
 
@@ -33,13 +34,24 @@ static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewControll
  * - calllib: 根据 calllib 完成 1v1 呼叫功能
  * - callkit: 根据 callKit 完成 1v1 呼叫功能
  */
-@interface RCRTCHomeViewController () <RCIMConnectionStatusDelegate>
+@interface HomeViewController () <RCIMConnectionStatusDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *currentUserLabel;
 
+/**
+ * 存放所有类型的数组
+ */
+@property (strong, nonatomic) NSArray *sourceArray;
+
 @end
 
-@implementation RCRTCHomeViewController
+@implementation HomeViewController
+ 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"RCRTCList" ofType:@"plist"];
+    self.sourceArray = [NSArray arrayWithContentsOfFile:plistPath];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,7 +74,7 @@ static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewControll
 }
 
 - (void)initUI{
-    self.currentUserLabel.text = [NSString stringWithFormat:@"当前 UserID：%@",[RCIM sharedRCIM].currentUserInfo.userId];
+    self.currentUserLabel.text = [NSString stringWithFormat:@"User ID ：%@",[RCIM sharedRCIM].currentUserInfo.userId];
 }
 
 - (void)setRongCloudDelegate{
@@ -73,33 +85,28 @@ static NSString * const CallKitControllerIdentifier = @"RCRTCCallKitViewControll
     [RCIM sharedRCIM].connectionStatusDelegate = self;
 }
 
-#pragma mark - Event
-/**
- * 点击会议按钮
- */
-- (IBAction)clickMeetingBtn:(UIButton *)sender {
-    [self pushViewController:MeetingStoryboardName identifier:MeetingControllerIdentifier];
+#pragma mark - UITableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
-/**
- * 点击直播按钮
- */
-- (IBAction)clickLiveBtn:(UIButton *)sender {
-    [self pushViewController:LiveStoryboardName identifier:LiveControllerIdentifier];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.sourceArray.count;
 }
 
-/**
- * 点击 callLib 呼叫
- */
-- (IBAction)clickCallLibBtn:(UIButton *)sender {
-    [self pushViewController:CallLibStoryboardName identifier:CallLibControllerIdentifier];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    HomeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"RCRTCHomeTableViewCell"];
+    [cell setDataModel:self.sourceArray[indexPath.row]];
+    return cell;
 }
 
-/**
- * 点击 callkit 呼叫
- */
-- (IBAction)clickCallKitBtn:(UIButton *)sender {
-    [self pushViewController:CallKitStoryboardName identifier:CallKitControllerIdentifier];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSDictionary *cellData = [self.sourceArray objectAtIndex:indexPath.row];
+    NSString *storyboardName = cellData[@"storyboardName"];
+    NSString *controllerIdentifier = cellData[@"controllerIdentifier"];
+    [self pushViewController:storyboardName identifier:controllerIdentifier];
 }
 
 /**

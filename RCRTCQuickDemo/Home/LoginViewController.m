@@ -5,10 +5,10 @@
 //  Copyright © 2021 RongCloud. All rights reserved.
 //
 
-#import "RCRTCLoginViewController.h"
+#import "LoginViewController.h"
 #import "RCRTCRequestToken.h"
 #import "RCRTCConstant.h"
-#import "RCRTCHomeViewController.h"
+#import "HomeViewController.h"
 
 #import <RongIMKit/RCIM.h>
 
@@ -19,13 +19,13 @@
  * - 初始化 Appkey
  * - 连接 IM
  */
-@interface RCRTCLoginViewController ()
+@interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *useridTextField;
 
 @end
 
-@implementation RCRTCLoginViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,7 +72,7 @@
          * 回调处于子线程，需要回调到主线程进行 UI 处理。
          */
         dispatch_async(dispatch_get_main_queue(), ^{
-            RCRTCHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCHomeViewController"];
+            HomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RCRTCHomeViewController"];
             [self.navigationController pushViewController:homeVC animated:YES];
         });
         

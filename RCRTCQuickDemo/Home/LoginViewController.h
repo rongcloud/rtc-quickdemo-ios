@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCLoginViewController : UIViewController
+@interface LoginViewController : UIViewController
 
 @end
 

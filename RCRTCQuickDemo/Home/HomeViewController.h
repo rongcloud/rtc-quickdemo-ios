@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCRTCHomeViewController : UIViewController
+@interface HomeViewController : UIViewController
 
 @end
 
