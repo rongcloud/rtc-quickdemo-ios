@@ -1,3 +1,10 @@
+//
+//  GPUImageOutputCamera.h
+//  RCRTCQuickDemo
+//
+//  Created by Zafer.Lee on 2021/1/5.
+//
+
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>

@@ -1,3 +1,11 @@
+//
+//  GPUImageBeautyFilter.m
+//  RCRTCQuickDemo
+//
+//  Copyright © 2021 RongCloud. All rights reserved.
+//
+
+
 #import "GPUImageBeautyFilter.h"
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE

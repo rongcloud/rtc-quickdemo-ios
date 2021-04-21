@@ -12,7 +12,6 @@
 /**
  * 设置合流布局
  */
-
 + (RCRTCMixConfig *)setOutputConfig:(RCRTCMixLayoutMode)mode{
     
     // 布局配置类

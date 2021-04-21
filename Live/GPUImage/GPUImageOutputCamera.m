@@ -1,3 +1,11 @@
+//
+//  GPUImageOutputCamera.m
+//  RCRTCQuickDemo
+//
+//  Copyright © 2021 RongCloud. All rights reserved.
+//
+
+
 #import "GPUImageOutputCamera.h"
 #import "GPUImage/GPUImageFilter.h"
 

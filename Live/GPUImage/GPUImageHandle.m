@@ -1,8 +1,8 @@
 //
 //  GPUImageHandle.m
-//  quickdemo-meeting-beauty
+//  RCRTCQuickDemo
 //
-//  Created by Zafer.Lee on 2021/1/5.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "GPUImageHandle.h"
@@ -43,7 +43,7 @@
     if (!CMSampleBufferIsValid(sampleBuffer))
         return nil;
     
-    CMSampleBufferRef originBuffer = sampleBuffer;
+//    CMSampleBufferRef originBuffer = sampleBuffer;
 
     [self.filter useNextFrameForImageCapture];
     CFRetain(sampleBuffer);
@@ -63,13 +63,13 @@
     
     CMSampleBufferRef processedSampleBuffer = NULL;
     CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault, pixelBuff, YES, NULL, NULL, videoInfo, &timing, &processedSampleBuffer);
-    CMSampleBufferRef newBuffer = processedSampleBuffer;
+//    CMSampleBufferRef newBuffer = processedSampleBuffer;
     if (videoInfo == NULL)
         return nil;
     
-    if (self.sampleBufferCallBack) {
-        self.sampleBufferCallBack(originBuffer, newBuffer);
-    }
+//    if (self.sampleBufferCallBack) {
+//        self.sampleBufferCallBack(originBuffer, newBuffer);
+//    }
     
     CFRelease(videoInfo);
     CVPixelBufferUnlockBaseAddress(pixelBuff, 0);
