@@ -2,7 +2,7 @@
 //  MeetingCryptoImpl.h
 //  RCRTCQuickDemo
 //
-//  Created by yifan on 2021/4/22.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MeetingCryptoImpl : NSObject <RCRTCCustomizedEncryptorDelegate,RCRTCCustomizedDecryptorDelegate>
-
+ 
 @end
 
 NS_ASSUME_NONNULL_END

@@ -2,7 +2,7 @@
 //  MeetingCryptoImpl.m
 //  RCRTCQuickDemo
 //
-//  Created by yifan on 2021/4/22.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 #import "MeetingCryptoImpl.h"
