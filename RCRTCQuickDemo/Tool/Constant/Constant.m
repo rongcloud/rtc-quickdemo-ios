@@ -12,8 +12,6 @@
  */
 @implementation Constant
 
-
-
 //#error 请填写 App Key
 /**
  * 获取地址: https://developer.rongcloud.cn/app/appkey/

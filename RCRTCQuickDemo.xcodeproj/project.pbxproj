@@ -32,6 +32,7 @@
 		DD81212A261DC26F00AF7D35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD812128261DC26F00AF7D35 /* LaunchScreen.storyboard */; };
 		DD81212D261DC26F00AF7D35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD81212C261DC26F00AF7D35 /* main.m */; };
 		DD812138261DC32900AF7D35 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD812137261DC32900AF7D35 /* LoginViewController.m */; };
+		DDCBC07B263105CE006C7C7D /* MeetingCryptoImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCBC07A263105CE006C7C7D /* MeetingCryptoImpl.m */; };
 		DDEC583726270E810067D692 /* LiveCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEC583626270E810067D692 /* LiveCreateViewController.m */; };
 		DDEC583C26270ECA0067D692 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEC583B26270ECA0067D692 /* LiveViewController.m */; };
 		DDEC583F26270EDA0067D692 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDEC583E26270EDA0067D692 /* Live.storyboard */; };
@@ -84,6 +85,8 @@
 		DD81212C261DC26F00AF7D35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD812136261DC32900AF7D35 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DD812137261DC32900AF7D35 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DDCBC079263105CE006C7C7D /* MeetingCryptoImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingCryptoImpl.h; sourceTree = "<group>"; };
+		DDCBC07A263105CE006C7C7D /* MeetingCryptoImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingCryptoImpl.m; sourceTree = "<group>"; };
 		DDEC583526270E810067D692 /* LiveCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveCreateViewController.h; sourceTree = "<group>"; };
 		DDEC583626270E810067D692 /* LiveCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveCreateViewController.m; sourceTree = "<group>"; };
 		DDEC583A26270ECA0067D692 /* LiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */,
 				DD24DFE126202F5100DC4665 /* MeetingViewController.h */,
 				DD24DFE226202F5100DC4665 /* MeetingViewController.m */,
+				DDCBC079263105CE006C7C7D /* MeetingCryptoImpl.h */,
+				DDCBC07A263105CE006C7C7D /* MeetingCryptoImpl.m */,
 				DD24DFEF262045C000DC4665 /* Meeting.storyboard */,
 			);
 			path = Meeting1v1;
@@ -416,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */,
+				DDCBC07B263105CE006C7C7D /* MeetingCryptoImpl.m in Sources */,
 				DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */,
 				DDEC583726270E810067D692 /* LiveCreateViewController.m in Sources */,
 				DD812138261DC32900AF7D35 /* LoginViewController.m in Sources */,

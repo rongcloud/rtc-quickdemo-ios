@@ -8,6 +8,8 @@
 #import "LiveCreateViewController.h"
 #import "LiveViewController.h"
 
+static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
+
 /**
  * 主播/观众 区分身份直播入口类
  *
@@ -37,8 +39,7 @@
     
     [self.roomIdTextField resignFirstResponder];
     
-    [self.roomIdTextField resignFirstResponder];
-    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveViewController"];
+    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:LiveViewControllerIdentifier];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeBroadcaster;
     [self.navigationController pushViewController:liveVC animated:YES];
@@ -53,8 +54,7 @@
     
     [self.roomIdTextField resignFirstResponder];
     
-    [self.roomIdTextField resignFirstResponder];
-    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveViewController"];
+    LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:LiveViewControllerIdentifier];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeAudience;
     [self.navigationController pushViewController:liveVC animated:YES];

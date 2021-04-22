@@ -9,6 +9,8 @@
 #import "MeetingViewController.h"
 #import <RongRTCLib/RongRTCLib.h>
 #import "UIAlertController+RCRTC.h"
+#import "MeetingCryptoImpl.h"
+
 
 #define kScreenWidth self.view.frame.size.width
 #define kScreenHeight self.view.frame.size.height
@@ -20,6 +22,7 @@
  * 会议类
  *
  * 基本步骤包括：
+ * - 确认是否开启自定义加解密 (https://docs.rongcloud.cn/v4/views/rtc/meeting/guide/advanced/crypto/ios.html)
  * - 加入会议房间
  * - 发布本地资源
  * - 订阅远端资源
@@ -38,6 +41,11 @@
 
 @property(nonatomic, assign) BOOL isFullScreen;
 
+/**
+ * 自定义加解密的实现类
+ */
+@property(nonatomic, strong) MeetingCryptoImpl *cryptoImpl;
+
 @end
 
 @implementation MeetingViewController
@@ -48,11 +56,32 @@
     NSLog(@"room id %@",self.roomId);
     // 初始化 UI
     [self initView];
+    
+    /**
+     * 配置进入会议前的一些准备参数
+     */
+    [self setRTCConfiguration];
     /**
      * ① 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      * ② 加入房间
      */
     [self joinRoom];
+    
+}
+
+- (void)setRTCConfiguration{
+    
+    if (!self.enableCryptho) return;
+    
+    /**
+     * 设置自定义加密代理
+     *
+     * 如果参数为 nil 则关闭自定义加解密，如果参数非 nil 则打开自定义加解密
+     */
+    [self.engine setAudioCustomizedDecryptorDelegate:self.cryptoImpl];
+    [self.engine setAudioCustomizedEncryptorDelegate:self.cryptoImpl];
+    [self.engine setVideoCustomizedDecryptorDelegate:self.cryptoImpl];
+    [self.engine setVideoCustomizedEncryptorDelegate:self.cryptoImpl];
 }
 
 #pragma mark - UI
@@ -276,6 +305,13 @@
         [_engine enableSpeaker:YES];
     }
     return _engine;
+}
+
+- (MeetingCryptoImpl *)cryptoImpl{
+    if (!_cryptoImpl) {
+        _cryptoImpl = [[MeetingCryptoImpl alloc] init];
+    }
+    return _cryptoImpl;
 }
 
 

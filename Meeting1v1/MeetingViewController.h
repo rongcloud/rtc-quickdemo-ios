@@ -11,7 +11,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MeetingViewController : UIViewController
 
+/**
+ *  输入的房间 id
+ */
 @property (nonatomic, strong) NSString *roomId;
+
+/**
+ * 是否开启自定义加密
+ */
+@property (nonatomic, assign) BOOL enableCryptho;
 
 @end
 

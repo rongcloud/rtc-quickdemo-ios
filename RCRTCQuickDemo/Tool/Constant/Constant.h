@@ -18,7 +18,6 @@ extern NSString * const AppKey;
 
 extern NSString * const AppSecret;
 
-
 @end
 
 NS_ASSUME_NONNULL_END
