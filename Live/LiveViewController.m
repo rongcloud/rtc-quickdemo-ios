@@ -97,7 +97,7 @@ RCRTCFileCapturerDelegate>
 //发布本地自定义流开关
 @property (strong, nonatomic) UIButton *pushLocalButton;
 @property (nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
-@property (nonatomic, strong) LiveStreamVideo *localFileVideoView;
+@property (nonatomic, strong) LiveStreamVideo *localFileStreamVideo;
 @property (nonatomic, strong) RCRTCFileSource *fileCapturer;
 @property (nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
 
@@ -210,11 +210,11 @@ RCRTCFileCapturerDelegate>
 
 #pragma mark - setter & getter
 
-- (LiveStreamVideo *)localFileVideoView{
-    if (!_localFileVideoView) {
-        _localFileVideoView = [LiveStreamVideo LocalStreamVideo];
+- (LiveStreamVideo *)localFileStreamVideo{
+    if (!_localFileStreamVideo) {
+        _localFileStreamVideo = [LiveStreamVideo LocalStreamVideo];
     }
-    return _localFileVideoView;
+    return _localFileStreamVideo;
 }
 - (RCRTCEngine *)engine{
     if (!_engine) {
@@ -492,13 +492,16 @@ RCRTCFileCapturerDelegate>
  */
 - (void)startPublishVideoFile{
     
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
+    
+    localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
+    localFileVideoView.frameAnimated = NO;
     
     NSString *tag = @"RongRTCFileVideo";
     self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
     
     RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset640x360;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset320x240;
     [self.fileVideoOutputStream setVideoConfig:videoConfig];
     [self.fileVideoOutputStream setVideoView:localFileVideoView];
     
@@ -513,7 +516,7 @@ RCRTCFileCapturerDelegate>
     [self.room.localUser publishStream:self.fileVideoOutputStream
                             completion:^(BOOL isSuccess, RCRTCCode desc) {
         if (desc == RCRTCCodeSuccess) {
-            [self.streamVideos addObject:self.localFileVideoView];
+            [self.streamVideos addObject:self.localFileStreamVideo];
             [self updateLayoutWithAnimation:YES];
             
         }
@@ -539,8 +542,8 @@ RCRTCFileCapturerDelegate>
     [self.room.localUser unpublishStream:self.fileVideoOutputStream
                               completion:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess) {
-            [self.streamVideos removeObject:self.localFileVideoView];
-            self.localFileVideoView = nil;
+            [self.streamVideos removeObject:self.localFileStreamVideo];
+            self.localFileStreamVideo = nil;
             [self updateLayoutWithAnimation:YES];
         }
     }];
@@ -754,6 +757,12 @@ RCRTCFileCapturerDelegate>
     LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
     
+    //如果为自定义视频流则适配显示
+    if([stream.tag isEqualToString:@"RongRTCFileVideo"]){
+        
+        remoteView.fillMode = RCRTCVideoFillModeAspectFit;
+        
+    }
     //设置视频流的渲染视图
     [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
     return sVideo;
@@ -874,13 +883,13 @@ RCRTCFileCapturerDelegate>
 #pragma mark - RCRTCFileCapturerDelegate
 
 - (void)didWillStartRead {
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
     
     [localFileVideoView flushVideoView];
 }
 
 - (void)didReadCompleted {
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
     
     [localFileVideoView flushVideoView];
 }
