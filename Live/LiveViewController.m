@@ -110,8 +110,16 @@ RCRTCFileCapturerDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    /**
+     * 必要步骤：
+     *
+     * 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     */
+    
+    
     //初始化 UI
     [self initView];
+    
     
     //直播类型下的角色区分：主播/观众
     [self setRoleType];

@@ -30,6 +30,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    /**
+     * 必要步骤：
+     *
+     * 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     */
 }
 
 /**
