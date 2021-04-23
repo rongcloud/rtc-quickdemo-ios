@@ -53,6 +53,12 @@
  *  - 2.引入头文件 GPUImageHandle.h
  *  - 3.初始化 GPUImageHandle
  *  - 4.在加入 RTC 房间逻辑里设置获取采集的 buffer 回调
+ *
+ *  -自定义视频流
+ *  - startPublishVideoFil 发布自定义视频流
+ *  - 参考 RCRTCFileSource 文件设置视频中的音频，然后混音发送
+ *  - stopPublishVideoFile 取消发布自定义视频流
+ *
  */
 
 @interface LiveViewController ()<
@@ -485,7 +491,6 @@ RCRTCFileCapturerDelegate>
 - (void)startPublishVideoFile:(UIButton *)button {
     button.selected = !button.selected;
     
-    //发布自定义视频流
     if (button.selected) {
         [self setupFileVideoView];
         [self setupRemoteFileVideoView];
