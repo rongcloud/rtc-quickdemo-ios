@@ -269,7 +269,7 @@ RCRTCFileCapturerDelegate>
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
     [_pushLocalButton addTarget:self action:@selector(startPublishVideoFile:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_pushLocalButton];
-   
+    
     
     _beautyButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
     [_beautyButton setTitle:@"打开美颜" forState:UIControlStateNormal];
@@ -288,7 +288,7 @@ RCRTCFileCapturerDelegate>
     self.localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
     self.localFileVideoView.frameAnimated = NO;
     [self.view addSubview:self.localFileVideoView];
-
+    
 }
 
 /**
@@ -523,7 +523,7 @@ RCRTCFileCapturerDelegate>
     else {
         [self stopPublishVideoFile];
     }
-
+    
 }
 
 
@@ -620,14 +620,14 @@ RCRTCFileCapturerDelegate>
             for (RCRTCRemoteUser *user in room.remoteUsers) {
                 if (user.remoteStreams.count) {
                     [streamArray addObjectsFromArray:user.remoteStreams];
-                    [self subscribeRemoteResource:streamArray orUid:nil];
+                    [self subscribeRemoteResource:streamArray];
                 }
             }
         }
         //3.2 订阅 live 合流
         NSArray *liveStreams = [room getLiveStreams];
         if (liveStreams.count) {
-            [self subscribeRemoteResource:liveStreams orUid:nil];
+            [self subscribeRemoteResource:liveStreams];
         }
     }];
     
@@ -692,32 +692,22 @@ RCRTCFileCapturerDelegate>
 /**
  * 取消订阅远端流
  */
--(void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orUid:(NSString *)uid {
-    if (!uid) {
-        for (RCRTCInputStream *stream in streams) {
-            if (stream.mediaType == RTCMediaTypeVideo) {
-                uid = stream.userId;
-            }
+-(void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orStreamId:(NSString *)streamId {
+    
+    for (RCRTCInputStream *stream in streams) {
+        if (stream.mediaType == RTCMediaTypeVideo) {
+            streamId = stream.streamId;
+            [self fetchStreamVideoOffLineWithStreamId:streamId];
         }
-        
-        LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid streamId:nil];
-        if (sVideo) {
-            [sVideo.canvesView removeFromSuperview];
-            [self.streamVideos removeObject:sVideo];
-            [self updateLayoutWithAnimation:YES];
-        }
-    }else{
-        
-        //远端掉线，离开房间调用
-        [self fetchStreamVideoOffLineWithId:uid streamId:nil];
     }
+    
 }
 
 
 /**
  * 订阅远端流
  */
-- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orUid:(NSString *)uid{
+- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams{
     [self subscribeRemoteResource:streams isTiny:NO];
 }
 
@@ -741,7 +731,7 @@ RCRTCFileCapturerDelegate>
         NSInteger i = 0;
         for (RCRTCInputStream *stream in streams) {
             if (stream.mediaType == RTCMediaTypeVideo) {
-                [self setupRemoteViewWithUid:stream.userId combineStream:stream];
+                [self setupRemoteViewWithStream:stream];
                 i++;
             }
         }
@@ -754,9 +744,9 @@ RCRTCFileCapturerDelegate>
 /**
  * 创建并设置远端视频预览视图
  */
--(LiveStreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
+-(LiveStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream{
     
-    LiveStreamVideo *sVideo = [self creatStreamVideoWithId:uid streamId:stream.streamId];
+    LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
     
     //设置视频流的渲染视图
@@ -768,20 +758,21 @@ RCRTCFileCapturerDelegate>
 /*
  *判断是否已有预览视图
  */
-- (LiveStreamVideo *)creatStreamVideoWithId:(NSString *)uid streamId:(NSString *)streamId{
-    LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid streamId:streamId];
+- (LiveStreamVideo *)creatStreamVideoWithStreamId:(NSString *)streamId{
+    LiveStreamVideo *sVideo = [self fetchStreamVideoWithStreamId:streamId];
     if (!sVideo) {
-        sVideo = [[LiveStreamVideo alloc] initWithUid:uid withStreamId:streamId];
+        sVideo = [[LiveStreamVideo alloc] initWithStreamId:streamId];
         [self.streamVideos insertObject:sVideo atIndex:0];
     }
     return sVideo;
 }
+
 /**
- * 根据 uid 与 streamId 确认唯一的音视频流
+ * 根据 streamId 确认唯一的音视频流
  */
-- (LiveStreamVideo *)fetchStreamVideoWithId:(NSString *)uid streamId:(NSString *)streamId{
+- (LiveStreamVideo *)fetchStreamVideoWithStreamId:(NSString *)streamId{
     for (LiveStreamVideo *sVideo in self.streamVideos) {
-        if ([uid isEqualToString:sVideo.userId]&&[streamId isEqualToString:sVideo.streamId]) {
+        if ([streamId isEqualToString:sVideo.streamId]) {
             return sVideo;
         }
     }
@@ -789,16 +780,16 @@ RCRTCFileCapturerDelegate>
 }
 
 /**
- * 远端掉线离开回掉调用，删除远端用户的所有音视频流
+ * 远端掉线/离开回掉调用，删除远端用户的所有音视频流
  */
-- (void)fetchStreamVideoOffLineWithId:(NSString *)uid streamId:(NSString *)streamId{
+- (void)fetchStreamVideoOffLineWithStreamId:(NSString *)streamId{
     NSArray *arr = [NSArray arrayWithArray:self.streamVideos];
     for (LiveStreamVideo *sVideo in arr) {
-        if ([uid isEqualToString:sVideo.userId]) {
+        if ([streamId isEqualToString:sVideo.streamId]) {
             if (sVideo) {
                 [sVideo.canvesView removeFromSuperview];
                 [self.streamVideos removeObject:sVideo];
-              
+                
             }
         }
     }
@@ -812,15 +803,22 @@ RCRTCFileCapturerDelegate>
  */
 -(void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams{
     
-    [self subscribeRemoteResource:streams orUid:nil];
+    [self subscribeRemoteResource:streams];
 }
 
+/**
+ * 远端用户取消发布资源
+ */
+- (void)didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams{
+    
+    [self unsubscribeRemoteResource:streams orStreamId:nil];
+}
 /**
  * 直播合流发布
  */
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
     
-    [self subscribeRemoteResource:streams orUid:nil];
+    [self subscribeRemoteResource:streams];
 }
 
 /**
@@ -828,7 +826,7 @@ RCRTCFileCapturerDelegate>
  */
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
     
-    [self unsubscribeRemoteResource:streams orUid:nil];
+    [self unsubscribeRemoteResource:streams orStreamId:nil];
 }
 
 
@@ -844,7 +842,8 @@ RCRTCFileCapturerDelegate>
  * 离开
  */
 - (void)didLeaveUser:(RCRTCRemoteUser *)user{
-    [self unsubscribeRemoteResource:nil orUid:user.userId];
+    
+    [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
 }
 
 
@@ -852,7 +851,7 @@ RCRTCFileCapturerDelegate>
  * 远端掉线
  */
 - (void)didOfflineUser:(RCRTCRemoteUser*)user{
-    [self unsubscribeRemoteResource:nil orUid:user.userId];
+    [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
 }
 
 /**
@@ -868,6 +867,7 @@ RCRTCFileCapturerDelegate>
 
 
 #pragma mark - RCRTCFileCapturerDelegate
+
 - (void)didWillStartRead {
     [self.localFileVideoView flushVideoView];
 }

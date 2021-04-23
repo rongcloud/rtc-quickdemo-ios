@@ -11,10 +11,9 @@ static NSString *zero  = @"0";
 
 @implementation LiveStreamVideo
 
-//根据 uid streamId 创建并设置远端视频预览视图
-- (instancetype)initWithUid:(NSString *)uid withStreamId:(nonnull NSString *)stream{
+//根据 streamId 创建并设置远端视频预览视图
+- (instancetype)initWithStreamId:(nonnull NSString *)stream{
     if (self = [super init]) {
-        self.userId = uid;
         self.streamId = stream;
         self.canvesView = [[RCRTCRemoteVideoView alloc] init];
         self.canvesView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -25,8 +24,7 @@ static NSString *zero  = @"0";
 
 + (instancetype)LocalStreamVideo{
     LiveStreamVideo *localStreamVideo = [[LiveStreamVideo alloc] init];
-    //初始化 这里的 userId 推荐 0
-    localStreamVideo.userId = zero;
+    //初始化 这里的 streamId 推荐 0
     localStreamVideo.streamId = zero;
     localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] init];
     localStreamVideo.canvesView.translatesAutoresizingMaskIntoConstraints = NO;
