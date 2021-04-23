@@ -13,6 +13,8 @@
 #import "UIAlertController+RCRTC.h"
 #import "LiveMixStreamTool.h"
 #import "GPUImageHandle.h"
+#import "RCRTCFileSource.h"
+
 
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
@@ -55,7 +57,8 @@
 
 @interface LiveViewController ()<
 RCRTCRoomEventDelegate,
-RCRTCStatusReportDelegate>
+RCRTCStatusReportDelegate,
+RCRTCFileCapturerDelegate>
 
 /**
  *功能按钮
@@ -67,26 +70,31 @@ RCRTCStatusReportDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *streamLayoutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
+//功能按钮容器
+@property (nonatomic, copy)NSArray *funcBtns;
 
 //美颜开关
 @property (strong, nonatomic) UIButton *beautyButton;
-
+//美颜状态
+@property(nonatomic, assign) BOOL openBeauty;
 @property(nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
 
 //音频配置
 @property (strong, nonatomic) RCRTCEngine *engine;
-
-//功能按钮容器
-@property (nonatomic, copy)NSArray *funcBtns;
-
 @property (nonatomic, strong)RCRTCRoom *room;
 @property (nonatomic, strong)RCRTCLiveInfo *liveInfo;
+
 @property (nonatomic, strong)LiveStreamVideo *localVideo;
 @property (nonatomic)NSMutableArray <LiveStreamVideo *>*streamVideos;
 @property (nonatomic, strong)LiveVideoLayoutTool *layoutTool;
 
-//美颜开关
-@property(nonatomic, assign) BOOL openBeauty;
+//发布本地自定义流开关
+@property (strong, nonatomic) UIButton *pushLocalButton;
+@property (nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
+@property (nonatomic, strong) RCRTCLocalVideoView *localFileVideoView;
+@property (nonatomic, strong) RCRTCFileSource *fileCapturer;
+@property (nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
+
 
 @end
 
@@ -143,7 +151,8 @@ RCRTCStatusReportDelegate>
                                      self.closeMicBtn,
                                      self.streamLayoutBtn,
                                      self.switchStreamMode,
-                                     self.beautyButton]];
+                                     self.beautyButton,
+                                     self.pushLocalButton]];
             
             /*!
              当前直播角色为观众
@@ -228,7 +237,8 @@ RCRTCStatusReportDelegate>
             self.closeMicBtn,
             self.streamLayoutBtn,
             self.switchStreamMode,
-            self.beautyButton];
+            self.beautyButton,
+            self.pushLocalButton];
     }
     return _funcBtns;
 }
@@ -246,8 +256,14 @@ RCRTCStatusReportDelegate>
  */
 - (void)initView{
     
-    UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBarButton];
+    _pushLocalButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
+    [_pushLocalButton setTitle:@"发布本地" forState:UIControlStateNormal];
+    [_pushLocalButton setTitle:@"关闭本地" forState:UIControlStateSelected];
+    [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+    [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
+    [_pushLocalButton addTarget:self action:@selector(startPublishVideoFile:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_pushLocalButton];
+   
     
     _beautyButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
     [_beautyButton setTitle:@"打开美颜" forState:UIControlStateNormal];
@@ -258,6 +274,26 @@ RCRTCStatusReportDelegate>
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_beautyButton];
 }
 
+/**
+ * 添加本地自定义视频界面
+ */
+- (void)setupFileVideoView {
+    self.localFileVideoView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, 80, 100, 100 * 4 / 3)];
+    self.localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
+    self.localFileVideoView.frameAnimated = NO;
+    [self.view addSubview:self.localFileVideoView];
+
+}
+
+/**
+ * 添加远端自定义视频界面
+ */
+- (void)setupRemoteFileVideoView {
+    self.remoteFileVideoView = [[RCRTCRemoteVideoView alloc] initWithFrame:CGRectMake(0, 80, 100, 100 * 4 / 3)];
+    self.remoteFileVideoView.fillMode = RCRTCVideoFillModeAspectFill;
+    self.remoteFileVideoView.hidden = YES;
+    [self.view addSubview:self.remoteFileVideoView];
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -274,16 +310,18 @@ RCRTCStatusReportDelegate>
  */
 - (void)disableClickWith:(NSArray *)btns{
     for (UIButton *btn in self.funcBtns) {
-        if (btn == _beautyButton) {
+        if (btn == _beautyButton || btn == _pushLocalButton) {
             _beautyButton.alpha = 1;
+            _pushLocalButton.alpha = 1;
             continue;
         }
         [btn setBackgroundColor:[UIColor colorWithRed:29.0/255.0 green:183.0/255.0 blue:1.0 alpha:1]];
         btn.enabled = YES;
     }
     for (UIButton *btn in btns) {
-        if (btn == _beautyButton) {
+        if (btn == _beautyButton || btn == _pushLocalButton) {
             _beautyButton.alpha = 0;
+            _pushLocalButton.alpha = 0;
             continue;
         }
         [btn setBackgroundColor:[UIColor grayColor]];
@@ -346,7 +384,8 @@ RCRTCStatusReportDelegate>
                                  self.closeMicBtn,
                                  self.streamLayoutBtn,
                                  self.switchStreamMode,
-                                 self.beautyButton]];
+                                 self.beautyButton,
+                                 self.pushLocalButton]];
     }
     
     //上麦/下麦
@@ -439,6 +478,68 @@ RCRTCStatusReportDelegate>
     
     
 }
+
+/**
+ * 发送本地自定义流
+ */
+- (void)startPublishVideoFile:(UIButton *)button {
+    button.selected = !button.selected;
+    
+    //发布自定义视频流
+    if (button.selected) {
+        [self setupFileVideoView];
+        [self setupRemoteFileVideoView];
+        NSString *tag = @"RongRTCFileVideo";
+        self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
+        
+        RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
+        videoConfig.videoSizePreset = RCRTCVideoSizePreset640x360;
+        [self.fileVideoOutputStream setVideoConfig:videoConfig];
+        [self.fileVideoOutputStream setVideoView:self.localFileVideoView];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"video_demo1_low"
+                                                         ofType:@"mp4"];
+        
+        self.fileCapturer = [[RCRTCFileSource alloc] initWithFilePath:path];
+        self.fileCapturer.delegate = self;
+        self.fileVideoOutputStream.videoSource = self.fileCapturer;
+        [self.fileCapturer setObserver:self.fileVideoOutputStream];
+        
+        [self.room.localUser publishStream:self.fileVideoOutputStream
+                                completion:^(BOOL isSuccess, RCRTCCode desc) {
+            if (desc == RCRTCCodeSuccess) {
+                NSLog(@"发布自定义流成功");
+            }
+            else {
+                NSLog(@"发布自定义流成功");
+            }
+        }];
+    }
+    else {
+        [self stopPublishVideoFile];
+    }
+
+}
+
+
+/**
+ * 取消发布自定义视频流
+ */
+- (void)stopPublishVideoFile {
+    if (self.fileCapturer) {
+        [self.fileCapturer stop];
+        self.fileCapturer.delegate = nil;
+        self.fileCapturer = nil;
+    }
+    
+    [self.localFileVideoView removeFromSuperview];
+    
+    [self.room.localUser unpublishStream:self.fileVideoOutputStream
+                              completion:^(BOOL isSuccess, RCRTCCode desc) {
+    }];
+    self.localFileVideoView = nil;
+}
+
 
 /**
  * 布局视图动画
@@ -540,6 +641,11 @@ RCRTCStatusReportDelegate>
             [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentViewController:self];
         }
     }];
+    
+    //如果是主播且在发布自定义流，退出本地发送
+    if (self.pushLocalButton.selected && !self.liveRoleType) {
+        [self stopPublishVideoFile];
+    }
 }
 
 
@@ -588,12 +694,17 @@ RCRTCStatusReportDelegate>
                 uid = stream.userId;
             }
         }
-    }
-    LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
-    if (sVideo) {
-        [sVideo.canvesView removeFromSuperview];
-        [self.streamVideos removeObject:sVideo];
-        [self updateLayoutWithAnimation:YES];
+        
+        LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid streamId:nil];
+        if (sVideo) {
+            [sVideo.canvesView removeFromSuperview];
+            [self.streamVideos removeObject:sVideo];
+            [self updateLayoutWithAnimation:YES];
+        }
+    }else{
+        
+        //远端掉线，离开房间调用
+        [self fetchStreamVideoOffLineWithId:uid streamId:nil];
     }
 }
 
@@ -640,7 +751,7 @@ RCRTCStatusReportDelegate>
  */
 -(LiveStreamVideo *)setupRemoteViewWithUid:(NSString *)uid combineStream:(RCRTCInputStream *)stream{
     
-    LiveStreamVideo *sVideo = [self creatStreamVideoWithId:uid];
+    LiveStreamVideo *sVideo = [self creatStreamVideoWithId:uid streamId:stream.streamId];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
     
     //设置视频流的渲染视图
@@ -652,25 +763,42 @@ RCRTCStatusReportDelegate>
 /*
  *判断是否已有预览视图
  */
-- (LiveStreamVideo *)creatStreamVideoWithId:(NSString *)uid{
-    LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid];
+- (LiveStreamVideo *)creatStreamVideoWithId:(NSString *)uid streamId:(NSString *)streamId{
+    LiveStreamVideo *sVideo = [self fetchStreamVideoWithId:uid streamId:streamId];
     if (!sVideo) {
-        sVideo = [[LiveStreamVideo alloc] initWithUid:uid];
+        sVideo = [[LiveStreamVideo alloc] initWithUid:uid withStreamId:streamId];
         [self.streamVideos insertObject:sVideo atIndex:0];
     }
     return sVideo;
 }
-
-- (LiveStreamVideo *)fetchStreamVideoWithId:(NSString *)uid{
+/**
+ * 根据 uid 与 streamId 确认唯一的音视频流
+ */
+- (LiveStreamVideo *)fetchStreamVideoWithId:(NSString *)uid streamId:(NSString *)streamId{
     for (LiveStreamVideo *sVideo in self.streamVideos) {
-        if ([uid isEqualToString:sVideo.userId]) {
+        if ([uid isEqualToString:sVideo.userId]&&[streamId isEqualToString:sVideo.streamId]) {
             return sVideo;
         }
     }
     return nil;
 }
 
-
+/**
+ * 远端掉线离开回掉调用，删除远端用户的所有音视频流
+ */
+- (void)fetchStreamVideoOffLineWithId:(NSString *)uid streamId:(NSString *)streamId{
+    NSArray *arr = [NSArray arrayWithArray:self.streamVideos];
+    for (LiveStreamVideo *sVideo in arr) {
+        if ([uid isEqualToString:sVideo.userId]) {
+            if (sVideo) {
+                [sVideo.canvesView removeFromSuperview];
+                [self.streamVideos removeObject:sVideo];
+              
+            }
+        }
+    }
+    [self updateLayoutWithAnimation:YES];
+}
 
 #pragma mark - RCRTCRoomEventDelegate
 
@@ -733,5 +861,14 @@ RCRTCStatusReportDelegate>
     
 }
 
+
+#pragma mark - RCRTCFileCapturerDelegate
+- (void)didWillStartRead {
+    [self.localFileVideoView flushVideoView];
+}
+
+- (void)didReadCompleted {
+    [self.localFileVideoView flushVideoView];
+}
 
 @end

@@ -11,6 +11,8 @@
 		187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */; };
 		187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* LiveStreamVideo.m */; };
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
+		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
+		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		DD24DF44261EAAD800DC4665 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
 		DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */; };
@@ -49,6 +51,9 @@
 		187F9E2F2628504A002E5288 /* LiveStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamVideo.h; sourceTree = "<group>"; };
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
+		4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCFileSource.h; sourceTree = "<group>"; };
+		4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCFileSource.m; sourceTree = "<group>"; };
+		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -249,6 +254,9 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */,
+				4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */,
+				4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */,
 				DD59DE6C262FC1A500A0C940 /* GPUImage */,
 				187F9E2C2628504A002E5288 /* LiveMixStreamTool.h */,
 				187F9E2A2628504A002E5288 /* LiveMixStreamTool.m */,
@@ -347,6 +355,7 @@
 				DDEC584B2627EC290067D692 /* CallLib.storyboard in Resources */,
 				DDEC583F26270EDA0067D692 /* Live.storyboard in Resources */,
 				DD59DE64262EF19300A0C940 /* RCRTCList.plist in Resources */,
+				4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
@@ -429,6 +438,7 @@
 				DD24DF44261EAAD800DC4665 /* Constant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
+				4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */,
 				187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */,
 				DD59DE05262D5BD900A0C940 /* CallKitViewController.m in Sources */,
 				DD59DE73262FC1A500A0C940 /* GPUImageOutputCamera.m in Sources */,
