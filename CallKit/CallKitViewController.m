@@ -30,9 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    //必须初始化, 否则无法收到来电
-    [RCCall sharedRCCall];
 }
 
 /**

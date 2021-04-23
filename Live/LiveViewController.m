@@ -97,7 +97,7 @@ RCRTCFileCapturerDelegate>
 //发布本地自定义流开关
 @property (strong, nonatomic) UIButton *pushLocalButton;
 @property (nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
-@property (nonatomic, strong) RCRTCLocalVideoView *localFileVideoView;
+@property (nonatomic, strong) LiveStreamVideo *localFileVideoView;
 @property (nonatomic, strong) RCRTCFileSource *fileCapturer;
 @property (nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
 
@@ -210,6 +210,12 @@ RCRTCFileCapturerDelegate>
 
 #pragma mark - setter & getter
 
+- (LiveStreamVideo *)localFileVideoView{
+    if (!_localFileVideoView) {
+        _localFileVideoView = [LiveStreamVideo LocalStreamVideo];
+    }
+    return _localFileVideoView;
+}
 - (RCRTCEngine *)engine{
     if (!_engine) {
         _engine = [RCRTCEngine sharedInstance];
@@ -267,7 +273,7 @@ RCRTCFileCapturerDelegate>
     [_pushLocalButton setTitle:@"关闭本地" forState:UIControlStateSelected];
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
-    [_pushLocalButton addTarget:self action:@selector(startPublishVideoFile:) forControlEvents:UIControlEventTouchUpInside];
+    [_pushLocalButton addTarget:self action:@selector(publishLocalButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_pushLocalButton];
     
     
@@ -278,17 +284,6 @@ RCRTCFileCapturerDelegate>
     [_beautyButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
     [_beautyButton addTarget:self action:@selector(beautyAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_beautyButton];
-}
-
-/**
- * 添加本地自定义视频界面
- */
-- (void)setupFileVideoView {
-    self.localFileVideoView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, 80, 100, 100 * 4 / 3)];
-    self.localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
-    self.localFileVideoView.frameAnimated = NO;
-    [self.view addSubview:self.localFileVideoView];
-    
 }
 
 /**
@@ -488,42 +483,54 @@ RCRTCFileCapturerDelegate>
 /**
  * 发送本地自定义流
  */
-- (void)startPublishVideoFile:(UIButton *)button {
+- (void)publishLocalButtonAction:(UIButton *)button {
     button.selected = !button.selected;
     
     if (button.selected) {
-        [self setupFileVideoView];
-        [self setupRemoteFileVideoView];
-        NSString *tag = @"RongRTCFileVideo";
-        self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
-        
-        RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
-        videoConfig.videoSizePreset = RCRTCVideoSizePreset640x360;
-        [self.fileVideoOutputStream setVideoConfig:videoConfig];
-        [self.fileVideoOutputStream setVideoView:self.localFileVideoView];
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"video_demo1_low"
-                                                         ofType:@"mp4"];
-        
-        self.fileCapturer = [[RCRTCFileSource alloc] initWithFilePath:path];
-        self.fileCapturer.delegate = self;
-        self.fileVideoOutputStream.videoSource = self.fileCapturer;
-        [self.fileCapturer setObserver:self.fileVideoOutputStream];
-        
-        [self.room.localUser publishStream:self.fileVideoOutputStream
-                                completion:^(BOOL isSuccess, RCRTCCode desc) {
-            if (desc == RCRTCCodeSuccess) {
-                NSLog(@"发布自定义流成功");
-            }
-            else {
-                NSLog(@"发布自定义流成功");
-            }
-        }];
+        [self startPublishVideoFile];
+       
     }
     else {
         [self stopPublishVideoFile];
     }
     
+}
+
+
+/**
+ * 发布自定义流
+ */
+- (void)startPublishVideoFile{
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
+
+    NSString *tag = @"RongRTCFileVideo";
+    self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
+    
+    RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset640x360;
+    [self.fileVideoOutputStream setVideoConfig:videoConfig];
+    [self.fileVideoOutputStream setVideoView:localFileVideoView];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"video_demo1_low"
+                                                     ofType:@"mp4"];
+    
+    self.fileCapturer = [[RCRTCFileSource alloc] initWithFilePath:path];
+    self.fileCapturer.delegate = self;
+    self.fileVideoOutputStream.videoSource = self.fileCapturer;
+    [self.fileCapturer setObserver:self.fileVideoOutputStream];
+    
+    [self.room.localUser publishStream:self.fileVideoOutputStream
+                            completion:^(BOOL isSuccess, RCRTCCode desc) {
+        if (desc == RCRTCCodeSuccess) {
+            [self.streamVideos addObject:self.localFileVideoView];
+            [self updateLayoutWithAnimation:YES];
+            
+        }
+        else {
+        }
+    }];
+    
+  
 }
 
 
@@ -536,13 +543,19 @@ RCRTCFileCapturerDelegate>
         self.fileCapturer.delegate = nil;
         self.fileCapturer = nil;
     }
-    
-    [self.localFileVideoView removeFromSuperview];
-    
+        
     [self.room.localUser unpublishStream:self.fileVideoOutputStream
                               completion:^(BOOL isSuccess, RCRTCCode desc) {
+        if (isSuccess) {
+            [self.streamVideos removeObject:self.localFileVideoView];
+            self.localFileVideoView = nil;
+            [self updateLayoutWithAnimation:YES];
+        }
     }];
-    self.localFileVideoView = nil;
+ 
+    
+  
+
 }
 
 
@@ -869,11 +882,15 @@ RCRTCFileCapturerDelegate>
 #pragma mark - RCRTCFileCapturerDelegate
 
 - (void)didWillStartRead {
-    [self.localFileVideoView flushVideoView];
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
+
+    [localFileVideoView flushVideoView];
 }
 
 - (void)didReadCompleted {
-    [self.localFileVideoView flushVideoView];
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
+
+    [localFileVideoView flushVideoView];
 }
 
 @end
