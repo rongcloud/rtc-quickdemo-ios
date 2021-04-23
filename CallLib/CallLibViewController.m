@@ -67,10 +67,18 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    /**
+     * 必要步骤：
+     *
+     * 1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     */
     
-    [self initUI];
-    [self initCallLib];
+    // 初始化 UI
+    [self initView];
+    
+    
+    // 配置进入会议前的一些准备参数
+    [self initConfig];
 }
 
 #pragma mark - Init
@@ -78,14 +86,14 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
 /**
  * 初始化相关 UI
  */
-- (void)initUI{
+- (void)initView{
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
 }
 
 /**
  * 初始化相关配置
  */
-- (void)initCallLib{
+- (void)initConfig{
     //设置链接协议
     [[RCCallClient sharedRCCallClient] setDelegate:self];
 }

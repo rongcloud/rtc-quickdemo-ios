@@ -21,7 +21,7 @@
 /**
  * 会议类
  *
- * 基本步骤包括：
+ * 基本功能包括：
  * - 确认是否开启自定义加解密 (https://docs.rongcloud.cn/v4/views/rtc/meeting/guide/advanced/crypto/ios.html)
  * - 加入会议房间
  * - 发布本地资源
@@ -41,9 +41,6 @@
 
 @property(nonatomic, assign) BOOL isFullScreen;
 
-/**
- * 自定义加解密的实现类
- */
 @property(nonatomic, strong) MeetingCryptoImpl *cryptoImpl;
 
 @end
@@ -53,23 +50,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSLog(@"room id %@",self.roomId);
+    /**
+     * 必要步骤：
+     *
+     * 1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     */
+    
     // 初始化 UI
     [self initView];
     
+    
+    // 配置进入会议前的一些准备参数
+    [self initConfig];
     /**
-     * 配置进入会议前的一些准备参数
-     */
-    [self setRTCConfiguration];
-    /**
-     * ① 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
-     * ② 加入房间
+     * 2. 加入房间
      */
     [self joinRoom];
     
 }
 
-- (void)setRTCConfiguration{
+- (void)initConfig{
     
     if (!self.enableCryptho) return;
     
@@ -144,7 +144,7 @@
                    if (code == RCRTCCodeSuccess) {
                        
                        /**
-                        * ③ 加入成功后进行资源的发布和订阅
+                        * 3. 加入成功后进行资源的发布和订阅
                         */
                        [self afterJoinRoom:room];
                    } else {
@@ -157,22 +157,22 @@
  * 加入成功后进行资源发布和订阅
  */
 - (void)afterJoinRoom:(RCRTCRoom *)room {
-    // 1. 设置房间代理
+    // 设置房间代理
     self.room = room;
     room.delegate = self;
 
-    // 2. 开始本地视频采集
+    // 开始本地视频采集
     [[self.engine defaultVideoStream] setVideoView:self.localView];
     [[self.engine defaultVideoStream] startCapture];
 
-    // 3. 发布本地视频流
+    // 发布本地视频流
     [room.localUser publishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess && desc == RCRTCCodeSuccess) {
             NSLog(@"本地流发布成功");
         }
     }];
 
-    // 4. 如果已经有远端用户在房间中, 需要订阅远端流
+    //如果已经有远端用户在房间中, 需要订阅远端流
     if ([room.remoteUsers count] > 0) {
         NSMutableArray *streamArray = [NSMutableArray array];
         for (RCRTCRemoteUser *user in room.remoteUsers) {
@@ -254,7 +254,7 @@
 - (IBAction)clickHangup:(id)sender {
     
     /**
-     * ④ 取消本地发布并关闭摄像头采集
+     * 4. 取消本地发布并关闭摄像头采集
      */
     [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
     }];
@@ -262,7 +262,7 @@
     [self.remoteView removeFromSuperview];
     
     /**
-     * ⑤ 退出房间
+     * 5. 退出房间
      */
     [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
