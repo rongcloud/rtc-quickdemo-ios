@@ -40,11 +40,11 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
 
 - (instancetype)initWithFilePath:(NSString *)filePath {
     self = [super init];
-
+    
     if (self) {
         _currentPath = filePath;
     }
-
+    
     return self;
 }
 
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
         [self.delegate didWillStartRead];
         [self setupReader];
     }
-
+    
     return YES;
 }
 
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
                                AVLinearPCMBitDepthKey: @(asbd.mBitsPerChannel)
     };
     _outAudioTrack =
-        [[AVAssetReaderTrackOutput alloc] initWithTrack:audioTrack outputSettings:settings];
+    [[AVAssetReaderTrackOutput alloc] initWithTrack:audioTrack outputSettings:settings];
     if ([_reader canAddOutput:_outAudioTrack]) {
         [_reader addOutput:_outAudioTrack];
     }
@@ -128,7 +128,7 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
         CFRelease(blockBuffer);
         CFRelease(sample);
     }
-
+    
     _audioDecodeThread = nil;
     [NSThread exit];
 }
@@ -145,24 +145,24 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
     }
     
     NSDictionary *options = @{
-                              (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)
-                              };
+        (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)
+    };
     _outVideoTrack =
-        [[AVAssetReaderTrackOutput alloc] initWithTrack:allTracks.firstObject
-                                         outputSettings:options];
-
+    [[AVAssetReaderTrackOutput alloc] initWithTrack:allTracks.firstObject
+                                     outputSettings:options];
+    
     [_reader addOutput:_outVideoTrack];
     [self setupAudioTrakOutput:asset];
     [_reader startReading];
     if (!_audioDecodeThread) {
         _audioDecodeThread =
-            [[NSThread alloc] initWithTarget:self selector:@selector(audioDecode) object:nil];
+        [[NSThread alloc] initWithTarget:self selector:@selector(audioDecode) object:nil];
         _audioDecodeThread.name = @"com.rongcloud.filecapturer.audio";
     }
     [_audioDecodeThread start];
     if (!_videoThread) {
         _videoThread =
-            [[NSThread alloc] initWithTarget:self selector:@selector(videoProcess) object:nil];
+        [[NSThread alloc] initWithTarget:self selector:@selector(videoProcess) object:nil];
         _videoThread.name = @"com.rongcloud.filecapturer.video";
     }
     [_videoThread start];
@@ -216,10 +216,10 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
             CFRelease(sampleBuffer);
             continue;
         }
-    
+        
         CMTime presentationTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
         Float64 presentationDifference =
-            CMTimeGetSeconds(CMTimeSubtract(presentationTime, _lastPresentationTime));
+        CMTimeGetSeconds(CMTimeSubtract(presentationTime, _lastPresentationTime));
         if (isnan(presentationDifference)) {
             CFRelease(sampleBuffer);
             continue;
@@ -240,10 +240,10 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
         [self.observer write:sampleBuffer error:nil];
         CFRelease(sampleBuffer);
     }
-
+    
     _videoThread = nil;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self checkStatus];
+        [self checkStatus];
     });
     [NSThread exit];
 }

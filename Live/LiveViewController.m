@@ -261,9 +261,10 @@ RCRTCFileCapturerDelegate>
     }
     return _gpuImageHandler;
 }
+
 #pragma mark - UI
 /**
- * 隐藏左边导航返回按钮
+ * 设置导航左侧发布按钮
  * 设置导航右侧美颜按钮
  */
 - (void)initView{
@@ -284,16 +285,6 @@ RCRTCFileCapturerDelegate>
     [_beautyButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
     [_beautyButton addTarget:self action:@selector(beautyAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_beautyButton];
-}
-
-/**
- * 添加远端自定义视频界面
- */
-- (void)setupRemoteFileVideoView {
-    self.remoteFileVideoView = [[RCRTCRemoteVideoView alloc] initWithFrame:CGRectMake(0, 80, 100, 100 * 4 / 3)];
-    self.remoteFileVideoView.fillMode = RCRTCVideoFillModeAspectFill;
-    self.remoteFileVideoView.hidden = YES;
-    [self.view addSubview:self.remoteFileVideoView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -337,7 +328,6 @@ RCRTCFileCapturerDelegate>
     [self.streamVideos addObject:self.localVideo];
     [self updateLayoutWithAnimation:YES];
 }
-
 
 
 /**
@@ -488,7 +478,7 @@ RCRTCFileCapturerDelegate>
     
     if (button.selected) {
         [self startPublishVideoFile];
-       
+        
     }
     else {
         [self stopPublishVideoFile];
@@ -501,8 +491,9 @@ RCRTCFileCapturerDelegate>
  * 发布自定义流
  */
 - (void)startPublishVideoFile{
+    
     RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
-
+    
     NSString *tag = @"RongRTCFileVideo";
     self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
     
@@ -527,10 +518,11 @@ RCRTCFileCapturerDelegate>
             
         }
         else {
+            
         }
     }];
     
-  
+    
 }
 
 
@@ -543,7 +535,7 @@ RCRTCFileCapturerDelegate>
         self.fileCapturer.delegate = nil;
         self.fileCapturer = nil;
     }
-        
+    
     [self.room.localUser unpublishStream:self.fileVideoOutputStream
                               completion:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess) {
@@ -552,10 +544,10 @@ RCRTCFileCapturerDelegate>
             [self updateLayoutWithAnimation:YES];
         }
     }];
- 
     
-  
-
+    
+    
+    
 }
 
 
@@ -768,7 +760,7 @@ RCRTCFileCapturerDelegate>
 }
 
 
-/*
+/**
  *判断是否已有预览视图
  */
 - (LiveStreamVideo *)creatStreamVideoWithStreamId:(NSString *)streamId{
@@ -883,13 +875,13 @@ RCRTCFileCapturerDelegate>
 
 - (void)didWillStartRead {
     RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
-
+    
     [localFileVideoView flushVideoView];
 }
 
 - (void)didReadCompleted {
     RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileVideoView.canvesView;
-
+    
     [localFileVideoView flushVideoView];
 }
 
