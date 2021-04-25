@@ -1,12 +1,9 @@
 //
 //  RCRTCFileSource.h
-//  RongRTCLib
+//  RCRTCQuickDemo
 //
-//  RCRTCFileSource.h
-//  RongRTCLib
-//
-//  Created by RongCloud on 2019/1/18.
-//  Copyright © 2019 RongCloud. All rights reserved.
+//  Copyright © 2021 RongCloud. All rights reserved.
+
 //
 
 #import <Foundation/Foundation.h>
