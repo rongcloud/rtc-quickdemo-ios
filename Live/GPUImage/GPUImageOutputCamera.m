@@ -37,7 +37,7 @@
 
 @implementation GPUImageOutputCamera
 
-//@synthesize runBenchmark = _runBenchmark;
+// @synthesize runBenchmark = _runBenchmark;
 
 #pragma mark -
 #pragma mark Initialization and teardown
@@ -53,7 +53,7 @@
 
     frameRenderingSemaphore = dispatch_semaphore_create(1);
 
-//    _runBenchmark = NO;
+    // _runBenchmark = NO;
     outputRotation = kGPUImageNoRotation;
     internalRotation = kGPUImageNoRotation;
     captureAsYUV = YES;
@@ -80,9 +80,9 @@
                 
                 if (![yuvConversionProgram link])
                 {
-//                    NSString *progLog = [yuvConversionProgram programLog];
-//                    NSString *fragLog = [yuvConversionProgram fragmentShaderLog];
-//                    NSString *vertLog = [yuvConversionProgram vertexShaderLog];
+                    // NSString *progLog = [yuvConversionProgram programLog];
+                    // NSString *fragLog = [yuvConversionProgram fragmentShaderLog];
+                    // NSString *vertLog = [yuvConversionProgram vertexShaderLog];
                     yuvConversionProgram = nil;
                     NSAssert(NO, @"Filter shader link failed");
                 }

@@ -102,7 +102,7 @@
     self.localView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:self.localView];
 
-    //添加点击手势,可切换大小视图
+    // 添加点击手势,可切换大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.localView addGestureRecognizer:tap];
 }
@@ -115,7 +115,7 @@
     self.remoteView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:self.remoteView];
     
-    //添加点击手势,可切换大小视图
+    // 添加点击手势,可切换大小视图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWithView:)];
     [self.remoteView addGestureRecognizer:tap];
 }
@@ -172,7 +172,7 @@
         }
     }];
 
-    //如果已经有远端用户在房间中, 需要订阅远端流
+    // 如果已经有远端用户在房间中, 需要订阅远端流
     if ([room.remoteUsers count] > 0) {
         NSMutableArray *streamArray = [NSMutableArray array];
         for (RCRTCRemoteUser *user in room.remoteUsers) {

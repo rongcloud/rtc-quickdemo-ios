@@ -237,9 +237,9 @@ NSString *const kGPUImageBeautyFragmentShaderString = SHADER_STRING
         return nil;
     }
 
-    _toneLevel = 0.7;//0.47;
-    _beautyLevel = 0.9;//0.42;
-    _brightLevel = 0.5;//0.34;
+    _toneLevel = 0.7;// 0.47;
+    _beautyLevel = 0.9;// 0.42;
+    _brightLevel = 0.5;// 0.34;
     [self setParams:_beautyLevel tone:_toneLevel];
     [self setBrightLevel:_brightLevel];
     return self;

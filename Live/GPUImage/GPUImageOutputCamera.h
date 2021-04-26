@@ -13,15 +13,15 @@
 #import "GPUImage/GPUImageOutput.h"
 #import "GPUImage/GPUImageColorConversion.h"
 
-//Optionally override the YUV to RGB matrices
+// Optionally override the YUV to RGB matrices
 void setColorConversion601( GLfloat conversionMatrix[9] );
 void setColorConversion601FullRange( GLfloat conversionMatrix[9] );
 void setColorConversion709( GLfloat conversionMatrix[9] );
 
 
 /**
- A GPUImageOutput that provides frames from either camera
-*/
+ * A GPUImageOutput that provides frames from either camera
+ */
 @interface GPUImageOutputCamera : GPUImageOutput
 {
     NSUInteger numberOfFramesCaptured;

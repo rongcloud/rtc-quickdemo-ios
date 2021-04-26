@@ -67,7 +67,7 @@ RCRTCStatusReportDelegate,
 RCRTCFileCapturerDelegate>
 
 /**
- *功能按钮
+ * 功能按钮
  */
 @property (weak, nonatomic) IBOutlet UIView *remoteContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *closeCamera;
@@ -76,16 +76,16 @@ RCRTCFileCapturerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *streamLayoutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
-//功能按钮容器
+// 功能按钮容器
 @property (nonatomic, copy)NSArray *funcBtns;
 
-//美颜开关
+// 美颜开关
 @property (strong, nonatomic) UIButton *beautyButton;
-//美颜状态
+// 美颜状态
 @property(nonatomic, assign) BOOL openBeauty;
 @property(nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
 
-//音频配置
+// 音频配置
 @property (strong, nonatomic) RCRTCEngine *engine;
 @property (nonatomic, strong)RCRTCRoom *room;
 @property (nonatomic, strong)RCRTCLiveInfo *liveInfo;
@@ -94,7 +94,7 @@ RCRTCFileCapturerDelegate>
 @property (nonatomic)NSMutableArray <LiveStreamVideo *>*streamVideos;
 @property (nonatomic, strong)LiveVideoLayoutTool *layoutTool;
 
-//发布本地自定义流开关
+// 发布本地自定义流开关
 @property (strong, nonatomic) UIButton *pushLocalButton;
 @property (nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
 @property (nonatomic, strong) LiveStreamVideo *localFileStreamVideo;
@@ -117,11 +117,11 @@ RCRTCFileCapturerDelegate>
      */
     
     
-    //初始化 UI
+    // 初始化 UI
     [self initView];
     
     
-    //直播类型下的角色区分：主播/观众
+    // 直播类型下的角色区分：主播/观众
     [self setRoleType];
     
 }
@@ -132,12 +132,12 @@ RCRTCFileCapturerDelegate>
 
 /**
  * 直播类型下的角色区分
- *1.主播开启直播
- *2.观众观看直播
+ * 1.主播开启直播
+ * 2.观众观看直播
  */
 -(void)setRoleType{
     
-    //判断用户状态改变退出按钮显示
+    // 判断用户状态改变退出按钮显示
     _closeLiveBtn.selected = _liveRoleType;
     
     switch (_liveRoleType) {
@@ -149,13 +149,13 @@ RCRTCFileCapturerDelegate>
              当前直播角色为主播
              */
             
-            //1.设置不切换听筒为扬声器
+            // 1.设置不切换听筒为扬声器
             [self.engine enableSpeaker:NO];
             
-            //2.添加本地采集预览界面
+            // 2.添加本地采集预览界面
             [self setupLocalVideoView];
             
-            //3.加入RTC房间
+            // 3.加入RTC房间
             [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
             
             break;
@@ -172,10 +172,10 @@ RCRTCFileCapturerDelegate>
              当前直播角色为观众
              */
             
-            //1.设置切换听筒为扬声器
+            // 1.设置切换听筒为扬声器
             [self.engine enableSpeaker:YES];
             
-            //2.加入RTC房间
+            // 2.加入RTC房间
             [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
             break;;
         default:
@@ -190,10 +190,10 @@ RCRTCFileCapturerDelegate>
 - (void)connectHostWithState:(BOOL)isConnect{
     self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
     
-    //1.先清理视图
+    // 1.先清理视图
     [self cleanRemoteContainer];
     
-    //2.退出房间
+    // 2.退出房间
     [self exitRoom];
     
     if (isConnect) {
@@ -210,7 +210,7 @@ RCRTCFileCapturerDelegate>
         
     }else{
         
-        //下麦：加入 RTC 房间
+        // 下麦：加入 RTC 房间
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
     }
 }
@@ -330,7 +330,7 @@ RCRTCFileCapturerDelegate>
 }
 
 /**
- *添加本地采集预览界面
+ * 添加本地采集预览界面
  */
 - (void)setupLocalVideoView{
     [self.streamVideos addObject:self.localVideo];
@@ -358,10 +358,10 @@ RCRTCFileCapturerDelegate>
 - (IBAction)closeLiveAction:(UIButton *)sender{
     
     
-    //1.清理视图
+    // 1.清理视图
     [self cleanRemoteContainer];
     
-    //2.退出房间
+    // 2.退出房间
     [self exitRoom];
     
     
@@ -387,7 +387,7 @@ RCRTCFileCapturerDelegate>
                                  self.pushLocalButton]];
     }
     
-    //上麦/下麦
+    // 上麦/下麦
     [self connectHostWithState:sender.selected];
     
 }
@@ -401,7 +401,7 @@ RCRTCFileCapturerDelegate>
     
     sender.selected = !sender.selected;
     
-    //开关摄像头
+    // 开关摄像头
     RCRTCCameraOutputStream *DVStream = self.engine.defaultVideoStream;
     !sender.selected ? [DVStream startCapture] : [DVStream stopCapture];
     
@@ -434,7 +434,7 @@ RCRTCFileCapturerDelegate>
     
     sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
     
-    //自定义布局刷新
+    // 自定义布局刷新
     [self streamlayoutMode:(RCRTCMixLayoutMode)sender.tag];
     
     switch (sender.tag) {
@@ -463,7 +463,7 @@ RCRTCFileCapturerDelegate>
     
     sender.selected = !sender.selected;
     
-    //切换摄像头
+    // 切换摄像头
     [self.engine.defaultVideoStream switchCamera];
 }
 
@@ -592,7 +592,7 @@ RCRTCFileCapturerDelegate>
  * 加入 RTC 房间
  */
 -(void)joinLiveRoomWithRole:(RCRTCLiveRoleType)roleType{
-    //1.配置房间
+    // 1.配置房间
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
     config.roomType = RCRTCRoomTypeLive;
     config.liveType = RCRTCLiveTypeAudioVideo;
@@ -609,13 +609,13 @@ RCRTCFileCapturerDelegate>
         self.room = room;
         room.delegate = self;
         
-        //2.发布本地默认流
+        // 2.发布本地默认流
         if (roleType == RCRTCLiveRoleTypeBroadcaster) {
             
             [self publishLocalLiveAVStream];
             
             
-            //如果需要美颜，可以在此获取采集的 buffer 回调
+            // 如果需要美颜，可以在此获取采集的 buffer 回调
             __weak typeof(self) weakSelf = self;
             [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
             ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
@@ -624,13 +624,13 @@ RCRTCFileCapturerDelegate>
                     return sampleBuffer;
                 }
                 
-                //处理美颜，可以更换成第三方的 api
+                // 处理美颜，可以更换成第三方的 api
                 CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
                 return processedSampleBuffer ?: sampleBuffer;
             };
             
         }
-        //3.1 单独订阅主播流
+        // 3.1 单独订阅主播流
         if (room.remoteUsers.count) {
             NSMutableArray *streamArray = [NSMutableArray array];
             for (RCRTCRemoteUser *user in room.remoteUsers) {
@@ -640,7 +640,7 @@ RCRTCFileCapturerDelegate>
                 }
             }
         }
-        //3.2 订阅 live 合流
+        // 3.2 订阅 live 合流
         NSArray *liveStreams = [room getLiveStreams];
         if (liveStreams.count) {
             [self subscribeRemoteResource:liveStreams];
@@ -663,7 +663,7 @@ RCRTCFileCapturerDelegate>
         }
     }];
     
-    //如果是主播且在发布自定义流，退出本地发送
+    // 如果是主播且在发布自定义流，退出本地发送
     if (self.pushLocalButton.selected && !self.liveRoleType) {
         [self stopPublishVideoFile];
     }
@@ -675,13 +675,13 @@ RCRTCFileCapturerDelegate>
  * 发布本地音视频流
  */
 - (void)publishLocalLiveAVStream{
-    //1.视频预览
+    // 1.视频预览
     RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
-    //2.设置本地视频流
+    // 2.设置本地视频流
     [self.engine.defaultVideoStream setVideoView:view];
-    //3.开始摄像头采集
+    // 3.开始摄像头采集
     [self.engine.defaultVideoStream startCapture];
-    //4.发布本地流到房间
+    // 4.发布本地流到房间
     [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo * _Nullable liveInfo) {
         if (desc == RCRTCCodeSuccess) {
             self.liveInfo = liveInfo;

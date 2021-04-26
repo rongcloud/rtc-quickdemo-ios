@@ -46,13 +46,13 @@
     }
     [self.useridTextField resignFirstResponder];
     
-    //呼叫自己过滤
+    // 呼叫自己过滤
     if ([[RCIM sharedRCIM].currentUserInfo.userId isEqualToString:self.useridTextField.text]) {
         [UIAlertController alertWithString:@"不允许呼叫自己" inCurrentViewController:self];
         return;
     }
     
-    //音频通话
+    // 音频通话
     [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaAudio];
     
 }
@@ -68,13 +68,13 @@
     }
     [self.useridTextField resignFirstResponder];
     
-    //呼叫自己过滤
+    // 呼叫自己过滤
     if ([[RCIM sharedRCIM].currentUserInfo.userId isEqualToString:self.useridTextField.text]) {
         [UIAlertController alertWithString:@"不允许呼叫自己" inCurrentViewController:self];
         return;
     }
     
-    //视频通话
+    // 视频通话
     [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaVideo];
 }
 

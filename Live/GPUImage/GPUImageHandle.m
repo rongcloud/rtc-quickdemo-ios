@@ -43,8 +43,8 @@
     if (!CMSampleBufferIsValid(sampleBuffer))
         return nil;
     
-//    CMSampleBufferRef originBuffer = sampleBuffer;
-
+    //    CMSampleBufferRef originBuffer = sampleBuffer;
+    
     [self.filter useNextFrameForImageCapture];
     CFRetain(sampleBuffer);
     [self.outputCamera processVideoSampleBuffer:sampleBuffer];
@@ -63,13 +63,13 @@
     
     CMSampleBufferRef processedSampleBuffer = NULL;
     CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault, pixelBuff, YES, NULL, NULL, videoInfo, &timing, &processedSampleBuffer);
-//    CMSampleBufferRef newBuffer = processedSampleBuffer;
+    // CMSampleBufferRef newBuffer = processedSampleBuffer;
     if (videoInfo == NULL)
         return nil;
     
-//    if (self.sampleBufferCallBack) {
-//        self.sampleBufferCallBack(originBuffer, newBuffer);
-//    }
+    // if (self.sampleBufferCallBack) {
+    //      self.sampleBufferCallBack(originBuffer, newBuffer);
+    // }
     
     CFRelease(videoInfo);
     CVPixelBufferUnlockBaseAddress(pixelBuff, 0);

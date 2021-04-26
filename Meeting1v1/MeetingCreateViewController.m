@@ -21,7 +21,7 @@ static NSString * const MeetingViewControllerIdentifier = @"MeetingViewControlle
 }
 
 /**
- 房间ID输入框
+ * 房间ID输入框
  */
 @property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
 
@@ -47,7 +47,7 @@ static NSString * const MeetingViewControllerIdentifier = @"MeetingViewControlle
 }
 
 /**
- 加入会议 
+ * 加入会议 
  */
 - (IBAction)joinMeeting:(UIButton *)sender {
     

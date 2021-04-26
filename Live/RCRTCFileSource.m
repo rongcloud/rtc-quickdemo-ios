@@ -93,7 +93,7 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
                                AVSampleRateKey:             @(asbd.mSampleRate),
                                AVNumberOfChannelsKey:       @(asbd.mChannelsPerFrame),
                                AVLinearPCMIsNonInterleaved: @(NO),
-                               AVLinearPCMIsBigEndianKey: @(NO),                               AVLinearPCMIsFloatKey: @(NO),
+                               AVLinearPCMIsBigEndianKey: @(NO),                        AVLinearPCMIsFloatKey: @(NO),
                                AVLinearPCMBitDepthKey: @(asbd.mBitsPerChannel)
     };
     _outAudioTrack =

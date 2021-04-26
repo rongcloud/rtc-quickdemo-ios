@@ -16,10 +16,10 @@
  */
 
 NS_ASSUME_NONNULL_BEGIN
-//typedef void(^HitSampleBuffer)(CMSampleBufferRef originBuffer, CMSampleBufferRef newBuffer);
+// typedef void(^HitSampleBuffer)(CMSampleBufferRef originBuffer, CMSampleBufferRef newBuffer);
 
 @interface GPUImageHandle : NSObject
-//@property (nonatomic, copy) HitSampleBuffer __nullable sampleBufferCallBack;
+// @property (nonatomic, copy) HitSampleBuffer __nullable sampleBufferCallBack;
 
 - (CMSampleBufferRef)onGPUFilterSource:(CMSampleBufferRef)sampleBuffer;
 @end

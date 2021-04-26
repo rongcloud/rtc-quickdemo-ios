@@ -36,7 +36,7 @@
     
     NSMutableArray *streamArr = [NSMutableArray array];
     
-    //添加本地输出流
+    // 添加本地输出流
     NSArray<RCRTCOutputStream *> *localStreams
     = RCRTCEngine.sharedInstance.room.localUser.streams;
     for (RCRTCOutputStream *vStream in localStreams) {
@@ -47,7 +47,7 @@
     
     switch (mode) {
             
-            //自定义布局
+            // 自定义布局
         case RCRTCMixLayoutModeCustom:
         {
             // 如果是自定义布局需要设置下面这些
@@ -63,14 +63,14 @@
         }
             break;
         case RCRTCMixLayoutModeSuspension:
-            //悬浮布局
+            // 悬浮布局
         {
             RCRTCOutputStream *vStream = [streamArr lastObject];
             streamConfig.hostVideoStream = vStream;
         }
             break;
         case RCRTCMixLayoutModeAdaptive:
-            //自适应布局
+            // 自适应布局
         {
             RCRTCOutputStream *vStream = [streamArr lastObject];
             streamConfig.hostVideoStream = vStream;

@@ -94,7 +94,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus){
  * 初始化相关配置
  */
 - (void)initConfig{
-    //设置链接协议
+    // 设置链接协议
     [[RCCallClient sharedRCCallClient] setDelegate:self];
 }
 

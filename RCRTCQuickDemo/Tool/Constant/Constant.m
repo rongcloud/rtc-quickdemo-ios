@@ -12,13 +12,13 @@
  */
 @implementation Constant
 
-//#error 请填写 App Key
+// #error 请填写 App Key
 /**
  * 获取地址: https://developer.rongcloud.cn/app/appkey/
  */
 NSString * const AppKey = @"cpj2xarlctx9n";
 
-//#error 请填写 App Secret
+// #error 请填写 App Secret
 /**
  * 获取Token 需要提供 App Key 和 App Secret
  *
