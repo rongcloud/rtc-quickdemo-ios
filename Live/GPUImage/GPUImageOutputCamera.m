@@ -14,8 +14,8 @@
 
 @interface GPUImageOutputCamera ()
 {
-	   NSDate *startingCaptureTime;
-	
+    NSDate *startingCaptureTime;
+    
     dispatch_queue_t cameraProcessingQueue;
     
     GLProgram *yuvConversionProgram;
@@ -44,64 +44,64 @@
 
 - (id)init;
 {
-	if (!(self = [super init]))
+    if (!(self = [super init]))
     {
-		return nil;
+        return nil;
     }
     
     cameraProcessingQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0);
-
+    
     frameRenderingSemaphore = dispatch_semaphore_create(1);
-
+    
     // _runBenchmark = NO;
     outputRotation = kGPUImageNoRotation;
     internalRotation = kGPUImageNoRotation;
     captureAsYUV = YES;
     _preferredConversion = kColorConversion709;
-  
+    
     isFullYUVRange = YES;
     runSynchronouslyOnVideoProcessingQueue(^{
-        if (captureAsYUV)
+        if (self->captureAsYUV)
         {
             [GPUImageContext useImageProcessingContext];
-            if (isFullYUVRange)
+            if (self->isFullYUVRange)
             {
-                yuvConversionProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImageYUVFullRangeConversionForLAFragmentShaderString];
+                self->yuvConversionProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImageYUVFullRangeConversionForLAFragmentShaderString];
             }
             else
             {
-                yuvConversionProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImageYUVVideoRangeConversionForLAFragmentShaderString];
+                self->yuvConversionProgram = [[GPUImageContext sharedImageProcessingContext] programForVertexShaderString:kGPUImageVertexShaderString fragmentShaderString:kGPUImageYUVVideoRangeConversionForLAFragmentShaderString];
             }
             
-            if (!yuvConversionProgram.initialized)
+            if (!self->yuvConversionProgram.initialized)
             {
-                [yuvConversionProgram addAttribute:@"position"];
-                [yuvConversionProgram addAttribute:@"inputTextureCoordinate"];
+                [self->yuvConversionProgram addAttribute:@"position"];
+                [self->yuvConversionProgram addAttribute:@"inputTextureCoordinate"];
                 
-                if (![yuvConversionProgram link])
+                if (![self->yuvConversionProgram link])
                 {
                     // NSString *progLog = [yuvConversionProgram programLog];
                     // NSString *fragLog = [yuvConversionProgram fragmentShaderLog];
                     // NSString *vertLog = [yuvConversionProgram vertexShaderLog];
-                    yuvConversionProgram = nil;
+                    self->yuvConversionProgram = nil;
                     NSAssert(NO, @"Filter shader link failed");
                 }
             }
             
             NSLog(@"yuvConversionPositionAttribute");
-            yuvConversionPositionAttribute = [yuvConversionProgram attributeIndex:@"position"];
-            yuvConversionTextureCoordinateAttribute = [yuvConversionProgram attributeIndex:@"inputTextureCoordinate"];
-            yuvConversionLuminanceTextureUniform = [yuvConversionProgram uniformIndex:@"luminanceTexture"];
-            yuvConversionChrominanceTextureUniform = [yuvConversionProgram uniformIndex:@"chrominanceTexture"];
-            yuvConversionMatrixUniform = [yuvConversionProgram uniformIndex:@"colorConversionMatrix"];
+            self->yuvConversionPositionAttribute = [self->yuvConversionProgram attributeIndex:@"position"];
+            self->yuvConversionTextureCoordinateAttribute = [self->yuvConversionProgram attributeIndex:@"inputTextureCoordinate"];
+            self->yuvConversionLuminanceTextureUniform = [self->yuvConversionProgram uniformIndex:@"luminanceTexture"];
+            self->yuvConversionChrominanceTextureUniform = [self->yuvConversionProgram uniformIndex:@"chrominanceTexture"];
+            self->yuvConversionMatrixUniform = [self->yuvConversionProgram uniformIndex:@"colorConversionMatrix"];
             
-            [GPUImageContext setActiveShaderProgram:yuvConversionProgram];
+            [GPUImageContext setActiveShaderProgram:self->yuvConversionProgram];
             
-            glEnableVertexAttribArray(yuvConversionPositionAttribute);
-            glEnableVertexAttribArray(yuvConversionTextureCoordinateAttribute);
+            glEnableVertexAttribArray(self->yuvConversionPositionAttribute);
+            glEnableVertexAttribArray(self->yuvConversionTextureCoordinateAttribute);
         }
     });
- 	return self;
+    return self;
 }
 
 - (GPUImageFramebuffer *)framebufferForOutput;
@@ -111,7 +111,7 @@
 
 - (void)dealloc
 {
-// ARC forbids explicit message send of 'release'; since iOS 6 even for dispatch_release() calls: stripping it out in that case is required.
+    // ARC forbids explicit message send of 'release'; since iOS 6 even for dispatch_release() calls: stripping it out in that case is required.
 #if !OS_OBJECT_USE_OBJC
     if (frameRenderingSemaphore != NULL)
     {
@@ -189,7 +189,7 @@
 
 - (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 {
-//    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+    //    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     CVImageBufferRef cameraFrame = CMSampleBufferGetImageBuffer(sampleBuffer);
     int bufferWidth = (int) CVPixelBufferGetWidth(cameraFrame);
     int bufferHeight = (int) CVPixelBufferGetHeight(cameraFrame);
@@ -223,16 +223,16 @@
             _preferredConversion = kColorConversion601;
         }
     }
-
-	CMTime currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-
+    
+    CMTime currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+    
     [GPUImageContext useImageProcessingContext];
-
+    
     if ([GPUImageContext supportsFastTextureUpload] && captureAsYUV)
     {
         CVOpenGLESTextureRef luminanceTextureRef = NULL;
         CVOpenGLESTextureRef chrominanceTextureRef = NULL;
-
+        
         if (CVPixelBufferGetPlaneCount(cameraFrame) > 0) // Check for YUV planar inputs to do RGB conversion
         {
             CVPixelBufferLockBaseAddress(cameraFrame, 0);
@@ -285,7 +285,7 @@
             glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
             
             [self convertYUVToRGBOutput];
-
+            
             int rotatedImageBufferWidth = bufferWidth, rotatedImageBufferHeight = bufferHeight;
             
             if (GPUImageRotationSwapsWidthAndHeight(internalRotation))
@@ -302,17 +302,17 @@
         }
         
         
-//        if (_runBenchmark)
-//        {
-//            numberOfFramesCaptured++;
-//            if (numberOfFramesCaptured > INITIALFRAMESTOIGNOREFORBENCHMARK)
-//            {
-//                CFAbsoluteTime currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime);
-//                totalFrameTimeDuringCapture += currentFrameTime;
-//                NSLog(@"Average frame time : %f ms", [self averageFrameDurationDuringCapture]);
-//                NSLog(@"Current frame time : %f ms", 1000.0 * currentFrameTime);
-//            }
-//        }
+        //        if (_runBenchmark)
+        //        {
+        //            numberOfFramesCaptured++;
+        //            if (numberOfFramesCaptured > INITIALFRAMESTOIGNOREFORBENCHMARK)
+        //            {
+        //                CFAbsoluteTime currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        //                totalFrameTimeDuringCapture += currentFrameTime;
+        //                NSLog(@"Average frame time : %f ms", [self averageFrameDurationDuringCapture]);
+        //                NSLog(@"Current frame time : %f ms", 1000.0 * currentFrameTime);
+        //            }
+        //        }
     }
     else
     {
@@ -321,42 +321,42 @@
         int bytesPerRow = (int) CVPixelBufferGetBytesPerRow(cameraFrame);
         outputFramebuffer = [[GPUImageContext sharedFramebufferCache] fetchFramebufferForSize:CGSizeMake(bytesPerRow / 4, bufferHeight) onlyTexture:YES];
         [outputFramebuffer activateFramebuffer];
-
+        
         glBindTexture(GL_TEXTURE_2D, [outputFramebuffer texture]);
-      
+        
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bytesPerRow / 4, bufferHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, CVPixelBufferGetBaseAddress(cameraFrame));
         
         [self updateTargetsForVideoCameraUsingCacheTextureAtWidth:bytesPerRow / 4 height:bufferHeight time:currentTime];
         
         CVPixelBufferUnlockBaseAddress(cameraFrame, 0);
         
-//        if (_runBenchmark)
-//        {
-//            numberOfFramesCaptured++;
-//            if (numberOfFramesCaptured > INITIALFRAMESTOIGNOREFORBENCHMARK)
-//            {
-//                CFAbsoluteTime currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime);
-//                totalFrameTimeDuringCapture += currentFrameTime;
-//            }
-//        }
+        //        if (_runBenchmark)
+        //        {
+        //            numberOfFramesCaptured++;
+        //            if (numberOfFramesCaptured > INITIALFRAMESTOIGNOREFORBENCHMARK)
+        //            {
+        //                CFAbsoluteTime currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime);
+        //                totalFrameTimeDuringCapture += currentFrameTime;
+        //            }
+        //        }
     }
 }
 
 - (void)convertYUVToRGBOutput
 {
     [GPUImageContext setActiveShaderProgram:yuvConversionProgram];
-
+    
     int rotatedImageBufferWidth = imageBufferWidth, rotatedImageBufferHeight = imageBufferHeight;
-
+    
     if (GPUImageRotationSwapsWidthAndHeight(internalRotation))
     {
         rotatedImageBufferWidth = imageBufferHeight;
         rotatedImageBufferHeight = imageBufferWidth;
     }
-
+    
     outputFramebuffer = [[GPUImageContext sharedFramebufferCache] fetchFramebufferForSize:CGSizeMake(rotatedImageBufferWidth, rotatedImageBufferHeight) textureOptions:self.outputTextureOptions onlyTexture:NO];
     [outputFramebuffer activateFramebuffer];
-
+    
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -367,18 +367,18 @@
         1.0f,  1.0f,
     };
     
-	glActiveTexture(GL_TEXTURE4);
-	glBindTexture(GL_TEXTURE_2D, luminanceTexture);
-	glUniform1i(yuvConversionLuminanceTextureUniform, 4);
-
+    glActiveTexture(GL_TEXTURE4);
+    glBindTexture(GL_TEXTURE_2D, luminanceTexture);
+    glUniform1i(yuvConversionLuminanceTextureUniform, 4);
+    
     glActiveTexture(GL_TEXTURE5);
-	glBindTexture(GL_TEXTURE_2D, chrominanceTexture);
-	glUniform1i(yuvConversionChrominanceTextureUniform, 5);
-
+    glBindTexture(GL_TEXTURE_2D, chrominanceTexture);
+    glUniform1i(yuvConversionChrominanceTextureUniform, 5);
+    
     glUniformMatrix3fv(yuvConversionMatrixUniform, 1, GL_FALSE, _preferredConversion);
-
+    
     glVertexAttribPointer(yuvConversionPositionAttribute, 2, GL_FLOAT, 0, 0, squareVertices);
-	glVertexAttribPointer(yuvConversionTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, [GPUImageFilter textureCoordinatesForRotation:internalRotation]);
+    glVertexAttribPointer(yuvConversionTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, [GPUImageFilter textureCoordinatesForRotation:internalRotation]);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
@@ -409,7 +409,7 @@
         [self processVideoSampleBuffer:sampleBuffer];
         
         CFRelease(sampleBuffer);
-        dispatch_semaphore_signal(frameRenderingSemaphore);
+        dispatch_semaphore_signal(self->frameRenderingSemaphore);
     });
 }
 

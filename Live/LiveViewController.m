@@ -76,11 +76,12 @@ RCRTCFileCapturerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *streamLayoutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeLiveBtn;
 @property (weak, nonatomic) IBOutlet UIButton *connectHostBtn;
+@property (weak, nonatomic) IBOutlet UIButton *waterMark;
+@property (weak, nonatomic) IBOutlet UIButton *beautyButton;
 // 功能按钮容器
 @property (nonatomic, copy)NSArray *funcBtns;
 
-// 美颜开关
-@property (strong, nonatomic) UIButton *beautyButton;
+@property(nonatomic, assign) BOOL openWaterMark;
 // 美颜状态
 @property(nonatomic, assign) BOOL openBeauty;
 @property(nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
@@ -285,14 +286,6 @@ RCRTCFileCapturerDelegate>
     [_pushLocalButton addTarget:self action:@selector(publishLocalButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_pushLocalButton];
     
-    
-    _beautyButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
-    [_beautyButton setTitle:@"打开美颜" forState:UIControlStateNormal];
-    [_beautyButton setTitle:@"关闭美颜" forState:UIControlStateSelected];
-    [_beautyButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
-    [_beautyButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
-    [_beautyButton addTarget:self action:@selector(beautyAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_beautyButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -467,14 +460,25 @@ RCRTCFileCapturerDelegate>
     [self.engine.defaultVideoStream switchCamera];
 }
 
+
+
 /**
  * 切换美颜
  */
-- (void)beautyAction:(UIButton *)sender {
-    
+- (IBAction)beautyAction:(UIButton *)sender {
     sender.selected = !sender.selected;
     self.openBeauty = sender.selected;
-    
+    [self changeFliterIsOpenBearty:self.openBeauty isOpenWarkMark:self.openWaterMark];
+}
+
+/**
+ * 添删水印
+ */
+- (IBAction)waterMark:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    self.openWaterMark= sender.selected;
+    [self changeFliterIsOpenBearty:self.openBeauty isOpenWarkMark:self.openWaterMark];
+    [self.gpuImageHandler rotateWaterMark:sender.selected];
     
 }
 
@@ -620,7 +624,7 @@ RCRTCFileCapturerDelegate>
             [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
             ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
-                if (!strongSelf || !strongSelf.openBeauty) {
+                if (!strongSelf || (!strongSelf.openBeauty&&!strongSelf.openWaterMark) ) {
                     return sampleBuffer;
                 }
                 
@@ -902,4 +906,23 @@ RCRTCFileCapturerDelegate>
     [localFileVideoView flushVideoView];
 }
 
+
+#pragma mark - private method
+/**
+ * 滤镜种类判断
+ */
+-(void)changeFliterIsOpenBearty:(BOOL)isOpenBearty isOpenWarkMark:(BOOL)isOpenWarkMark{
+    
+    if (isOpenBearty&&isOpenWarkMark) {
+        [self.gpuImageHandler beautyAndWaterMark];
+    }else if(isOpenBearty){
+        [self.gpuImageHandler onlyBeauty];
+        
+    }else {
+        
+        [self.gpuImageHandler onlyWaterMark];
+    }
+    
+    
+}
 @end

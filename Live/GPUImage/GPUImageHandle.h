@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "GPUImageBeautyFilter.h"
 #import "GPUImageOutputCamera.h"
+#import <RongRTCLib/RongRTCLib.h>
+
 
 /**
  * GPUImage 的封装类
@@ -22,6 +24,16 @@ NS_ASSUME_NONNULL_BEGIN
 // @property (nonatomic, copy) HitSampleBuffer __nullable sampleBufferCallBack;
 
 - (CMSampleBufferRef)onGPUFilterSource:(CMSampleBufferRef)sampleBuffer;
+- (void)rotateWaterMark:(BOOL)isBack;
+
+// 切换美颜滤镜
+-(void)onlyBeauty;
+
+// 添加水印
+-(void)onlyWaterMark;
+
+// 添加水印的美颜
+-(void)beautyAndWaterMark;
 @end
 
 NS_ASSUME_NONNULL_END
