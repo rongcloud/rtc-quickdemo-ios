@@ -74,7 +74,7 @@ BIN_DIR="bin"
 
 echo "***开始build iphoneos文件***"
 xcodebuild clean -workspace ${PROJECT_NAME} -scheme ${targetName}  -configuration ${CONFIGURATION}
-xcodebuild -workspace "${PROJECT_NAME}" -scheme "${targetName}" archive -archivePath "./${BUILD_DIR}/${targetName}.xcarchive" -configuration ${CONFIGURATION} APP_PROFILE="${BUILD_APP_PROFILE}" SHARE_PROFILE="${BUILD_SHARE_PROFILE}" -allowProvisioningUpdates
+xcodebuild -workspace "${PROJECT_NAME}" -scheme "${targetName}" archive -archivePath "./${BUILD_DIR}/${targetName}.xcarchive" -configuration ${CONFIGURATION} APP_PROFILE="${BUILD_APP_PROFILE}" SHARE_PROFILE="${BUILD_SHARE_PROFILE}" 
 xcodebuild -exportArchive -archivePath "./${BUILD_DIR}/${targetName}.xcarchive" -exportOptionsPlist "archive.plist" -exportPath "./${BIN_DIR}" -allowProvisioningUpdates
   
 mv ./${BIN_DIR}/${targetName}.ipa ${ROOT_PATH}/${BIN_DIR}/${targetName}_v${RTC_VERSION}_${CONFIGURATION}_${CUR_TIME}.ipa
