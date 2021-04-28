@@ -58,9 +58,9 @@
 		<key>description</key>
 		<string>会议 1v1</string>
 		<key>storyboardName</key>
-		<string>Meeting</string>
+		<string>ScreenShare</string>
 		<key>controllerIdentifier</key>
-		<string>MeetingCreateViewController</string>
+		<string>ScreenShareViewController</string>
 	</dict>
 </array>
 </plist>

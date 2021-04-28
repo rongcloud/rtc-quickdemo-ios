@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Screen Share View Controller-->
+        <scene sceneID="utV-ia-AZv">
+            <objects>
+                <viewController storyboardIdentifier="ScreenShareViewController" id="krl-JN-mwr" customClass="ScreenShareViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GSf-5f-EME">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZw-kw-S9E">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lLY-y4-4Cr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kZw-kw-S9E" firstAttribute="top" secondItem="lLY-y4-4Cr" secondAttribute="top" id="0lf-Bn-6ch"/>
+                            <constraint firstItem="kZw-kw-S9E" firstAttribute="leading" secondItem="lLY-y4-4Cr" secondAttribute="leading" id="Zze-3u-hxZ"/>
+                            <constraint firstItem="kZw-kw-S9E" firstAttribute="trailing" secondItem="lLY-y4-4Cr" secondAttribute="trailing" id="ci5-EW-rgu"/>
+                            <constraint firstAttribute="bottom" secondItem="kZw-kw-S9E" secondAttribute="bottom" id="iWW-Iv-6Gl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="kZw-kw-S9E" id="tI7-05-P4q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O6j-7j-8Lm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95.652173913043484" y="32.8125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

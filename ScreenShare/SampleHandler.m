@@ -7,11 +7,18 @@
 
 
 #import "SampleHandler.h"
+#import "RongRTCClientSocket.h"
+
+@interface SampleHandler () 
+@property(nonatomic , strong)RongRTCClientSocket *clientSocket;
+@end
 
 @implementation SampleHandler
 
 - (void)broadcastStartedWithSetupInfo:(NSDictionary<NSString *,NSObject *> *)setupInfo {
-    // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional. 
+    // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
+    self.clientSocket = [[RongRTCClientSocket alloc] init];
+       [self.clientSocket createCliectSocket];
 }
 
 - (void)broadcastPaused {
@@ -31,6 +38,8 @@
     switch (sampleBufferType) {
         case RPSampleBufferTypeVideo:
             // Handle video sample buffer
+            [self sendData:sampleBuffer];
+
             break;
         case RPSampleBufferTypeAudioApp:
             // Handle audio sample buffer for app audio
@@ -43,5 +52,9 @@
             break;
     }
 }
-
+- (void)sendData:(CMSampleBufferRef)sampleBuffer{
+     
+    [self.clientSocket encodeBuffer:sampleBuffer];
+ 
+}
 @end
