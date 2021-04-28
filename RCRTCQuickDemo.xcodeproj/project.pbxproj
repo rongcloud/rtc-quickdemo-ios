@@ -33,6 +33,7 @@
 		4F6925CF26396B8400872F2B /* RongRTCSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AE2639643A00872F2B /* RongRTCSocket.m */; };
 		4F6925D026396B9400872F2B /* RongRTCVideoEncoderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F69259D2639643A00872F2B /* RongRTCVideoEncoderSettings.m */; };
 		4F6925D126396BA700872F2B /* RongRTCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AC2639643A00872F2B /* RongRTCThread.m */; };
+		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
 		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
 		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
@@ -142,6 +143,8 @@
 		4F6925C32639651D00872F2B /* ScreenShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScreenShare.storyboard; sourceTree = "<group>"; };
 		4F6925C5263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RPSystemBroadcastPickerView+SearchButton.m"; sourceTree = "<group>"; };
 		4F6925C6263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPSystemBroadcastPickerView+SearchButton.h"; sourceTree = "<group>"; };
+		4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareCreateViewController.h; sourceTree = "<group>"; };
+		4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareCreateViewController.m; sourceTree = "<group>"; };
 		4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCFileSource.h; sourceTree = "<group>"; };
 		4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCFileSource.m; sourceTree = "<group>"; };
 		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				4F6925C32639651D00872F2B /* ScreenShare.storyboard */,
 				4F6925C6263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.h */,
 				4F6925C5263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.m */,
+				4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */,
+				4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */,
 			);
 			path = ScreenSharing;
 			sourceTree = "<group>";
@@ -812,6 +817,7 @@
 				4F6925BF2639643A00872F2B /* OtherTest.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* Constant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
+				4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
 				4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */,
 				4F6925B52639643A00872F2B /* RongRTCCodec.m in Sources */,

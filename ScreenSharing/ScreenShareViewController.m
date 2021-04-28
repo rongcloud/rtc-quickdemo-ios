@@ -18,7 +18,7 @@
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
-@interface ScreenShareViewController ()<RPBroadcastControllerDelegate,RPBroadcastActivityViewControllerDelegate,RongRTCServerSocketProtocol,RCRTCRoomEventDelegate>
+@interface ScreenShareViewController ()<RongRTCServerSocketProtocol,RCRTCRoomEventDelegate>
 
 @property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
 @property(nonatomic , strong)RongRTCServerSocket *serverSocket;
@@ -43,7 +43,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.roomId = @"12322";
     [self initView];
     [self joinRoom];
 }

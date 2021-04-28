@@ -60,7 +60,7 @@
 		<key>storyboardName</key>
 		<string>ScreenShare</string>
 		<key>controllerIdentifier</key>
-		<string>ScreenShareViewController</string>
+		<string>ScreenShareCreateViewController</string>
 	</dict>
 </array>
 </plist>
