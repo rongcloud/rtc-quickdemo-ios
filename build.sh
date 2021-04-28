@@ -36,6 +36,7 @@ function clean_last_build(){
   rm -rf $ROOT_PATH/Pods
   rm -rf $ROOT_PATH/Podfile.lock
   rm -rf $OUTPUT_PATH
+  rm -rf $ROOT_PATH/DerivedData
 }
 
 function pod_update() {
