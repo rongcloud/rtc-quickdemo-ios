@@ -19,13 +19,13 @@ BUILD_DIR="build"
 
 CONFIGURATION="Release"
 # 需要集成的 RTC 版本
-# RTC_VERSION=${build_version}
-RTC_VERSION="121113"
+RTC_VERSION=${build_version}
 echo "替换的rtc 版本 ${RTC_VERSION}"
 
 # 需要替换的AppKey
 APPKEY=${AppKey}
 echo "替换的APPKEY ${APPKEY}"
+
 APPSECRET=${AppSecret}
 BUILD_BRANCH=${build_branch}
 
@@ -63,6 +63,7 @@ pod_update
 
 pod update --no-repo-update
 pod install
+
 PROJECT_NAME="RCRTCQuickDemo.xcworkspace"
 targetName="RCRTCQuickDemo"
 TARGET_DECIVE="iphoneos"
