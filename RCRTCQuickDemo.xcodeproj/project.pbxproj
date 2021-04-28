@@ -13,6 +13,13 @@
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
 		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
+		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
+		4FBD78C226395A3200660733 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD78C126395A3200660733 /* SampleHandler.m */; };
+		4FBD78C926395A3300660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
+		4FBD78CB26395A3300660733 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78CA26395A3300660733 /* UIKit.framework */; };
+		4FBD78CF26395A3300660733 /* BroadcastSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD78CE26395A3300660733 /* BroadcastSetupViewController.m */; };
+		4FBD78D326395A3300660733 /* ScreenShareSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78C826395A3300660733 /* ScreenShareSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4FBD78D626395A3300660733 /* ScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78BC26395A3200660733 /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		DD24DF44261EAAD800DC4665 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
 		DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */; };
@@ -42,6 +49,38 @@
 		DDEC584B2627EC290067D692 /* CallLib.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDEC584A2627EC290067D692 /* CallLib.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4FBD78D126395A3300660733 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD81210F261DC26B00AF7D35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FBD78C726395A3300660733;
+			remoteInfo = ScreenShareSetupUI;
+		};
+		4FBD78D426395A3300660733 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD81210F261DC26B00AF7D35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FBD78BB26395A3200660733;
+			remoteInfo = ScreenShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4FBD78D726395A3300660733 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4FBD78D626395A3300660733 /* ScreenShare.appex in Embed App Extensions */,
+				4FBD78D326395A3300660733 /* ScreenShareSetupUI.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		187F9E2A2628504A002E5288 /* LiveMixStreamTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveMixStreamTool.m; sourceTree = "<group>"; };
 		187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveVideoLayoutTool.m; sourceTree = "<group>"; };
@@ -54,6 +93,16 @@
 		4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCFileSource.h; sourceTree = "<group>"; };
 		4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCFileSource.m; sourceTree = "<group>"; };
 		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
+		4FBD78BC26395A3200660733 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FBD78BD26395A3200660733 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		4FBD78C026395A3200660733 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
+		4FBD78C126395A3200660733 /* SampleHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleHandler.m; sourceTree = "<group>"; };
+		4FBD78C326395A3200660733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FBD78C826395A3300660733 /* ScreenShareSetupUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShareSetupUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FBD78CA26395A3300660733 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4FBD78CD26395A3300660733 /* BroadcastSetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcastSetupViewController.h; sourceTree = "<group>"; };
+		4FBD78CE26395A3300660733 /* BroadcastSetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcastSetupViewController.m; sourceTree = "<group>"; };
+		4FBD78D026395A3300660733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -104,6 +153,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4FBD78B926395A3200660733 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FBD78C526395A3300660733 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FBD78C926395A3300660733 /* ReplayKit.framework in Frameworks */,
+				4FBD78CB26395A3300660733 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD812114261DC26B00AF7D35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +182,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FBD78BF26395A3200660733 /* ScreenShare */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD78C026395A3200660733 /* SampleHandler.h */,
+				4FBD78C126395A3200660733 /* SampleHandler.m */,
+				4FBD78C326395A3200660733 /* Info.plist */,
+			);
+			path = ScreenShare;
+			sourceTree = "<group>";
+		};
+		4FBD78CC26395A3300660733 /* ScreenShareSetupUI */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD78CD26395A3300660733 /* BroadcastSetupViewController.h */,
+				4FBD78CE26395A3300660733 /* BroadcastSetupViewController.m */,
+				4FBD78D026395A3300660733 /* Info.plist */,
+			);
+			path = ScreenShareSetupUI;
+			sourceTree = "<group>";
+		};
 		AE23833E4788BB5B11B8782D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +293,8 @@
 				DDEC58132626DBF80067D692 /* Live */,
 				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
+				4FBD78BF26395A3200660733 /* ScreenShare */,
+				4FBD78CC26395A3300660733 /* ScreenShareSetupUI */,
 				DD812118261DC26B00AF7D35 /* Products */,
 				AE23833E4788BB5B11B8782D /* Pods */,
 				FEC3B326876A92E37BD3485E /* Frameworks */,
@@ -217,6 +305,8 @@
 			isa = PBXGroup;
 			children = (
 				DD812117261DC26B00AF7D35 /* RCRTCQuickDemo.app */,
+				4FBD78BC26395A3200660733 /* ScreenShare.appex */,
+				4FBD78C826395A3300660733 /* ScreenShareSetupUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,6 +378,8 @@
 			children = (
 				DD59DE77262FC1B800A0C940 /* GPUImage.framework */,
 				89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */,
+				4FBD78BD26395A3200660733 /* ReplayKit.framework */,
+				4FBD78CA26395A3300660733 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -295,6 +387,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4FBD78BB26395A3200660733 /* ScreenShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FBD78DD26395A3300660733 /* Build configuration list for PBXNativeTarget "ScreenShare" */;
+			buildPhases = (
+				4FBD78B826395A3200660733 /* Sources */,
+				4FBD78B926395A3200660733 /* Frameworks */,
+				4FBD78BA26395A3200660733 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenShare;
+			productName = ScreenShare;
+			productReference = 4FBD78BC26395A3200660733 /* ScreenShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		4FBD78C726395A3300660733 /* ScreenShareSetupUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FBD78DC26395A3300660733 /* Build configuration list for PBXNativeTarget "ScreenShareSetupUI" */;
+			buildPhases = (
+				4FBD78C426395A3300660733 /* Sources */,
+				4FBD78C526395A3300660733 /* Frameworks */,
+				4FBD78C626395A3300660733 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenShareSetupUI;
+			productName = ScreenShareSetupUI;
+			productReference = 4FBD78C826395A3300660733 /* ScreenShareSetupUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DD812116261DC26B00AF7D35 /* RCRTCQuickDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD812130261DC26F00AF7D35 /* Build configuration list for PBXNativeTarget "RCRTCQuickDemo" */;
@@ -305,10 +431,13 @@
 				DD812115261DC26B00AF7D35 /* Resources */,
 				51B46FD61753CAAB2A0A3E02 /* [CP] Embed Pods Frameworks */,
 				10A53109935367D704B8FC4D /* [CP] Copy Pods Resources */,
+				4FBD78D726395A3300660733 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4FBD78D226395A3300660733 /* PBXTargetDependency */,
+				4FBD78D526395A3300660733 /* PBXTargetDependency */,
 			);
 			name = RCRTCQuickDemo;
 			productName = RCRTCQuickDemo;
@@ -323,6 +452,12 @@
 			attributes = {
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					4FBD78BB26395A3200660733 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					4FBD78C726395A3300660733 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					DD812116261DC26B00AF7D35 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -342,11 +477,27 @@
 			projectRoot = "";
 			targets = (
 				DD812116261DC26B00AF7D35 /* RCRTCQuickDemo */,
+				4FBD78BB26395A3200660733 /* ScreenShare */,
+				4FBD78C726395A3300660733 /* ScreenShareSetupUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4FBD78BA26395A3200660733 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FBD78C626395A3300660733 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD812115261DC26B00AF7D35 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +576,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4FBD78B826395A3200660733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FBD78C226395A3200660733 /* SampleHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FBD78C426395A3300660733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FBD78CF26395A3300660733 /* BroadcastSetupViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD812113261DC26B00AF7D35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +623,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4FBD78D226395A3300660733 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FBD78C726395A3300660733 /* ScreenShareSetupUI */;
+			targetProxy = 4FBD78D126395A3300660733 /* PBXContainerItemProxy */;
+		};
+		4FBD78D526395A3300660733 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FBD78BB26395A3200660733 /* ScreenShare */;
+			targetProxy = 4FBD78D426395A3300660733 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DD812123261DC26B00AF7D35 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -476,6 +656,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4FBD78D826395A3300660733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				INFOPLIST_FILE = ScreenShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4FBD78D926395A3300660733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				INFOPLIST_FILE = ScreenShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4FBD78DA26395A3300660733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				INFOPLIST_FILE = ScreenShareSetupUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShareSetupUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4FBD78DB26395A3300660733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				INFOPLIST_FILE = ScreenShareSetupUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShareSetupUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		DD81212E261DC26F00AF7D35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -645,6 +901,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4FBD78DC26395A3300660733 /* Build configuration list for PBXNativeTarget "ScreenShareSetupUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FBD78DA26395A3300660733 /* Debug */,
+				4FBD78DB26395A3300660733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FBD78DD26395A3300660733 /* Build configuration list for PBXNativeTarget "ScreenShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FBD78D826395A3300660733 /* Debug */,
+				4FBD78D926395A3300660733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DD812112261DC26B00AF7D35 /* Build configuration list for PBXProject "RCRTCQuickDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

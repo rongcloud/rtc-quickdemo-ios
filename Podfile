@@ -9,3 +9,11 @@ target 'RCRTCQuickDemo' do
   pod 'RongCloudRTC', '~> 5.1.0'
 
 end
+target 'ScreenShare' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for RCRTCQuickDemo
+  pod 'RongCloudRTC', '~> 5.1.0'
+
+end
