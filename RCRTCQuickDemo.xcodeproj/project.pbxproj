@@ -21,6 +21,7 @@
 		4FBD78D326395A3300660733 /* ScreenShareSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78C826395A3300660733 /* ScreenShareSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4FBD78D626395A3300660733 /* ScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78BC26395A3200660733 /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
+		5E07FE1A6525BFF1829CB4E6 /* Pods_ScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517ABB850196208300BF9CD1 /* Pods_ScreenShare.framework */; };
 		DD24DF44261EAAD800DC4665 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
 		DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */; };
 		DD24DF5A261EEB5A00DC4665 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF58261EEB5A00DC4665 /* HomeViewController.m */; };
@@ -103,8 +104,11 @@
 		4FBD78CD26395A3300660733 /* BroadcastSetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcastSetupViewController.h; sourceTree = "<group>"; };
 		4FBD78CE26395A3300660733 /* BroadcastSetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcastSetupViewController.m; sourceTree = "<group>"; };
 		4FBD78D026395A3300660733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		517ABB850196208300BF9CD1 /* Pods_ScreenShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.release.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.release.xcconfig"; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		DD24DF43261EAAD800DC4665 /* Constant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 		DD24DF50261EEB3900DC4665 /* MeetingCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingCreateViewController.h; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */,
+				5E07FE1A6525BFF1829CB4E6 /* Pods_ScreenShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +212,8 @@
 			children = (
 				971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */,
 				DE3564F81C055A832EE564F2 /* Pods-RCRTCQuickDemo.release.xcconfig */,
+				86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */,
+				D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -380,6 +387,7 @@
 				89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */,
 				4FBD78BD26395A3200660733 /* ReplayKit.framework */,
 				4FBD78CA26395A3300660733 /* UIKit.framework */,
+				517ABB850196208300BF9CD1 /* Pods_ScreenShare.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -391,9 +399,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FBD78DD26395A3300660733 /* Build configuration list for PBXNativeTarget "ScreenShare" */;
 			buildPhases = (
+				229E8C519C802DCBE64E4706 /* [CP] Check Pods Manifest.lock */,
 				4FBD78B826395A3200660733 /* Sources */,
 				4FBD78B926395A3200660733 /* Frameworks */,
 				4FBD78BA26395A3200660733 /* Resources */,
+				93C258D0E3A5646999D8196B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -534,6 +544,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		229E8C519C802DCBE64E4706 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ScreenShare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		51B46FD61753CAAB2A0A3E02 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -571,6 +603,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93C258D0E3A5646999D8196B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -658,6 +707,7 @@
 /* Begin XCBuildConfiguration section */
 		4FBD78D826395A3300660733 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
@@ -677,6 +727,7 @@
 		};
 		4FBD78D926395A3300660733 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
