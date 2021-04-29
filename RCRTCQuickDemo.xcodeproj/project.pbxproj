@@ -34,6 +34,8 @@
 		4F6925D026396B9400872F2B /* RongRTCVideoEncoderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F69259D2639643A00872F2B /* RongRTCVideoEncoderSettings.m */; };
 		4F6925D126396BA700872F2B /* RongRTCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AC2639643A00872F2B /* RongRTCThread.m */; };
 		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
+		4F852CC3263A945700570503 /* RequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF6C261EFC1700DC4665 /* RequestToken.m */; };
+		4F852CC4263A945700570503 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
 		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
 		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
@@ -114,6 +116,7 @@
 		187F9E2F2628504A002E5288 /* LiveStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamVideo.h; sourceTree = "<group>"; };
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
+		4F0D16DC263AAB010059DC49 /* ScreenShareDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShareDebug.entitlements; sourceTree = "<group>"; };
 		4F6925972639643A00872F2B /* RongRTCCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCCodec.m; sourceTree = "<group>"; };
 		4F6925982639643A00872F2B /* helpers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = helpers.mm; sourceTree = "<group>"; };
 		4F69259A2639643A00872F2B /* RongRTCVideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCVideoEncoder.h; sourceTree = "<group>"; };
@@ -339,6 +342,7 @@
 		4FBD78BF26395A3200660733 /* ScreenShare */ = {
 			isa = PBXGroup;
 			children = (
+				4F0D16DC263AAB010059DC49 /* ScreenShareDebug.entitlements */,
 				4FBD78C026395A3200660733 /* SampleHandler.h */,
 				4FBD78C126395A3200660733 /* SampleHandler.m */,
 				4FBD78C326395A3200660733 /* Info.plist */,
@@ -781,6 +785,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F852CC3263A945700570503 /* RequestToken.m in Sources */,
+				4F852CC4263A945700570503 /* Constant.m in Sources */,
 				4F6925D126396BA700872F2B /* RongRTCThread.m in Sources */,
 				4F6925D026396B9400872F2B /* RongRTCVideoEncoderSettings.m in Sources */,
 				4F6925CF26396B8400872F2B /* RongRTCSocket.m in Sources */,
@@ -883,6 +889,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShareDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
@@ -1087,8 +1094,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RCRTCQuickDemo/RCRTCQuickDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1104,7 +1111,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = rtcquickdemo;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

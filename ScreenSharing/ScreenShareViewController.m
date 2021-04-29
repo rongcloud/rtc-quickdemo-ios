@@ -74,77 +74,78 @@
 
     
     self.systemBroadcastPickerView = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(0, 64, 50, 80)];
-    self.systemBroadcastPickerView.preferredExtension = @"com.rongcloud.support.ScreenShare";
+    self.systemBroadcastPickerView.preferredExtension = @"cn.rongcloud.rtcquickdemo.screenshare";
     self.systemBroadcastPickerView.backgroundColor = [UIColor colorWithRed:53.0/255.0 green:129.0/255.0 blue:242.0/255.0 alpha:1.0];
     self.systemBroadcastPickerView.showsMicrophoneButton = NO;
 //    [self.view addSubview:self.systemBroadcastPickerView];
    
     
-    _screenShareButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
-    [_screenShareButton  setTitle:@"开始共享" forState:UIControlStateNormal];
-    [_screenShareButton  setTitle:@"关闭共享" forState:UIControlStateSelected];
-    [_screenShareButton  setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
-    [_screenShareButton  setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
-    [_screenShareButton  addTarget:self action:@selector(shareButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.screenShareButton ];
+//    _screenShareButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
+//    [_screenShareButton  setTitle:@"开始共享" forState:UIControlStateNormal];
+//    [_screenShareButton  setTitle:@"关闭共享" forState:UIControlStateSelected];
+//    [_screenShareButton  setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+//    [_screenShareButton  setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
+//    [_screenShareButton  addTarget:self action:@selector(shareButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.screenShareButton ];
+       self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.systemBroadcastPickerView ];
     
 
 
 }
-
--(void)shareButtonAction:(UIButton *)button{
-    
-    button.selected = !button.selected;
-    if (button.selected) {
-        [[self.systemBroadcastPickerView findButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
-
-        [self.serverSocket createServerSocket];
-        RCRTCLocalVideoView *localShareVideoView = (RCRTCLocalVideoView *)self.localShareView
-        .canvesView;
-
-
-
-
-        localShareVideoView.fillMode = RCRTCVideoFillModeAspectFit;
-        localShareVideoView.frameAnimated = NO;
-
-        NSString *tag = @"RongRTCScreenShare";
-        self.shareVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
-    //    self.shareVideoOutputStream.videoSource
-        RCRTCVideoStreamConfig *videoConfig = self.shareVideoOutputStream.videoConfig;
-        videoConfig.videoSizePreset = RCRTCVideoSizePreset320x240;
-        [self.shareVideoOutputStream setVideoConfig:videoConfig];
-        [self.shareVideoOutputStream setVideoView:localShareVideoView];
-
-        
-        
-        [self.room.localUser publishStream:self.shareVideoOutputStream
-                                completion:^(BOOL isSuccess, RCRTCCode desc) {
-            if (desc == RCRTCCodeSuccess) {
-                [self.streamVideos addObject:self.localShareView];
-                [self updateLayoutWithAnimation:YES];
-                
-            }
-            else {
-                
-            }
-        }];
-    }else{
-        [[self.systemBroadcastPickerView findButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
-
-        [self.room.localUser unpublishStream:self.shareVideoOutputStream
-                                  completion:^(BOOL isSuccess, RCRTCCode desc) {
-            if (isSuccess) {
-                [self.streamVideos removeObject:self.localShareView];
-                self.shareVideoOutputStream = nil;
-                [self updateLayoutWithAnimation:YES];
-            }
-        }];
-    }
-    
-   
-}
+//
+//-(void)shareButtonAction:(UIButton *)button{
+//
+//    button.selected = !button.selected;
+//    if (button.selected) {
+//        [[self.systemBroadcastPickerView findButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+//
+////        [self.serverSocket createServerSocket];
+////        RCRTCLocalVideoView *localShareVideoView = (RCRTCLocalVideoView *)self.localShareView
+////        .canvesView;
+////
+////
+////
+////
+////        localShareVideoView.fillMode = RCRTCVideoFillModeAspectFit;
+////        localShareVideoView.frameAnimated = NO;
+////
+////        NSString *tag = @"RongRTCScreenShare";
+////        self.shareVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
+////    //    self.shareVideoOutputStream.videoSource
+////        RCRTCVideoStreamConfig *videoConfig = self.shareVideoOutputStream.videoConfig;
+////        videoConfig.videoSizePreset = RCRTCVideoSizePreset320x240;
+////        [self.shareVideoOutputStream setVideoConfig:videoConfig];
+////        [self.shareVideoOutputStream setVideoView:localShareVideoView];
+////
+////
+////
+////        [self.room.localUser publishStream:self.shareVideoOutputStream
+////                                completion:^(BOOL isSuccess, RCRTCCode desc) {
+////            if (desc == RCRTCCodeSuccess) {
+////                [self.streamVideos addObject:self.localShareView];
+////                [self updateLayoutWithAnimation:YES];
+////
+////            }
+////            else {
+////
+////            }
+////        }];
+//    }else{
+//        [[self.systemBroadcastPickerView findButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+//
+////        [self.room.localUser unpublishStream:self.shareVideoOutputStream
+////                                  completion:^(BOOL isSuccess, RCRTCCode desc) {
+////            if (isSuccess) {
+////                [self.streamVideos removeObject:self.localShareView];
+////                self.shareVideoOutputStream = nil;
+////                [self updateLayoutWithAnimation:YES];
+////            }
+////        }];
+//    }
+//
+//
+//}
 /**
  * 布局视图动画
  */
@@ -217,6 +218,9 @@
     [room.localUser publishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess && desc == RCRTCCodeSuccess) {
             NSLog(@"本地流发布成功");
+                [self setAppGroup];
+
+            
         }
     }];
 
@@ -228,6 +232,12 @@
         }
         [self subscribeRemoteResource:streamArray];
     }
+}
+- (void)setAppGroup
+{
+ NSUserDefaults *myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
+    [myDefaults setObject:self.roomId forKey:@"roomId"];
+ NSLog(@"lalallalala%@", [myDefaults valueForKey:@"roomId"]);
 }
 
 /**
@@ -400,21 +410,8 @@
     
     [self unsubscribeRemoteResource:streams orStreamId:nil];
 }
-/**
- * 直播合流发布
- */
-- (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
-    
-    [self subscribeRemoteResource:streams];
-}
 
-/**
- * 直播合流取消发布
- */
-- (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams{
-    
-    [self unsubscribeRemoteResource:streams orStreamId:nil];
-}
+
 
 
 /**
