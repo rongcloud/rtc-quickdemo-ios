@@ -7,7 +7,6 @@
 
 #import "ScreenShareViewController.h"
 #import <ReplayKit/ReplayKit.h>
-#import "RongRTCServerSocket.h"
 #import "UIAlertController+RCRTC.h"
 #import <RongRTCLib/RongRTCLib.h>
 #import "RPSystemBroadcastPickerView+SearchButton.h"
@@ -20,10 +19,9 @@
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
-@interface ScreenShareViewController ()<RongRTCServerSocketProtocol,RCRTCRoomEventDelegate>
+@interface ScreenShareViewController ()<RCRTCRoomEventDelegate>
 
 @property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
-@property(nonatomic , strong)RongRTCServerSocket *serverSocket;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property(nonatomic, strong) LiveStreamVideo *localView;
 @property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
@@ -56,7 +54,6 @@
     
     [self initMode];
     [self setupLocalVideoView];
-//    [self setupRemoteVideoView];
 }
 
 /**
@@ -77,75 +74,12 @@
     self.systemBroadcastPickerView.preferredExtension = @"cn.rongcloud.rtcquickdemo.screenshare";
     self.systemBroadcastPickerView.backgroundColor = [UIColor colorWithRed:53.0/255.0 green:129.0/255.0 blue:242.0/255.0 alpha:1.0];
     self.systemBroadcastPickerView.showsMicrophoneButton = NO;
-//    [self.view addSubview:self.systemBroadcastPickerView];
-   
-    
-//    _screenShareButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
-//    [_screenShareButton  setTitle:@"开始共享" forState:UIControlStateNormal];
-//    [_screenShareButton  setTitle:@"关闭共享" forState:UIControlStateSelected];
-//    [_screenShareButton  setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
-//    [_screenShareButton  setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
-//    [_screenShareButton  addTarget:self action:@selector(shareButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-//
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.screenShareButton ];
        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.systemBroadcastPickerView ];
     
 
 
 }
-//
-//-(void)shareButtonAction:(UIButton *)button{
-//
-//    button.selected = !button.selected;
-//    if (button.selected) {
-//        [[self.systemBroadcastPickerView findButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
-//
-////        [self.serverSocket createServerSocket];
-////        RCRTCLocalVideoView *localShareVideoView = (RCRTCLocalVideoView *)self.localShareView
-////        .canvesView;
-////
-////
-////
-////
-////        localShareVideoView.fillMode = RCRTCVideoFillModeAspectFit;
-////        localShareVideoView.frameAnimated = NO;
-////
-////        NSString *tag = @"RongRTCScreenShare";
-////        self.shareVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
-////    //    self.shareVideoOutputStream.videoSource
-////        RCRTCVideoStreamConfig *videoConfig = self.shareVideoOutputStream.videoConfig;
-////        videoConfig.videoSizePreset = RCRTCVideoSizePreset320x240;
-////        [self.shareVideoOutputStream setVideoConfig:videoConfig];
-////        [self.shareVideoOutputStream setVideoView:localShareVideoView];
-////
-////
-////
-////        [self.room.localUser publishStream:self.shareVideoOutputStream
-////                                completion:^(BOOL isSuccess, RCRTCCode desc) {
-////            if (desc == RCRTCCodeSuccess) {
-////                [self.streamVideos addObject:self.localShareView];
-////                [self updateLayoutWithAnimation:YES];
-////
-////            }
-////            else {
-////
-////            }
-////        }];
-//    }else{
-//        [[self.systemBroadcastPickerView findButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
-//
-////        [self.room.localUser unpublishStream:self.shareVideoOutputStream
-////                                  completion:^(BOOL isSuccess, RCRTCCode desc) {
-////            if (isSuccess) {
-////                [self.streamVideos removeObject:self.localShareView];
-////                self.shareVideoOutputStream = nil;
-////                [self updateLayoutWithAnimation:YES];
-////            }
-////        }];
-//    }
-//
-//
-//}
+
 /**
  * 布局视图动画
  */
@@ -233,30 +167,6 @@
         [self subscribeRemoteResource:streamArray];
     }
 }
-- (void)setAppGroup
-{
- NSUserDefaults *myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
-    [myDefaults setObject:self.roomId forKey:@"roomId"];
- NSLog(@"lalallalala%@", [myDefaults valueForKey:@"roomId"]);
-}
-
-/**
- * 订阅房间中远端用户音视频流资源
- */
-//- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
-//
-//    [self.room.localUser subscribeStream:streams tinyStreams:nil completion:^(BOOL isSuccess, RCRTCCode desc) {
-//
-//    }];
-//    // 创建并设置远端视频预览视图
-//    for (RCRTCInputStream *stream in streams) {
-//        if (stream.mediaType == RTCMediaTypeVideo) {
-//            [(RCRTCVideoInputStream *) stream setVideoView:self.remoteView];
-//            [self.remoteView setHidden:NO];
-//        }
-//    }
-//}
-
 
 -(void)viewWillDisappear:(BOOL)animated{
     
@@ -441,6 +351,14 @@
 
 #pragma mark - lazy load
 
+- (void)setAppGroup
+{
+ NSUserDefaults *myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
+    [myDefaults setObject:self.roomId forKey:@"roomId"];
+ NSLog(@"lalallalala%@", [myDefaults valueForKey:@"roomId"]);
+}
+
+
 - (LiveStreamVideo *)localShareView{
     if (!_localShareView) {
         _localShareView = [LiveStreamVideo LocalStreamVideo];
@@ -474,30 +392,6 @@
     }
     return _layoutTool;
 }
-
--(RongRTCServerSocket *)serverSocket{
-    
-    if (!_serverSocket) {
-        RongRTCServerSocket *socket = [[RongRTCServerSocket alloc] init];
-        socket.delegate = self;
-        
-        _serverSocket = socket;
-    }
-    return _serverSocket;
-}
--(void)didProcessSampleBuffer:(CMSampleBufferRef)sampleBuffer{
-    // 这里拿到了最终的数据，比如最后可以使用融云的音视频SDK RTCLib 进行传输就可以了
-  
-    
-
-    [self.shareVideoOutputStream write:sampleBuffer error:nil];
-    
- 
-}
-
-
-
-
 
 /*
 #pragma mark - Navigation
