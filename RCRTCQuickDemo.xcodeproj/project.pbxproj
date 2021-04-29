@@ -199,6 +199,7 @@
 		DD812137261DC32900AF7D35 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DDCBC079263105CE006C7C7D /* MeetingCryptoImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingCryptoImpl.h; sourceTree = "<group>"; };
 		DDCBC07A263105CE006C7C7D /* MeetingCryptoImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingCryptoImpl.m; sourceTree = "<group>"; };
+		DDE44476263A400F006C1A41 /* RCRTCQuickDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemo.entitlements; sourceTree = "<group>"; };
 		DDEC583526270E810067D692 /* LiveCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveCreateViewController.h; sourceTree = "<group>"; };
 		DDEC583626270E810067D692 /* LiveCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveCreateViewController.m; sourceTree = "<group>"; };
 		DDEC583A26270ECA0067D692 /* LiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
@@ -470,6 +471,7 @@
 		DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DDE44476263A400F006C1A41 /* RCRTCQuickDemo.entitlements */,
 				DD81211A261DC26B00AF7D35 /* AppDelegate.h */,
 				DD81211B261DC26B00AF7D35 /* AppDelegate.m */,
 				DD24DF56261EEB4600DC4665 /* Home */,
@@ -881,6 +883,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
@@ -891,8 +894,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShare;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo.screenshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -902,6 +906,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
@@ -912,8 +917,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShare;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo.screenshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -932,7 +938,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShareSetupUI;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo.ScreenShareSetupUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -952,7 +958,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support.ScreenShareSetupUI;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo.ScreenShareSetupUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1080,7 +1086,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = RCRTCQuickDemo/RCRTCQuickDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1094,8 +1102,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = rtcquickdemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1107,7 +1116,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = RCRTCQuickDemo/RCRTCQuickDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1121,8 +1132,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.support;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = rtcquickdemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
