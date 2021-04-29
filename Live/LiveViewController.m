@@ -167,7 +167,8 @@ RCRTCFileCapturerDelegate>
                                      self.streamLayoutBtn,
                                      self.switchStreamMode,
                                      self.beautyButton,
-                                     self.pushLocalButton]];
+                                     self.pushLocalButton,
+                                     self.waterMark]];
             
             /*!
              当前直播角色为观众
@@ -259,7 +260,8 @@ RCRTCFileCapturerDelegate>
             self.streamLayoutBtn,
             self.switchStreamMode,
             self.beautyButton,
-            self.pushLocalButton];
+            self.pushLocalButton,
+            self.waterMark];
     }
     return _funcBtns;
 }
@@ -303,8 +305,7 @@ RCRTCFileCapturerDelegate>
  */
 - (void)disableClickWith:(NSArray *)btns{
     for (UIButton *btn in self.funcBtns) {
-        if (btn == _beautyButton || btn == _pushLocalButton) {
-            _beautyButton.alpha = 1;
+        if ( btn == _pushLocalButton) {
             _pushLocalButton.alpha = 1;
             continue;
         }
@@ -312,8 +313,7 @@ RCRTCFileCapturerDelegate>
         btn.enabled = YES;
     }
     for (UIButton *btn in btns) {
-        if (btn == _beautyButton || btn == _pushLocalButton) {
-            _beautyButton.alpha = 0;
+        if ( btn == _pushLocalButton) {
             _pushLocalButton.alpha = 0;
             continue;
         }
@@ -377,7 +377,8 @@ RCRTCFileCapturerDelegate>
                                  self.streamLayoutBtn,
                                  self.switchStreamMode,
                                  self.beautyButton,
-                                 self.pushLocalButton]];
+                                 self.pushLocalButton,
+                                 self.waterMark]];
     }
     
     // 上麦/下麦

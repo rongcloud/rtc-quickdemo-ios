@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 // @property (nonatomic, copy) HitSampleBuffer __nullable sampleBufferCallBack;
 
 - (CMSampleBufferRef)onGPUFilterSource:(CMSampleBufferRef)sampleBuffer;
-- (void)rotateWaterMark:(BOOL)isBack;
+- (void)rotateWaterMark:(BOOL)isAdd;
 
 // 切换美颜滤镜
 -(void)onlyBeauty;

@@ -35,12 +35,12 @@
 
 #pragma mark- GPUImage
 
-- (void)rotateWaterMark:(BOOL)isBack
+- (void)rotateWaterMark:(BOOL)isAdd
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.watermarkImageView.frame = CGRectMake(20, 20, 80, 80);
-        self.watermarkImageView.hidden = self.isBackCamera ? YES : NO;
+        self.watermarkImageView.hidden = isAdd ? YES : NO;
     });
 }
 
