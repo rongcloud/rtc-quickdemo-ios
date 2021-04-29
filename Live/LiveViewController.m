@@ -525,16 +525,15 @@ RCRTCFileCapturerDelegate>
     self.fileVideoOutputStream.videoSource = self.fileCapturer;
     [self.fileCapturer setObserver:self.fileVideoOutputStream];
     
-    [self.room.localUser publishStream:self.fileVideoOutputStream
-                            completion:^(BOOL isSuccess, RCRTCCode desc) {
-        if (desc == RCRTCCodeSuccess) {
-            [self.streamVideos addObject:self.localFileStreamVideo];
-            [self updateLayoutWithAnimation:YES];
-            
-        }
-        else {
-            
-        }
+    [self.room.localUser publishLiveStream:self.fileVideoOutputStream completion:^(BOOL isSuccess, RCRTCCode code, RCRTCLiveInfo * _Nullable liveInfo) {
+            if (code == RCRTCCodeSuccess) {
+                [self.streamVideos addObject:self.localFileStreamVideo];
+                [self updateLayoutWithAnimation:YES];
+                
+            }
+            else {
+                
+            }
     }];
     
     
@@ -551,13 +550,12 @@ RCRTCFileCapturerDelegate>
         self.fileCapturer = nil;
     }
     
-    [self.room.localUser unpublishStream:self.fileVideoOutputStream
-                              completion:^(BOOL isSuccess, RCRTCCode desc) {
-        if (isSuccess) {
-            [self.streamVideos removeObject:self.localFileStreamVideo];
-            self.localFileStreamVideo = nil;
-            [self updateLayoutWithAnimation:YES];
-        }
+    [self.room.localUser unpublishLiveStream:self.fileVideoOutputStream completion:^(BOOL isSuccess, RCRTCCode code) {
+            if (isSuccess) {
+                [self.streamVideos removeObject:self.localFileStreamVideo];
+                self.localFileStreamVideo = nil;
+                [self updateLayoutWithAnimation:YES];
+            }
     }];
     
     
