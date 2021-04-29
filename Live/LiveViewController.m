@@ -585,7 +585,7 @@ RCRTCFileCapturerDelegate>
 
 /**
  主播设置合流布局,观众端看效果
- 
+ bendi
  自定义布局 RCRTCMixLayoutModeCustom = 1
  悬浮布局 RCRTCMixLayoutModeSuspension = 2
  自适应布局 RCRTCMixLayoutModeAdaptive = 3

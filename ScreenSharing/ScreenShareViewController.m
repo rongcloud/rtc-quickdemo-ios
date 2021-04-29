@@ -34,6 +34,7 @@
 
 @property (nonatomic, strong) UIButton  *screenShareButton;
 
+@property (nonatomic)NSMutableArray *streamVideos;
 
 @end
 
@@ -59,7 +60,7 @@
  * 添加本地采集预览界面
  */
 - (void)setupLocalVideoView {
-    self.localView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight/2)];
+    self.localView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth/2, ScreenHeight/2)];
     self.localView.fillMode = RCRTCVideoFillModeAspectFill;
     [self.containerView addSubview:self.localView];
 
@@ -104,7 +105,7 @@
     [self.serverSocket createServerSocket];
 
     
-    self.localShareView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, ScreenHeight/2, ScreenWidth, ScreenHeight/2)];
+    self.localShareView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(ScreenWidth/2, 0,ScreenWidth/2, ScreenHeight/2)];
     [self.containerView addSubview:self.localShareView];
     
     
@@ -123,8 +124,8 @@
     
     [self.room.localUser publishLiveStream:self.shareVideoOutputStream completion:^(BOOL isSuccess, RCRTCCode code, RCRTCLiveInfo * _Nullable liveInfo) {
             if (code == RCRTCCodeSuccess) {
-//                [self.streamVideos addObject:self.localshareStreamVideo];
-//                [self updateLayoutWithAnimation:YES];
+                [self.streamVideos addObject:self.localShareView];
+                [self updateLayoutWithAnimation:YES];
                 
             }
             else {
@@ -133,6 +134,16 @@
     }];
 }
 
+-(void)updateLayoutWithAnimation:(BOOL)isAnimation{
+    switch (self.streamVideos.count) {
+        case 1:
+            break;
+            
+        default:
+            break;
+    }
+    
+}
 #pragma mark - RTC
 
 /**
