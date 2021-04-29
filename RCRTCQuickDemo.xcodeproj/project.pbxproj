@@ -11,28 +11,9 @@
 		187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */; };
 		187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* LiveStreamVideo.m */; };
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
-		4F6925B52639643A00872F2B /* RongRTCCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925972639643A00872F2B /* RongRTCCodec.m */; };
-		4F6925B62639643A00872F2B /* helpers.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925982639643A00872F2B /* helpers.mm */; };
-		4F6925B72639643A00872F2B /* RongRTCVideoEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F69259B2639643A00872F2B /* RongRTCVideoEncoder.mm */; };
-		4F6925B82639643A00872F2B /* RongRTCVideoEncoderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F69259D2639643A00872F2B /* RongRTCVideoEncoderSettings.m */; };
-		4F6925B92639643A00872F2B /* RongRTCVideoDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925A02639643A00872F2B /* RongRTCVideoDecoder.mm */; };
-		4F6925BA2639643A00872F2B /* RongRTCBufferUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925A72639643A00872F2B /* RongRTCBufferUtil.m */; };
-		4F6925BB2639643A00872F2B /* RongRTCServerSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AA2639643A00872F2B /* RongRTCServerSocket.m */; };
-		4F6925BC2639643A00872F2B /* RongRTCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AC2639643A00872F2B /* RongRTCThread.m */; };
-		4F6925BD2639643A00872F2B /* RongRTCSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AE2639643A00872F2B /* RongRTCSocket.m */; };
-		4F6925BE2639643A00872F2B /* RongRTCClientSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925B12639643A00872F2B /* RongRTCClientSocket.m */; };
-		4F6925BF2639643A00872F2B /* OtherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925B32639643A00872F2B /* OtherTest.m */; };
 		4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C12639650F00872F2B /* ScreenShareViewController.m */; };
 		4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6925C32639651D00872F2B /* ScreenShare.storyboard */; };
 		4F6925C7263965C600872F2B /* RPSystemBroadcastPickerView+SearchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C5263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.m */; };
-		4F6925CA26396B1900872F2B /* RongRTCClientSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925B12639643A00872F2B /* RongRTCClientSocket.m */; };
-		4F6925CB26396B5800872F2B /* RongRTCCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925972639643A00872F2B /* RongRTCCodec.m */; };
-		4F6925CC26396B5800872F2B /* helpers.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925982639643A00872F2B /* helpers.mm */; };
-		4F6925CD26396B5800872F2B /* RongRTCVideoEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F69259B2639643A00872F2B /* RongRTCVideoEncoder.mm */; };
-		4F6925CE26396B5800872F2B /* RongRTCVideoDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925A02639643A00872F2B /* RongRTCVideoDecoder.mm */; };
-		4F6925CF26396B8400872F2B /* RongRTCSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AE2639643A00872F2B /* RongRTCSocket.m */; };
-		4F6925D026396B9400872F2B /* RongRTCVideoEncoderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F69259D2639643A00872F2B /* RongRTCVideoEncoderSettings.m */; };
-		4F6925D126396BA700872F2B /* RongRTCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925AC2639643A00872F2B /* RongRTCThread.m */; };
 		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
 		4F852CC3263A945700570503 /* RequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF6C261EFC1700DC4665 /* RequestToken.m */; };
 		4F852CC4263A945700570503 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
@@ -117,30 +98,6 @@
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
 		4F0D16DC263AAB010059DC49 /* ScreenShareDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShareDebug.entitlements; sourceTree = "<group>"; };
-		4F6925972639643A00872F2B /* RongRTCCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCCodec.m; sourceTree = "<group>"; };
-		4F6925982639643A00872F2B /* helpers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = helpers.mm; sourceTree = "<group>"; };
-		4F69259A2639643A00872F2B /* RongRTCVideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCVideoEncoder.h; sourceTree = "<group>"; };
-		4F69259B2639643A00872F2B /* RongRTCVideoEncoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RongRTCVideoEncoder.mm; sourceTree = "<group>"; };
-		4F69259C2639643A00872F2B /* RongRTCCodecProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCCodecProtocol.h; sourceTree = "<group>"; };
-		4F69259D2639643A00872F2B /* RongRTCVideoEncoderSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCVideoEncoderSettings.m; sourceTree = "<group>"; };
-		4F69259F2639643A00872F2B /* RongRTCVideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCVideoDecoder.h; sourceTree = "<group>"; };
-		4F6925A02639643A00872F2B /* RongRTCVideoDecoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RongRTCVideoDecoder.mm; sourceTree = "<group>"; };
-		4F6925A12639643A00872F2B /* RongRTCCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCCodec.h; sourceTree = "<group>"; };
-		4F6925A22639643A00872F2B /* RongRTCVideoEncoderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCVideoEncoderSettings.h; sourceTree = "<group>"; };
-		4F6925A32639643A00872F2B /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
-		4F6925A52639643A00872F2B /* RongRTCThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCThread.h; sourceTree = "<group>"; };
-		4F6925A62639643A00872F2B /* RongRTCSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCSocket.h; sourceTree = "<group>"; };
-		4F6925A72639643A00872F2B /* RongRTCBufferUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCBufferUtil.m; sourceTree = "<group>"; };
-		4F6925A92639643A00872F2B /* RongRTCServerSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCServerSocket.h; sourceTree = "<group>"; };
-		4F6925AA2639643A00872F2B /* RongRTCServerSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCServerSocket.m; sourceTree = "<group>"; };
-		4F6925AB2639643A00872F2B /* RongRTCSocketHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCSocketHeader.h; sourceTree = "<group>"; };
-		4F6925AC2639643A00872F2B /* RongRTCThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCThread.m; sourceTree = "<group>"; };
-		4F6925AD2639643A00872F2B /* RongRTCBufferUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCBufferUtil.h; sourceTree = "<group>"; };
-		4F6925AE2639643A00872F2B /* RongRTCSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCSocket.m; sourceTree = "<group>"; };
-		4F6925B02639643A00872F2B /* RongRTCClientSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongRTCClientSocket.h; sourceTree = "<group>"; };
-		4F6925B12639643A00872F2B /* RongRTCClientSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RongRTCClientSocket.m; sourceTree = "<group>"; };
-		4F6925B32639643A00872F2B /* OtherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTest.m; sourceTree = "<group>"; };
-		4F6925B42639643A00872F2B /* OtherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTest.h; sourceTree = "<group>"; };
 		4F6925C02639650F00872F2B /* ScreenShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareViewController.h; sourceTree = "<group>"; };
 		4F6925C12639650F00872F2B /* ScreenShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareViewController.m; sourceTree = "<group>"; };
 		4F6925C32639651D00872F2B /* ScreenShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScreenShare.storyboard; sourceTree = "<group>"; };
@@ -248,9 +205,6 @@
 		4F6925952639643A00872F2B /* ScreenSharing */ = {
 			isa = PBXGroup;
 			children = (
-				4F6925962639643A00872F2B /* Codec */,
-				4F6925A42639643A00872F2B /* Socket */,
-				4F6925B22639643A00872F2B /* OtherTest */,
 				4F6925C02639650F00872F2B /* ScreenShareViewController.h */,
 				4F6925C12639650F00872F2B /* ScreenShareViewController.m */,
 				4F6925C32639651D00872F2B /* ScreenShare.storyboard */,
@@ -260,83 +214,6 @@
 				4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */,
 			);
 			path = ScreenSharing;
-			sourceTree = "<group>";
-		};
-		4F6925962639643A00872F2B /* Codec */ = {
-			isa = PBXGroup;
-			children = (
-				4F6925972639643A00872F2B /* RongRTCCodec.m */,
-				4F6925982639643A00872F2B /* helpers.mm */,
-				4F6925992639643A00872F2B /* Encoder */,
-				4F69259C2639643A00872F2B /* RongRTCCodecProtocol.h */,
-				4F69259D2639643A00872F2B /* RongRTCVideoEncoderSettings.m */,
-				4F69259E2639643A00872F2B /* Decoder */,
-				4F6925A12639643A00872F2B /* RongRTCCodec.h */,
-				4F6925A22639643A00872F2B /* RongRTCVideoEncoderSettings.h */,
-				4F6925A32639643A00872F2B /* helpers.h */,
-			);
-			path = Codec;
-			sourceTree = "<group>";
-		};
-		4F6925992639643A00872F2B /* Encoder */ = {
-			isa = PBXGroup;
-			children = (
-				4F69259A2639643A00872F2B /* RongRTCVideoEncoder.h */,
-				4F69259B2639643A00872F2B /* RongRTCVideoEncoder.mm */,
-			);
-			path = Encoder;
-			sourceTree = "<group>";
-		};
-		4F69259E2639643A00872F2B /* Decoder */ = {
-			isa = PBXGroup;
-			children = (
-				4F69259F2639643A00872F2B /* RongRTCVideoDecoder.h */,
-				4F6925A02639643A00872F2B /* RongRTCVideoDecoder.mm */,
-			);
-			path = Decoder;
-			sourceTree = "<group>";
-		};
-		4F6925A42639643A00872F2B /* Socket */ = {
-			isa = PBXGroup;
-			children = (
-				4F6925A52639643A00872F2B /* RongRTCThread.h */,
-				4F6925A62639643A00872F2B /* RongRTCSocket.h */,
-				4F6925A72639643A00872F2B /* RongRTCBufferUtil.m */,
-				4F6925A82639643A00872F2B /* Server */,
-				4F6925AB2639643A00872F2B /* RongRTCSocketHeader.h */,
-				4F6925AC2639643A00872F2B /* RongRTCThread.m */,
-				4F6925AD2639643A00872F2B /* RongRTCBufferUtil.h */,
-				4F6925AE2639643A00872F2B /* RongRTCSocket.m */,
-				4F6925AF2639643A00872F2B /* Client */,
-			);
-			path = Socket;
-			sourceTree = "<group>";
-		};
-		4F6925A82639643A00872F2B /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				4F6925A92639643A00872F2B /* RongRTCServerSocket.h */,
-				4F6925AA2639643A00872F2B /* RongRTCServerSocket.m */,
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
-		4F6925AF2639643A00872F2B /* Client */ = {
-			isa = PBXGroup;
-			children = (
-				4F6925B02639643A00872F2B /* RongRTCClientSocket.h */,
-				4F6925B12639643A00872F2B /* RongRTCClientSocket.m */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
-		4F6925B22639643A00872F2B /* OtherTest */ = {
-			isa = PBXGroup;
-			children = (
-				4F6925B32639643A00872F2B /* OtherTest.m */,
-				4F6925B42639643A00872F2B /* OtherTest.h */,
-			);
-			path = OtherTest;
 			sourceTree = "<group>";
 		};
 		4FBD78BF26395A3200660733 /* ScreenShare */ = {
@@ -787,14 +664,6 @@
 			files = (
 				4F852CC3263A945700570503 /* RequestToken.m in Sources */,
 				4F852CC4263A945700570503 /* Constant.m in Sources */,
-				4F6925D126396BA700872F2B /* RongRTCThread.m in Sources */,
-				4F6925D026396B9400872F2B /* RongRTCVideoEncoderSettings.m in Sources */,
-				4F6925CF26396B8400872F2B /* RongRTCSocket.m in Sources */,
-				4F6925CB26396B5800872F2B /* RongRTCCodec.m in Sources */,
-				4F6925CC26396B5800872F2B /* helpers.mm in Sources */,
-				4F6925CD26396B5800872F2B /* RongRTCVideoEncoder.mm in Sources */,
-				4F6925CE26396B5800872F2B /* RongRTCVideoDecoder.mm in Sources */,
-				4F6925CA26396B1900872F2B /* RongRTCClientSocket.m in Sources */,
 				4FBD78C226395A3200660733 /* SampleHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,39 +683,28 @@
 				DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */,
 				DDCBC07B263105CE006C7C7D /* MeetingCryptoImpl.m in Sources */,
 				DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */,
-				4F6925BC2639643A00872F2B /* RongRTCThread.m in Sources */,
 				4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */,
 				4F6925C7263965C600872F2B /* RPSystemBroadcastPickerView+SearchButton.m in Sources */,
-				4F6925B72639643A00872F2B /* RongRTCVideoEncoder.mm in Sources */,
 				DDEC583726270E810067D692 /* LiveCreateViewController.m in Sources */,
-				4F6925B82639643A00872F2B /* RongRTCVideoEncoderSettings.m in Sources */,
 				DD812138261DC32900AF7D35 /* LoginViewController.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* HomeViewController.m in Sources */,
-				4F6925BF2639643A00872F2B /* OtherTest.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* Constant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
 				4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
 				4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */,
-				4F6925B52639643A00872F2B /* RongRTCCodec.m in Sources */,
 				187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */,
-				4F6925B92639643A00872F2B /* RongRTCVideoDecoder.mm in Sources */,
 				DD59DE05262D5BD900A0C940 /* CallKitViewController.m in Sources */,
-				4F6925B62639643A00872F2B /* helpers.mm in Sources */,
 				DD59DE73262FC1A500A0C940 /* GPUImageOutputCamera.m in Sources */,
 				DD24DFE426202F5100DC4665 /* MeetingViewController.m in Sources */,
 				DD59DE74262FC1A500A0C940 /* GPUImageHandle.m in Sources */,
 				DDEC583C26270ECA0067D692 /* LiveViewController.m in Sources */,
 				DD59DE60262EEC5000A0C940 /* HomeTableViewCell.m in Sources */,
-				4F6925BE2639643A00872F2B /* RongRTCClientSocket.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
 				DD59DE75262FC1A500A0C940 /* GPUImageBeautyFilter.m in Sources */,
 				187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */,
-				4F6925BA2639643A00872F2B /* RongRTCBufferUtil.m in Sources */,
-				4F6925BB2639643A00872F2B /* RongRTCServerSocket.m in Sources */,
 				DDEC58472627EC120067D692 /* CallLibViewController.m in Sources */,
 				187F9E302628504A002E5288 /* LiveMixStreamTool.m in Sources */,
-				4F6925BD2639643A00872F2B /* RongRTCSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
