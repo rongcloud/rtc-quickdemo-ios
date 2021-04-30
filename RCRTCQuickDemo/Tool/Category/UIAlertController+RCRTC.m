@@ -8,7 +8,7 @@
 #import "UIAlertController+RCRTC.h"
 
 @implementation UIAlertController (RCRTC)
-+ (void)alertWithString:(NSString *)string inCurrentViewController:(UIViewController *)vc{
++ (void)alertWithString:(NSString *)string inCurrentViewController:(UIViewController *)vc {
     if (!string.length) {
         return;
     }

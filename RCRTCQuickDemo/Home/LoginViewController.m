@@ -12,16 +12,15 @@
 
 #import <RongIMKit/RCIM.h>
 
-/**
- * 登录页面，用来处理 IM 登录逻辑
- *
- * - 请求 Token
- * - 初始化 Appkey
- * - 连接 IM
+/*!
+ 登录页面，用来处理 IM 登录逻辑
+ 请求 Token
+ 初始化 Appkey
+ 连接 IM
  */
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *useridTextField;
+@property (nonatomic, weak) IBOutlet UITextField *useridTextField;
 
 @end
 
@@ -31,9 +30,7 @@
     [super viewDidLoad];
 }
 
-/**
- * 点击连接 IM 服务
- */
+// 点击连接 IM 服务
 - (IBAction)connectIMServer:(UIButton *)sender {
     
     if (!self.useridTextField.text ||self.useridTextField.text.length == 0) {
@@ -41,9 +38,7 @@
     }
     [self.useridTextField resignFirstResponder];
     
-    /**
-     * 获取 Token
-     */
+    // 获取 Token
     [RequestToken requestToken:self.useridTextField.text
                                name:self.useridTextField.text
                         portraitUrl:nil
@@ -51,26 +46,20 @@
         
         if (!isSuccess) return;
         
-        /**
-         * 拿到 token 后去连接 IM 服务
-         */
+        // 拿到 token 后去连接 IM 服务
         [self connectRongCloud:tokenString];
     }];
 }
 
-/**
- * ① 初始化 Appkey 并 连接 IM
- */
-- (void)connectRongCloud:(NSString *)token{
+// 初始化 Appkey 并 连接 IM
+- (void)connectRongCloud:(NSString *)token {
     
     [[RCIM sharedRCIM] initWithAppKey:AppKey];
     
     [[RCIM sharedRCIM] connectWithToken:token dbOpened:nil success:^(NSString *userId) {
         
         NSLog(@"IM connect success,user ID : %@",userId);
-        /**
-         * 回调处于子线程，需要回调到主线程进行 UI 处理。
-         */
+        // 回调处于子线程，需要回调到主线程进行 UI 处理。
         dispatch_async(dispatch_get_main_queue(), ^{
             HomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
             [self.navigationController pushViewController:homeVC animated:YES];
@@ -81,7 +70,7 @@
     }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.useridTextField resignFirstResponder];
 }
 

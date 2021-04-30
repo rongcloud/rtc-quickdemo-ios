@@ -7,12 +7,13 @@
 
 
 #import "SampleHandler.h"
-//#import "RongRTCClientSocket.h"
 #import <RongRTCLib/RongRTCLib.h>
 #import <RongIMLib/RongIMLib.h>
 #import "RequestToken.h"
 #import <RongIMKit/RCIM.h>
 #import "Constant.h"
+
+static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.screenshare";
 
 @interface SampleHandler () <RCRTCRoomEventDelegate>
 
@@ -22,15 +23,13 @@
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSString *roomId;
-//@property(nonatomic , strong)RongRTCClientSocket *clientSocket;
+
 @end
 
 @implementation SampleHandler
 
 - (void)broadcastStartedWithSetupInfo:(NSDictionary<NSString *,NSObject *> *)setupInfo {
     // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
-//    self.clientSocket = [[RongRTCClientSocket alloc] init];
-//       [self.clientSocket createCliectSocket];
     [self getByAppGroup];
     [self requestToken];
 }
@@ -44,8 +43,8 @@
 }
 
 - (void)broadcastFinished {
-
-                [self exitRoom];
+    
+    [self exitRoom];
     
     // User has requested to finish the broadcast.
 }
@@ -57,7 +56,7 @@
         case RPSampleBufferTypeVideo:
             // Handle video sample buffer
             [self.videoOutputStream write:sampleBuffer error:nil];
-
+            
             break;
         case RPSampleBufferTypeAudioApp:
             // Handle audio sample buffer for app audio
@@ -71,28 +70,19 @@
     }
 }
 #pragma mark - Private
-
--(void)requestToken{
-    
+- (void)requestToken {
     [RequestToken requestToken:[NSString stringWithFormat:@"%@RTC",self.userId]
-                               name:[NSString stringWithFormat:@"%@RTC",self.userId]
-                        portraitUrl:nil
-                  completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
+                          name:[NSString stringWithFormat:@"%@RTC",self.userId]
+                   portraitUrl:nil
+             completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
         
         if (!isSuccess) return;
-        
         [self connectRongCloud:tokenString];
     }];
-     
-   
 }
 
-- (void)connectRongCloud:(NSString *)token{
-    
-
-    
+- (void)connectRongCloud:(NSString *)token {
     [[RCIMClient sharedRCIMClient] initWithAppKey:AppKey];
-    
     // 连接 IM
     [[RCIMClient sharedRCIMClient] connectWithToken:token
                                            dbOpened:^(RCDBErrorCode code) {
@@ -108,23 +98,22 @@
     
 }
 
--(void)getByAppGroup{
-NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
-   self.roomId =  [rongCloudDefaults objectForKey:@"roomId"];
+- (void)getByAppGroup {
+    //此处 id 要与开发者中心创建时一致
+    NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:ScreenShareGroupID];
+    self.roomId =  [rongCloudDefaults objectForKey:@"roomId"];
     self.userId = [rongCloudDefaults objectForKey:@"userId"];
 }
 
 
 
--(void)joinRoom{
-    
+- (void)joinRoom {
     [[RCRTCEngine sharedInstance] joinRoom:self.roomId
                                 completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
         self.room = room;
         self.room.delegate = self;
         [self publishScreenStream];
     }];
-    
 }
 
 
@@ -134,8 +123,6 @@ NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"g
     videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
     videoConfig.videoFps = RCRTCVideoFPS24;
     [self.videoOutputStream setVideoConfig:videoConfig];
-    
-    NSLog(@"%@ %@",self.room.localUser,self.room);
     [self.room.localUser publishStream:self.videoOutputStream completion:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess){
             NSLog(@"发布自定义流成功");}
@@ -144,11 +131,11 @@ NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"g
     }];
 }
 
--(void)exitRoom{
-    
+- (void)exitRoom {
     [[RCRTCEngine sharedInstance] leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         self.videoOutputStream = nil;
         
-    }];    
+    }];
 }
+
 @end

@@ -14,13 +14,13 @@ static NSString * const RequestTokenURL = @"http://api-cn.ronghub.com/user/getTo
 
 @implementation RequestToken
 
-+ (NSString *)getNonce{
++ (NSString *)getNonce {
     int randomNum = arc4random_uniform(RAND_MAX);
     NSLog(@"randomNum : %d",randomNum);
     return [NSString stringWithFormat:@"%d",randomNum];
 }
 
-+ (NSString *)getTimestamp{
++ (NSString *)getTimestamp {
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
     NSInteger time = interval;
     NSString *timestamp = [NSString stringWithFormat:@"%zd",time];
@@ -28,7 +28,7 @@ static NSString * const RequestTokenURL = @"http://api-cn.ronghub.com/user/getTo
     return timestamp;
 }
 
-+ (NSString *)getSignature:(NSString *)nonce Timestamp:(NSString *)timestamp{
++ (NSString *)getSignature:(NSString *)nonce Timestamp:(NSString *)timestamp {
     
     NSString *signatureStr = [NSString stringWithFormat:@"%@%@%@",AppSecret,nonce,timestamp];
     return [self sha1:signatureStr];

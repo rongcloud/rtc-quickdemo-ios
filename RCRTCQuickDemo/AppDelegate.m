@@ -18,9 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Verbose];
-    /**
-     未进行任何操作，直接进入 RCRTCLoginViewController 
-     */
+    
+     // 未进行任何操作，直接进入 RCRTCLoginViewController 
     return YES;
 }
 

@@ -14,7 +14,7 @@
     // Initialization code
 }
 
-- (void)setDataModel:(NSDictionary *)data{
+- (void)setDataModel:(NSDictionary *)data {
     self.titleLabel.text = data[@"title"];
     self.descriptionLabel.text = data[@"description"];
     self.iconImageView.image = [UIImage imageNamed:data[@"image"]];
