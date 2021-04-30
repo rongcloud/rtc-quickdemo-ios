@@ -109,14 +109,14 @@
 // 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
-    videoConfig.videoFps = RCRTCVideoFPS30;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset640x480;
+    videoConfig.videoFps = RCRTCVideoFPS15;
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
 
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
     config.roomType = RCRTCRoomTypeNormal;
     
-    [self.engine enableSpeaker:NO];
+    [self.engine enableSpeaker:YES];
 
     @WeakObj(self);
     [self.engine joinRoom:self.roomId

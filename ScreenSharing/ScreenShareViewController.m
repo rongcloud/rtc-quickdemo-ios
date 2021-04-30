@@ -90,15 +90,15 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 //加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
-    videoConfig.videoFps = RCRTCVideoFPS30;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset640x480;
+    videoConfig.videoFps = RCRTCVideoFPS15;
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
     
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
     config.roomType = RCRTCRoomTypeNormal;
     
-    [self.engine enableSpeaker:NO];
-    
+    [self.engine enableSpeaker:YES];
+
     @WeakObj(self);
     [self.engine joinRoom:self.roomId
                    config:config
@@ -121,9 +121,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     room.delegate = self;
     
     RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localView.canvesView;
-    
-    view.fillMode = RCRTCVideoFillModeAspectFill;
-    
+    view.fillMode = RCRTCVideoFillModeAspectFit;
+
     // 开始本地视频采集
     [[self.engine defaultVideoStream] setVideoView:view];
     [[self.engine defaultVideoStream] startCapture];
@@ -214,14 +213,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     
     LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
+    remoteView.fillMode = RCRTCVideoFillModeAspectFit;
     
-    // 如果为屏幕共享则适配显示
-    if([stream.tag isEqualToString:@"RongRTCScreenShare"]){
-        
-        remoteView.fillMode = RCRTCVideoFillModeAspectFit;
-        
-    }
-    // 设置视频流的渲染视图
     [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
     return sVideo;
 }

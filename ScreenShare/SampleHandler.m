@@ -33,7 +33,6 @@
 //       [self.clientSocket createCliectSocket];
     [self getByAppGroup];
     [self requestToken];
-
 }
 
 - (void)broadcastPaused {
@@ -132,7 +131,8 @@ NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"g
 - (void)publishScreenStream {
     self.videoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:@"RCRTCScreenVideo"];
     RCRTCVideoStreamConfig *videoConfig = self.videoOutputStream.videoConfig;
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
+    videoConfig.videoFps = RCRTCVideoFPS24;
     [self.videoOutputStream setVideoConfig:videoConfig];
     
     NSLog(@"%@ %@",self.room.localUser,self.room);

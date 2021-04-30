@@ -151,7 +151,7 @@ RCRTCFileCapturerDelegate>
              */
             
             // 1.设置不切换听筒为扬声器
-            [self.engine enableSpeaker:NO];
+            [self.engine enableSpeaker:YES];
             
             // 2.添加本地采集预览界面
             [self setupLocalVideoView];
