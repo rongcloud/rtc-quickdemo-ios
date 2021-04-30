@@ -34,8 +34,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 @property (nonatomic, strong) RCRTCRoom *room;
 @property (nonatomic, strong) RCRTCEngine *engine;
 @property (nonatomic, strong) UIButton  *screenShareButton;
-@property (nonatomic)NSMutableArray <LiveStreamVideo *>*streamVideos;
-@property (nonatomic, strong)LiveVideoLayoutTool *layoutTool;
+@property (nonatomic) NSMutableArray <LiveStreamVideo *>*streamVideos;
+@property (nonatomic, strong) LiveVideoLayoutTool *layoutTool;
 
 @end
 
@@ -87,7 +87,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 #pragma mark - RTC
-//加入房间
+// 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
     videoConfig.videoSizePreset = RCRTCVideoSizePreset640x480;
@@ -199,7 +199,6 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
             return;
         }
         
-        
         // 创建并设置远端视频预览视图
         NSInteger i = 0;
         for (RCRTCInputStream *stream in streams) {
@@ -272,12 +271,10 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 
 // 新用户加入
 - (void)didJoinUser:(RCRTCRemoteUser *)user {
-    
 }
 
 // 离开
 - (void)didLeaveUser:(RCRTCRemoteUser *)user {
-    
     [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
 }
 
