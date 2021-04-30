@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- * 自定义加解密的实现类
+/*!
+ 自定义加解密的实现类
  */
 @interface MeetingCryptoImpl : NSObject <RCRTCCustomizedEncryptorDelegate,RCRTCCustomizedDecryptorDelegate>
  

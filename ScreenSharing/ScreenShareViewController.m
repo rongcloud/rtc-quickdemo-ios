@@ -26,13 +26,13 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 
 @property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
 @property (nonatomic, weak) IBOutlet UIView *containerView;
-@property(nonatomic, strong) LiveStreamVideo *localView;
-@property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
-@property(nonatomic, strong) LiveStreamVideo *localShareView;
-@property(nonatomic, strong) RCRTCRemoteVideoView *remoteShareView;
+@property (nonatomic, strong) LiveStreamVideo *localView;
+@property (nonatomic, strong) RCRTCRemoteVideoView *remoteView;
+@property (nonatomic, strong) LiveStreamVideo *localShareView;
+@property (nonatomic, strong) RCRTCRemoteVideoView *remoteShareView;
 @property (nonatomic, strong) RCRTCVideoOutputStream *shareVideoOutputStream;
-@property(nonatomic, strong) RCRTCRoom *room;
-@property(nonatomic, strong) RCRTCEngine *engine;
+@property (nonatomic, strong) RCRTCRoom *room;
+@property (nonatomic, strong) RCRTCEngine *engine;
 @property (nonatomic, strong) UIButton  *screenShareButton;
 @property (nonatomic)NSMutableArray <LiveStreamVideo *>*streamVideos;
 @property (nonatomic, strong)LiveVideoLayoutTool *layoutTool;
