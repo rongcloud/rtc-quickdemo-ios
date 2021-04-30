@@ -771,6 +771,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShareDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
