@@ -205,13 +205,13 @@
 		4F6925952639643A00872F2B /* ScreenSharing */ = {
 			isa = PBXGroup;
 			children = (
+				4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */,
+				4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */,
 				4F6925C02639650F00872F2B /* ScreenShareViewController.h */,
 				4F6925C12639650F00872F2B /* ScreenShareViewController.m */,
 				4F6925C32639651D00872F2B /* ScreenShare.storyboard */,
 				4F6925C6263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.h */,
 				4F6925C5263965C500872F2B /* RPSystemBroadcastPickerView+SearchButton.m */,
-				4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */,
-				4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */,
 			);
 			path = ScreenSharing;
 			sourceTree = "<group>";
