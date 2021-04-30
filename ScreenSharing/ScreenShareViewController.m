@@ -210,11 +210,11 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 
 // 创建并设置远端视频预览视图
 - (LiveStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
-    
     LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
     remoteView.fillMode = RCRTCVideoFillModeAspectFit;
     
+    // 设置视频流的渲染视图
     [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
     return sVideo;
 }
