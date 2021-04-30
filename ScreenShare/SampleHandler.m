@@ -12,10 +12,12 @@
 #import <RongIMLib/RongIMLib.h>
 #import "RequestToken.h"
 #import <RongIMKit/RCIM.h>
+#import "Constant.h"
 
 @interface SampleHandler () <RCRTCRoomEventDelegate>
 
 @property (nonatomic, strong) RCRTCRoom *room;
+@property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) RCRTCVideoOutputStream *videoOutputStream;
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *token;
@@ -29,6 +31,7 @@
     // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
 //    self.clientSocket = [[RongRTCClientSocket alloc] init];
 //       [self.clientSocket createCliectSocket];
+    [self getByAppGroup];
     [self requestToken];
 
 }
@@ -71,17 +74,28 @@
 #pragma mark - Private
 
 -(void)requestToken{
-     
-    // 请填写您的 AppKey
-    self.appKey = @"cpj2xarlctx9n";
-    // 请填写用户的 Token
-    self.token = @"tyRrIDoMTL8jJf3D2ynFXHboe+cmZfb/MmDCFkZU9/w=@b0fu.cn.rongnav.com;b0fu.cn.rongcfg.com";
-    // 请指定房间号
     
-    [[RCIMClient sharedRCIMClient] initWithAppKey:self.appKey];
+    [RequestToken requestToken:[NSString stringWithFormat:@"%@RTC",self.userId]
+                               name:[NSString stringWithFormat:@"%@RTC",self.userId]
+                        portraitUrl:nil
+                  completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
+        
+        if (!isSuccess) return;
+        
+        [self connectRongCloud:tokenString];
+    }];
+     
+   
+}
+
+- (void)connectRongCloud:(NSString *)token{
+    
+
+    
+    [[RCIMClient sharedRCIMClient] initWithAppKey:AppKey];
     
     // 连接 IM
-    [[RCIMClient sharedRCIMClient] connectWithToken:self.token
+    [[RCIMClient sharedRCIMClient] connectWithToken:token
                                            dbOpened:^(RCDBErrorCode code) {
         NSLog(@"dbOpened: %zd", code);
     } success:^(NSString *userId) {
@@ -92,21 +106,20 @@
         NSLog(@"ERROR status: %zd", errorCode);
     }];
     
+    
 }
 
--(NSString *)getByAppGroup
-{
-NSUserDefaults *myDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
-NSString *content = [myDefaults objectForKey:@"roomId"];
-NSLog(@"lalallalala%@",content);
-    return  [myDefaults objectForKey:@"roomId"];
+-(void)getByAppGroup{
+NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
+   self.roomId =  [rongCloudDefaults objectForKey:@"roomId"];
+    self.userId = [rongCloudDefaults objectForKey:@"userId"];
 }
 
 
 
 -(void)joinRoom{
     
-    [[RCRTCEngine sharedInstance] joinRoom:[self getByAppGroup]
+    [[RCRTCEngine sharedInstance] joinRoom:self.roomId
                                 completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
         self.room = room;
         self.room.delegate = self;
@@ -136,8 +149,6 @@ NSLog(@"lalallalala%@",content);
     [[RCRTCEngine sharedInstance] leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         self.videoOutputStream = nil;
         
-    }];
-    [[RCIMClient sharedRCIMClient] disconnect];
-    
+    }];    
 }
 @end

@@ -349,13 +349,14 @@
 }
 
 
-#pragma mark - lazy load
+#pragma mark - setter && getter
 
-- (void)setAppGroup
-{
- NSUserDefaults *myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];//此处id要与开发者中心创建时一致
-    [myDefaults setObject:self.roomId forKey:@"roomId"];
- NSLog(@"lalallalala%@", [myDefaults valueForKey:@"roomId"]);
+- (void)setAppGroup{
+    //此处id要与开发者中心创建时一致
+ NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.rtcquickdemo.screenshare"];
+    [rongCloudDefaults setObject:self.roomId forKey:@"roomId"];
+    [rongCloudDefaults setObject:self.room.localUser.userId forKey:@"userId"];
+
 }
 
 
