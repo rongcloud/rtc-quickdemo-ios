@@ -180,6 +180,12 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams isTiny:(BOOL)isTiny {
+    for (RCRTCInputStream *tmpStream in streams) {
+        NSString *screenUserId = [NSString stringWithFormat:@"%@RTC", self.room.localUser.userId];
+        if ([screenUserId isEqualToString:tmpStream.userId]) {
+            return;
+        }
+    }
     
     // 订阅房间中远端用户音视频流资源
     NSArray *tinyStream = isTiny ? streams : @[];
