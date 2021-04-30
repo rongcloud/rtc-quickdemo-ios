@@ -10,17 +10,15 @@
 
 static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 
-/**
- * 主播/观众 区分身份直播入口类
- *
- * 根据身份不同参数不同
- * 主播 RCRTCLiveRoleTypeBroadcaster
- * 观众 RCRTCLiveRoleTypeAudience
- *
+/*!
+ 主播/观众 区分身份直播入口类
+ 根据身份不同参数不同
+ 主播 RCRTCLiveRoleTypeBroadcaster
+ 观众 RCRTCLiveRoleTypeAudience
  */
 @interface LiveCreateViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
+@property (nonatomic, weak) IBOutlet UITextField *roomIdTextField;
 
 @end
 
@@ -30,13 +28,10 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
     [super viewDidLoad];
 }
 
-/**
- * 主播身份：开始直播
- */
+// 主播身份：开始直播
 - (IBAction)startLive:(UIButton *)sender {
     
     if (![self checkTextField]) return;
-    
     [self.roomIdTextField resignFirstResponder];
     
     LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:LiveViewControllerIdentifier];
@@ -45,13 +40,10 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
     [self.navigationController pushViewController:liveVC animated:YES];
 }
 
-/**
- * 观众身份：观看直播
- */
+// 观众身份：观看直播
 - (IBAction)watchLive:(UIButton *)sender {
     
     if (![self checkTextField]) return;
-    
     [self.roomIdTextField resignFirstResponder];
     
     LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:LiveViewControllerIdentifier];
@@ -60,13 +52,12 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
     [self.navigationController pushViewController:liveVC animated:YES];
 }
 
-- (BOOL)checkTextField{
+- (BOOL)checkTextField {
     
     if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0 ){
         return NO;
     }
     return YES;
 }
-
 
 @end

@@ -10,13 +10,18 @@
 NSString *const kIMFileVideoCapturerErrorDomain = @"cn.rongcloud.RCRTCFileVideoCapturer";
 
 typedef NS_ENUM(NSInteger, IMFileVideoCapturerErrorCode) {
+    
     RCRTCFileVideoCapturerErrorCode_CapturerRunning = 2000,
+    
     RCRTCFileVideoCapturerErrorCode_FileNotFound
 };
 
 typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
+    
     RCRTCFileVideoCapturerStatusNotInitialized,
+    
     RCRTCFileVideoCapturerStatusStarted,
+    
     RCRTCFileVideoCapturerStatusStopped
 };
 
@@ -85,7 +90,6 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
 }
 
 #pragma mark - Private
-
 - (void)setupAudioTrakOutput:(AVURLAsset*)asset {
     AVAssetTrack* audioTrack = [asset tracksWithMediaType:AVMediaTypeAudio].firstObject;
     AudioStreamBasicDescription asbd = RCRTCAudioMixer.writeAsbd;

@@ -35,7 +35,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 }
 
 /// This enables the benchmarking mode, which logs out instantaneous and average frame times to the console
-@property(readwrite, nonatomic) BOOL runBenchmark;
+@property (nonatomic, readwrite) BOOL runBenchmark;
 
 - (id)init;
 - (void)didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;

@@ -22,7 +22,7 @@ static NSString *zero  = @"0";
     return self;
 }
 
-+ (instancetype)LocalStreamVideo{
++ (instancetype)LocalStreamVideo {
     LiveStreamVideo *localStreamVideo = [[LiveStreamVideo alloc] init];
     // 初始化 这里的 streamId 推荐 0
     localStreamVideo.streamId = zero;

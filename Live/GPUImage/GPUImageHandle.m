@@ -9,6 +9,7 @@
 
 
 @interface GPUImageHandle ()
+
 @property (nonatomic, strong) GPUImageBeautyFilter *beautyFilter;
 @property (nonatomic, strong) GPUImageOutputCamera *outputCamera;
 @property (nonatomic, strong) GPUImageView *imageView;
@@ -16,7 +17,6 @@
 @property (nonatomic, weak) GPUImageFilter *gpuFilter;
 @property (nonatomic, strong) GPUImageUIElement *uiElement;
 @property (nonatomic, strong) GPUImageAlphaBlendFilter *blendFilter;
-
 @property (nonatomic, strong) UIImageView *watermarkImageView;
 @property (nonatomic, assign) CGFloat videoWidth, videoHeight;
 @property (nonatomic, strong) UIView *contentView;
@@ -34,7 +34,6 @@
 }
 
 #pragma mark- GPUImage
-
 - (void)rotateWaterMark:(BOOL)isAdd
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -44,8 +43,7 @@
     });
 }
 
-- (void)reloadGPUFilter
-{
+- (void)reloadGPUFilter {
     [self uiElement];
     __weak typeof(self) weakSelf = self;
     [self.gpuFilter setFrameProcessingCompletionBlock:^(GPUImageOutput *output, CMTime time) {
@@ -55,9 +53,7 @@
     }];
 }
 
-- (CMSampleBufferRef)onGPUFilterSource:(CMSampleBufferRef)sampleBuffer
-{
-    
+- (CMSampleBufferRef)onGPUFilterSource:(CMSampleBufferRef)sampleBuffer {
     
     if (!self.filter || !sampleBuffer)
         return nil;
@@ -93,54 +89,47 @@
 }
 
 #pragma mark- getter
-
-- (GPUImageFilter *)defaultFilter
-{
+- (GPUImageFilter *)defaultFilter {
     if (!_defaultFilter)  {
         _defaultFilter = [[GPUImageFilter alloc] init];
     }
     return _defaultFilter;
 }
 
-- (GPUImageBeautyFilter *)beautyFilter
-{
+- (GPUImageBeautyFilter *)beautyFilter {
     if (!_beautyFilter) {
         _beautyFilter = [[GPUImageBeautyFilter alloc] init];
     }
     return _beautyFilter;
 }
 
-- (GPUImageOutputCamera *)outputCamera
-{
+- (GPUImageOutputCamera *)outputCamera {
     if (!_outputCamera) {
         _outputCamera = [[GPUImageOutputCamera alloc] init];
     }
     return _outputCamera;
 }
 
-- (GPUImageView *)imageView
-{
+- (GPUImageView *)imageView {
     if (!_imageView) {
         _imageView = [[GPUImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     }
     return _imageView;
 }
 
-- (UIView *)contentView
-{
+- (UIView *)contentView {
     if (!_contentView) {
-  
+        
         self.videoHeight = 640;
         self.videoWidth = 360;
-   
+        
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.videoWidth, self.videoHeight)];
         _contentView.backgroundColor = [UIColor clearColor];
     }
     return _contentView;
 }
 
-- (UIImageView *)watermarkImageView
-{
+- (UIImageView *)watermarkImageView {
     if (!_watermarkImageView) {
         _watermarkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, 80, 80)];
         _watermarkImageView.image = [UIImage imageNamed:@"chat_water_mark"];
@@ -148,8 +137,7 @@
     return _watermarkImageView;
 }
 
-- (GPUImageUIElement *)uiElement
-{
+- (GPUImageUIElement *)uiElement {
     if (!_uiElement) {
         [self.contentView addSubview:self.watermarkImageView];
         _uiElement = [[GPUImageUIElement alloc] initWithView:self.contentView];
@@ -157,8 +145,7 @@
     return _uiElement;
 }
 
-- (GPUImageAlphaBlendFilter *)blendFilter
-{
+- (GPUImageAlphaBlendFilter *)blendFilter {
     if (!_blendFilter) {
         _blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
         _blendFilter.mix = 1.0;
@@ -166,8 +153,7 @@
     return _blendFilter;
 }
 
-
--(void)onlyBeauty{
+- (void)onlyBeauty {
     [self cleanAllFilter];
     self.gpuFilter = self.beautyFilter;
     [self.outputCamera addTarget:self.gpuFilter];
@@ -176,24 +162,21 @@
     
 }
 
--(void)beautyAndWaterMark{
+- (void)beautyAndWaterMark {
     [self cleanAllFilter];
     self.gpuFilter = self.beautyFilter;
-    
     [self.outputCamera addTarget:self.gpuFilter];
     [self reloadGPUFilter];
     [self.gpuFilter addTarget:self.blendFilter];
     [self.uiElement addTarget:self.blendFilter];
     [self.blendFilter addTarget:self.imageView];
     self.filter = self.blendFilter;
-    
 }
 
--(void)onlyWaterMark{
+- (void)onlyWaterMark {
     
     [self cleanAllFilter];
     self.gpuFilter = self.defaultFilter;
-    
     [self.outputCamera addTarget:self.gpuFilter];
     [self reloadGPUFilter];
     [self.gpuFilter addTarget:self.blendFilter];
@@ -201,7 +184,7 @@
     [self.blendFilter addTarget:self.imageView];
     self.filter = self.blendFilter;
 }
--(void)cleanAllFilter{
+- (void)cleanAllFilter {
     
     [_gpuFilter setFrameProcessingCompletionBlock:nil];
     [self.outputCamera removeTarget:self.gpuFilter];
@@ -210,6 +193,6 @@
     [self.blendFilter removeTarget:self.imageView];
     [self.gpuFilter removeTarget:self.imageView];
     self.uiElement = nil;
-    
 }
+
 @end

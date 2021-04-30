@@ -10,7 +10,7 @@
 
 @interface LiveVideoLayoutTool()
 
-@property (nonatomic, strong)NSMutableArray<NSLayoutConstraint *> *layoutConstraints;
+@property (nonatomic, strong) NSMutableArray<NSLayoutConstraint *> *layoutConstraints;
 
 @end
 
@@ -153,9 +153,6 @@
     
     return [layouts copy];
 }
-
-
-
 
 @end
 

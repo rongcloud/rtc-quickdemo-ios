@@ -9,10 +9,8 @@
 
 @implementation LiveMixStreamTool
 
-/**
- * 设置合流布局
- */
-+ (RCRTCMixConfig *)setOutputConfig:(RCRTCMixLayoutMode)mode{
+// 设置合流布局
++ (RCRTCMixConfig *)setOutputConfig:(RCRTCMixLayoutMode)mode {
     
     // 布局配置类
     RCRTCMixConfig *streamConfig = [[RCRTCMixConfig alloc] init];
@@ -32,8 +30,6 @@
     
     // 设置是否裁剪
     streamConfig.mediaConfig.videoConfig.videoExtend.renderMode = 1;
-    
-    
     NSMutableArray *streamArr = [NSMutableArray array];
     
     // 添加本地输出流
@@ -44,9 +40,7 @@
             [streamArr addObject:vStream];
         }
     }
-    
     switch (mode) {
-            
             // 自定义布局
         case RCRTCMixLayoutModeCustom:
         {
@@ -83,10 +77,9 @@
     return streamConfig;
 }
 
-/**
- *自定义布局在此方法配置
- */
-+ (void)customLayoutWithStreams:(NSMutableArray *)streams streamConfig:(RCRTCMixConfig *)streamConfig{
+// 自定义布局在此方法配置
++ (void)customLayoutWithStreams:(NSMutableArray *)streams
+                   streamConfig:(RCRTCMixConfig *)streamConfig {
     NSInteger streamCount = streams.count;
     NSInteger itemWidth = 150;
     NSInteger itemHeight = itemWidth;
@@ -143,7 +136,7 @@
         
         RCRTCCustomLayout *inputConfig3 = [[RCRTCCustomLayout alloc] init];
         inputConfig3.videoStream = lastStream;
-        inputConfig3.x = itemWidth;   
+        inputConfig3.x = itemWidth;
         inputConfig3.y = itemHeight;
         inputConfig3.width = itemWidth;
         inputConfig3.height = itemHeight;

@@ -312,11 +312,11 @@
 		DD59DE6C262FC1A500A0C940 /* GPUImage */ = {
 			isa = PBXGroup;
 			children = (
-				DD59DE6D262FC1A500A0C940 /* GPUImageOutputCamera.h */,
 				DD59DE6E262FC1A500A0C940 /* GPUImageHandle.h */,
-				DD59DE6F262FC1A500A0C940 /* GPUImageBeautyFilter.h */,
-				DD59DE70262FC1A500A0C940 /* GPUImageOutputCamera.m */,
 				DD59DE71262FC1A500A0C940 /* GPUImageHandle.m */,
+				DD59DE6D262FC1A500A0C940 /* GPUImageOutputCamera.h */,
+				DD59DE70262FC1A500A0C940 /* GPUImageOutputCamera.m */,
+				DD59DE6F262FC1A500A0C940 /* GPUImageBeautyFilter.h */,
 				DD59DE72262FC1A500A0C940 /* GPUImageBeautyFilter.m */,
 			);
 			path = GPUImage;

@@ -10,26 +10,26 @@
 #import <RongRTCLib/RongRTCLib.h>
 
 NS_ASSUME_NONNULL_BEGIN
-/**
- *  音视频流 streamId 标识唯一的 LiveStreamVideo 对象
+/*!
+ 音视频流 streamId 标识唯一的 LiveStreamVideo 对象
  */
 @interface LiveStreamVideo : NSObject
 
-@property (nonatomic, copy)NSString *streamId;
+@property (nonatomic, copy) NSString *streamId;
 
-/**
- * 包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
+/*!
+ 包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
  */
-@property (nonatomic, strong)RCRTCVideoPreviewView *canvesView;
+@property (nonatomic, strong) RCRTCVideoPreviewView *canvesView;
 
-/**
- * RCRTCRemoteVideoView 初始化
- * @param streamId  音视频流 Id
+/*!
+ RCRTCRemoteVideoView 初始化
+ @param streamId  音视频流 Id
  */
 - (instancetype)initWithStreamId:(NSString *)streamId;
 
-/**
- * 本地 RCRTCLocalVideoView 初始化
+/*!
+ 本地 RCRTCLocalVideoView 初始化
  */
 + (instancetype)LocalStreamVideo;
 

@@ -9,11 +9,8 @@
 #import "GPUImageOutputCamera.h"
 #import "GPUImage/GPUImageFilter.h"
 
-#pragma mark -
-#pragma mark Private methods and instance variables
-
-@interface GPUImageOutputCamera ()
-{
+#pragma mark - Private methods and instance variables
+@interface GPUImageOutputCamera () {
     NSDate *startingCaptureTime;
     
     dispatch_queue_t cameraProcessingQueue;
@@ -39,9 +36,7 @@
 
 // @synthesize runBenchmark = _runBenchmark;
 
-#pragma mark -
-#pragma mark Initialization and teardown
-
+#pragma mark - Initialization and teardown
 - (id)init;
 {
     if (!(self = [super init]))
@@ -53,7 +48,6 @@
     
     frameRenderingSemaphore = dispatch_semaphore_create(1);
     
-    // _runBenchmark = NO;
     outputRotation = kGPUImageNoRotation;
     internalRotation = kGPUImageNoRotation;
     captureAsYUV = YES;
@@ -300,19 +294,6 @@
             CFRelease(luminanceTextureRef);
             CFRelease(chrominanceTextureRef);
         }
-        
-        
-        //        if (_runBenchmark)
-        //        {
-        //            numberOfFramesCaptured++;
-        //            if (numberOfFramesCaptured > INITIALFRAMESTOIGNOREFORBENCHMARK)
-        //            {
-        //                CFAbsoluteTime currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime);
-        //                totalFrameTimeDuringCapture += currentFrameTime;
-        //                NSLog(@"Average frame time : %f ms", [self averageFrameDurationDuringCapture]);
-        //                NSLog(@"Current frame time : %f ms", 1000.0 * currentFrameTime);
-        //            }
-        //        }
     }
     else
     {
@@ -329,16 +310,6 @@
         [self updateTargetsForVideoCameraUsingCacheTextureAtWidth:bytesPerRow / 4 height:bufferHeight time:currentTime];
         
         CVPixelBufferUnlockBaseAddress(cameraFrame, 0);
-        
-        //        if (_runBenchmark)
-        //        {
-        //            numberOfFramesCaptured++;
-        //            if (numberOfFramesCaptured > INITIALFRAMESTOIGNOREFORBENCHMARK)
-        //            {
-        //                CFAbsoluteTime currentFrameTime = (CFAbsoluteTimeGetCurrent() - startTime);
-        //                totalFrameTimeDuringCapture += currentFrameTime;
-        //            }
-        //        }
     }
 }
 
@@ -405,7 +376,7 @@
     }
     
     CFRetain(sampleBuffer);
-    runAsynchronouslyOnVideoProcessingQueue(^{        
+    runAsynchronouslyOnVideoProcessingQueue(^{
         [self processVideoSampleBuffer:sampleBuffer];
         
         CFRelease(sampleBuffer);
