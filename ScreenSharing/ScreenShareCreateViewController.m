@@ -15,7 +15,7 @@ static NSString * const ScreenShareViewControllerIdentifier = @"ScreenShareViewC
 }
 
 // 房间 ID 输入框
-@property (weak, nonatomic) IBOutlet UITextField *roomIdTextField;
+@property (nonatomic, weak) IBOutlet UITextField *roomIdTextField;
 
 @end
 

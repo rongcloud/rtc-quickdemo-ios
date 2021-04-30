@@ -25,7 +25,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 @interface ScreenShareViewController ()<RCRTCRoomEventDelegate>
 
 @property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
 @property(nonatomic, strong) LiveStreamVideo *localView;
 @property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
 @property(nonatomic, strong) LiveStreamVideo *localShareView;
@@ -45,8 +45,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     /*!
-     * 必要步骤：
-     * 1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     必要步骤：
+     1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
     
     [self initView];

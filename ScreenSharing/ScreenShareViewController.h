@@ -11,7 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ScreenShareViewController : UIViewController
 
-// 加入的房间 ID
+/*!
+ 加入的房间 ID
+ */
 @property(nonatomic, strong) NSString *roomId;
 
 @end
