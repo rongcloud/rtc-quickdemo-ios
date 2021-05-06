@@ -102,7 +102,6 @@
 
 #pragma mark - RCIMConnectionStatusDelegate
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
-    
     // 互踢提示
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
         [self.navigationController popToRootViewControllerAnimated:YES];

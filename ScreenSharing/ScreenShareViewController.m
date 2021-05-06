@@ -34,7 +34,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 @property (nonatomic, strong) RCRTCRoom *room;
 @property (nonatomic, strong) RCRTCEngine *engine;
 @property (nonatomic, strong) UIButton  *screenShareButton;
-@property (nonatomic) NSMutableArray <LiveStreamVideo *>*streamVideos;
+@property (nonatomic) NSMutableArray <LiveStreamVideo *> *streamVideos;
 @property (nonatomic, strong) LiveVideoLayoutTool *layoutTool;
 
 @end
@@ -105,7 +105,6 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
         @StrongObj(self);
         if (code == RCRTCCodeSuccess) {
-            
             // 3. 加入成功后进行资源的发布和订阅
             [self afterJoinRoom:room];
         } else {
@@ -160,12 +159,11 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];
-    
 }
 
 // 取消订阅远端流
-- (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orStreamId:(NSString *)streamId {
-    
+- (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams
+                       orStreamId:(NSString *)streamId {
     for (RCRTCInputStream *stream in streams) {
         if (stream.mediaType == RTCMediaTypeVideo) {
             streamId = stream.streamId;
@@ -179,7 +177,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     [self subscribeRemoteResource:streams isTiny:NO];
 }
 
-- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams isTiny:(BOOL)isTiny {
+- (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams
+                         isTiny:(BOOL)isTiny {
     for (RCRTCInputStream *tmpStream in streams) {
         NSString *screenUserId = [NSString stringWithFormat:@"%@RTC", self.room.localUser.userId];
         if ([screenUserId isEqualToString:tmpStream.userId]) {
@@ -260,7 +259,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 
 #pragma mark - RCRTCRoomEventDelegate
 // 远端用户发布资源通知
--(void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
+- (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }
 
@@ -283,8 +282,6 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
 }
 
-
-#pragma mark - setter && getter
 // 屏幕共享 Groups 数据写入
 - (void)setAppGroup {
     // 此处 id 要与开发者中心创建时一致
@@ -293,6 +290,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     [rongCloudDefaults setObject:self.room.localUser.userId forKey:@"userId"];
 }
 
+#pragma mark - setter && getter
 - (LiveStreamVideo *)localShareView {
     if (!_localShareView) {
         _localShareView = [LiveStreamVideo LocalStreamVideo];
@@ -314,27 +312,19 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     }
     return _streamVideos;
 }
+
 - (LiveStreamVideo *)localView {
     if (!_localView) {
         _localView = [LiveStreamVideo LocalStreamVideo];
     }
     return _localView;
 }
+
 - (LiveVideoLayoutTool *)layoutTool {
     if (!_layoutTool) {
         _layoutTool = [LiveVideoLayoutTool new];
     }
     return _layoutTool;
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -43,15 +43,11 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 - (void)broadcastFinished {
-    
     [self exitRoom];
-    
     // User has requested to finish the broadcast.
 }
 
-
 - (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType {
-    
     switch (sampleBufferType) {
         case RPSampleBufferTypeVideo:
             // Handle video sample buffer
@@ -69,13 +65,13 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
             break;
     }
 }
+
 #pragma mark - Private
 - (void)requestToken {
     [RequestToken requestToken:[NSString stringWithFormat:@"%@RTC",self.userId]
                           name:[NSString stringWithFormat:@"%@RTC",self.userId]
                    portraitUrl:nil
              completionHandler:^(BOOL isSuccess, NSString * _Nonnull tokenString) {
-        
         if (!isSuccess) return;
         [self connectRongCloud:tokenString];
     }];
@@ -94,8 +90,6 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     } error:^(RCConnectErrorCode errorCode) {
         NSLog(@"ERROR status: %zd", errorCode);
     }];
-    
-    
 }
 
 - (void)getByAppGroup {
@@ -104,8 +98,6 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     self.roomId =  [rongCloudDefaults objectForKey:@"roomId"];
     self.userId = [rongCloudDefaults objectForKey:@"userId"];
 }
-
-
 
 - (void)joinRoom {
     [[RCRTCEngine sharedInstance] joinRoom:self.roomId
@@ -116,14 +108,14 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     }];
 }
 
-
 - (void)publishScreenStream {
     self.videoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:@"RCRTCScreenVideo"];
     RCRTCVideoStreamConfig *videoConfig = self.videoOutputStream.videoConfig;
     videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
     videoConfig.videoFps = RCRTCVideoFPS24;
     [self.videoOutputStream setVideoConfig:videoConfig];
-    [self.room.localUser publishStream:self.videoOutputStream completion:^(BOOL isSuccess, RCRTCCode desc) {
+    [self.room.localUser publishStream:self.videoOutputStream
+                            completion:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess){
             NSLog(@"发布自定义流成功");}
         else{
@@ -134,7 +126,6 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 - (void)exitRoom {
     [[RCRTCEngine sharedInstance] leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         self.videoOutputStream = nil;
-        
     }];
 }
 

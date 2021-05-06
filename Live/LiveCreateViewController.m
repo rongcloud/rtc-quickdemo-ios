@@ -30,7 +30,6 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 
 // 主播身份：开始直播
 - (IBAction)startLive:(UIButton *)sender {
-    
     if (![self checkTextField]) return;
     [self.roomIdTextField resignFirstResponder];
     
@@ -42,7 +41,6 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 
 // 观众身份：观看直播
 - (IBAction)watchLive:(UIButton *)sender {
-    
     if (![self checkTextField]) return;
     [self.roomIdTextField resignFirstResponder];
     
@@ -53,7 +51,6 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 }
 
 - (BOOL)checkTextField {
-    
     if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0 ){
         return NO;
     }

@@ -33,15 +33,15 @@
     NSMutableArray *streamArr = [NSMutableArray array];
     
     // 添加本地输出流
-    NSArray<RCRTCOutputStream *> *localStreams
-    = RCRTCEngine.sharedInstance.room.localUser.streams;
+    NSArray<RCRTCOutputStream *> *localStreams = RCRTCEngine.sharedInstance.room.localUser.streams;
     for (RCRTCOutputStream *vStream in localStreams) {
         if (vStream.mediaType == RTCMediaTypeVideo) {
             [streamArr addObject:vStream];
         }
     }
+    
     switch (mode) {
-            // 自定义布局
+        // 自定义布局
         case RCRTCMixLayoutModeCustom:
         {
             // 如果是自定义布局需要设置下面这些
@@ -56,15 +56,15 @@
             [self customLayoutWithStreams:streamArr streamConfig:streamConfig];
         }
             break;
+        // 悬浮布局
         case RCRTCMixLayoutModeSuspension:
-            // 悬浮布局
         {
             RCRTCOutputStream *vStream = [streamArr lastObject];
             streamConfig.hostVideoStream = vStream;
         }
             break;
+        // 自适应布局
         case RCRTCMixLayoutModeAdaptive:
-            // 自适应布局
         {
             RCRTCOutputStream *vStream = [streamArr lastObject];
             streamConfig.hostVideoStream = vStream;
@@ -94,7 +94,7 @@
         inputConfig.width = itemWidth;
         inputConfig.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig];
-    }else if (streamCount == 2){
+    } else if (streamCount == 2) {
         RCRTCStream *firstStream = [streams firstObject];
         RCRTCStream *lastStream = [streams lastObject];
         
@@ -113,7 +113,7 @@
         inputConfig2.width = itemWidth;
         inputConfig2.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig2];
-    }else if (streamCount == 3){
+    } else if (streamCount == 3) {
         RCRTCStream *firstStream = [streams firstObject];
         RCRTCStream *secondStream = streams[1];
         RCRTCStream *lastStream = [streams lastObject];
@@ -141,8 +141,7 @@
         inputConfig3.width = itemWidth;
         inputConfig3.height = itemHeight;
         [streamConfig.customLayouts addObject:inputConfig3];
-        
-    }else{
+    } else {
         NSInteger i = 0;
         for (RCRTCStream *stream in streams) {
             RCRTCCustomLayout *inputConfig = [[RCRTCCustomLayout alloc] init];

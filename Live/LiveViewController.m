@@ -103,14 +103,11 @@
      * 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
     
-    
     // 初始化 UI
     [self initView];
     
-    
     // 直播类型下的角色区分：主播/观众
     [self setRoleType];
-    
 }
 
 
@@ -122,8 +119,7 @@
  * 1.主播开启直播
  * 2.观众观看直播
  */
--(void)setRoleType{
-    
+- (void)setRoleType {
     // 判断用户状态改变退出按钮显示
     _closeLiveBtn.selected = _liveRoleType;
     
@@ -243,6 +239,7 @@
     }
     return _gpuImageHandler;
 }
+
 #pragma mark - UI
 /*!
  设置导航左侧发布按钮
@@ -263,7 +260,7 @@
     [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
--(void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
@@ -329,23 +326,19 @@
     }
     // 上麦/下麦
     [self connectHostWithState:sender.selected];
-    
 }
 
 // 开关摄像头
 - (IBAction)closeCameraAction:(UIButton *)sender {
-    
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
     sender.selected = !sender.selected;
     // 开关摄像头
     RCRTCCameraOutputStream *DVStream = self.engine.defaultVideoStream;
     !sender.selected ? [DVStream startCapture] : [DVStream stopCapture];
-    
 }
 
 // 开/关麦克风
 - (IBAction)closeMicAction:(UIButton *)sender {
-    
     sender.selected = !sender.selected;
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
     /*!
@@ -600,9 +593,7 @@
     [self subscribeRemoteResource:streams isTiny:NO];
 }
 
-
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams isTiny:(BOOL)isTiny {
-    
     // 订阅房间中远端用户音视频流资源
     NSArray *tinyStream = isTiny ? streams : @[];
     NSArray *ordinaryStream = isTiny ? @[] : streams;
@@ -683,7 +674,7 @@
 
 #pragma mark - RCRTCRoomEventDelegate
 // 远端用户发布资源通知
--(void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
+- (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }
 
@@ -737,9 +728,9 @@
 - (void)changeFliterIsOpenBearty:(BOOL)isOpenBearty isOpenWarkMark:(BOOL)isOpenWarkMark {
     if (isOpenBearty&&isOpenWarkMark) {
         [self.gpuImageHandler beautyAndWaterMark];
-    }else if(isOpenBearty){
+    } else if(isOpenBearty) {
         [self.gpuImageHandler onlyBeauty];
-    }else {
+    } else {
         [self.gpuImageHandler onlyWaterMark];
     }
 }

@@ -32,8 +32,6 @@ static NSString * const ScreenShareViewControllerIdentifier = @"ScreenShareViewC
     self.navigationController.navigationBarHidden = NO;
 }
 
-
-
 // 加入会议
 - (IBAction)joinMeeting:(UIButton *)sender {
     if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0) {
@@ -45,14 +43,5 @@ static NSString * const ScreenShareViewControllerIdentifier = @"ScreenShareViewC
     screenShareVC.roomId = self.roomIdTextField.text;
     [self.navigationController pushViewController:screenShareVC animated:YES];
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

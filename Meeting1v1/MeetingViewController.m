@@ -54,13 +54,11 @@
     // 初始化 UI
     [self initView];
     
-    
     // 配置进入会议前的一些准备参数
     [self initConfig];
     
     // 2. 加入房间
     [self joinRoom];
-    
 }
 
 - (void)initConfig {
@@ -162,10 +160,14 @@
 
 // 订阅房间中远端用户音视频流资源
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
-     
-    [self.room.localUser subscribeStream:streams tinyStreams:nil completion:^(BOOL isSuccess, RCRTCCode desc) {
-        
+    [self.room.localUser subscribeStream:streams
+                             tinyStreams:nil
+                              completion:^(BOOL isSuccess, RCRTCCode desc) {
+        if (isSuccess && desc == RCRTCCodeSuccess) {
+            NSLog(@"无端流订阅成功");
+        }
     }];
+    
     // 创建并设置远端视频预览视图
     for (RCRTCInputStream *stream in streams) {
         if (stream.mediaType == RTCMediaTypeVideo) {
@@ -220,7 +222,6 @@
 
 // 挂断并离开
 - (IBAction)clickHangup:(id)sender {
-    
     // 4. 取消本地发布并关闭摄像头采集
     [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
     }];
@@ -235,8 +236,6 @@
         }
     }];
 }
-
-
 
 #pragma mark - RCRTCRoomEventDelegate
 // 远端用户发布资源通知
@@ -262,7 +261,8 @@
     }
     return _engine;
 }
-- (MeetingCryptoImpl *)cryptoImpl{
+
+- (MeetingCryptoImpl *)cryptoImpl {
     if (!_cryptoImpl) {
         _cryptoImpl = [[MeetingCryptoImpl alloc] init];
     }

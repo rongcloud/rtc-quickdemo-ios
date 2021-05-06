@@ -26,7 +26,7 @@
 
 @implementation GPUImageHandle
 
--(instancetype)init {
+- (instancetype)init {
     if (self = [super init]) {
         
     }
@@ -159,7 +159,6 @@
     [self.outputCamera addTarget:self.gpuFilter];
     [self.gpuFilter addTarget:self.imageView];
     self.filter = self.gpuFilter;
-    
 }
 
 - (void)beautyAndWaterMark {
@@ -174,7 +173,6 @@
 }
 
 - (void)onlyWaterMark {
-    
     [self cleanAllFilter];
     self.gpuFilter = self.defaultFilter;
     [self.outputCamera addTarget:self.gpuFilter];
@@ -184,8 +182,8 @@
     [self.blendFilter addTarget:self.imageView];
     self.filter = self.blendFilter;
 }
-- (void)cleanAllFilter {
     
+- (void)cleanAllFilter {
     [_gpuFilter setFrameProcessingCompletionBlock:nil];
     [self.outputCamera removeTarget:self.gpuFilter];
     [self.uiElement removeTarget:self.blendFilter];

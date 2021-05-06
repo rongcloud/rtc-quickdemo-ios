@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
  - 通话已接通/已结束   实现 RCCallSessionDelegate 的代理方法
  - 接收到通话呼入 实现 RCCallReceiveDelegate 的回调方法
  */
-@interface CallLibViewController () <RCCallReceiveDelegate,RCCallSessionDelegate>
+@interface CallLibViewController () <RCCallReceiveDelegate, RCCallSessionDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *targetIdTextField;
 // 本地和远端视图
@@ -69,7 +69,6 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
     // 初始化 UI
     [self initView];
     
-    
     // 配置进入会议前的一些准备参数
     [self initConfig];
 }
@@ -89,7 +88,12 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 #pragma mark - Button Action
 // 发起呼叫
 - (IBAction)startCall:(UIButton *)sender {
-    _callSession = [[RCCallClient sharedRCCallClient] startCall:ConversationType_PRIVATE targetId:self.targetIdTextField.text to:@[self.targetIdTextField.text] mediaType:RCCallMediaVideo sessionDelegate:self extra:nil];
+    _callSession = [[RCCallClient sharedRCCallClient] startCall:ConversationType_PRIVATE
+                                                       targetId:self.targetIdTextField.text
+                                                             to:@[self.targetIdTextField.text]
+                                                      mediaType:RCCallMediaVideo
+                                                sessionDelegate:self
+                                                          extra:nil];
     [_callSession addDelegate:self];
     [_callSession setMinimized:NO];
     [_callSession setSpeakerEnabled:YES];
@@ -120,7 +124,6 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 #pragma mark - RCCallSessionDelegate
 // 通话已接通
 - (void)callDidConnect {
-    
     [self.callSession setVideoView:self.localView
                             userId:[RCCoreClient sharedCoreClient].currentUserInfo.userId];
     [self.callSession setVideoView:self.remoteView userId:self.callSession.targetId];
@@ -135,7 +138,6 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 #pragma mark - UI Status
 // UI 状态控制
 - (void)updateUIWithStatus:(RCRTCCallStatus)status {
-    
     [self.targetIdTextField resignFirstResponder];
     switch (status) {
         case RCRTCCallStatus_Normal:

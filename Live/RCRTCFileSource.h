@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RCRTCFileSource : NSObject <RCRTCVideoSourceInterface>
 
-@property (nonatomic,weak) id <RCRTCFileCapturerDelegate> delegate;
+@property (nonatomic, weak) id <RCRTCFileCapturerDelegate> delegate;
 
 @property (nonatomic, copy, readonly) NSString *currentPath;
 
