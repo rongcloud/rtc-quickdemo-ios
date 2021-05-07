@@ -23,7 +23,7 @@
  setRoleType   自定义的私有方法，区分主播/观众进入不同 UI 显示
  加入房间：
  主播
- 1.设置不切换听筒为扬声器
+ 1.设置切换听筒为扬声器
  2.添加本地采集预览界面
  3.加入RTC房间
  
@@ -41,7 +41,7 @@
  1.先清理视图
  2.退出房间
  3.加入 RTC 房间
-
+ 
  退出房间：主播/观众
  1.先清理视图
  2.退出房间
@@ -110,8 +110,6 @@
     [self setRoleType];
 }
 
-
-
 #pragma mark - startLive & watchLive
 
 /**
@@ -124,13 +122,10 @@
     _closeLiveBtn.selected = _liveRoleType;
     
     switch (_liveRoleType) {
+        // 当前直播角色为主播
         case RCRTCLiveRoleTypeBroadcaster:
             self.title = @"直播 Demo-主播端";
             [self disableClickWith:@[self.connectHostBtn]];
-            
-            /*!
-             当前直播角色为主播
-             */
             
             // 1.设置切换听筒为扬声器
             [self.engine enableSpeaker:YES];
@@ -142,6 +137,7 @@
             [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
             
             break;
+        // 当前直播角色为观众
         case RCRTCLiveRoleTypeAudience:
             self.title = @"直播 Demo-观众端";
             [self disableClickWith:@[self.closeCamera,
@@ -151,9 +147,7 @@
                                      self.beautyButton,
                                      self.pushLocalButton,
                                      self.waterMark]];
-            /*!
-             当前直播角色为观众
-             */
+
             // 1.设置切换听筒为扬声器
             [self.engine enableSpeaker:YES];
             // 2.加入 RTC 房间
@@ -167,8 +161,10 @@
 // 观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect {
     self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
+    
     // 1.先清理视图
     [self cleanRemoteContainer];
+    
     // 2.退出房间
     [self exitRoom];
     if (isConnect) {
@@ -184,7 +180,6 @@
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
     }
 }
-
 
 #pragma mark - setter & getter
 - (LiveStreamVideo *)localFileStreamVideo {
@@ -290,7 +285,6 @@
     [self.streamVideos addObject:self.localVideo];
     [self updateLayoutWithAnimation:YES];
 }
-
 
 // 清空视图
 - (void)cleanRemoteContainer {
@@ -431,12 +425,12 @@
     
     [self.room.localUser publishLiveStream:self.fileVideoOutputStream
                                 completion:^(BOOL isSuccess, RCRTCCode code, RCRTCLiveInfo * _Nullable liveInfo) {
-            if (code == RCRTCCodeSuccess) {
-                [self.streamVideos addObject:self.localFileStreamVideo];
-                [self updateLayoutWithAnimation:YES];
-            }
-            else {
-            }
+        if (code == RCRTCCodeSuccess) {
+            [self.streamVideos addObject:self.localFileStreamVideo];
+            [self updateLayoutWithAnimation:YES];
+        }
+        else {
+        }
     }];
 }
 
@@ -449,11 +443,11 @@
     }
     [self.room.localUser unpublishLiveStream:self.fileVideoOutputStream
                                   completion:^(BOOL isSuccess, RCRTCCode code) {
-            if (isSuccess) {
-                [self.streamVideos removeObject:self.localFileStreamVideo];
-                self.localFileStreamVideo = nil;
-                [self updateLayoutWithAnimation:YES];
-            }
+        if (isSuccess) {
+            [self.streamVideos removeObject:self.localFileStreamVideo];
+            self.localFileStreamVideo = nil;
+            [self updateLayoutWithAnimation:YES];
+        }
     }];
 }
 
@@ -492,45 +486,51 @@
             [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentViewController:self];
             return;
         }
-        // set delegate
+        
         self.room = room;
         room.delegate = self;
         
-        // 2.发布本地默认流
+        
         if (roleType == RCRTCLiveRoleTypeBroadcaster) {
+            
+            // 2.发布本地默认流
             [self publishLocalLiveAVStream];
             
-            // 如果需要美颜，可以在此获取采集的 buffer 回调
-            __weak typeof(self) weakSelf = self;
-            [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
-            ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                if (!strongSelf || (!strongSelf.openBeauty&&!strongSelf.openWaterMark) ) {
-                    return sampleBuffer;
-                }
-                
-                // 处理美颜，可以更换成第三方的 api
-                CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
-                return processedSampleBuffer ?: sampleBuffer;
-            };
+            // 设置视频纹理渲染
+            [self setBuffer];
             
-        }
-        // 3.1 单独订阅主播流
-        if (room.remoteUsers.count) {
-            NSMutableArray *streamArray = [NSMutableArray array];
-            for (RCRTCRemoteUser *user in room.remoteUsers) {
-                if (user.remoteStreams.count) {
-                    [streamArray addObjectsFromArray:user.remoteStreams];
-                    [self subscribeRemoteResource:streamArray];
+            // 3.1单独订阅主播流
+            if (room.remoteUsers.count) {
+                NSMutableArray *streamArray = [NSMutableArray array];
+                for (RCRTCRemoteUser *user in room.remoteUsers) {
+                    if (user.remoteStreams.count) {
+                        [streamArray addObjectsFromArray:user.remoteStreams];
+                        [self subscribeRemoteResource:streamArray];
+                    }
                 }
             }
-        }
-        // 3.2 订阅 live 合流
-        NSArray *liveStreams = [room getLiveStreams];
-        if (liveStreams.count) {
-            [self subscribeRemoteResource:liveStreams];
+        }else{
+            // 3.2 观众订阅 live 合流
+            NSArray *liveStreams = [room getLiveStreams];
+            if (liveStreams.count) {
+                [self subscribeRemoteResource:liveStreams];
+            }
         }
     }];
+}
+
+// 设置视频渲染纹理
+- (void) setBuffer {
+    __weak typeof(self) weakSelf = self;
+    [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
+    ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (!strongSelf || (!strongSelf.openBeauty&&!strongSelf.openWaterMark) ) {
+            return sampleBuffer;
+        }
+        CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
+        return processedSampleBuffer ?: sampleBuffer;
+    };
 }
 
 // 退出房间
@@ -605,7 +605,7 @@
             [UIAlertController alertWithString:errorStr inCurrentViewController:nil];
             return;
         }
-
+        
         // 创建并设置远端视频预览视图
         NSInteger i = 0;
         for (RCRTCInputStream *stream in streams) {
@@ -695,6 +695,7 @@
 
 // 新用户加入
 - (void)didJoinUser:(RCRTCRemoteUser *)user {
+    
 }
 
 // 离开

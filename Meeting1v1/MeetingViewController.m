@@ -38,7 +38,6 @@
 @property (nonatomic, assign) BOOL isFullScreen;
 @property (nonatomic, strong) MeetingCryptoImpl *cryptoImpl;
 
-
 @end
 
 @implementation MeetingViewController

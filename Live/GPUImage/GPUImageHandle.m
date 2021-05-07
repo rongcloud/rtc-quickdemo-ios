@@ -39,7 +39,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.watermarkImageView.frame = CGRectMake(20, 20, 80, 80);
-        self.watermarkImageView.hidden = isAdd ? YES : NO;
+        self.watermarkImageView.hidden = isAdd ? NO : YES;
     });
 }
 
