@@ -579,6 +579,15 @@
 }
 
 // 取消订阅远端流
+- (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams{
+    [self.room.localUser unsubscribeStreams:streams completion:^(BOOL isSuccess, RCRTCCode code) {
+            if (isSuccess) {
+                    [self unsubscribeRemoteResource:streams orStreamId:nil];
+            }
+    }];
+}
+
+// 取消订阅流 Id 所对应的 View
 - (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams orStreamId:(NSString *)streamId {
     for (RCRTCInputStream *stream in streams) {
         if (stream.mediaType == RTCMediaTypeVideo) {
@@ -680,7 +689,7 @@
 
 // 远端用户取消发布资源
 - (void)didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams {
-    [self unsubscribeRemoteResource:streams orStreamId:nil];
+    [self unsubscribeRemoteResource:streams];
 }
 
 // 直播合流发布
@@ -690,7 +699,7 @@
 
 // 直播合流取消发布
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams {
-    [self unsubscribeRemoteResource:streams orStreamId:nil];
+    [self unsubscribeRemoteResource:streams];
 }
 
 // 新用户加入
