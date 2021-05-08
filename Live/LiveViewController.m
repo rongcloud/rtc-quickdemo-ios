@@ -579,7 +579,7 @@
 }
 
 // 取消订阅远端流
-- (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams{
+- (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
     [self.room.localUser unsubscribeStreams:streams completion:^(BOOL isSuccess, RCRTCCode code) {
             if (isSuccess) {
                     [self unsubscribeRemoteResource:streams orStreamId:nil];
