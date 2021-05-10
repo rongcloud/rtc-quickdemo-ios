@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *roomId;
 
 /*!
- 是否开启自定义加密
+ 是否开启自定义加解密
  */
 @property (nonatomic, assign) BOOL enableCryptho;
 

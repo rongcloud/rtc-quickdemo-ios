@@ -10,7 +10,7 @@
 #import "Constant.h"
 #import "HomeViewController.h"
 
-#import <RongIMKit/RCIM.h>
+#import <RongIMLibCore/RongIMLibCore.h>
 
 /*!
  登录页面，用来处理 IM 登录逻辑
@@ -54,9 +54,8 @@
 // 初始化 Appkey 并 连接 IM
 - (void)connectRongCloud:(NSString *)token {
     
-    [[RCIM sharedRCIM] initWithAppKey:AppKey];
-    
-    [[RCIM sharedRCIM] connectWithToken:token dbOpened:nil success:^(NSString *userId) {
+    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey];
+    [[RCCoreClient sharedCoreClient] connectWithToken:token dbOpened:nil success:^(NSString *userId) {
         
         NSLog(@"IM connect success,user ID : %@",userId);
         // 回调处于子线程，需要回调到主线程进行 UI 处理。

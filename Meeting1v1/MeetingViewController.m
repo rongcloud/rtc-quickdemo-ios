@@ -67,10 +67,10 @@
      设置自定义加密代理
      如果参数为 nil 则关闭自定义加解密，如果参数非 nil 则打开自定义加解密
      */
-    [self.engine setAudioCustomizedDecryptorDelegate:self.cryptoImpl];
-    [self.engine setAudioCustomizedEncryptorDelegate:self.cryptoImpl];
-    [self.engine setVideoCustomizedDecryptorDelegate:self.cryptoImpl];
-    [self.engine setVideoCustomizedEncryptorDelegate:self.cryptoImpl];
+    [[RCRTCEngine sharedInstance] setAudioCustomizedDecryptorDelegate:self.cryptoImpl];
+    [[RCRTCEngine sharedInstance] setAudioCustomizedEncryptorDelegate:self.cryptoImpl];
+    [[RCRTCEngine sharedInstance] setVideoCustomizedDecryptorDelegate:self.cryptoImpl];
+    [[RCRTCEngine sharedInstance] setVideoCustomizedEncryptorDelegate:self.cryptoImpl];
 }
 
 #pragma mark - UI
@@ -113,15 +113,12 @@
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
     config.roomType = RCRTCRoomTypeNormal;
     
-    [self.engine enableSpeaker:YES];
+    [[RCRTCEngine sharedInstance] enableSpeaker:YES];
 
-    @WeakObj(self);
-    [self.engine joinRoom:self.roomId
+    [[RCRTCEngine sharedInstance] joinRoom:self.roomId
                    config:config
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
-                   @StrongObj(self);
                    if (code == RCRTCCodeSuccess) {
-                       
                        // 3. 加入成功后进行资源的发布和订阅
                        [self afterJoinRoom:room];
                    } else {
@@ -137,8 +134,8 @@
     room.delegate = self;
 
     // 开始本地视频采集
-    [[self.engine defaultVideoStream] setVideoView:self.localView];
-    [[self.engine defaultVideoStream] startCapture];
+    [[[RCRTCEngine sharedInstance] defaultVideoStream] setVideoView:self.localView];
+    [[[RCRTCEngine sharedInstance] defaultVideoStream] startCapture];
 
     // 发布本地视频流
     [room.localUser publishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
@@ -210,13 +207,13 @@
 // 麦克风静音
 - (IBAction)micMute:(UIButton *)sender {
     sender.selected = !sender.selected;
-    [self.engine.defaultAudioStream setMicrophoneDisable:sender.selected];
+    [[RCRTCEngine sharedInstance].defaultAudioStream setMicrophoneDisable:sender.selected];
 }
 
 // 切换摄像头
 - (IBAction)changeCamera:(UIButton *)sender {
     sender.selected = !sender.selected;
-    [self.engine.defaultVideoStream switchCamera];
+    [[RCRTCEngine sharedInstance].defaultVideoStream switchCamera];
 }
 
 // 挂断并离开
@@ -224,11 +221,11 @@
     // 4. 取消本地发布并关闭摄像头采集
     [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
     }];
-    [self.engine.defaultVideoStream stopCapture];
+    [[RCRTCEngine sharedInstance].defaultVideoStream stopCapture];
     [self.remoteView removeFromSuperview];
     
     // 5. 退出房间
-    [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
+    [[RCRTCEngine sharedInstance] leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
             [self.navigationController popViewControllerAnimated:YES];

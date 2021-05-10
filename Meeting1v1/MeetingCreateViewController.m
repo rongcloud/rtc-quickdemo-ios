@@ -35,7 +35,7 @@ static NSString * const MeetingViewControllerIdentifier = @"MeetingViewControlle
     self.navigationController.navigationBarHidden = NO;
 }
 
-// 是否开启自定义加
+// 是否开启自定义加解密
 - (IBAction)switchValueChanged:(UISwitch *)sender {
     _enableCrypto = !_enableCrypto;
     NSLog(@"click switch, _enableCrypto:%d",_enableCrypto);
