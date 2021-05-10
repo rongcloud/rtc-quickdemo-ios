@@ -2,7 +2,7 @@
 //  SampleHandler.m
 //  ScreenShare
 //
-//  Created by wangyanxu on 2021/4/28.
+//  Copyright © 2021 RongCloud. All rights reserved.
 //
 
 
