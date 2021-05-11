@@ -10,7 +10,6 @@
 #import <RongRTCLib/RongRTCLib.h>
 #import <RongIMLib/RongIMLib.h>
 #import "RequestToken.h"
-#import <RongIMKit/RCIM.h>
 #import "Constant.h"
 
 static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.screenshare";

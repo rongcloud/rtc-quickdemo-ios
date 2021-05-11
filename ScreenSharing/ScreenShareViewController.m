@@ -10,8 +10,8 @@
 #import "UIAlertController+RCRTC.h"
 #import <RongRTCLib/RongRTCLib.h>
 #import "RPSystemBroadcastPickerView+SearchButton.h"
-#import "LiveStreamVideo.h"
-#import "LiveVideoLayoutTool.h"
+#import "ScreenShareStreamVideo.h"
+#import "ScreenShareVideoLayoutTool.h"
 
 #define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -26,16 +26,16 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 
 @property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
 @property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic, strong) LiveStreamVideo *localView;
+@property (nonatomic, strong) ScreenShareStreamVideo *localView;
 @property (nonatomic, strong) RCRTCRemoteVideoView *remoteView;
-@property (nonatomic, strong) LiveStreamVideo *localShareView;
+@property (nonatomic, strong) ScreenShareStreamVideo *localShareView;
 @property (nonatomic, strong) RCRTCRemoteVideoView *remoteShareView;
 @property (nonatomic, strong) RCRTCVideoOutputStream *shareVideoOutputStream;
 @property (nonatomic, strong) RCRTCRoom *room;
 @property (nonatomic, strong) RCRTCEngine *engine;
 @property (nonatomic, strong) UIButton  *screenShareButton;
-@property (nonatomic) NSMutableArray <LiveStreamVideo *> *streamVideos;
-@property (nonatomic, strong) LiveVideoLayoutTool *layoutTool;
+@property (nonatomic) NSMutableArray <ScreenShareStreamVideo *> *streamVideos;
+@property (nonatomic, strong) ScreenShareVideoLayoutTool *layoutTool;
 
 @end
 
@@ -213,8 +213,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 // 创建并设置远端视频预览视图
-- (LiveStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
-    LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
+- (ScreenShareStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
+    ScreenShareStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
     RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
     remoteView.fillMode = RCRTCVideoFillModeAspectFit;
     
@@ -224,18 +224,18 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 // 判断是否已有预览视图
-- (LiveStreamVideo *)creatStreamVideoWithStreamId:(NSString *)streamId {
-    LiveStreamVideo *sVideo = [self fetchStreamVideoWithStreamId:streamId];
+- (ScreenShareStreamVideo *)creatStreamVideoWithStreamId:(NSString *)streamId {
+    ScreenShareStreamVideo *sVideo = [self fetchStreamVideoWithStreamId:streamId];
     if (!sVideo) {
-        sVideo = [[LiveStreamVideo alloc] initWithStreamId:streamId];
+        sVideo = [[ScreenShareStreamVideo alloc] initWithStreamId:streamId];
         [self.streamVideos insertObject:sVideo atIndex:0];
     }
     return sVideo;
 }
 
 // 根据 streamId 确认唯一的音视频流
-- (LiveStreamVideo *)fetchStreamVideoWithStreamId:(NSString *)streamId {
-    for (LiveStreamVideo *sVideo in self.streamVideos) {
+- (ScreenShareStreamVideo *)fetchStreamVideoWithStreamId:(NSString *)streamId {
+    for (ScreenShareStreamVideo *sVideo in self.streamVideos) {
         if ([streamId isEqualToString:sVideo.streamId]) {
             return sVideo;
         }
@@ -246,7 +246,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 // 远端掉线/离开回掉调用，删除远端用户的所有音视频流
 - (void)fetchStreamVideoOffLineWithStreamId:(NSString *)streamId {
     NSArray *arr = [NSArray arrayWithArray:self.streamVideos];
-    for (LiveStreamVideo *sVideo in arr) {
+    for (ScreenShareStreamVideo *sVideo in arr) {
         if ([streamId isEqualToString:sVideo.streamId]) {
             if (sVideo) {
                 [sVideo.canvesView removeFromSuperview];
@@ -291,9 +291,9 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 #pragma mark - setter && getter
-- (LiveStreamVideo *)localShareView {
+- (ScreenShareStreamVideo *)localShareView {
     if (!_localShareView) {
-        _localShareView = [LiveStreamVideo LocalStreamVideo];
+        _localShareView = [ScreenShareStreamVideo LocalStreamVideo];
     }
     return _localShareView;
 }
@@ -306,23 +306,23 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     return _engine;
 }
 
-- (NSMutableArray<LiveStreamVideo *> *)streamVideos {
+- (NSMutableArray<ScreenShareStreamVideo *> *)streamVideos {
     if (!_streamVideos) {
         _streamVideos = [NSMutableArray array];
     }
     return _streamVideos;
 }
 
-- (LiveStreamVideo *)localView {
+- (ScreenShareStreamVideo *)localView {
     if (!_localView) {
-        _localView = [LiveStreamVideo LocalStreamVideo];
+        _localView = [ScreenShareStreamVideo LocalStreamVideo];
     }
     return _localView;
 }
 
-- (LiveVideoLayoutTool *)layoutTool {
+- (ScreenShareVideoLayoutTool *)layoutTool {
     if (!_layoutTool) {
-        _layoutTool = [LiveVideoLayoutTool new];
+        _layoutTool = [ScreenShareVideoLayoutTool new];
     }
     return _layoutTool;
 }

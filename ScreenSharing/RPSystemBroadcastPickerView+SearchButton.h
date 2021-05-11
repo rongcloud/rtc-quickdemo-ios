@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RPSystemBroadcastPickerView (SearchButton)
 
-- (UIButton *)findButton;
+//- (UIButton *)findButton;
 
 @end
 
