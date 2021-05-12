@@ -44,4 +44,8 @@ static NSString * const ScreenShareViewControllerIdentifier = @"ScreenShareViewC
     [self.navigationController pushViewController:screenShareVC animated:YES];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.roomIdTextField resignFirstResponder];
+}
+
 @end
