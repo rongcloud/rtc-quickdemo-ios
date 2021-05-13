@@ -16,9 +16,6 @@
 #define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
-#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
-
 static NSString * const ScreenShareBuildID = @"cn.rongcloud.rtcquickdemo.screenshare";
 static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.screenshare";
 
@@ -99,16 +96,16 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     
     [self.engine enableSpeaker:YES];
 
-    @WeakObj(self);
+    __weak typeof(self) weakSelf = self;
     [self.engine joinRoom:self.roomId
                    config:config
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
-        @StrongObj(self);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code == RCRTCCodeSuccess) {
             // 3. 加入成功后进行资源的发布和订阅
             [self afterJoinRoom:room];
         } else {
-            [UIAlertController alertWithString:@"加入房间失败" inCurrentViewController:self];
+            [UIAlertController alertWithString:@"加入房间失败" inCurrentViewController:strongSelf];
         }
     }];
 }

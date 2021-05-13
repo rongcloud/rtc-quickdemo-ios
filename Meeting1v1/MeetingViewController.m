@@ -15,9 +15,6 @@
 #define kScreenWidth self.view.frame.size.width
 #define kScreenHeight self.view.frame.size.height
 
-#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
-#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
-
 /*!
  会议类
  基本功能包括：

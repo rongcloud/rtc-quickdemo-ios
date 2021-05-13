@@ -117,6 +117,7 @@
 		4FBD78CD26395A3300660733 /* BroadcastSetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcastSetupViewController.h; sourceTree = "<group>"; };
 		4FBD78CE26395A3300660733 /* BroadcastSetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcastSetupViewController.m; sourceTree = "<group>"; };
 		4FBD78D026395A3300660733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FE649C1264BE64B0031830E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4FFC2891264A7CF5008A83F9 /* ScreenShareVideoLayoutTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareVideoLayoutTool.h; sourceTree = "<group>"; };
 		4FFC2892264A7CF5008A83F9 /* ScreenShareVideoLayoutTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareVideoLayoutTool.m; sourceTree = "<group>"; };
 		4FFC2894264A7D7B008A83F9 /* ScreenShareStreamVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareStreamVideo.h; sourceTree = "<group>"; };
@@ -420,6 +421,7 @@
 		FEC3B326876A92E37BD3485E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FE649C1264BE64B0031830E /* Foundation.framework */,
 				DD59DE77262FC1B800A0C940 /* GPUImage.framework */,
 				89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */,
 				4FBD78BD26395A3200660733 /* ReplayKit.framework */,

@@ -14,10 +14,6 @@
 #import "GPUImageHandle.h"
 #import "RCRTCFileSource.h"
 
-
-#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
-#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
-
 /*!
  主播直播显 /观众观看直播
  setRoleType   自定义的私有方法，区分主播/观众进入不同 UI 显示
@@ -479,11 +475,11 @@
     config.liveType = RCRTCLiveTypeAudioVideo;
     config.roleType = roleType;
     [self.engine setStatusReportDelegate:self];
-    @WeakObj(self);
+    __weak typeof(self) weakSelf = self;
     [self.engine joinRoom:_roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
-        @StrongObj(self);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentViewController:self];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
             return;
         }
         
@@ -535,11 +531,11 @@
 
 // 退出房间
 - (void)exitRoom {
-    @WeakObj(self);
+    __weak typeof(self) weakSelf = self;
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
-        @StrongObj(self);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentViewController:self];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
         }
     }];
     
@@ -569,12 +565,12 @@
 
 // 自定义合流布局
 - (void)streamlayoutMode:(RCRTCMixLayoutMode)mode {
-    @WeakObj(self);
+    __weak typeof(self) weakSelf = self;
     RCRTCMixConfig *config = [LiveMixStreamTool setOutputConfig:mode];
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {
-        @StrongObj(self);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code == RCRTCCodeSuccess && isSuccess) return;
-        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentViewController:self];
+        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
     }];
 }
 

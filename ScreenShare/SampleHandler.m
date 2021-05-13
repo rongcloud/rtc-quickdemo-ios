@@ -46,7 +46,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     // User has requested to finish the broadcast.
 }
 
-- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType {
+- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType  API_AVAILABLE(ios(10.0)){
     switch (sampleBufferType) {
         case RPSampleBufferTypeVideo:
             // Handle video sample buffer
