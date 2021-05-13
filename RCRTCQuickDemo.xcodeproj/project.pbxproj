@@ -222,6 +222,19 @@
 			path = ScreenSharing;
 			sourceTree = "<group>";
 		};
+		4FA55F24264D124A0013061C /* LivingTool */ = {
+			isa = PBXGroup;
+			children = (
+				187F9E2C2628504A002E5288 /* LiveMixStreamTool.h */,
+				187F9E2A2628504A002E5288 /* LiveMixStreamTool.m */,
+				187F9E2F2628504A002E5288 /* LiveStreamVideo.h */,
+				187F9E2D2628504A002E5288 /* LiveStreamVideo.m */,
+				187F9E2E2628504A002E5288 /* LiveVideoLayoutTool.h */,
+				187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */,
+			);
+			path = LivingTool;
+			sourceTree = "<group>";
+		};
 		4FBD78BF26395A3200660733 /* ScreenShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,16 +402,11 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				DD59DE6C262FC1A500A0C940 /* GPUImage */,
+				4FA55F24264D124A0013061C /* LivingTool */,
 				4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */,
 				4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */,
 				4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */,
-				DD59DE6C262FC1A500A0C940 /* GPUImage */,
-				187F9E2C2628504A002E5288 /* LiveMixStreamTool.h */,
-				187F9E2A2628504A002E5288 /* LiveMixStreamTool.m */,
-				187F9E2F2628504A002E5288 /* LiveStreamVideo.h */,
-				187F9E2D2628504A002E5288 /* LiveStreamVideo.m */,
-				187F9E2E2628504A002E5288 /* LiveVideoLayoutTool.h */,
-				187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */,
 				DDEC583526270E810067D692 /* LiveCreateViewController.h */,
 				DDEC583626270E810067D692 /* LiveCreateViewController.m */,
 				DDEC583A26270ECA0067D692 /* LiveViewController.h */,
