@@ -103,8 +103,8 @@
 // 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset640x480;
-    videoConfig.videoFps = RCRTCVideoFPS15;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
+    videoConfig.videoFps = RCRTCVideoFPS30;
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
 
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
@@ -119,7 +119,11 @@
                        // 3. 加入成功后进行资源的发布和订阅
                        [self afterJoinRoom:room];
                    } else {
-                       [UIAlertController alertWithString:@"加入房间失败" inCurrentViewController:self];
+                       
+                       [self.navigationController popViewControllerAnimated:YES];
+                       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                           [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 \n error code:%ld",(long)code] inCurrentViewController:self];
+                       });
                    }
                }];
 }
@@ -215,18 +219,16 @@
 
 // 挂断并离开
 - (IBAction)clickHangup:(id)sender {
-    // 4. 取消本地发布并关闭摄像头采集
-    [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
-    }];
+    // 4. 关闭摄像头采集
     [[RCRTCEngine sharedInstance].defaultVideoStream stopCapture];
-    [self.remoteView removeFromSuperview];
     
     // 5. 退出房间
     [[RCRTCEngine sharedInstance] leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
-            [self.navigationController popViewControllerAnimated:YES];
         }
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

@@ -13,7 +13,7 @@
 #import "CallKitViewController.h"
 #import "HomeTableViewCell.h"
 
-#import <RongIMKit/RongIMKit.h>
+# import <RongIMLibCore/RongIMLibCore.h>
 
 /*!
  首页 包含集成的多种场景功能
@@ -22,7 +22,7 @@
  calllib: 根据 calllib 完成 1v1 呼叫功能
  callkit: 根据 callKit 完成 1v1 呼叫功能
  */
-@interface HomeViewController () <RCIMConnectionStatusDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface HomeViewController () <RCConnectionStatusChangeDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *currentUserLabel;
 
@@ -56,12 +56,12 @@
 }
 
 - (void)initUI {
-    self.currentUserLabel.text = [NSString stringWithFormat:@"User ID ：%@",[RCIM sharedRCIM].currentUserInfo.userId];
+    self.currentUserLabel.text = [NSString stringWithFormat:@"User ID ：%@",[RCCoreClient sharedCoreClient].currentUserInfo.userId];
 }
 
 - (void)setRongCloudDelegate {
     // 设置连接状态监听
-    [RCIM sharedRCIM].connectionStatusDelegate = self;
+    [[RCCoreClient sharedCoreClient] setRCConnectionStatusChangeDelegate:self];
 }
 
 #pragma mark - UITableView
@@ -89,7 +89,7 @@
 // 注销当前账户
 - (IBAction)logout:(UIButton *)sender {
     
-    [[RCIM sharedRCIM] logout];
+    [[RCCoreClient sharedCoreClient] logout];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -100,12 +100,14 @@
     [self.navigationController pushViewController:callKitVC animated:YES];
 }
 
-#pragma mark - RCIMConnectionStatusDelegate
-- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
+#pragma mark - RCConnectionStatusChangeDelegate
+- (void)onConnectionStatusChanged:(RCConnectionStatus)status{
     // 互踢提示
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        [UIAlertController alertWithString:@"当前用户在其他设备登陆" inCurrentViewController:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIAlertController alertWithString:@"当前用户在其他设备登陆" inCurrentViewController:nil];
+        });
     }
 }
 
