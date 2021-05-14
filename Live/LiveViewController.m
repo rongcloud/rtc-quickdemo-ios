@@ -531,6 +531,7 @@
 
 // 退出房间
 - (void)exitRoom {
+    [self.engine.defaultVideoStream stopCapture];
     __weak typeof(self) weakSelf = self;
     [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -571,15 +572,6 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code == RCRTCCodeSuccess && isSuccess) return;
         [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
-    }];
-}
-
-// 取消订阅远端流
-- (void)unsubscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
-    [self.room.localUser unsubscribeStreams:streams completion:^(BOOL isSuccess, RCRTCCode code) {
-            if (isSuccess) {
-                    [self unsubscribeRemoteResource:streams orStreamId:nil];
-            }
     }];
 }
 
@@ -685,7 +677,7 @@
 
 // 远端用户取消发布资源
 - (void)didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams {
-    [self unsubscribeRemoteResource:streams];
+    [self unsubscribeRemoteResource:streams orStreamId:nil];
 }
 
 // 直播合流发布
@@ -695,7 +687,7 @@
 
 // 直播合流取消发布
 - (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams {
-    [self unsubscribeRemoteResource:streams];
+    [self unsubscribeRemoteResource:streams orStreamId:nil];
 }
 
 // 新用户加入
