@@ -387,10 +387,8 @@
 // 发送本地自定义流
 - (void)publishLocalButtonAction:(UIButton *)button {
     button.selected = !button.selected;
-    
     if (button.selected) {
         [self startPublishVideoFile];
-        
     }
     else {
         [self stopPublishVideoFile];
@@ -408,7 +406,7 @@
     self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
     
     RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset320x240;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
     [self.fileVideoOutputStream setVideoConfig:videoConfig];
     [self.fileVideoOutputStream setVideoView:localFileVideoView];
     

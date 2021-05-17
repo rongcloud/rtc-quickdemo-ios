@@ -19,6 +19,7 @@
 static NSString * const ScreenShareBuildID = @"cn.rongcloud.rtcquickdemo.screenshare";
 static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.screenshare";
 
+API_AVAILABLE(ios(12.0))
 @interface ScreenShareViewController ()<RCRTCRoomEventDelegate>
 
 @property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
@@ -55,6 +56,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 - (void)initView {
     [self initMode];
     [self setupLocalVideoView];
+    [self initLeftBackButton];
 }
 
 // 添加本地采集预览界面
@@ -65,11 +67,24 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 
 // 添加录制按钮
 - (void)initMode {
-    self.systemBroadcastPickerView = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(0, 64, 50, 80)];
-    self.systemBroadcastPickerView.preferredExtension = ScreenShareBuildID;
-    self.systemBroadcastPickerView.backgroundColor = [UIColor colorWithRed:53.0/255.0 green:129.0/255.0 blue:242.0/255.0 alpha:1.0];
-    self.systemBroadcastPickerView.showsMicrophoneButton = NO;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.systemBroadcastPickerView ];
+    if (@available(iOS 12.0, *)) {
+        self.systemBroadcastPickerView = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(0, 64, 50, 80)];
+        self.systemBroadcastPickerView.preferredExtension = ScreenShareBuildID;
+        self.systemBroadcastPickerView.backgroundColor = [UIColor colorWithRed:53.0/255.0 green:129.0/255.0 blue:242.0/255.0 alpha:1.0];
+        self.systemBroadcastPickerView.showsMicrophoneButton = NO;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.systemBroadcastPickerView ];
+    } else {
+        // Fallback on earlier versions
+    }
+}
+
+- (void)initLeftBackButton {
+    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [backButton setTitle:@"退出会议" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backItemClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = backItem;
 }
 
 // 布局视图动画
@@ -87,8 +102,8 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 // 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset640x480;
-    videoConfig.videoFps = RCRTCVideoFPS15;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
+    videoConfig.videoFps = RCRTCVideoFPS30;
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
     
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
@@ -142,14 +157,20 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
 }
 
 // 离开房间
-- (void)viewWillDisappear:(BOOL)animated {
-    // 4. 取消本地发布并关闭摄像头采集
-    [self.room.localUser unpublishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
-    }];
-    [self.engine.defaultVideoStream stopCapture];
-    [self.remoteView removeFromSuperview];
+- (void)exitRoom {
+    // 判断当前用户是否在屏幕工共享
+    for (RCRTCRemoteUser *user in self.room.remoteUsers) {
+        NSString *screenUserId = [NSString stringWithFormat:@"%@RTC", self.room.localUser.userId];
+        if ([screenUserId isEqualToString:user.userId]) {
+            [UIAlertController alertWithString:@"当前用户仍在屏幕共享，请先关闭共享" inCurrentViewController:nil];
+            return;
+        }
+    }
     
-    // 5. 退出房间
+    // 取消本地发布并关闭摄像头采集
+    [self.engine.defaultVideoStream stopCapture];
+    
+    // 退出房间
     [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
@@ -287,6 +308,28 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     [rongCloudDefaults setObject:self.room.localUser.userId forKey:@"userId"];
 }
 
+#pragma mark - Event
+// 麦克风静音
+- (IBAction)micMute:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    [[RCRTCEngine sharedInstance].defaultAudioStream setMicrophoneDisable:sender.selected];
+}
+
+// 切换摄像头
+- (IBAction)changeCamera:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    [[RCRTCEngine sharedInstance].defaultVideoStream switchCamera];
+}
+
+// 挂断并离开
+- (IBAction)clickHangup:(id)sender {
+    [self exitRoom];
+}
+
+// 返回按钮
+- (void)backItemClick {
+    [self exitRoom];
+}
 #pragma mark - setter && getter
 - (ScreenShareStreamVideo *)localShareView {
     if (!_localShareView) {

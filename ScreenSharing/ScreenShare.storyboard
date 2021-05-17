@@ -19,16 +19,71 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZw-kw-S9E">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hI-cV-36r">
+                                <rect key="frame" x="0.0" y="747" width="414" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-PG-Nc3">
+                                        <rect key="frame" x="77" y="7.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="eLo-8y-stc"/>
+                                            <constraint firstAttribute="height" constant="50" id="nrq-ap-uva"/>
+                                        </constraints>
+                                        <state key="normal" image="mute.png"/>
+                                        <state key="selected" image="mute_hover.png"/>
+                                        <connections>
+                                            <action selector="micMute:" destination="krl-JN-mwr" eventType="touchUpInside" id="jgN-Nq-aGJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvi-PF-Wxz">
+                                        <rect key="frame" x="177" y="2.5" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="CHT-eb-sH8"/>
+                                            <constraint firstAttribute="width" constant="60" id="dw8-hQ-GEM"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="hang_up.png"/>
+                                        <connections>
+                                            <action selector="clickHangup:" destination="krl-JN-mwr" eventType="touchUpInside" id="QUw-pP-zW9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr8-8E-rHa">
+                                        <rect key="frame" x="287" y="7.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hBk-8X-huL"/>
+                                            <constraint firstAttribute="width" constant="50" id="owM-0l-ZXn"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="camera.png"/>
+                                        <state key="selected" image="camera_hover"/>
+                                        <connections>
+                                            <action selector="changeCamera:" destination="krl-JN-mwr" eventType="touchUpInside" id="wKz-dJ-gHC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="W2v-PG-Nc3" firstAttribute="top" secondItem="nr8-8E-rHa" secondAttribute="top" id="EQu-Cv-iT8"/>
+                                    <constraint firstItem="fvi-PF-Wxz" firstAttribute="centerX" secondItem="4hI-cV-36r" secondAttribute="centerX" id="Ma6-Ah-Ou9"/>
+                                    <constraint firstItem="nr8-8E-rHa" firstAttribute="leading" secondItem="fvi-PF-Wxz" secondAttribute="trailing" constant="50" id="MtC-NA-oPg"/>
+                                    <constraint firstItem="W2v-PG-Nc3" firstAttribute="centerY" secondItem="fvi-PF-Wxz" secondAttribute="centerY" id="WZr-Pg-8ZI"/>
+                                    <constraint firstItem="nr8-8E-rHa" firstAttribute="leading" secondItem="fvi-PF-Wxz" secondAttribute="trailing" constant="50" id="hsI-Wl-9bT"/>
+                                    <constraint firstAttribute="height" constant="65" id="nLE-To-8oa"/>
+                                    <constraint firstItem="fvi-PF-Wxz" firstAttribute="leading" secondItem="W2v-PG-Nc3" secondAttribute="trailing" constant="50" id="uUM-uf-BI8"/>
+                                    <constraint firstItem="W2v-PG-Nc3" firstAttribute="centerY" secondItem="4hI-cV-36r" secondAttribute="centerY" id="ubE-Ig-AYS"/>
+                                    <constraint firstItem="fvi-PF-Wxz" firstAttribute="leading" secondItem="W2v-PG-Nc3" secondAttribute="trailing" constant="50" id="xVm-la-Gtz"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lLY-y4-4Cr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kZw-kw-S9E" firstAttribute="top" secondItem="lLY-y4-4Cr" secondAttribute="top" id="0lf-Bn-6ch"/>
+                            <constraint firstItem="4hI-cV-36r" firstAttribute="trailing" secondItem="lLY-y4-4Cr" secondAttribute="trailing" id="5TF-sl-ESc"/>
                             <constraint firstItem="kZw-kw-S9E" firstAttribute="leading" secondItem="lLY-y4-4Cr" secondAttribute="leading" id="Zze-3u-hxZ"/>
                             <constraint firstItem="kZw-kw-S9E" firstAttribute="trailing" secondItem="lLY-y4-4Cr" secondAttribute="trailing" id="ci5-EW-rgu"/>
+                            <constraint firstItem="4hI-cV-36r" firstAttribute="leading" secondItem="lLY-y4-4Cr" secondAttribute="leading" id="dVP-i3-M8E"/>
                             <constraint firstAttribute="bottom" secondItem="kZw-kw-S9E" secondAttribute="bottom" id="iWW-Iv-6Gl"/>
+                            <constraint firstItem="lLY-y4-4Cr" firstAttribute="bottom" secondItem="4hI-cV-36r" secondAttribute="bottom" constant="50" id="vVm-m1-Ks2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -37,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6j-7j-8Lm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-509" y="-790"/>
+            <point key="canvasLocation" x="-510.14492753623193" y="-790.17857142857144"/>
         </scene>
         <!--Screen Share Create View Controller-->
         <scene sceneID="qrb-k6-c1P">
@@ -111,6 +166,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.png" width="60" height="60"/>
+        <image name="camera_hover" width="60" height="60"/>
+        <image name="hang_up.png" width="65" height="65"/>
+        <image name="mute.png" width="60" height="60"/>
+        <image name="mute_hover.png" width="60" height="60"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

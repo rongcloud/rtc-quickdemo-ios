@@ -111,7 +111,7 @@ static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.s
     self.videoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:@"RCRTCScreenVideo"];
     RCRTCVideoStreamConfig *videoConfig = self.videoOutputStream.videoConfig;
     videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
-    videoConfig.videoFps = RCRTCVideoFPS24;
+    videoConfig.videoFps = RCRTCVideoFPS30;
     [self.videoOutputStream setVideoConfig:videoConfig];
     [self.room.localUser publishStream:self.videoOutputStream
                             completion:^(BOOL isSuccess, RCRTCCode desc) {
