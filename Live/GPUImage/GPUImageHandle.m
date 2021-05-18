@@ -57,18 +57,21 @@
     
     if (!self.filter || !sampleBuffer)
         return nil;
-    
+    // 检查视频帧是否有效
     if (!CMSampleBufferIsValid(sampleBuffer))
         return nil;
     
-    
+    // 调用美颜滤镜方法，使用下一帧作为图片采集的来源
     [self.filter useNextFrameForImageCapture];
     CFRetain(sampleBuffer);
+    
+    // 美颜滤镜处理
     [self.outputCamera processVideoSampleBuffer:sampleBuffer];
     
     CMTime currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
     CFRelease(sampleBuffer);
     
+    // 获取美颜之后的视频帧，并构建 CMSampleBufferRef 对象传给 RTCLib，（注意，RTCLib 内部会自动对引用计数做减一操作）
     GPUImageFramebuffer *framebuff = [self.filter framebufferForOutput];
     CVPixelBufferRef pixelBuff = [framebuff pixelBuffer];
     CVPixelBufferLockBaseAddress(pixelBuff, 0);
@@ -85,6 +88,7 @@
     
     CFRelease(videoInfo);
     CVPixelBufferUnlockBaseAddress(pixelBuff, 0);
+    // 视频帧返回给 RTCLib 进行传输
     return processedSampleBuffer;
 }
 

@@ -546,9 +546,9 @@
 
 // 发布本地音视频流
 - (void)publishLocalLiveAVStream {
-    // 1.视频预览
+    // 1.初始化渲染视图
     RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
-    // 2.设置本地视频流
+    // 2.设置视频流的渲染视图
     [self.engine.defaultVideoStream setVideoView:view];
     // 3.开始摄像头采集
     [self.engine.defaultVideoStream startCapture];
