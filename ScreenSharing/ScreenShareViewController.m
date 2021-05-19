@@ -174,9 +174,10 @@ API_AVAILABLE(ios(12.0))
     [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
-            [self.navigationController popViewControllerAnimated:YES];
         }
+        [self.navigationController popViewControllerAnimated:YES];
     }];
+    
 }
 
 // 取消订阅远端流

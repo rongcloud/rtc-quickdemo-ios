@@ -227,7 +227,6 @@
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
         }
-        
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }
