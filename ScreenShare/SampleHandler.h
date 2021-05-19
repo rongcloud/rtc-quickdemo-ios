@@ -7,6 +7,7 @@
 
 #import <ReplayKit/ReplayKit.h>
 
+API_AVAILABLE(ios(10.0))
 @interface SampleHandler : RPBroadcastSampleHandler
 
 @end

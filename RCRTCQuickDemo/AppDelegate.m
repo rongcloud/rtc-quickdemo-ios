@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <RongIMLib/RongIMLib.h>
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
 
@@ -16,11 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self registerAPN];
     
     [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Verbose];
 //    [self redirectNSlogToDocumentFolder]; //只有在需要生成沙盒日志文件时才放开注释
     
-     // 未进行任何操作，直接进入 RCRTCLoginViewController 
+     // 未进行任何操作，直接进入 RCRTCLoginViewController
     return YES;
 }
 
@@ -39,5 +41,17 @@
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
 }
-
+// 注册通知，接收接听来电
+- (void)registerAPN {
+    
+    if (@available(iOS 10.0, *)) { // iOS10 以上
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            
+        }];
+    } else {// iOS8.0 以上
+        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:setting];
+    }
+}
 @end

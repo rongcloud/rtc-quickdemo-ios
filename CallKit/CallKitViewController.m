@@ -28,7 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    // 融云通话界面组件CallKit的核心类单例，请确保先被初始化
+    [RCCall sharedRCCall];
     /*!
      必要步骤：
      参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化

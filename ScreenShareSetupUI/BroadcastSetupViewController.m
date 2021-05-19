@@ -19,7 +19,11 @@
     NSDictionary *setupInfo = @{ @"broadcastName" : @"example" };
     
     // Tell ReplayKit that the extension is finished setting up and can begin broadcasting
-    [self.extensionContext completeRequestWithBroadcastURL:broadcastURL setupInfo:setupInfo];
+    if (@available(iOS 11.0, *)) {
+        [self.extensionContext completeRequestWithBroadcastURL:broadcastURL setupInfo:setupInfo];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)userDidCancelSetup {
