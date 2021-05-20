@@ -20,6 +20,7 @@
 		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
 		4FA987F7265608980070BD73 /* share.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA987F6265608980070BD73 /* share.md */; };
+		4FA987FB2656567B0070BD73 /* CallKit.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA987FA2656567B0070BD73 /* CallKit.md */; };
 		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
 		4FBD78C226395A3200660733 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD78C126395A3200660733 /* SampleHandler.m */; };
 		4FBD78D626395A3300660733 /* ScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78BC26395A3200660733 /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -100,6 +101,7 @@
 		4FA987F3265604F50070BD73 /* ScreenShareRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShareRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemoRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F6265608980070BD73 /* share.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = share.md; sourceTree = "<group>"; };
+		4FA987FA2656567B0070BD73 /* CallKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallKit.md; sourceTree = "<group>"; };
 		4FBD78BC26395A3200660733 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FBD78BD26395A3200660733 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		4FBD78C026395A3200660733 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		DD59DDFD262D2C9A00A0C940 /* CallKit */ = {
 			isa = PBXGroup;
 			children = (
+				4FA987FA2656567B0070BD73 /* CallKit.md */,
 				DD59DE03262D5BD900A0C940 /* CallKitViewController.h */,
 				DD59DE04262D5BD900A0C940 /* CallKitViewController.m */,
 				DD59DE00262D5BCD00A0C940 /* CallKit.storyboard */,
@@ -507,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FA987FB2656567B0070BD73 /* CallKit.md in Resources */,
 				DD81212A261DC26F00AF7D35 /* LaunchScreen.storyboard in Resources */,
 				DDEC584B2627EC290067D692 /* CallLib.storyboard in Resources */,
 				4FA987F7265608980070BD73 /* share.md in Resources */,

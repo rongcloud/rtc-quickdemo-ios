@@ -20,11 +20,9 @@
 
 5. 修改工程 `target` 中 `ScreenShare` 的 `Bundle Identifier`，例如：`cn.rongcloud.rtcquickdemo.screenshare`。
 
-6. 修改工程 `target` 中 `ScreenShareSetupUI` 的 `Bundle Identifier`，例如：`cn.rongcloud.rtcquickdemo.ScreenShareSetupUI`。
+6. 修改工程 `target` 中 `RCRTCQuickDemo` 和 `ScreenShare` 的 `App Group` 配置，修改为第 4 步和第 5 步新修改的 `Bundle Identifier`。
 
-7. 修改工程 `target` 中 `RCRTCQuickDemo` 和 `ScreenShare` 的 `App Group` 配置，修改为第 4 步和第 5 步新修改的 `Bundle Identifier`。
-
-8. 选择真机设备并编译 `RCRTCQuickDemo`。
+7. 选择真机设备并编译 `RCRTCQuickDemo`。
 
 > 直播在角色上分为观众端与主播端：
 
