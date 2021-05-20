@@ -21,6 +21,7 @@
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
 		4FA987F7265608980070BD73 /* share.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA987F6265608980070BD73 /* share.md */; };
 		4FA987FB2656567B0070BD73 /* CallKit.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA987FA2656567B0070BD73 /* CallKit.md */; };
+		4FA988382656728D0070BD73 /* meeting.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA988372656728D0070BD73 /* meeting.md */; };
 		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
 		4FBD78C226395A3200660733 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD78C126395A3200660733 /* SampleHandler.m */; };
 		4FBD78D626395A3300660733 /* ScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78BC26395A3200660733 /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -102,6 +103,7 @@
 		4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemoRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F6265608980070BD73 /* share.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = share.md; sourceTree = "<group>"; };
 		4FA987FA2656567B0070BD73 /* CallKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallKit.md; sourceTree = "<group>"; };
+		4FA988372656728D0070BD73 /* meeting.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = meeting.md; sourceTree = "<group>"; };
 		4FBD78BC26395A3200660733 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FBD78BD26395A3200660733 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		4FBD78C026395A3200660733 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		DD812148261DCC4600AF7D35 /* Meeting1v1 */ = {
 			isa = PBXGroup;
 			children = (
+				4FA988372656728D0070BD73 /* meeting.md */,
 				DD24DF50261EEB3900DC4665 /* MeetingCreateViewController.h */,
 				DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */,
 				DD24DFE126202F5100DC4665 /* MeetingViewController.h */,
@@ -518,6 +521,7 @@
 				DDEC583F26270EDA0067D692 /* Live.storyboard in Resources */,
 				DD59DE64262EF19300A0C940 /* RCRTCList.plist in Resources */,
 				4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */,
+				4FA988382656728D0070BD73 /* meeting.md in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
 				4F4BFF8426551D950038B8A6 /* living.md in Resources */,
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
