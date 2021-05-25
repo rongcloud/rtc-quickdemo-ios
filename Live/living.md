@@ -31,7 +31,7 @@
 1. 初始化 SDK 并连接融云服务器。可以参考 `/RCRTCQuickDemo/Home/LoginViewController.m`中的方法，通过 AppKey 与 token 并连接融云服务器。
 
 2. 连接 IM 服务成功后，主播端首先要进行房间配置的相关配置操作，需确定房间类型为直播类型以及直播角色类型为主播。
-'''
+```objectivec
 // 1.设置切换听筒为扬声器
 [self.engine enableSpeaker:YES];
 
@@ -79,11 +79,11 @@ __weak typeof(self) weakSelf = self;
         // 4. 如果是观众，订阅 live 合流
     }
 }];
-'''
+```
 
 4. 创建直播类型房间成功后，你需要创建并设置本地视频流的渲染图并添加在本地视图上，开启摄像头采集，并通过 block 返回的 `RCRTCRoom` 对象主播发布资源。
 
-'''
+```objectivec
 // 1.初始化渲染视图
 RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
 // 2.设置视频流的渲染视图
@@ -98,9 +98,9 @@ RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
         [UIAlertController alertWithString:@"本地流发布失败" inCurrentViewController:nil];
     }
 }];
-'''
+```
 5. 如果已经有远端用户在房间中，需要订阅远端（创建并设置远端视频流的渲染图并添加在本地视图上）。
-'''
+```objectivec
 // 3.1单独订阅主播流
 if (room.remoteUsers.count) {
     NSMutableArray *streamArray = [NSMutableArray array];
@@ -111,8 +111,9 @@ if (room.remoteUsers.count) {
         }
     }
 }
-'''
-'''
+```
+
+```objectivec
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams isTiny:(BOOL)isTiny {
     // 订阅房间中远端用户音视频流资源
     NSArray *tinyStream = isTiny ? streams : @[];
@@ -139,10 +140,10 @@ if (room.remoteUsers.count) {
         }
     }];
 }
-'''
+```
 
 6. 主播离开房间时调用 `RCRTCEngine` 中的 `leaveRoom: completion: `即可，离开房间时不需要取消订阅，SDK 内部会处理。
-'''
+```objectivec
 // 退出房间
 - (void)exitRoom {
     [self.engine.defaultVideoStream stopCapture];
@@ -159,13 +160,13 @@ if (room.remoteUsers.count) {
         [self stopPublishVideoFile];
     }
 }
-'''
+```
 # 观众端：
 
 1. 初始化 SDK 并连接融云服务器。可以参考 `/RCRTCQuickDemo/Home/LoginViewController.m`中的方法，通过 AppKey 与 token 并连接融云服务器。
 
 2. 连接 IM 服务成功后，观众端首先要进行房间配置的相关配置操作，需确定房间类型为直播类型以及直播角色类型为观众。
-'''
+```objectivec
 // 1. 设置切换听筒为扬声器
 [self.engine enableSpeaker:YES];
 
@@ -175,9 +176,9 @@ RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
 config.roomType = RCRTCRoomTypeLive;
 config.liveType = RCRTCLiveTypeAudioVideo;
 config.roleType = RCRTCLiveRoleTypeAudience;
-'''
+```
 3. 房间配置完成后，观众端首先调用 `RCRTCEngine` 的 `joinRoom: config: completion: `方法加入一个直播类型房间。
-'''
+```objectivec
 __weak typeof(self) weakSelf = self;
 [self.engine joinRoom:_roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
     __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -201,10 +202,10 @@ __weak typeof(self) weakSelf = self;
 
     }
 }];
-'''
+```
 4. 远端用户发布音视频流后，创建并设置远端视频流的渲染图并添加在本地视图上，然后可以通过加入房间后返回的 `RCRTCRoom` 中的 localUser 中的订阅方法订阅多路远端指定音视频流。同一个流只能填写在 avStreams 或 tinyStreams 中的一个数组中。
 
-'''
+```objectivec
 // 1. 设置切换听筒为扬声器
 [self.engine enableSpeaker:YES];
 
@@ -214,9 +215,9 @@ RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
 config.roomType = RCRTCRoomTypeLive;
 config.liveType = RCRTCLiveTypeAudioVideo;
 config.roleType = RCRTCLiveRoleTypeAudience;
-'''
+```
 3. 房间配置完成后，观众端首先调用 `RCRTCEngine` 的 `joinRoom: config: completion: `方法加入一个直播类型房间。
-'''
+```objectivec
 // 订阅房间中远端用户音视频流资源
 NSArray *tinyStream = isTiny ? streams : @[];
 NSArray *ordinaryStream = isTiny ? @[] : streams;
@@ -242,13 +243,13 @@ NSArray *ordinaryStream = isTiny ? @[] : streams;
         [self updateLayoutWithAnimation:YES];
     }
 }];
-'''
+```
 
 5. 观众可以调用 RCRTCRoom 中的取消订阅的方法，取消订阅该用户的音视频流。退出房间时不需要取消订阅，SDK 内部会处理。
 
 6. 观众离开房间时调用 `RCRTCEngine` 中的 `leaveRoom: completion: ` 即可，离开房间时不需要取消订阅，SDK 内部会处理。
 
-'''
+```objectivec
 // 退出房间
 - (void)exitRoom {
     [self.engine.defaultVideoStream stopCapture];
@@ -265,14 +266,11 @@ NSArray *ordinaryStream = isTiny ? @[] : streams;
         [self stopPublishVideoFile];
     }
 }
-'''
+```
 # 观众上下麦：
 
 观众上麦本质是观众先离开当前房间，然后再以主播身份加入房间，之后逻辑可参考主播端实现。
 观众下麦本质是观众上麦后（此时直播角色类型已变为主播），先离开房间，然后以观众身份加入房间，之后逻辑可参考观众端实现。
-
-**无论是主播端还是观众端，都需要加入相关事件回调来完成直播资源变化后的逻辑。**
-
 
 
 

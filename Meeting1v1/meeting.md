@@ -20,7 +20,7 @@
 1. 初始化 SDK 并连接融云服务器。
 
     参考 `/RCRTCQuickDemo/Home/LoginViewController.m`
-```
+```objectivec
 // 初始化 Appkey 并连接 IM
 - (void)connectRongCloud:(NSString *)token {
     
@@ -40,7 +40,7 @@
 
     参考 `/Meeting1v1/MeetingViewController.m`
 
-```
+```objectivec
 // 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
@@ -70,7 +70,7 @@
 
     参考 `/Meeting1v1/MeetingViewController.m`
 
-```
+```objectivec
 // 加入成功后进行资源发布和订阅
 - (void)afterJoinRoom:(RCRTCRoom *)room {
     // 设置房间代理
@@ -104,7 +104,7 @@
 
     参考 `/Meeting1v1/MeetingViewController.m`
 
-```
+```objectivec
 // 订阅房间中远端用户音视频流资源
 - (void)subscribeRemoteResource:(NSArray<RCRTCInputStream *> *)streams {
     [self.room.localUser subscribeStream:streams
@@ -130,7 +130,7 @@
 
     参考 `/Meeting1v1/MeetingViewController.m`
 
-```
+```objectivec
 #pragma mark - RCRTCRoomEventDelegate
 // 远端用户发布资源通知
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {

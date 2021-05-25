@@ -19,18 +19,18 @@
 2. 请先确保初始化该单例 '[RCCall sharedRCCall]'，只有初始化该单例才能进行拨打电话，接听来电等操作。
 
 3. 申请音频通话。
-'''
+```objectivec
 // 音频通话
 [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaAudio];
-'''
+```
 
 4. 申请视频通话。
-'''
+```objectivec
 // 视频通话
 [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaVideo];
-'''
+```
 5. 后台接听来电需要在 'AppDelegate.m' 里注册本地通知，可参考该 Demo 内的实现。
-'''
+```objectivec
 // 注册通知，接收接听来电
 - (void)registerAPN {
     // iOS10 以上
@@ -44,4 +44,4 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:setting];
     }
 }
-'''
+```

@@ -28,7 +28,7 @@
 
 **受限于 RongIMLib 库中的默认2分钟断开连接的限制, 需要修改如下 pod 路径下的 .plist 配置文件:**
 '/Pods/RongCloudIM/IMLibCore/RCConfig.plist'在此文件中添加:
-```
+```objectivec
 <key>Connection</key>
     <dict>
         <key>ForceKeepAlive</key>
@@ -49,7 +49,7 @@
 
 **示例代码：**
 
-```
+```objectivec
 // 添加录制按钮
 - (void)initMode {
     self.systemBroadcastPickerView = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(0, 64, 50, 80)];
@@ -64,7 +64,7 @@
 
 **示例代码：**
 
-```
+```objectivec
 // 屏幕共享 Groups 数据写入
 - (void)setAppGroup {
     // 此处 id 要与开发者中心创建时一致
@@ -81,7 +81,7 @@
 
 **示例代码：**
 
-```
+```objectivec
 - (void)getByAppGroup {
     // 此处 id 要与开发者中心创建时一致
     NSUserDefaults *rongCloudDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"你的屏幕共享 Extension 的 Group ID"];
@@ -95,7 +95,7 @@
 
 **示例代码：**
 
-```
+```objectivec
 [[RCIMClient sharedRCIMClient] initWithAppKey:AppKey];
     // 连接 IM
     [[RCIMClient sharedRCIMClient] connectWithToken:token
@@ -112,7 +112,7 @@
 
 **示例代码：**
 
-```
+```objectivec
 [[RCRTCEngine sharedInstance] joinRoom:self.roomId
                                 completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
     self.room = room;
@@ -128,7 +128,7 @@
 
 **示例代码：**
 
-``` 
+```objectivec
 self.videoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:@"RCRTCScreenVideo"];
 RCRTCVideoStreamConfig *videoConfig = self.videoOutputStream.videoConfig;
 videoConfig.videoSizePreset = RCRTCVideoSizePreset1920x1080;
@@ -145,7 +145,7 @@ videoConfig.videoFps = RCRTCVideoFPS24;
 
 **示例代码：**
 
-```
+```objectivec
 - (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType {
     switch (sampleBufferType) {
         case RPSampleBufferTypeVideo:
