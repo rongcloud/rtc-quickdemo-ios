@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
     // 初始化 UI
     [self initView];
     
-    // 配置进入会议前的一些准备参数
+    // 配置呼叫前的一些准备参数
     [self initConfig];
 }
 

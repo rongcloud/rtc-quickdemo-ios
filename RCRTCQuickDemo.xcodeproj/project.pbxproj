@@ -11,7 +11,6 @@
 		187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */; };
 		187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* LiveStreamVideo.m */; };
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
-		4F4BFF8426551D950038B8A6 /* living.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F4BFF8326551D950038B8A6 /* living.md */; };
 		4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C12639650F00872F2B /* ScreenShareViewController.m */; };
 		4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6925C32639651D00872F2B /* ScreenShare.storyboard */; };
 		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
@@ -19,9 +18,6 @@
 		4F852CC4263A945700570503 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
 		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
-		4FA987F7265608980070BD73 /* share.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA987F6265608980070BD73 /* share.md */; };
-		4FA987FB2656567B0070BD73 /* CallKit.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA987FA2656567B0070BD73 /* CallKit.md */; };
-		4FA988382656728D0070BD73 /* meeting.md in Resources */ = {isa = PBXBuildFile; fileRef = 4FA988372656728D0070BD73 /* meeting.md */; };
 		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
 		4FBD78C226395A3200660733 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD78C126395A3200660733 /* SampleHandler.m */; };
 		4FBD78D626395A3300660733 /* ScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FBD78BC26395A3200660733 /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -90,7 +86,7 @@
 		187F9E2F2628504A002E5288 /* LiveStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamVideo.h; sourceTree = "<group>"; };
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
-		4F4BFF8326551D950038B8A6 /* living.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = living.md; sourceTree = "<group>"; };
+		4F4BFF8326551D950038B8A6 /* Living.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Living.md; sourceTree = "<group>"; };
 		4F6925C02639650F00872F2B /* ScreenShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareViewController.h; sourceTree = "<group>"; };
 		4F6925C12639650F00872F2B /* ScreenShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareViewController.m; sourceTree = "<group>"; };
 		4F6925C32639651D00872F2B /* ScreenShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScreenShare.storyboard; sourceTree = "<group>"; };
@@ -103,7 +99,7 @@
 		4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemoRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F6265608980070BD73 /* share.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = share.md; sourceTree = "<group>"; };
 		4FA987FA2656567B0070BD73 /* CallKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallKit.md; sourceTree = "<group>"; };
-		4FA988372656728D0070BD73 /* meeting.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = meeting.md; sourceTree = "<group>"; };
+		4FA988372656728D0070BD73 /* Meeting.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Meeting.md; sourceTree = "<group>"; };
 		4FBD78BC26395A3200660733 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FBD78BD26395A3200660733 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		4FBD78C026395A3200660733 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
@@ -120,6 +116,7 @@
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.release.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.release.xcconfig"; sourceTree = "<group>"; };
+		DD1F6B48265E3980001C028F /* CallLib.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CallLib.md; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		DD24DF43261EAAD800DC4665 /* Constant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 		DD24DF50261EEB3900DC4665 /* MeetingCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetingCreateViewController.h; sourceTree = "<group>"; };
@@ -369,7 +366,7 @@
 		DD812148261DCC4600AF7D35 /* Meeting1v1 */ = {
 			isa = PBXGroup;
 			children = (
-				4FA988372656728D0070BD73 /* meeting.md */,
+				4FA988372656728D0070BD73 /* Meeting.md */,
 				DD24DF50261EEB3900DC4665 /* MeetingCreateViewController.h */,
 				DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */,
 				DD24DFE126202F5100DC4665 /* MeetingViewController.h */,
@@ -384,7 +381,7 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				4F4BFF8326551D950038B8A6 /* living.md */,
+				4F4BFF8326551D950038B8A6 /* Living.md */,
 				DD59DE6C262FC1A500A0C940 /* GPUImage */,
 				4FA55F24264D124A0013061C /* LivingTool */,
 				4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */,
@@ -405,6 +402,7 @@
 				DDEC58452627EC120067D692 /* CallLibViewController.h */,
 				DDEC58462627EC120067D692 /* CallLibViewController.m */,
 				DDEC584A2627EC290067D692 /* CallLib.storyboard */,
+				DD1F6B48265E3980001C028F /* CallLib.md */,
 			);
 			path = CallLib;
 			sourceTree = "<group>";
@@ -513,17 +511,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FA987FB2656567B0070BD73 /* CallKit.md in Resources */,
 				DD81212A261DC26F00AF7D35 /* LaunchScreen.storyboard in Resources */,
 				DDEC584B2627EC290067D692 /* CallLib.storyboard in Resources */,
-				4FA987F7265608980070BD73 /* share.md in Resources */,
 				4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */,
 				DDEC583F26270EDA0067D692 /* Live.storyboard in Resources */,
 				DD59DE64262EF19300A0C940 /* RCRTCList.plist in Resources */,
 				4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */,
-				4FA988382656728D0070BD73 /* meeting.md in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
-				4F4BFF8426551D950038B8A6 /* living.md in Resources */,
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
 				DD812125261DC26B00AF7D35 /* Login.storyboard in Resources */,
