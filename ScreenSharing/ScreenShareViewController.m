@@ -9,7 +9,6 @@
 #import <ReplayKit/ReplayKit.h>
 #import "UIAlertController+RCRTC.h"
 #import <RongRTCLib/RongRTCLib.h>
-#import "RPSystemBroadcastPickerView+SearchButton.h"
 #import "ScreenShareStreamVideo.h"
 #import "ScreenShareVideoLayoutTool.h"
 
