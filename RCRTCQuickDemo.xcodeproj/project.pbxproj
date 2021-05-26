@@ -97,7 +97,7 @@
 		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
 		4FA987F3265604F50070BD73 /* ScreenShareRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShareRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemoRelease.entitlements; sourceTree = "<group>"; };
-		4FA987F6265608980070BD73 /* share.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = share.md; sourceTree = "<group>"; };
+		4FA987F6265608980070BD73 /* ScreenShare.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ScreenShare.md; sourceTree = "<group>"; };
 		4FA987FA2656567B0070BD73 /* CallKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallKit.md; sourceTree = "<group>"; };
 		4FA988372656728D0070BD73 /* Meeting.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Meeting.md; sourceTree = "<group>"; };
 		4FBD78BC26395A3200660733 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,7 +189,7 @@
 		4F6925952639643A00872F2B /* ScreenSharing */ = {
 			isa = PBXGroup;
 			children = (
-				4FA987F6265608980070BD73 /* share.md */,
+				4FA987F6265608980070BD73 /* ScreenShare.md */,
 				4FA987F5265607C50070BD73 /* ShareTool */,
 				4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */,
 				4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */,
