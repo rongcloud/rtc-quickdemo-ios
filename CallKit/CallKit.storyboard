@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Call Kit View Controller-->
+        <scene sceneID="NA1-xJ-70o">
+            <objects>
+                <viewController storyboardIdentifier="CallKitViewController" id="9uf-2y-U8d" customClass="CallKitViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AMu-3h-4Xk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入对方 ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81H-lN-9ZE">
+                                <rect key="frame" x="30" y="124" width="354" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOT-HX-VcI">
+                                <rect key="frame" x="30" y="172" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DTE-3d-c4K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                <connections>
+                                    <action selector="keyboardHide:" destination="9uf-2y-U8d" eventType="editingDidEndOnExit" id="7yy-ih-m66"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8t-FY-7aZ">
+                                <rect key="frame" x="30" y="262" width="152" height="54.5"/>
+                                <color key="backgroundColor" red="0.6588235294" green="0.81568627449999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q8t-FY-7aZ" secondAttribute="height" multiplier="140:50" id="JLq-8o-li4"/>
+                                </constraints>
+                                <state key="normal" title="语音通话"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="callMediaAudio:" destination="9uf-2y-U8d" eventType="touchUpInside" id="G8H-wo-Gms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UU0-ZZ-ODL">
+                                <rect key="frame" x="232" y="262" width="152" height="54.5"/>
+                                <color key="backgroundColor" red="0.6588235294" green="0.81568627449999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="视频通话"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="callMediaVideo:" destination="9uf-2y-U8d" eventType="touchUpInside" id="2p9-w6-7ix"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="15Z-tf-NQd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="15Z-tf-NQd" firstAttribute="trailing" secondItem="81H-lN-9ZE" secondAttribute="trailing" constant="30" id="1qT-Vf-aMS"/>
+                            <constraint firstItem="UU0-ZZ-ODL" firstAttribute="height" secondItem="q8t-FY-7aZ" secondAttribute="height" id="9F6-3v-8yr"/>
+                            <constraint firstItem="UU0-ZZ-ODL" firstAttribute="width" secondItem="q8t-FY-7aZ" secondAttribute="width" id="GCF-w4-t27"/>
+                            <constraint firstItem="UU0-ZZ-ODL" firstAttribute="leading" secondItem="q8t-FY-7aZ" secondAttribute="trailing" constant="50" id="HMs-bC-Nx6"/>
+                            <constraint firstItem="UU0-ZZ-ODL" firstAttribute="centerY" secondItem="q8t-FY-7aZ" secondAttribute="centerY" id="UJV-pf-DcE"/>
+                            <constraint firstItem="kOT-HX-VcI" firstAttribute="top" secondItem="81H-lN-9ZE" secondAttribute="bottom" constant="30" id="agc-eN-cIk"/>
+                            <constraint firstItem="q8t-FY-7aZ" firstAttribute="leading" secondItem="15Z-tf-NQd" secondAttribute="leading" constant="30" id="gQq-rZ-HOW"/>
+                            <constraint firstItem="15Z-tf-NQd" firstAttribute="trailing" secondItem="UU0-ZZ-ODL" secondAttribute="trailing" constant="30" id="itZ-bC-fB0"/>
+                            <constraint firstItem="81H-lN-9ZE" firstAttribute="top" secondItem="15Z-tf-NQd" secondAttribute="top" constant="80" id="j9U-Ij-dXo"/>
+                            <constraint firstItem="81H-lN-9ZE" firstAttribute="leading" secondItem="15Z-tf-NQd" secondAttribute="leading" constant="30" id="joa-Gr-jBh"/>
+                            <constraint firstItem="15Z-tf-NQd" firstAttribute="trailing" secondItem="kOT-HX-VcI" secondAttribute="trailing" constant="30" id="mfY-Wj-gnB"/>
+                            <constraint firstItem="kOT-HX-VcI" firstAttribute="leading" secondItem="15Z-tf-NQd" secondAttribute="leading" constant="30" id="yAB-w3-rve"/>
+                            <constraint firstItem="q8t-FY-7aZ" firstAttribute="top" secondItem="kOT-HX-VcI" secondAttribute="bottom" constant="50" id="ya1-8O-jd5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="callMediaAudio" destination="q8t-FY-7aZ" id="NFF-gV-cok"/>
+                        <outlet property="callMediaVideo" destination="UU0-ZZ-ODL" id="mqw-TQ-Pa3"/>
+                        <outlet property="useridTextField" destination="kOT-HX-VcI" id="LoD-Q2-55p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ok4-L4-cVT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-462.31884057971018" y="105.80357142857143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,53 +1,22 @@
+# Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
-use_frameworks!
 
-workspace 'rtc-quickdemo-ios'
+source 'https://github.com/CocoaPods/Specs.git'
 
-project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
-project 'quickdemo-live/quickdemo-live.xcodeproj'
-project 'quickdemo-live/quickdemo-live-pk.xcodeproj'
-project 'quickdemo-callKit/quickdemo-callkit.xcodeproj'
-project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
-project 'quickdemo-imkit-callkit/quickdemo-imkit-callkit.xcodeproj'
-project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
+target 'RCRTCQuickDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
 
-abstract_target 'CommonPods' do
-    use_frameworks!
-    platform :ios, '9.0'
+  # Pods for RCRTCQuickDemo
+  pod 'RongCloudRTC', '~> 5.1.2'
 
-    target 'quickdemo-meeting-1v1' do
-        project 'quickdemo-meeting-1v1/quickdemo-meeting-1v1.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
+end
 
-    target 'quickdemo-live' do
-        project 'quickdemo-live/quickdemo-live.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
+target 'ScreenShare' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
 
-    target 'quickdemo-live-pk' do
-        platform :ios, '9.0'
-        project 'quickdemo-live-pk/quickdemo-live-pk.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
+  # Pods for RCRTCQuickDemo
+  pod 'RongCloudRTC', '~> 5.1.2'
 
-    target 'quickdemo-imkit-callkit' do
-        project 'quickdemo-imkit-callkit/quickdemo-imkit-callkit.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
-
-    target 'quickdemo-callkit' do
-        project 'quickdemo-callkit/quickdemo-callkit.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
-
-    target 'quickdemo-calllib' do
-        project 'quickdemo-calllib/quickdemo-calllib.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
-
-    target 'quickdemo-meeting-beauty' do
-        project 'quickdemo-meeting-beauty/quickdemo-meeting-beauty.xcodeproj'
-        pod 'RongCloudRTC', '~> 5.1.0'
-    end
 end
