@@ -1,0 +1,6 @@
+framework module RongBeautyPlugin {
+  umbrella header "RongBeautyPlugin.h"
+
+  export *
+  module * { export * }
+}

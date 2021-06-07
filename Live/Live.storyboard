@@ -226,8 +226,7 @@
                                             <constraint firstAttribute="height" constant="40" id="fRb-rk-RFA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="开启美颜"/>
-                                        <state key="selected" title="关闭美颜"/>
+                                        <state key="normal" title="美颜"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>

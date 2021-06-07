@@ -1,5 +1,5 @@
 //
-//  LiveViewController.m
+//  LiveViewController.m,
 //  RCRTCQuickDemo
 //
 //  Copyright © 2021 RongCloud. All rights reserved.
@@ -13,6 +13,8 @@
 #import "LiveMixStreamTool.h"
 #import "GPUImageHandle.h"
 #import "RCRTCFileSource.h"
+#import "BeautyMenusView.h"
+#import <RongBeautyPlugin/RongBeautyPlugin.h>
 
 /*!
  主播直播显 /观众观看直播
@@ -54,7 +56,7 @@
  stopPublishVideoFile 取消发布自定义视频流
  */
 
-@interface LiveViewController ()<RCRTCRoomEventDelegate,RCRTCStatusReportDelegate,RCRTCFileCapturerDelegate>
+@interface LiveViewController ()<RCRTCRoomEventDelegate,RCRTCStatusReportDelegate,RCRTCFileCapturerDelegate,BeautyMenusViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *remoteContainerView;
 @property (nonatomic, weak) IBOutlet UIButton *closeCamera;
@@ -65,6 +67,7 @@
 @property (nonatomic, nonatomic) IBOutlet UIButton *connectHostBtn;
 @property (nonatomic, nonatomic) IBOutlet UIButton *waterMark;
 @property (nonatomic, nonatomic) IBOutlet UIButton *beautyButton;
+
 @property (nonatomic, assign) BOOL openWaterMark;
 @property (nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
 @property (nonatomic, strong) RCRTCRoom *room;
@@ -84,6 +87,8 @@
 @property (strong, nonatomic) RCRTCEngine *engine;
 // 美颜状态
 @property(nonatomic, assign) BOOL openBeauty;
+
+@property (nonatomic, strong) BeautyMenusView *vBeautyMenus;
 
 @end
 
@@ -231,6 +236,14 @@
     return _gpuImageHandler;
 }
 
+- (BeautyMenusView *)vBeautyMenus {
+    if (!_vBeautyMenus) {
+        _vBeautyMenus = [[BeautyMenusView alloc] initWithFrame:self.view.bounds];
+        _vBeautyMenus.delegate = self;
+    }
+    return _vBeautyMenus;
+}
+
 #pragma mark - UI
 /*!
  设置导航左侧发布按钮
@@ -298,6 +311,8 @@
     // 2.退出房间
     [self exitRoom];
     [self.navigationController popViewControllerAnimated:YES];
+    // 3.重置美颜
+    [[RCRTCBeautyEngine sharedInstance] reset];
 }
 
 // 上麦/下麦状态判断
@@ -370,10 +385,25 @@
 
 // 切换美颜
 - (IBAction)beautyAction:(UIButton *)sender {
+    /* 使用美狐美颜，保留GPUImage，不影响水印功能
     sender.selected = !sender.selected;
     self.openBeauty = sender.selected;
     [self changeFliterIsOpenBearty:self.openBeauty isOpenWarkMark:self.openWaterMark];
+    */
+    if (!self.vBeautyMenus.isShowing) {
+        [self.vBeautyMenus showWithViewController:self];
+    }
 }
+
+// 美颜Switch开关
+- (IBAction)didClickBeautySwitch:(UISwitch *)sender {
+    if (sender.isOn) {
+        
+    } else {
+        
+    }
+}
+
 
 // 添删水印
 - (IBAction)waterMark:(UIButton *)sender {
@@ -717,6 +747,68 @@
 - (void)didReadCompleted {
     RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
     [localFileVideoView flushVideoView];
+}
+
+#pragma mark - BeautyMenusViewDelegate
+- (void)beautyMenusView:(BeautyMenusView *)beautyMenusView
+             didChanged:(BeautyMenusType)type
+                  value:(NSInteger)value {
+    if (type == BeautyMenusType_Filter) {
+        RCRTCBeautyFilter beautyFilter = value;
+        [[RCRTCBeautyEngine sharedInstance] setBeautyFilter:beautyFilter];
+    } else {
+        RCRTCBeautyOption *option = [[RCRTCBeautyEngine sharedInstance] getCurrentBeautyOption];
+        switch (type) {
+            case BeautyMenusType_Whiteness:
+                option.whitenessLevel = value;
+                break;
+            case BeautyMenusType_Smooth:
+                option.smoothLevel = value;
+                break;
+            case BeautyMenusType_Ruddy:
+                option.ruddyLevel = value;
+                break;
+            case BeautyMenusType_Bright:
+                option.brightLevel = value;
+                break;
+            default:
+                break;
+        }
+        [[RCRTCBeautyEngine sharedInstance] setBeautyOption:YES option:option];
+    }
+}
+
+- (void)beautyMenusView:(BeautyMenusView *)beautyMenusView
+       didChangedParams:(NSArray<BeautyMenusViewParam *> *)params {
+    if (params) {
+        __block RCRTCBeautyFilter beautyFilter = RCRTCBeautyFilterNone;
+        RCRTCBeautyOption *option = [[RCRTCBeautyEngine sharedInstance] getCurrentBeautyOption];
+        [params enumerateObjectsUsingBlock:^(BeautyMenusViewParam * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            switch (obj.type) {
+                case BeautyMenusType_Filter:
+                    beautyFilter = obj.value;
+                    break;
+                case BeautyMenusType_Whiteness:
+                    option.whitenessLevel = obj.value;
+                    break;
+                case BeautyMenusType_Ruddy:
+                    option.ruddyLevel = obj.value;
+                    break;
+                case BeautyMenusType_Smooth:
+                    option.smoothLevel = obj.value;
+                    break;
+                case BeautyMenusType_Bright:
+                    option.brightLevel = obj.value;
+                    break;
+                default:
+                    break;
+            }
+        }];
+        [[RCRTCBeautyEngine sharedInstance] setBeautyOption:YES option:option];
+        [[RCRTCBeautyEngine sharedInstance] setBeautyFilter:beautyFilter];
+    } else {
+        [[RCRTCBeautyEngine sharedInstance] reset];
+    }
 }
 
 #pragma mark - private method
