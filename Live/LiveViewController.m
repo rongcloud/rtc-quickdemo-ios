@@ -385,25 +385,10 @@
 
 // 切换美颜
 - (IBAction)beautyAction:(UIButton *)sender {
-    /* 使用美狐美颜，保留GPUImage，不影响水印功能
-    sender.selected = !sender.selected;
-    self.openBeauty = sender.selected;
-    [self changeFliterIsOpenBearty:self.openBeauty isOpenWarkMark:self.openWaterMark];
-    */
     if (!self.vBeautyMenus.isShowing) {
         [self.vBeautyMenus showWithViewController:self];
     }
 }
-
-// 美颜Switch开关
-- (IBAction)didClickBeautySwitch:(UISwitch *)sender {
-    if (sender.isOn) {
-        
-    } else {
-        
-    }
-}
-
 
 // 添删水印
 - (IBAction)waterMark:(UIButton *)sender {

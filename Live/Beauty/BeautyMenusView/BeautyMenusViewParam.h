@@ -2,7 +2,7 @@
 //  BeautyMenusViewParam.h
 //  RCRTCQuickDemo
 //
-//  Created by joyoki on 2021/6/7.
+//  Created by RongCloud on 2021/6/7.
 //
 
 #import <Foundation/Foundation.h>
