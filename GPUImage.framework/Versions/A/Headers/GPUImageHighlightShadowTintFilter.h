@@ -8,8 +8,7 @@
 
 #import "GPUImageFilter.h"
 
-@interface GPUImageHighlightShadowTintFilter : GPUImageFilter
-{
+@interface GPUImageHighlightShadowTintFilter : GPUImageFilter {
     GLint shadowTintIntensityUniform, highlightTintIntensityUniform, shadowTintColorUniform, highlightTintColorUniform;
 }
 
@@ -20,6 +19,7 @@
 @property(readwrite, nonatomic) GPUVector4 highlightTintColor;
 
 - (void)setShadowTintColorRed:(GLfloat)redComponent green:(GLfloat)greenComponent blue:(GLfloat)blueComponent alpha:(GLfloat)alphaComponent;
+
 - (void)setHighlightTintColorRed:(GLfloat)redComponent green:(GLfloat)greenComponent blue:(GLfloat)blueComponent alpha:(GLfloat)alphaComponent;
 
 @end

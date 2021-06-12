@@ -8,14 +8,14 @@
 #import "ScreenShareCreateViewController.h"
 #import "ScreenShareViewController.h"
 
-static NSString * const ScreenShareViewControllerIdentifier = @"ScreenShareViewController";
+static NSString *const ScreenShareViewControllerIdentifier = @"ScreenShareViewController";
 
 @interface ScreenShareCreateViewController () {
     BOOL _enableCrypto;
 }
 
 // 房间 ID 输入框
-@property (nonatomic, weak) IBOutlet UITextField *roomIdTextField;
+@property(nonatomic, weak) IBOutlet UITextField *roomIdTextField;
 
 @end
 
@@ -38,7 +38,7 @@ static NSString * const ScreenShareViewControllerIdentifier = @"ScreenShareViewC
         return;
     }
     [self.roomIdTextField resignFirstResponder];
-    
+
     ScreenShareViewController *screenShareVC = [self.storyboard instantiateViewControllerWithIdentifier:ScreenShareViewControllerIdentifier];
     screenShareVC.roomId = self.roomIdTextField.text;
     [self.navigationController pushViewController:screenShareVC animated:YES];

@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageTransformFilter : GPUImageFilter
-{
+@interface GPUImageTransformFilter : GPUImageFilter {
     GLint transformMatrixUniform, orthographicMatrixUniform;
     GPUMatrix4x4 orthographicMatrix;
 }

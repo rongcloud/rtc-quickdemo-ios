@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImagePixellateFilter : GPUImageFilter
-{
+@interface GPUImagePixellateFilter : GPUImageFilter {
     GLint fractionalWidthOfAPixelUniform, aspectRatioUniform;
 }
 

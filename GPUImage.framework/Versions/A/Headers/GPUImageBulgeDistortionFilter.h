@@ -1,8 +1,7 @@
 #import "GPUImageFilter.h"
 
 /// Creates a bulge distortion on the image
-@interface GPUImageBulgeDistortionFilter : GPUImageFilter
-{
+@interface GPUImageBulgeDistortionFilter : GPUImageFilter {
     GLint aspectRatioUniform, radiusUniform, centerUniform, scaleUniform;
 }
 

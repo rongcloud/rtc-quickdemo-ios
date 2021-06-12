@@ -22,14 +22,13 @@
 
 //#define DEBUGLINEDETECTION
 
-@interface GPUImageHoughTransformLineDetector : GPUImageFilterGroup
-{
-    GPUImageOutput<GPUImageInput> *thresholdEdgeDetectionFilter;
-    
+@interface GPUImageHoughTransformLineDetector : GPUImageFilterGroup {
+    GPUImageOutput <GPUImageInput> *thresholdEdgeDetectionFilter;
+
 //    GPUImageThresholdEdgeDetectionFilter *thresholdEdgeDetectionFilter;
     GPUImageParallelCoordinateLineTransformFilter *parallelCoordinateLineTransformFilter;
     GPUImageThresholdedNonMaximumSuppressionFilter *nonMaximumSuppressionFilter;
-    
+
     GLfloat *linesArray;
     GLubyte *rawImagePixels;
 }
@@ -41,7 +40,7 @@
 @property(readwrite, nonatomic) CGFloat lineDetectionThreshold;
 
 // This block is called on the detection of lines, usually on every processed frame. A C array containing normalized slopes and intercepts in m, b pairs (y=mx+b) is passed in, along with a count of the number of lines detected and the current timestamp of the video frame
-@property(nonatomic, copy) void(^linesDetectedBlock)(GLfloat* lineArray, NSUInteger linesDetected, CMTime frameTime);
+@property(nonatomic, copy) void (^linesDetectedBlock)(GLfloat *lineArray, NSUInteger linesDetected, CMTime frameTime);
 
 // These images are only enabled when built with DEBUGLINEDETECTION defined, and are used to examine the intermediate states of the Hough transform
 @property(nonatomic, readonly, strong) NSMutableArray *intermediateImages;

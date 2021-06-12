@@ -10,17 +10,17 @@
 
 @interface GPUImageHandle ()
 
-@property (nonatomic, strong) GPUImageBeautyFilter *beautyFilter;
-@property (nonatomic, strong) GPUImageOutputCamera *outputCamera;
-@property (nonatomic, strong) GPUImageView *imageView;
-@property (nonatomic, strong) GPUImageFilter *filter, *defaultFilter;
-@property (nonatomic, weak) GPUImageFilter *gpuFilter;
-@property (nonatomic, strong) GPUImageUIElement *uiElement;
-@property (nonatomic, strong) GPUImageAlphaBlendFilter *blendFilter;
-@property (nonatomic, strong) UIImageView *watermarkImageView;
-@property (nonatomic, assign) CGFloat videoWidth, videoHeight;
-@property (nonatomic, strong) UIView *contentView;
-@property (nonatomic, assign) BOOL isTransform, isBackCamera;
+@property(nonatomic, strong) GPUImageBeautyFilter *beautyFilter;
+@property(nonatomic, strong) GPUImageOutputCamera *outputCamera;
+@property(nonatomic, strong) GPUImageView *imageView;
+@property(nonatomic, strong) GPUImageFilter *filter, *defaultFilter;
+@property(nonatomic, weak) GPUImageFilter *gpuFilter;
+@property(nonatomic, strong) GPUImageUIElement *uiElement;
+@property(nonatomic, strong) GPUImageAlphaBlendFilter *blendFilter;
+@property(nonatomic, strong) UIImageView *watermarkImageView;
+@property(nonatomic, assign) CGFloat videoWidth, videoHeight;
+@property(nonatomic, strong) UIView *contentView;
+@property(nonatomic, assign) BOOL isTransform, isBackCamera;
 
 @end
 
@@ -28,16 +28,16 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        
+
     }
     return self;
 }
 
 #pragma mark- GPUImage
-- (void)rotateWaterMark:(BOOL)isAdd
-{
+
+- (void)rotateWaterMark:(BOOL)isAdd {
     dispatch_async(dispatch_get_main_queue(), ^{
-        
+
         self.watermarkImageView.frame = CGRectMake(20, 20, 80, 80);
         self.watermarkImageView.hidden = isAdd ? NO : YES;
     });
@@ -54,38 +54,38 @@
 }
 
 - (CMSampleBufferRef)onGPUFilterSource:(CMSampleBufferRef)sampleBuffer {
-    
+
     if (!self.filter || !sampleBuffer)
         return nil;
     // 检查视频帧是否有效
     if (!CMSampleBufferIsValid(sampleBuffer))
         return nil;
-    
+
     // 调用美颜滤镜方法，使用下一帧作为图片采集的来源
     [self.filter useNextFrameForImageCapture];
     CFRetain(sampleBuffer);
-    
+
     // 美颜滤镜处理
     [self.outputCamera processVideoSampleBuffer:sampleBuffer];
-    
+
     CMTime currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
     CFRelease(sampleBuffer);
-    
+
     // 获取美颜之后的视频帧，并构建 CMSampleBufferRef 对象传给 RTCLib，（注意，RTCLib 内部会自动对引用计数做减一操作）
     GPUImageFramebuffer *framebuff = [self.filter framebufferForOutput];
     CVPixelBufferRef pixelBuff = [framebuff pixelBuffer];
     CVPixelBufferLockBaseAddress(pixelBuff, 0);
-    
+
     CMVideoFormatDescriptionRef videoInfo = NULL;
     CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuff, &videoInfo);
-    
+
     CMSampleTimingInfo timing = {currentTime, currentTime, kCMTimeInvalid};
-    
+
     CMSampleBufferRef processedSampleBuffer = NULL;
     CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault, pixelBuff, YES, NULL, NULL, videoInfo, &timing, &processedSampleBuffer);
     if (videoInfo == NULL)
         return nil;
-    
+
     CFRelease(videoInfo);
     CVPixelBufferUnlockBaseAddress(pixelBuff, 0);
     // 视频帧返回给 RTCLib 进行传输
@@ -93,8 +93,9 @@
 }
 
 #pragma mark- getter
+
 - (GPUImageFilter *)defaultFilter {
-    if (!_defaultFilter)  {
+    if (!_defaultFilter) {
         _defaultFilter = [[GPUImageFilter alloc] init];
     }
     return _defaultFilter;
@@ -123,10 +124,10 @@
 
 - (UIView *)contentView {
     if (!_contentView) {
-        
+
         self.videoHeight = 640;
         self.videoWidth = 360;
-        
+
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.videoWidth, self.videoHeight)];
         _contentView.backgroundColor = [UIColor clearColor];
     }
@@ -186,7 +187,7 @@
     [self.blendFilter addTarget:self.imageView];
     self.filter = self.blendFilter;
 }
-    
+
 - (void)cleanAllFilter {
     [_gpuFilter setFrameProcessingCompletionBlock:nil];
     [self.outputCamera removeTarget:self.gpuFilter];

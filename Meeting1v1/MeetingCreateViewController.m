@@ -8,7 +8,7 @@
 #import "MeetingCreateViewController.h"
 #import "MeetingViewController.h"
 
-static NSString * const MeetingViewControllerIdentifier = @"MeetingViewController";
+static NSString *const MeetingViewControllerIdentifier = @"MeetingViewController";
 
 /*!
  准备加入会议控制器
@@ -20,7 +20,7 @@ static NSString * const MeetingViewControllerIdentifier = @"MeetingViewControlle
 }
 
 // 房间ID输入框
-@property (nonatomic, weak) IBOutlet UITextField *roomIdTextField;
+@property(nonatomic, weak) IBOutlet UITextField *roomIdTextField;
 
 @end
 
@@ -38,7 +38,7 @@ static NSString * const MeetingViewControllerIdentifier = @"MeetingViewControlle
 // 是否开启自定义加解密
 - (IBAction)switchValueChanged:(UISwitch *)sender {
     _enableCrypto = !_enableCrypto;
-    NSLog(@"click switch, _enableCrypto:%d",_enableCrypto);
+    NSLog(@"click switch, _enableCrypto:%d", _enableCrypto);
 }
 
 // 加入会议
@@ -47,7 +47,7 @@ static NSString * const MeetingViewControllerIdentifier = @"MeetingViewControlle
         return;
     }
     [self.roomIdTextField resignFirstResponder];
-    
+
     MeetingViewController *meetingVC = [self.storyboard instantiateViewControllerWithIdentifier:MeetingViewControllerIdentifier];
     meetingVC.roomId = self.roomIdTextField.text;
     meetingVC.enableCryptho = _enableCrypto;

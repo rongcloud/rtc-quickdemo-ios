@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageHighlightShadowFilter : GPUImageFilter
-{
+@interface GPUImageHighlightShadowFilter : GPUImageFilter {
     GLint shadowsUniform, highlightsUniform;
 }
 

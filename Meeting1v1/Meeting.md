@@ -4,7 +4,8 @@
 
 2. `pod install` 完成后, 打开生成的 `RCRTCQuickDemo.xcworkspace`。
 
-3. 请登录官网获取AppKey, AppSecret；找到 `/RCRTCQuickDemo/Tool/Constant/Constant.m`，将红框内的 `AppKey` 和 `AppSecret` 替换为从开发者后台获取到的具体内容，然后去掉 `#error` 提醒。
+3. 请登录官网获取AppKey, AppSecret；找到 `/RCRTCQuickDemo/Tool/Constant/Constant.m`，将红框内的 `AppKey` 和 `AppSecret`
+   替换为从开发者后台获取到的具体内容，然后去掉 `#error` 提醒。
 
 4. 修改工程 `target` 中 `RCRTCQuickDemo` 的 `Bundle Identifier`，例如：`cn.rongcloud.rtcquickdemo`。
 
@@ -14,12 +15,12 @@
 
 7. 选择真机设备并编译 `RCRTCQuickDemo`。
 
-
 # 会议流程
 
 1. 初始化 SDK 并连接融云服务器。
 
-    参考 `/RCRTCQuickDemo/Home/LoginViewController.m`
+   参考 `/RCRTCQuickDemo/Home/LoginViewController.m`
+
 ```objectivec
 // 初始化 Appkey 并连接 IM
 - (void)connectRongCloud:(NSString *)token {
@@ -38,7 +39,7 @@
 
 2. 指定房间 id 并加入房间
 
-    参考 `/Meeting1v1/MeetingViewController.m`
+   参考 `/Meeting1v1/MeetingViewController.m`
 
 ```objectivec
 // 加入房间
@@ -68,7 +69,7 @@
 
 3. 加入成功后开始采集本地视频并发布本地视频流
 
-    参考 `/Meeting1v1/MeetingViewController.m`
+   参考 `/Meeting1v1/MeetingViewController.m`
 
 ```objectivec
 // 加入成功后进行资源发布和订阅
@@ -99,10 +100,10 @@
 }
 
 ```
-    
+
 4. 如果已经有远端用户在房间中，需要订阅远端流
 
-    参考 `/Meeting1v1/MeetingViewController.m`
+   参考 `/Meeting1v1/MeetingViewController.m`
 
 ```objectivec
 // 订阅房间中远端用户音视频流资源
@@ -128,7 +129,7 @@
 
 5. 监听房间事件
 
-    参考 `/Meeting1v1/MeetingViewController.m`
+   参考 `/Meeting1v1/MeetingViewController.m`
 
 ```objectivec
 #pragma mark - RCRTCRoomEventDelegate

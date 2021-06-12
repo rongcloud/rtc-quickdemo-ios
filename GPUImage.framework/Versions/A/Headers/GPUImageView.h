@@ -8,12 +8,10 @@ typedef NS_ENUM(NSUInteger, GPUImageFillModeType) {
 };
 
 
-
 /**
  UIView subclass to use as an endpoint for displaying GPUImage outputs
  */
-@interface GPUImageView : UIView <GPUImageInput>
-{
+@interface GPUImageView : UIView <GPUImageInput> {
     GPUImageRotationMode inputRotation;
 }
 

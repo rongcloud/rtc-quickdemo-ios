@@ -2,8 +2,7 @@
 
 extern NSString *const kGPUImageThreeInputTextureVertexShaderString;
 
-@interface GPUImageThreeInputFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageThreeInputFilter : GPUImageTwoInputFilter {
     GPUImageFramebuffer *thirdInputFramebuffer;
 
     GLint filterThirdTextureCoordinateAttribute;
@@ -11,7 +10,7 @@ extern NSString *const kGPUImageThreeInputTextureVertexShaderString;
     GPUImageRotationMode inputRotation3;
     GLuint filterSourceTexture3;
     CMTime thirdFrameTime;
-    
+
     BOOL hasSetSecondTexture, hasReceivedThirdFrame, thirdFrameWasVideo;
     BOOL thirdFrameCheckDisabled;
 }

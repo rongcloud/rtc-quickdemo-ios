@@ -10,12 +10,11 @@
 @class GPUImageColourFASTSamplingOperation;
 @class GPUImageBoxBlurFilter;
 
-@interface GPUImageColourFASTFeatureDetector : GPUImageFilterGroup
-{
+@interface GPUImageColourFASTFeatureDetector : GPUImageFilterGroup {
     GPUImageBoxBlurFilter *blurFilter;
     GPUImageColourFASTSamplingOperation *colourFASTSamplingOperation;
 }
 // The blur radius of the underlying box blur. The default is 3.0.
-@property (readwrite, nonatomic) CGFloat blurRadiusInPixels;
+@property(readwrite, nonatomic) CGFloat blurRadiusInPixels;
 
 @end

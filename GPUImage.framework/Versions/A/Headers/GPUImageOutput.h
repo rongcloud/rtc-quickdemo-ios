@@ -2,7 +2,9 @@
 #import "GPUImageFramebuffer.h"
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+
 #import <UIKit/UIKit.h>
+
 #else
 // For now, just redefine this on the Mac
 typedef NS_ENUM(NSInteger, UIImageOrientation) {
@@ -18,11 +20,17 @@ typedef NS_ENUM(NSInteger, UIImageOrientation) {
 #endif
 
 dispatch_queue_attr_t GPUImageDefaultQueueAttribute(void);
+
 void runOnMainQueueWithoutDeadlocking(void (^block)(void));
+
 void runSynchronouslyOnVideoProcessingQueue(void (^block)(void));
+
 void runAsynchronouslyOnVideoProcessingQueue(void (^block)(void));
+
 void runSynchronouslyOnContextQueue(GPUImageContext *context, void (^block)(void));
+
 void runAsynchronouslyOnContextQueue(GPUImageContext *context, void (^block)(void));
+
 void reportAvailableMemoryForGPUImage(NSString *tag);
 
 @class GPUImageMovieWriter;
@@ -38,16 +46,15 @@ void reportAvailableMemoryForGPUImage(NSString *tag);
  
  Source objects upload still image frames to OpenGL ES as textures, then hand those textures off to the next objects in the processing chain.
  */
-@interface GPUImageOutput : NSObject
-{
+@interface GPUImageOutput : NSObject {
     GPUImageFramebuffer *outputFramebuffer;
-    
+
     NSMutableArray *targets, *targetTextureIndices;
-    
+
     CGSize inputTextureSize, cachedMaximumOutputSize, forcedMaximumSize;
-    
+
     BOOL overrideInputSize;
-    
+
     BOOL allTargetsWantMonochromeData;
     BOOL usingNextFrameForImageCapture;
 }
@@ -55,20 +62,23 @@ void reportAvailableMemoryForGPUImage(NSString *tag);
 @property(readwrite, nonatomic) BOOL shouldSmoothlyScaleOutput;
 @property(readwrite, nonatomic) BOOL shouldIgnoreUpdatesToThisTarget;
 @property(readwrite, nonatomic, retain) GPUImageMovieWriter *audioEncodingTarget;
-@property(readwrite, nonatomic, unsafe_unretained) id<GPUImageInput> targetToIgnoreForUpdates;
-@property(nonatomic, copy) void(^frameProcessingCompletionBlock)(GPUImageOutput*, CMTime);
+@property(readwrite, nonatomic, unsafe_unretained) id <GPUImageInput> targetToIgnoreForUpdates;
+@property(nonatomic, copy) void (^frameProcessingCompletionBlock)(GPUImageOutput *, CMTime);
 @property(nonatomic) BOOL enabled;
 @property(readwrite, nonatomic) GPUTextureOptions outputTextureOptions;
 
 /// @name Managing targets
-- (void)setInputFramebufferForTarget:(id<GPUImageInput>)target atIndex:(NSInteger)inputTextureIndex;
+- (void)setInputFramebufferForTarget:(id <GPUImageInput>)target atIndex:(NSInteger)inputTextureIndex;
+
 - (GPUImageFramebuffer *)framebufferForOutput;
+
 - (void)removeOutputFramebuffer;
+
 - (void)notifyTargetsAboutNewOutputTexture;
 
 /** Returns an array of the current targets.
  */
-- (NSArray*)targets;
+- (NSArray *)targets;
 
 /** Adds a target to receive notifications when new frames are available.
  
@@ -78,7 +88,7 @@ void reportAvailableMemoryForGPUImage(NSString *tag);
  
  @param newTarget Target to be added
  */
-- (void)addTarget:(id<GPUImageInput>)newTarget;
+- (void)addTarget:(id <GPUImageInput>)newTarget;
 
 /** Adds a target to receive notifications when new frames are available.
  
@@ -86,13 +96,13 @@ void reportAvailableMemoryForGPUImage(NSString *tag);
  
  @param newTarget Target to be added
  */
-- (void)addTarget:(id<GPUImageInput>)newTarget atTextureLocation:(NSInteger)textureLocation;
+- (void)addTarget:(id <GPUImageInput>)newTarget atTextureLocation:(NSInteger)textureLocation;
 
 /** Removes a target. The target will no longer receive notifications when new frames are available.
  
  @param targetToRemove Target to be removed
  */
-- (void)removeTarget:(id<GPUImageInput>)targetToRemove;
+- (void)removeTarget:(id <GPUImageInput>)targetToRemove;
 
 /** Removes all targets.
  */
@@ -101,21 +111,29 @@ void reportAvailableMemoryForGPUImage(NSString *tag);
 /// @name Manage the output texture
 
 - (void)forceProcessingAtSize:(CGSize)frameSize;
+
 - (void)forceProcessingAtSizeRespectingAspectRatio:(CGSize)frameSize;
 
 /// @name Still image processing
 
 - (void)useNextFrameForImageCapture;
+
 - (CGImageRef)newCGImageFromCurrentlyProcessedOutput;
+
 - (CGImageRef)newCGImageByFilteringCGImage:(CGImageRef)imageToFilter;
 
 // Platform-specific image output methods
 // If you're trying to use these methods, remember that you need to set -useNextFrameForImageCapture before running -processImage or running video and calling any of these methods, or you will get a nil image
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+
 - (UIImage *)imageFromCurrentFramebuffer;
+
 - (UIImage *)imageFromCurrentFramebufferWithOrientation:(UIImageOrientation)imageOrientation;
+
 - (UIImage *)imageByFilteringImage:(UIImage *)imageToFilter;
+
 - (CGImageRef)newCGImageByFilteringImage:(UIImage *)imageToFilter;
+
 #else
 - (NSImage *)imageFromCurrentFramebuffer;
 - (NSImage *)imageFromCurrentFramebufferWithOrientation:(UIImageOrientation)imageOrientation;

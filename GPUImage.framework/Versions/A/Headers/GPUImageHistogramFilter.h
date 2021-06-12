@@ -1,13 +1,14 @@
 #import "GPUImageFilter.h"
 
-typedef enum { kGPUImageHistogramRed, kGPUImageHistogramGreen, kGPUImageHistogramBlue, kGPUImageHistogramRGB, kGPUImageHistogramLuminance} GPUImageHistogramType;
+typedef enum {
+    kGPUImageHistogramRed, kGPUImageHistogramGreen, kGPUImageHistogramBlue, kGPUImageHistogramRGB, kGPUImageHistogramLuminance
+} GPUImageHistogramType;
 
-@interface GPUImageHistogramFilter : GPUImageFilter
-{
+@interface GPUImageHistogramFilter : GPUImageFilter {
     GPUImageHistogramType histogramType;
-    
+
     GLubyte *vertexSamplingCoordinates;
-    
+
     GLProgram *secondFilterProgram, *thirdFilterProgram;
     GLint secondFilterPositionAttribute, thirdFilterPositionAttribute;
 }
@@ -17,6 +18,7 @@ typedef enum { kGPUImageHistogramRed, kGPUImageHistogramGreen, kGPUImageHistogra
 
 // Initialization and teardown
 - (id)initWithHistogramType:(GPUImageHistogramType)newHistogramType;
+
 - (void)initializeSecondaryAttributes;
 
 @end

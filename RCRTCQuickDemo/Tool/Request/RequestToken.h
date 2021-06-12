@@ -22,8 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)requestToken:(NSString *)userId
                 name:(NSString *)name
-         portraitUrl:(NSString * _Nullable)portraitUrl
-   completionHandler:(void (^)(BOOL isSuccess, NSString * _Nullable tokenString))completionHandler;
+         portraitUrl:(NSString *_Nullable)portraitUrl
+   completionHandler:(void (^)(BOOL isSuccess, NSString *_Nullable tokenString))completionHandler;
 
 @end
 

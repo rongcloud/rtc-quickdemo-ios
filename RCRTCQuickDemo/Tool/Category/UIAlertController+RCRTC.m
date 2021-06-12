@@ -17,7 +17,7 @@
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         if (vc) {
             [vc presentViewController:alert animated:YES completion:nil];
-        }else{
+        } else {
             UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
             [keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
         }

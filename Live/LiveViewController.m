@@ -54,34 +54,34 @@
  stopPublishVideoFile 取消发布自定义视频流
  */
 
-@interface LiveViewController ()<RCRTCRoomEventDelegate,RCRTCStatusReportDelegate,RCRTCFileCapturerDelegate>
+@interface LiveViewController () <RCRTCRoomEventDelegate, RCRTCStatusReportDelegate, RCRTCFileCapturerDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *remoteContainerView;
-@property (nonatomic, weak) IBOutlet UIButton *closeCamera;
-@property (nonatomic, weak) IBOutlet UIButton *closeMicBtn;
-@property (nonatomic, weak) IBOutlet UIButton *switchStreamMode;
-@property (nonatomic, weak) IBOutlet UIButton *streamLayoutBtn;
-@property (nonatomic, weak) IBOutlet UIButton *closeLiveBtn;
-@property (nonatomic, nonatomic) IBOutlet UIButton *connectHostBtn;
-@property (nonatomic, nonatomic) IBOutlet UIButton *waterMark;
-@property (nonatomic, nonatomic) IBOutlet UIButton *beautyButton;
-@property (nonatomic, assign) BOOL openWaterMark;
-@property (nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
-@property (nonatomic, strong) RCRTCRoom *room;
-@property (nonatomic, strong) RCRTCLiveInfo *liveInfo;
-@property (nonatomic, strong) LiveStreamVideo *localVideo;
-@property (nonatomic) NSMutableArray <LiveStreamVideo *>*streamVideos;
-@property (nonatomic, strong) LiveVideoLayoutTool *layoutTool;
-@property (nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
-@property (nonatomic, strong) LiveStreamVideo *localFileStreamVideo;
-@property (nonatomic, strong) RCRTCFileSource *fileCapturer;
-@property (nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
+@property(nonatomic, weak) IBOutlet UIView *remoteContainerView;
+@property(nonatomic, weak) IBOutlet UIButton *closeCamera;
+@property(nonatomic, weak) IBOutlet UIButton *closeMicBtn;
+@property(nonatomic, weak) IBOutlet UIButton *switchStreamMode;
+@property(nonatomic, weak) IBOutlet UIButton *streamLayoutBtn;
+@property(nonatomic, weak) IBOutlet UIButton *closeLiveBtn;
+@property(nonatomic, nonatomic) IBOutlet UIButton *connectHostBtn;
+@property(nonatomic, nonatomic) IBOutlet UIButton *waterMark;
+@property(nonatomic, nonatomic) IBOutlet UIButton *beautyButton;
+@property(nonatomic, assign) BOOL openWaterMark;
+@property(nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
+@property(nonatomic, strong) RCRTCRoom *room;
+@property(nonatomic, strong) RCRTCLiveInfo *liveInfo;
+@property(nonatomic, strong) LiveStreamVideo *localVideo;
+@property(nonatomic) NSMutableArray <LiveStreamVideo *> *streamVideos;
+@property(nonatomic, strong) LiveVideoLayoutTool *layoutTool;
+@property(nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
+@property(nonatomic, strong) LiveStreamVideo *localFileStreamVideo;
+@property(nonatomic, strong) RCRTCFileSource *fileCapturer;
+@property(nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
 // 功能按钮容器
-@property (nonatomic, copy) NSArray *funcBtns;
+@property(nonatomic, copy) NSArray *funcBtns;
 // 发布本地自定义流开关
-@property (strong, nonatomic) UIButton *pushLocalButton;
+@property(strong, nonatomic) UIButton *pushLocalButton;
 // 音频配置
-@property (strong, nonatomic) RCRTCEngine *engine;
+@property(strong, nonatomic) RCRTCEngine *engine;
 // 美颜状态
 @property(nonatomic, assign) BOOL openBeauty;
 
@@ -92,16 +92,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     /**
      * 必要步骤：
      *
      * 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
-    
+
     // 初始化 UI
     [self initView];
-    
+
     // 直播类型下的角色区分：主播/观众
     [self setRoleType];
 }
@@ -116,33 +116,33 @@
 - (void)setRoleType {
     // 判断用户状态改变退出按钮显示
     _closeLiveBtn.selected = _liveRoleType;
-    
+
     switch (_liveRoleType) {
         // 当前直播角色为主播
         case RCRTCLiveRoleTypeBroadcaster:
             self.title = @"直播 Demo-主播端";
             [self disableClickWith:@[self.connectHostBtn]];
-            
+
             // 1.设置切换听筒为扬声器
             [self.engine enableSpeaker:YES];
-            
+
             // 2.添加本地采集预览界面
             [self setupLocalVideoView];
-            
+
             // 3.加入RTC房间
             [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-            
+
             break;
-        // 当前直播角色为观众
+            // 当前直播角色为观众
         case RCRTCLiveRoleTypeAudience:
             self.title = @"直播 Demo-观众端";
             [self disableClickWith:@[self.closeCamera,
-                                     self.closeMicBtn,
-                                     self.streamLayoutBtn,
-                                     self.switchStreamMode,
-                                     self.beautyButton,
-                                     self.pushLocalButton,
-                                     self.waterMark]];
+                    self.closeMicBtn,
+                    self.streamLayoutBtn,
+                    self.switchStreamMode,
+                    self.beautyButton,
+                    self.pushLocalButton,
+                    self.waterMark]];
 
             // 1.设置切换听筒为扬声器
             [self.engine enableSpeaker:YES];
@@ -157,10 +157,10 @@
 // 观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect {
     self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
-    
+
     // 1.先清理视图
     [self cleanRemoteContainer];
-    
+
     // 2.退出房间
     [self exitRoom];
     if (isConnect) {
@@ -171,79 +171,86 @@
          */
         [self setupLocalVideoView];
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-    }else{
+    } else {
         // 下麦：加入 RTC 房间
         [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
     }
 }
 
 #pragma mark - setter & getter
+
 - (LiveStreamVideo *)localFileStreamVideo {
     if (!_localFileStreamVideo) {
         _localFileStreamVideo = [LiveStreamVideo LocalStreamVideo];
     }
     return _localFileStreamVideo;
 }
+
 - (RCRTCEngine *)engine {
     if (!_engine) {
         _engine = [RCRTCEngine sharedInstance];
     }
     return _engine;
 }
+
 - (LiveVideoLayoutTool *)layoutTool {
     if (!_layoutTool) {
         _layoutTool = [LiveVideoLayoutTool new];
     }
     return _layoutTool;
 }
+
 - (NSMutableArray<LiveStreamVideo *> *)streamVideos {
     if (!_streamVideos) {
         _streamVideos = [NSMutableArray array];
     }
     return _streamVideos;
 }
+
 - (LiveStreamVideo *)localVideo {
     if (!_localVideo) {
         _localVideo = [LiveStreamVideo LocalStreamVideo];
     }
     return _localVideo;
 }
+
 - (NSArray *)funcBtns {
     if (!_funcBtns) {
-        _funcBtns =  @[
-            self.closeLiveBtn,
-            self.connectHostBtn,
-            self.closeCamera,
-            self.closeMicBtn,
-            self.streamLayoutBtn,
-            self.switchStreamMode,
-            self.beautyButton,
-            self.pushLocalButton,
-            self.waterMark];
+        _funcBtns = @[
+                self.closeLiveBtn,
+                self.connectHostBtn,
+                self.closeCamera,
+                self.closeMicBtn,
+                self.streamLayoutBtn,
+                self.switchStreamMode,
+                self.beautyButton,
+                self.pushLocalButton,
+                self.waterMark];
     }
     return _funcBtns;
 }
 
 - (GPUImageHandle *)gpuImageHandler {
     if (!_gpuImageHandler) {
-        _gpuImageHandler = [[GPUImageHandle alloc]init];
+        _gpuImageHandler = [[GPUImageHandle alloc] init];
     }
     return _gpuImageHandler;
 }
 
 #pragma mark - UI
+
 /*!
  设置导航左侧发布按钮
  设置导航右侧美颜按钮
  */
 - (void)initView {
-    _pushLocalButton  = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
+    _pushLocalButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
     [_pushLocalButton setTitle:@"发布本地" forState:UIControlStateNormal];
     [_pushLocalButton setTitle:@"关闭本地" forState:UIControlStateSelected];
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
     [_pushLocalButton addTarget:self action:@selector(publishLocalButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_pushLocalButton];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_pushLocalButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -259,15 +266,15 @@
 // 功能按钮状态切换
 - (void)disableClickWith:(NSArray *)btns {
     for (UIButton *btn in self.funcBtns) {
-        if ( btn == _pushLocalButton) {
+        if (btn == _pushLocalButton) {
             _pushLocalButton.alpha = 1;
             continue;
         }
-        [btn setBackgroundColor:[UIColor colorWithRed:29.0/255.0 green:183.0/255.0 blue:1.0 alpha:1]];
+        [btn setBackgroundColor:[UIColor colorWithRed:29.0 / 255.0 green:183.0 / 255.0 blue:1.0 alpha:1]];
         btn.enabled = YES;
     }
     for (UIButton *btn in btns) {
-        if ( btn == _pushLocalButton) {
+        if (btn == _pushLocalButton) {
             _pushLocalButton.alpha = 0;
             continue;
         }
@@ -291,6 +298,7 @@
 }
 
 #pragma mark - Event
+
 // 离开房间
 - (IBAction)closeLiveAction:(UIButton *)sender {
     // 1.清理视图
@@ -305,14 +313,14 @@
     sender.selected = !sender.selected;
     if (sender.selected) {
         [self disableClickWith:nil];
-    }else{
+    } else {
         [self disableClickWith:@[self.closeCamera,
-                                 self.closeMicBtn,
-                                 self.streamLayoutBtn,
-                                 self.switchStreamMode,
-                                 self.beautyButton,
-                                 self.pushLocalButton,
-                                 self.waterMark]];
+                self.closeMicBtn,
+                self.streamLayoutBtn,
+                self.switchStreamMode,
+                self.beautyButton,
+                self.pushLocalButton,
+                self.waterMark]];
     }
     // 上麦/下麦
     [self connectHostWithState:sender.selected];
@@ -343,8 +351,8 @@
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
     sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
     // 自定义布局刷新
-    [self streamlayoutMode:(RCRTCMixLayoutMode)sender.tag];
-    
+    [self streamlayoutMode:(RCRTCMixLayoutMode) sender.tag];
+
     switch (sender.tag) {
         case 1:
             [sender setTitle:@"自定义布局" forState:0];
@@ -378,10 +386,10 @@
 // 添删水印
 - (IBAction)waterMark:(UIButton *)sender {
     sender.selected = !sender.selected;
-    self.openWaterMark= sender.selected;
+    self.openWaterMark = sender.selected;
     [self changeFliterIsOpenBearty:self.openBeauty isOpenWarkMark:self.openWaterMark];
     [self.gpuImageHandler rotateWaterMark:sender.selected];
-    
+
 }
 
 // 发送本地自定义流
@@ -389,43 +397,41 @@
     button.selected = !button.selected;
     if (button.selected) {
         [self startPublishVideoFile];
-    }
-    else {
+    } else {
         [self stopPublishVideoFile];
     }
 }
 
 // 发布自定义流
 - (void)startPublishVideoFile {
-    
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
+
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *) self.localFileStreamVideo.canvesView;
     localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
     localFileVideoView.frameAnimated = NO;
-    
+
     NSString *tag = @"RongRTCFileVideo";
     self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
-    
+
     RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
     videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
     [self.fileVideoOutputStream setVideoConfig:videoConfig];
     [self.fileVideoOutputStream setVideoView:localFileVideoView];
-    
+
     NSString *path = [[NSBundle mainBundle] pathForResource:@"video_demo1_low"
                                                      ofType:@"mp4"];
     self.fileCapturer = [[RCRTCFileSource alloc] initWithFilePath:path];
     self.fileCapturer.delegate = self;
     self.fileVideoOutputStream.videoSource = self.fileCapturer;
     [self.fileCapturer setObserver:self.fileVideoOutputStream];
-    
+
     [self.room.localUser publishLiveStream:self.fileVideoOutputStream
-                                completion:^(BOOL isSuccess, RCRTCCode code, RCRTCLiveInfo * _Nullable liveInfo) {
-        if (code == RCRTCCodeSuccess) {
-            [self.streamVideos addObject:self.localFileStreamVideo];
-            [self updateLayoutWithAnimation:YES];
-        }
-        else {
-        }
-    }];
+                                completion:^(BOOL isSuccess, RCRTCCode code, RCRTCLiveInfo *_Nullable liveInfo) {
+                                    if (code == RCRTCCodeSuccess) {
+                                        [self.streamVideos addObject:self.localFileStreamVideo];
+                                        [self updateLayoutWithAnimation:YES];
+                                    } else {
+                                    }
+                                }];
 }
 
 // 取消发布自定义视频流
@@ -437,12 +443,12 @@
     }
     [self.room.localUser unpublishLiveStream:self.fileVideoOutputStream
                                   completion:^(BOOL isSuccess, RCRTCCode code) {
-        if (isSuccess) {
-            [self.streamVideos removeObject:self.localFileStreamVideo];
-            self.localFileStreamVideo = nil;
-            [self updateLayoutWithAnimation:YES];
-        }
-    }];
+                                      if (isSuccess) {
+                                          [self.streamVideos removeObject:self.localFileStreamVideo];
+                                          self.localFileStreamVideo = nil;
+                                          [self updateLayoutWithAnimation:YES];
+                                      }
+                                  }];
 }
 
 // 布局视图动画
@@ -451,7 +457,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
         }];
-    }else{
+    } else {
         [self.layoutTool layoutVideos:self.streamVideos inContainer:self.remoteContainerView];
     }
 }
@@ -474,25 +480,25 @@
     config.roleType = roleType;
     [self.engine setStatusReportDelegate:self];
     __weak typeof(self) weakSelf = self;
-    [self.engine joinRoom:_roomId config:config completion:^(RCRTCRoom * _Nullable room, RCRTCCode code) {
+    [self.engine joinRoom:_roomId config:config completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld", (long) code] inCurrentViewController:strongSelf];
             return;
         }
-        
+
         self.room = room;
         room.delegate = self;
-        
-        
+
+
         if (roleType == RCRTCLiveRoleTypeBroadcaster) {
-            
+
             // 2.发布本地默认流
             [self publishLocalLiveAVStream];
-            
+
             // 设置视频纹理渲染
             [self setBuffer];
-            
+
             // 3.1单独订阅主播流
             if (room.remoteUsers.count) {
                 NSMutableArray *streamArray = [NSMutableArray array];
@@ -503,7 +509,7 @@
                     }
                 }
             }
-        }else{
+        } else {
             // 3.2 观众订阅 live 合流
             NSArray *liveStreams = [room getLiveStreams];
             if (liveStreams.count) {
@@ -514,30 +520,30 @@
 }
 
 // 设置视频渲染纹理
-- (void) setBuffer {
+- (void)setBuffer {
     __weak typeof(self) weakSelf = self;
     [RCRTCEngine sharedInstance].defaultVideoStream.videoSendBufferCallback =
-    ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef  _Nullable sampleBuffer) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf || (!strongSelf.openBeauty&&!strongSelf.openWaterMark) ) {
-            return sampleBuffer;
-        }
-        CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
-        return processedSampleBuffer ?: sampleBuffer;
-    };
+            ^CMSampleBufferRef _Nullable(BOOL valid, CMSampleBufferRef _Nullable sampleBuffer) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf || (!strongSelf.openBeauty && !strongSelf.openWaterMark)) {
+                    return sampleBuffer;
+                }
+                CMSampleBufferRef processedSampleBuffer = [strongSelf.gpuImageHandler onGPUFilterSource:sampleBuffer];
+                return processedSampleBuffer ?: sampleBuffer;
+            };
 }
 
 // 退出房间
 - (void)exitRoom {
     [self.engine.defaultVideoStream stopCapture];
     __weak typeof(self) weakSelf = self;
-    [self.engine  leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
+    [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code != RCRTCCodeSuccess) {
-            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
+            [UIAlertController alertWithString:[NSString stringWithFormat:@"退出房间失败 code:%ld", (long) code] inCurrentViewController:strongSelf];
         }
     }];
-    
+
     // 如果是主播且在发布自定义流，退出本地发送
     if (self.pushLocalButton.selected && !self.liveRoleType) {
         [self stopPublishVideoFile];
@@ -547,16 +553,16 @@
 // 发布本地音视频流
 - (void)publishLocalLiveAVStream {
     // 1.初始化渲染视图
-    RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
+    RCRTCLocalVideoView *view = (RCRTCLocalVideoView *) self.localVideo.canvesView;
     // 2.设置视频流的渲染视图
     [self.engine.defaultVideoStream setVideoView:view];
     // 3.开始摄像头采集
     [self.engine.defaultVideoStream startCapture];
     // 4.发布本地流到房间
-    [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo * _Nullable liveInfo) {
+    [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo *_Nullable liveInfo) {
         if (desc == RCRTCCodeSuccess) {
             self.liveInfo = liveInfo;
-        }else {
+        } else {
             [UIAlertController alertWithString:@"本地流发布失败" inCurrentViewController:nil];
         }
     }];
@@ -569,7 +575,7 @@
     [self.liveInfo setMixConfig:config completion:^(BOOL isSuccess, RCRTCCode code) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (code == RCRTCCodeSuccess && isSuccess) return;
-        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld",(long)code] inCurrentViewController:strongSelf];
+        [UIAlertController alertWithString:[NSString stringWithFormat:@"合流布局切换失败 code:%ld", (long) code] inCurrentViewController:strongSelf];
     }];
 }
 
@@ -595,40 +601,40 @@
     [self.room.localUser subscribeStream:ordinaryStream
                              tinyStreams:tinyStream
                               completion:^(BOOL isSuccess, RCRTCCode desc) {
-        if (desc != RCRTCCodeSuccess) {
-            NSString *errorStr = [NSString stringWithFormat:@"订阅远端流失败:%ld",(long)desc];
-            [UIAlertController alertWithString:errorStr inCurrentViewController:nil];
-            return;
-        }
-        
-        // 创建并设置远端视频预览视图
-        NSInteger i = 0;
-        for (RCRTCInputStream *stream in streams) {
-            if (stream.mediaType == RTCMediaTypeVideo) {
-                [self setupRemoteViewWithStream:stream];
-                i++;
-            }
-        }
-        if (i > 0) {
-            [self updateLayoutWithAnimation:YES];
-        }
-    }];
+                                  if (desc != RCRTCCodeSuccess) {
+                                      NSString *errorStr = [NSString stringWithFormat:@"订阅远端流失败:%ld", (long) desc];
+                                      [UIAlertController alertWithString:errorStr inCurrentViewController:nil];
+                                      return;
+                                  }
+
+                                  // 创建并设置远端视频预览视图
+                                  NSInteger i = 0;
+                                  for (RCRTCInputStream *stream in streams) {
+                                      if (stream.mediaType == RTCMediaTypeVideo) {
+                                          [self setupRemoteViewWithStream:stream];
+                                          i++;
+                                      }
+                                  }
+                                  if (i > 0) {
+                                      [self updateLayoutWithAnimation:YES];
+                                  }
+                              }];
 }
 
 // 创建并设置远端视频预览视图
 - (LiveStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
-    
+
     LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
-    RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
-    
+    RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *) sVideo.canvesView;
+
     //如果为自定义视频流则适配显示
-    if([stream.tag isEqualToString:@"RongRTCFileVideo"]){
-        
+    if ([stream.tag isEqualToString:@"RongRTCFileVideo"]) {
+
         remoteView.fillMode = RCRTCVideoFillModeAspectFit;
-        
+
     }
     //设置视频流的渲染视图
-    [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
+    [(RCRTCVideoInputStream *) stream setVideoView:remoteView];
     return sVideo;
 }
 
@@ -660,7 +666,7 @@
             if (sVideo) {
                 [sVideo.canvesView removeFromSuperview];
                 [self.streamVideos removeObject:sVideo];
-                
+
             }
         }
     }
@@ -668,6 +674,7 @@
 }
 
 #pragma mark - RCRTCRoomEventDelegate
+
 // 远端用户发布资源通知
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
@@ -679,18 +686,18 @@
 }
 
 // 直播合流发布
-- (void)didPublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams {
+- (void)didPublishLiveStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
 }
 
 // 直播合流取消发布
-- (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream*> *)streams {
+- (void)didUnpublishLiveStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self unsubscribeRemoteResource:streams orStreamId:nil];
 }
 
 // 新用户加入
 - (void)didJoinUser:(RCRTCRemoteUser *)user {
-    
+
 }
 
 // 离开
@@ -699,32 +706,36 @@
 }
 
 // 远端掉线
-- (void)didOfflineUser:(RCRTCRemoteUser*)user {
+- (void)didOfflineUser:(RCRTCRemoteUser *)user {
     [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
 }
 
 // 流连接成功
 - (void)didConnectToStream:(RCRTCInputStream *)stream {
 }
+
 - (void)didReportStatusForm:(RCRTCStatusForm *)form {
 }
 
 #pragma mark - RCRTCFileCapturerDelegate
+
 - (void)didWillStartRead {
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *) self.localFileStreamVideo.canvesView;
     [localFileVideoView flushVideoView];
 }
+
 - (void)didReadCompleted {
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *)self.localFileStreamVideo.canvesView;
+    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *) self.localFileStreamVideo.canvesView;
     [localFileVideoView flushVideoView];
 }
 
 #pragma mark - private method
+
 // 滤镜种类判断
 - (void)changeFliterIsOpenBearty:(BOOL)isOpenBearty isOpenWarkMark:(BOOL)isOpenWarkMark {
-    if (isOpenBearty&&isOpenWarkMark) {
+    if (isOpenBearty && isOpenWarkMark) {
         [self.gpuImageHandler beautyAndWaterMark];
-    } else if(isOpenBearty) {
+    } else if (isOpenBearty) {
         [self.gpuImageHandler onlyBeauty];
     } else {
         [self.gpuImageHandler onlyWaterMark];

@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageLuminanceRangeFilter : GPUImageFilter
-{
+@interface GPUImageLuminanceRangeFilter : GPUImageFilter {
     GLint rangeReductionUniform;
 }
 

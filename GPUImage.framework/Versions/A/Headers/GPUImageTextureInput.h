@@ -1,7 +1,6 @@
 #import "GPUImageOutput.h"
 
-@interface GPUImageTextureInput : GPUImageOutput
-{
+@interface GPUImageTextureInput : GPUImageOutput {
     CGSize textureSize;
 }
 

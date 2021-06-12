@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageCropFilter : GPUImageFilter
-{
+@interface GPUImageCropFilter : GPUImageFilter {
     GLfloat cropTextureCoordinates[8];
 }
 

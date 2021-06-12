@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  加入的房间 ID
  */
-@property (nonatomic, strong) NSString *roomId;
+@property(nonatomic, strong) NSString *roomId;
 
 /*!
  身份状态 主播/观众
  */
-@property (nonatomic, assign) RCRTCLiveRoleType liveRoleType;
+@property(nonatomic, assign) RCRTCLiveRoleType liveRoleType;
 
 @end
 

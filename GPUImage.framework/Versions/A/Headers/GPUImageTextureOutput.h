@@ -3,12 +3,11 @@
 
 @protocol GPUImageTextureOutputDelegate;
 
-@interface GPUImageTextureOutput : NSObject <GPUImageInput>
-{
+@interface GPUImageTextureOutput : NSObject <GPUImageInput> {
     GPUImageFramebuffer *firstInputFramebuffer;
 }
 
-@property(readwrite, unsafe_unretained, nonatomic) id<GPUImageTextureOutputDelegate> delegate;
+@property(readwrite, unsafe_unretained, nonatomic) id <GPUImageTextureOutputDelegate> delegate;
 @property(readonly) GLuint texture;
 @property(nonatomic) BOOL enabled;
 

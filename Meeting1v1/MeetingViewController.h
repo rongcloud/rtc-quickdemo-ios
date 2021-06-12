@@ -14,12 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  输入的房间 id
  */
-@property (nonatomic, strong) NSString *roomId;
+@property(nonatomic, strong) NSString *roomId;
 
 /*!
  是否开启自定义加解密
  */
-@property (nonatomic, assign) BOOL enableCryptho;
+@property(nonatomic, assign) BOOL enableCryptho;
 
 @end
 

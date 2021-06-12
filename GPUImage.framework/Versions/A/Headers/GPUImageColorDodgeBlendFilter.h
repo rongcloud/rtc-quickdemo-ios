@@ -2,8 +2,7 @@
 
 /** Applies a color dodge blend of two images
  */
-@interface GPUImageColorDodgeBlendFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageColorDodgeBlendFilter : GPUImageTwoInputFilter {
 }
 
 @end

@@ -1,7 +1,6 @@
 #import "GPUImageTwoInputFilter.h"
 
-@interface GPUImageLookupFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageLookupFilter : GPUImageTwoInputFilter {
     GLint intensityUniform;
 }
 

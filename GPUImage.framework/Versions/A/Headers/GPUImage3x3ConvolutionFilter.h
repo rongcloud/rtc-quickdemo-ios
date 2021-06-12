@@ -2,8 +2,7 @@
 
 /** Runs a 3x3 convolution kernel against the image
  */
-@interface GPUImage3x3ConvolutionFilter : GPUImage3x3TextureSamplingFilter
-{
+@interface GPUImage3x3ConvolutionFilter : GPUImage3x3TextureSamplingFilter {
     GLint convolutionMatrixUniform;
 }
 

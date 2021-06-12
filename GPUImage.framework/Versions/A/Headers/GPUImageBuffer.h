@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageBuffer : GPUImageFilter
-{
+@interface GPUImageBuffer : GPUImageFilter {
     NSMutableArray *bufferedFramebuffers;
 }
 

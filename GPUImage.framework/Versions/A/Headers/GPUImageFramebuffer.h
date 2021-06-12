@@ -1,9 +1,11 @@
 #import <Foundation/Foundation.h>
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
+
 #else
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl.h>
@@ -32,7 +34,9 @@ typedef struct GPUTextureOptions {
 
 // Initialization and teardown
 - (id)initWithSize:(CGSize)framebufferSize;
+
 - (id)initWithSize:(CGSize)framebufferSize textureOptions:(GPUTextureOptions)fboTextureOptions onlyTexture:(BOOL)onlyGenerateTexture;
+
 - (id)initWithSize:(CGSize)framebufferSize overriddenTexture:(GLuint)inputTexture;
 
 // Usage
@@ -40,20 +44,29 @@ typedef struct GPUTextureOptions {
 
 // Reference counting
 - (void)lock;
+
 - (void)unlock;
+
 - (void)clearAllLocks;
+
 - (void)disableReferenceCounting;
+
 - (void)enableReferenceCounting;
 
 // Image capture
 - (CGImageRef)newCGImageFromFramebufferContents;
+
 - (void)restoreRenderTarget;
 
 // Raw data bytes
 - (void)lockForReading;
+
 - (void)unlockAfterReading;
+
 - (NSUInteger)bytesPerRow;
+
 - (GLubyte *)byteBuffer;
+
 - (CVPixelBufferRef)pixelBuffer;
 
 @end

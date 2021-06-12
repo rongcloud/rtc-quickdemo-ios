@@ -2,8 +2,7 @@
 
 /** Applies a color burn blend of two images
  */
-@interface GPUImageColorBurnBlendFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageColorBurnBlendFilter : GPUImageTwoInputFilter {
 }
 
 @end

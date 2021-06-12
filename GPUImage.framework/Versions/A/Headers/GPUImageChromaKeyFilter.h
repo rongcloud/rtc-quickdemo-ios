@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageChromaKeyFilter : GPUImageFilter
-{
+@interface GPUImageChromaKeyFilter : GPUImageFilter {
     GLint colorToReplaceUniform, thresholdSensitivityUniform, smoothingUniform;
 }
 

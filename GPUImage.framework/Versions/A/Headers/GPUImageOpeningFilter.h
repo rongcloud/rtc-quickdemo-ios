@@ -6,8 +6,7 @@
 // A filter that first performs an erosion on the red channel of an image, followed by a dilation of the same radius. 
 // This helps to filter out smaller bright elements.
 
-@interface GPUImageOpeningFilter : GPUImageFilterGroup
-{
+@interface GPUImageOpeningFilter : GPUImageFilterGroup {
     GPUImageErosionFilter *erosionFilter;
     GPUImageDilationFilter *dilationFilter;
 }

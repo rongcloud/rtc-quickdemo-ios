@@ -16,7 +16,7 @@
 /*!
  获取地址: https://developer.rongcloud.cn/app/appkey/
  */
-NSString * const AppKey = @"n19jmcy59ocx9";
+NSString *const AppKey = @"n19jmcy59ocx9";
 
 // #error 请填写 App Secret
 /*!
@@ -24,6 +24,6 @@ NSString * const AppKey = @"n19jmcy59ocx9";
  正式环境请勿在客户端请求 Token，您的客户端代码一旦被反编译，会导致您的 AppSecret 泄露。
  请务必确保在服务端获取 Token。 参考文档：https://docs.rongcloud.cn/v4/views/im/server/user/register.html
  */
-NSString * const AppSecret = @"hccSLZPPmu";
+NSString *const AppSecret = @"hccSLZPPmu";
 
 @end

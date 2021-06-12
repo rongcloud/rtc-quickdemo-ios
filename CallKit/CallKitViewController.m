@@ -17,9 +17,9 @@
  */
 @interface CallKitViewController ()
 
-@property (nonatomic, weak) IBOutlet UITextField *useridTextField;
-@property (nonatomic, weak) IBOutlet UIButton *callMediaAudio;
-@property (nonatomic, weak) IBOutlet UIButton *callMediaVideo;
+@property(nonatomic, weak) IBOutlet UITextField *useridTextField;
+@property(nonatomic, weak) IBOutlet UIButton *callMediaAudio;
+@property(nonatomic, weak) IBOutlet UIButton *callMediaVideo;
 
 @end
 
@@ -38,7 +38,7 @@
 
 // 音频通话
 - (IBAction)callMediaAudio:(UIButton *)sender {
-    if (!self.useridTextField.text ||self.useridTextField.text.length == 0) {
+    if (!self.useridTextField.text || self.useridTextField.text.length == 0) {
         return;
     }
     [self.useridTextField resignFirstResponder];
@@ -53,18 +53,18 @@
 
 // 视频通话
 - (IBAction)callMediaVideo:(UIButton *)sender {
-    
-    if (!self.useridTextField.text ||self.useridTextField.text.length == 0) {
+
+    if (!self.useridTextField.text || self.useridTextField.text.length == 0) {
         return;
     }
     [self.useridTextField resignFirstResponder];
-    
+
     // 呼叫自己过滤
     if ([[RCIM sharedRCIM].currentUserInfo.userId isEqualToString:self.useridTextField.text]) {
         [UIAlertController alertWithString:@"不允许呼叫自己" inCurrentViewController:self];
         return;
     }
-    
+
     // 视频通话
     [[RCCall sharedRCCall] startSingleCall:self.useridTextField.text mediaType:RCCallMediaVideo];
 }

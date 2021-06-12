@@ -6,9 +6,11 @@
 #import "GPUImageColorConversion.h"
 
 //Optionally override the YUV to RGB matrices
-void setColorConversion601( GLfloat conversionMatrix[9] );
-void setColorConversion601FullRange( GLfloat conversionMatrix[9] );
-void setColorConversion709( GLfloat conversionMatrix[9] );
+void setColorConversion601(GLfloat conversionMatrix[9]);
+
+void setColorConversion601FullRange(GLfloat conversionMatrix[9]);
+
+void setColorConversion709(GLfloat conversionMatrix[9]);
 
 
 //Delegate Protocal for Face Detection.
@@ -22,25 +24,24 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 /**
  A GPUImageOutput that provides frames from either camera
 */
-@interface GPUImageVideoCamera : GPUImageOutput <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate>
-{
+@interface GPUImageVideoCamera : GPUImageOutput <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate> {
     NSUInteger numberOfFramesCaptured;
     CGFloat totalFrameTimeDuringCapture;
-    
+
     AVCaptureSession *_captureSession;
     AVCaptureDevice *_inputCamera;
     AVCaptureDevice *_microphone;
     AVCaptureDeviceInput *videoInput;
-	AVCaptureVideoDataOutput *videoOutput;
+    AVCaptureVideoDataOutput *videoOutput;
 
     BOOL capturePaused;
     GPUImageRotationMode outputRotation, internalRotation;
     dispatch_semaphore_t frameRenderingSemaphore;
-        
+
     BOOL captureAsYUV;
     GLuint luminanceTexture, chrominanceTexture;
 
-    __unsafe_unretained id<GPUImageVideoCameraDelegate> _delegate;
+    __unsafe_unretained id <GPUImageVideoCameraDelegate> _delegate;
 }
 
 /// Whether or not the underlying AVCaptureSession is running
@@ -50,17 +51,17 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 @property(readonly, retain, nonatomic) AVCaptureSession *captureSession;
 
 /// This enables the capture session preset to be changed on the fly
-@property (readwrite, nonatomic, copy) NSString *captureSessionPreset;
+@property(readwrite, nonatomic, copy) NSString *captureSessionPreset;
 
 /// This sets the frame rate of the camera (iOS 5 and above only)
 /**
  Setting this to 0 or below will set the frame rate back to the default setting for a particular preset.
  */
-@property (readwrite) int32_t frameRate;
+@property(readwrite) int32_t frameRate;
 
 /// Easy way to tell which cameras are present on device
-@property (readonly, getter = isFrontFacingCameraPresent) BOOL frontFacingCameraPresent;
-@property (readonly, getter = isBackFacingCameraPresent) BOOL backFacingCameraPresent;
+@property(readonly, getter = isFrontFacingCameraPresent) BOOL frontFacingCameraPresent;
+@property(readonly, getter = isBackFacingCameraPresent) BOOL backFacingCameraPresent;
 
 /// This enables the benchmarking mode, which logs out instantaneous and average frame times to the console
 @property(readwrite, nonatomic) BOOL runBenchmark;
@@ -74,7 +75,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 /// These properties determine whether or not the two camera orientations should be mirrored. By default, both are NO.
 @property(readwrite, nonatomic) BOOL horizontallyMirrorFrontFacingCamera, horizontallyMirrorRearFacingCamera;
 
-@property(nonatomic, assign) id<GPUImageVideoCameraDelegate> delegate;
+@property(nonatomic, assign) id <GPUImageVideoCameraDelegate> delegate;
 
 /// @name Initialization and teardown
 
@@ -151,6 +152,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 - (void)resetBenchmarkAverage;
 
 + (BOOL)isBackFacingCameraPresent;
+
 + (BOOL)isFrontFacingCameraPresent;
 
 @end

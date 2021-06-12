@@ -14,19 +14,19 @@
 }
 
 - (UIButton *)findButton:(UIView *)view {
-    if(!view.subviews.count) {
+    if (!view.subviews.count) {
         return nil;
     }
-    
+
     if ([view isKindOfClass:[UIButton class]]) {
-        return(UIButton*)view;
+        return (UIButton *) view;
     }
-    
-    UIButton* btn;
-    for(UIView *subView in view.subviews) {
+
+    UIButton *btn;
+    for (UIView *subView in view.subviews) {
         UIView *destinationView = [self findButton:subView];
-        if(destinationView) {
-            btn = (UIButton *)destinationView;
+        if (destinationView) {
+            btn = (UIButton *) destinationView;
             break;
         }
     }

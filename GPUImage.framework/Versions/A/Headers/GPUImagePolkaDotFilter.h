@@ -1,7 +1,6 @@
 #import "GPUImagePixellateFilter.h"
 
-@interface GPUImagePolkaDotFilter : GPUImagePixellateFilter
-{
+@interface GPUImagePolkaDotFilter : GPUImagePixellateFilter {
     GLint dotScalingUniform;
 }
 

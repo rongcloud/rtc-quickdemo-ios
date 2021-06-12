@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImagePixellatePositionFilter : GPUImageFilter
-{
+@interface GPUImagePixellatePositionFilter : GPUImageFilter {
     GLint fractionalWidthOfAPixelUniform, aspectRatioUniform, centerUniform, radiusUniform;
 }
 

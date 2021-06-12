@@ -19,8 +19,7 @@
  acts along the direction of the gradient, highlighting strong edges that pass the threshold and completely removing those that fail the lower 
  threshold. Finally, pixels from in-between these thresholds are either included in edges or rejected based on neighboring pixels.
  */
-@interface GPUImageCannyEdgeDetectionFilter : GPUImageFilterGroup
-{
+@interface GPUImageCannyEdgeDetectionFilter : GPUImageFilterGroup {
     GPUImageGrayscaleFilter *luminanceFilter;
     GPUImageSingleComponentGaussianBlurFilter *blurFilter;
     GPUImageDirectionalSobelEdgeDetectionFilter *edgeDetectionFilter;
@@ -34,29 +33,29 @@
  
  By default, they match the inverse of the filter size in pixels
  */
-@property(readwrite, nonatomic) CGFloat texelWidth; 
+@property(readwrite, nonatomic) CGFloat texelWidth;
 /** The image width and height factors tweak the appearance of the edges.
  
  These parameters affect the visibility of the detected edges
  
  By default, they match the inverse of the filter size in pixels
  */
-@property(readwrite, nonatomic) CGFloat texelHeight; 
+@property(readwrite, nonatomic) CGFloat texelHeight;
 
 /** The underlying blur radius for the Gaussian blur. Default is 2.0.
  */
-@property (readwrite, nonatomic) CGFloat blurRadiusInPixels;
+@property(readwrite, nonatomic) CGFloat blurRadiusInPixels;
 
 /** The underlying blur texel spacing multiplier. Default is 1.0.
  */
-@property (readwrite, nonatomic) CGFloat blurTexelSpacingMultiplier;
+@property(readwrite, nonatomic) CGFloat blurTexelSpacingMultiplier;
 
 /** Any edge with a gradient magnitude above this threshold will pass and show up in the final result.
  */
-@property(readwrite, nonatomic) CGFloat upperThreshold; 
+@property(readwrite, nonatomic) CGFloat upperThreshold;
 
 /** Any edge with a gradient magnitude below this threshold will fail and be removed from the final result.
  */
-@property(readwrite, nonatomic) CGFloat lowerThreshold; 
+@property(readwrite, nonatomic) CGFloat lowerThreshold;
 
 @end

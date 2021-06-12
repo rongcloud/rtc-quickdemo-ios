@@ -1,8 +1,8 @@
 # RongRTCZoomVideoVIew
+
 RongRTCZoomVideoVIew for iOS.
 
-这个开源示例项目演示了如何快速集成RongRTCLib视频SDK，实现1对1视频通话。
-运行前需要申请融云开发者账号，并申请开通音视频功能[开通地址](https://www.rongcloud.cn/docs/)，
+这个开源示例项目演示了如何快速集成RongRTCLib视频SDK，实现1对1视频通话。 运行前需要申请融云开发者账号，并申请开通音视频功能[开通地址](https://www.rongcloud.cn/docs/)，
 
 在这个示例项目中包含了以下功能：
 
@@ -17,26 +17,22 @@ RongRTCZoomVideoVIew for iOS.
    NSString *const AppID = @"<#这里填写你的appID#>";
 ```
 
-2.运行之前请先执行 pod install 安装一下需要的依赖库（RongIMLib, RongRTCLib）
-3.目前仅支持真机测试
-
+2.运行之前请先执行 pod install 安装一下需要的依赖库（RongIMLib, RongRTCLib） 3.目前仅支持真机测试
 
 ## 实现流程
 
-1. 使用 appID 初始化 , 填写 token 进行 IM连接 
+1. 使用 appID 初始化 , 填写 token 进行 IM连接
 2. 加入房间
 3. 设置本地预览视图
 4. 发布资源
 5. 收到远端发布的资源，订阅资源，设置远端预览视图
 6. 离开房间
 
-
 ## 环境准备
 
 - XCode 10.0 +
 - iOS 真机设备
 - 不支持模拟器
-
 
 ## 联系我们
 

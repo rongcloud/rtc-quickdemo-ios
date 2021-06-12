@@ -2,8 +2,7 @@
 #import "GPUImageBuffer.h"
 #import "GPUImageDissolveBlendFilter.h"
 
-@interface GPUImageLowPassFilter : GPUImageFilterGroup
-{
+@interface GPUImageLowPassFilter : GPUImageFilterGroup {
     GPUImageBuffer *bufferFilter;
     GPUImageDissolveBlendFilter *dissolveBlendFilter;
 }

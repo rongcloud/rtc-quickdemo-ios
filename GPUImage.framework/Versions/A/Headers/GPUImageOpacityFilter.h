@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageOpacityFilter : GPUImageFilter
-{
+@interface GPUImageOpacityFilter : GPUImageFilter {
     GLint opacityUniform;
 }
 
