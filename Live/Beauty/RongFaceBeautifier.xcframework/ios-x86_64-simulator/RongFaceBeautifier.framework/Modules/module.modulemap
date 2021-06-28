@@ -1,0 +1,6 @@
+framework module RongFaceBeautifier {
+  umbrella header "RongFaceBeautifier.h"
+
+  export *
+  module * { export * }
+}

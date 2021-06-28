@@ -6,8 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RongBeautyPlugin/RCRTCBeautyOption.h>
-#import <RongBeautyPlugin/RCRTCBeautyFilter.h>
+#import <RongFaceBeautifier/RCRTCBeautyOption.h>
+#import <RongFaceBeautifier/RCRTCBeautyFilter.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
