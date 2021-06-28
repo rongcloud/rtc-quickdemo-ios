@@ -14,7 +14,7 @@
 #import "GPUImageHandle.h"
 #import "RCRTCFileSource.h"
 #import "BeautyMenusView.h"
-#import <RongBeautyPlugin/RongBeautyPlugin.h>
+#import <RongFaceBeautifier/RongFaceBeautifier.h>
 
 /*!
  主播直播显 /观众观看直播

@@ -22,9 +22,8 @@
 		1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */; };
 		1F4DF3FC266A0B4300D1E051 /* BeautyMenusDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */; };
 		1F4DF402266A0B5000D1E051 /* MHSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3FF266A0B5000D1E051 /* MHSDK.bundle */; };
-		1F4DF404266A0B5000D1E051 /* server.cer in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF401266A0B5000D1E051 /* server.cer */; };
-		1F4DF463266A64BC00D1E051 /* RongBeautyPlugin.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4DF45F266A64AF00D1E051 /* RongBeautyPlugin.xcframework */; };
-		1F4DF464266A64BC00D1E051 /* RongBeautyPlugin.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4DF45F266A64AF00D1E051 /* RongBeautyPlugin.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1F5BE9E426899E3E0013E1B3 /* RongFaceBeautifier.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */; };
+		1F5BE9E526899E5C0013E1B3 /* RongFaceBeautifier.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F86215D266DF0EB000D2B8A /* BeautyMenusViewParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */; };
 		4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C12639650F00872F2B /* ScreenShareViewController.m */; };
 		4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6925C32639651D00872F2B /* ScreenShare.storyboard */; };
@@ -85,7 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1F4DF464266A64BC00D1E051 /* RongBeautyPlugin.xcframework in Embed Frameworks */,
+				1F5BE9E526899E5C0013E1B3 /* RongFaceBeautifier.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,9 +128,7 @@
 		1F4DF3F1266A0B4300D1E051 /* BeautyMenusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusView.h; sourceTree = "<group>"; };
 		1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusDividerView.m; sourceTree = "<group>"; };
 		1F4DF3FF266A0B5000D1E051 /* MHSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MHSDK.bundle; sourceTree = "<group>"; };
-		1F4DF401266A0B5000D1E051 /* server.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.cer; sourceTree = "<group>"; };
-		1F4DF457266A5ED900D1E051 /* RongBeautyPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RongBeautyPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F4DF45F266A64AF00D1E051 /* RongBeautyPlugin.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RongBeautyPlugin.xcframework; sourceTree = "<group>"; };
+		1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RongFaceBeautifier.xcframework; sourceTree = "<group>"; };
 		1F86215B266DF0EB000D2B8A /* BeautyMenusViewParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeautyMenusViewParam.h; sourceTree = "<group>"; };
 		1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusViewParam.m; sourceTree = "<group>"; };
 		4F4BFF8326551D950038B8A6 /* Living.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Living.md; sourceTree = "<group>"; };
@@ -226,9 +223,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F4DF463266A64BC00D1E051 /* RongBeautyPlugin.xcframework in Frameworks */,
 				51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */,
 				DD59DE78262FC1B800A0C940 /* GPUImage.framework in Frameworks */,
+				1F5BE9E426899E3E0013E1B3 /* RongFaceBeautifier.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,9 +235,8 @@
 		1F4DF3E0266A0B2000D1E051 /* Beauty */ = {
 			isa = PBXGroup;
 			children = (
-				1F4DF45F266A64AF00D1E051 /* RongBeautyPlugin.xcframework */,
+				1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */,
 				1F4DF3FF266A0B5000D1E051 /* MHSDK.bundle */,
-				1F4DF401266A0B5000D1E051 /* server.cer */,
 				1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */,
 			);
 			path = Beauty;
@@ -496,7 +492,6 @@
 		FEC3B326876A92E37BD3485E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F4DF457266A5ED900D1E051 /* RongBeautyPlugin.framework */,
 				4FE649C1264BE64B0031830E /* Foundation.framework */,
 				DD59DE77262FC1B800A0C940 /* GPUImage.framework */,
 				89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */,
@@ -608,7 +603,6 @@
 				DD59DE64262EF19300A0C940 /* RCRTCList.plist in Resources */,
 				4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
-				1F4DF404266A0B5000D1E051 /* server.cer in Resources */,
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
 				DD812125261DC26B00AF7D35 /* Login.storyboard in Resources */,

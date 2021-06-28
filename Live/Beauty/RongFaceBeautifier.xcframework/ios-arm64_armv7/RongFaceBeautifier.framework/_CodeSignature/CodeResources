@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/RCRTCBeautyEngine.h</key>
 		<data>
-		T4zgQ4C9TesSgd4g8zW5rP9foCs=
+		pP2C8pumBEVRHFeGd8kqDramU4w=
 		</data>
 		<key>Headers/RCRTCBeautyFilter.h</key>
 		<data>
@@ -16,17 +16,17 @@
 		<data>
 		fSEqEtOiJhqfXc33nJyl0m1yah8=
 		</data>
-		<key>Headers/RongBeautyPlugin.h</key>
+		<key>Headers/RongFaceBeautifier.h</key>
 		<data>
-		XerOzkWIZST3j5qGrMaFHERGYug=
+		nvtjEsiHmTXOAqoo+WchKiqLpWI=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		q3luQORzoEI60GudF7vf+IcO9F0=
+		eLff4GAhGVE/DLoYlGutw0Bahk0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		ybyfjDHKVaNdPJxpyDVKHLvAIBk=
+		t9LAfU/wVF3+Qwni6Ww7bgvR4tQ=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -35,11 +35,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			T4zgQ4C9TesSgd4g8zW5rP9foCs=
+			pP2C8pumBEVRHFeGd8kqDramU4w=
 			</data>
 			<key>hash2</key>
 			<data>
-			yalC4Gk0KPRkMr6ebizUZR3GToqRbM52C/AjMi+YWuE=
+			uOUuTogvyVuSgBUmi3wtzdF3RGq0dAaKZJFAxJo/Et0=
 			</data>
 		</dict>
 		<key>Headers/RCRTCBeautyFilter.h</key>
@@ -64,26 +64,26 @@
 			Ftb1KotoRq28iiPzQNXdCdolO35MOgX9aCOHZniOlDI=
 			</data>
 		</dict>
-		<key>Headers/RongBeautyPlugin.h</key>
+		<key>Headers/RongFaceBeautifier.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XerOzkWIZST3j5qGrMaFHERGYug=
+			nvtjEsiHmTXOAqoo+WchKiqLpWI=
 			</data>
 			<key>hash2</key>
 			<data>
-			CPApBiMEJzJDth3BbD2sI5d00zUZSEjjWcm8ar4Y/zQ=
+			05eGeWGe/ai+nBifv1BfJIlKvydheGFnQHJoc3R09No=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ybyfjDHKVaNdPJxpyDVKHLvAIBk=
+			t9LAfU/wVF3+Qwni6Ww7bgvR4tQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			4HRmhsVQq1JJtdwaBn5JgXDUzYMAZRc44Sjc1/sdUOY=
+			4Dl2JSUz1arF0IiSQcIBtZkK0im079pz1bXvSAQTJho=
 			</data>
 		</dict>
 	</dict>
