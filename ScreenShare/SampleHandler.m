@@ -8,7 +8,7 @@
 
 #import "SampleHandler.h"
 #import <RongRTCLib/RongRTCLib.h>
-#import <RongIMLib/RongIMLib.h>
+#import <RongIMLibCore/RongIMLibCore.h>
 #import "RequestToken.h"
 #import "Constant.h"
 
@@ -78,9 +78,9 @@ static NSString *const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.sc
 }
 
 - (void)connectRongCloud:(NSString *)token {
-    [[RCIMClient sharedRCIMClient] initWithAppKey:AppKey];
+    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey];
     // 连接 IM
-    [[RCIMClient sharedRCIMClient] connectWithToken:token
+    [[RCCoreClient sharedCoreClient] connectWithToken:token
                                            dbOpened:^(RCDBErrorCode code) {
                                                NSLog(@"dbOpened: %zd", code);
                                            } success:^(NSString *userId) {
