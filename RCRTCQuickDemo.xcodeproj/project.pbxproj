@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,9 +21,6 @@
 		1F4DF3FA266A0B4300D1E051 /* BeautyMenusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3EE266A0B4200D1E051 /* BeautyMenusButton.m */; };
 		1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */; };
 		1F4DF3FC266A0B4300D1E051 /* BeautyMenusDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */; };
-		1F4DF402266A0B5000D1E051 /* MHSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3FF266A0B5000D1E051 /* MHSDK.bundle */; };
-		1F5BE9E426899E3E0013E1B3 /* RongFaceBeautifier.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */; };
-		1F5BE9E526899E5C0013E1B3 /* RongFaceBeautifier.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F86215D266DF0EB000D2B8A /* BeautyMenusViewParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */; };
 		4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C12639650F00872F2B /* ScreenShareViewController.m */; };
 		4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6925C32639651D00872F2B /* ScreenShare.storyboard */; };
@@ -84,7 +81,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1F5BE9E526899E5C0013E1B3 /* RongFaceBeautifier.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,8 +123,6 @@
 		1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyMeunsFilterView.xib; sourceTree = "<group>"; };
 		1F4DF3F1266A0B4300D1E051 /* BeautyMenusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusView.h; sourceTree = "<group>"; };
 		1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusDividerView.m; sourceTree = "<group>"; };
-		1F4DF3FF266A0B5000D1E051 /* MHSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MHSDK.bundle; sourceTree = "<group>"; };
-		1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RongFaceBeautifier.xcframework; sourceTree = "<group>"; };
 		1F86215B266DF0EB000D2B8A /* BeautyMenusViewParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeautyMenusViewParam.h; sourceTree = "<group>"; };
 		1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusViewParam.m; sourceTree = "<group>"; };
 		4F4BFF8326551D950038B8A6 /* Living.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Living.md; sourceTree = "<group>"; };
@@ -225,23 +219,12 @@
 			files = (
 				51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */,
 				DD59DE78262FC1B800A0C940 /* GPUImage.framework in Frameworks */,
-				1F5BE9E426899E3E0013E1B3 /* RongFaceBeautifier.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F4DF3E0266A0B2000D1E051 /* Beauty */ = {
-			isa = PBXGroup;
-			children = (
-				1F5BE9E326899E3D0013E1B3 /* RongFaceBeautifier.xcframework */,
-				1F4DF3FF266A0B5000D1E051 /* MHSDK.bundle */,
-				1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */,
-			);
-			path = Beauty;
-			sourceTree = "<group>";
-		};
 		1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +445,7 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				1F4DF3E0266A0B2000D1E051 /* Beauty */,
+				1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */,
 				4F4BFF8326551D950038B8A6 /* Living.md */,
 				DD59DE6C262FC1A500A0C940 /* GPUImage */,
 				4FA55F24264D124A0013061C /* LivingTool */,
@@ -608,7 +591,6 @@
 				DD812125261DC26B00AF7D35 /* Login.storyboard in Resources */,
 				1F4DF3F3266A0B4300D1E051 /* BeautyMenusButton.xib in Resources */,
 				1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */,
-				1F4DF402266A0B5000D1E051 /* MHSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

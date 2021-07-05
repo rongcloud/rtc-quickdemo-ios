@@ -6,7 +6,6 @@
 //
 
 #import "LiveViewController.h"
-#import <RongChatRoom/RongChatRoom.h>
 #import "LiveStreamVideo.h"
 #import "LiveVideoLayoutTool.h"
 #import "UIAlertController+RCRTC.h"
