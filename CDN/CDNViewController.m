@@ -2,7 +2,7 @@
 //  CDNViewController.m
 //  RCRTCQuickDemo
 //
-//  Created by Zafer.Lee on 2021/7/13.
+//  Created by RongCloud on 2021/7/13.
 //
 
 #import "CDNViewController.h"

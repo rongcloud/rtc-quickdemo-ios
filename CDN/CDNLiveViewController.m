@@ -2,7 +2,7 @@
 //  CDNLiveViewController.m
 //  RCRTCQuickDemo
 //
-//  Created by Zafer.Lee on 2021/7/13.
+//  Created by RongCloud on 2021/7/13.
 //
 
 #import "CDNLiveViewController.h"
@@ -47,7 +47,7 @@
 - (IBAction)closeLiveAction:(id)sender {
     [[RCRTCEngine sharedInstance].defaultVideoStream stopCapture];
 
-    // 5. 退出房间
+    // 退出房间
     [[RCRTCEngine sharedInstance] leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
             NSLog(@"退出房间成功 code: %ld", (long) code);
