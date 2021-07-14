@@ -11,6 +11,11 @@
 		187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */; };
 		187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* LiveStreamVideo.m */; };
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
+		1E9B4B77269D3DCD00D223C3 /* CDN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E9B4B76269D3DCD00D223C3 /* CDN.storyboard */; };
+		1E9B4B7A269D3DE200D223C3 /* CDNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B79269D3DE200D223C3 /* CDNViewController.m */; };
+		1E9B4B7D269D64BD00D223C3 /* CDNLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B7C269D64BD00D223C3 /* CDNLiveViewController.m */; };
+		1E9B4B80269D6D5B00D223C3 /* CDNPullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B7F269D6D5B00D223C3 /* CDNPullViewController.m */; };
+		1E9B4B86269D811A00D223C3 /* CDNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B85269D811A00D223C3 /* CDNMenuViewController.m */; };
 		1F4DF3F3266A0B4300D1E051 /* BeautyMenusButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E3266A0B4100D1E051 /* BeautyMenusButton.xib */; };
 		1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E4266A0B4100D1E051 /* BeautyMenusContentView.m */; };
 		1F4DF3F5266A0B4300D1E051 /* BeautyMenusContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E6266A0B4100D1E051 /* BeautyMenusContentView.xib */; };
@@ -107,6 +112,15 @@
 		187F9E2F2628504A002E5288 /* LiveStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamVideo.h; sourceTree = "<group>"; };
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
+		1E9B4B76269D3DCD00D223C3 /* CDN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CDN.storyboard; sourceTree = "<group>"; };
+		1E9B4B78269D3DE200D223C3 /* CDNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNViewController.h; sourceTree = "<group>"; };
+		1E9B4B79269D3DE200D223C3 /* CDNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNViewController.m; sourceTree = "<group>"; };
+		1E9B4B7B269D64BD00D223C3 /* CDNLiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNLiveViewController.h; sourceTree = "<group>"; };
+		1E9B4B7C269D64BD00D223C3 /* CDNLiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNLiveViewController.m; sourceTree = "<group>"; };
+		1E9B4B7E269D6D5B00D223C3 /* CDNPullViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNPullViewController.h; sourceTree = "<group>"; };
+		1E9B4B7F269D6D5B00D223C3 /* CDNPullViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNPullViewController.m; sourceTree = "<group>"; };
+		1E9B4B84269D811A00D223C3 /* CDNMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNMenuViewController.h; sourceTree = "<group>"; };
+		1E9B4B85269D811A00D223C3 /* CDNMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNMenuViewController.m; sourceTree = "<group>"; };
 		1F4DF3E3266A0B4100D1E051 /* BeautyMenusButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyMenusButton.xib; sourceTree = "<group>"; };
 		1F4DF3E4266A0B4100D1E051 /* BeautyMenusContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusContentView.m; sourceTree = "<group>"; };
 		1F4DF3E5266A0B4100D1E051 /* BeautyMenusContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusContentView.h; sourceTree = "<group>"; };
@@ -225,6 +239,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E9B4B75269D3DB000D223C3 /* CDN */ = {
+			isa = PBXGroup;
+			children = (
+				1E9B4B78269D3DE200D223C3 /* CDNViewController.h */,
+				1E9B4B79269D3DE200D223C3 /* CDNViewController.m */,
+				1E9B4B7B269D64BD00D223C3 /* CDNLiveViewController.h */,
+				1E9B4B7C269D64BD00D223C3 /* CDNLiveViewController.m */,
+				1E9B4B7E269D6D5B00D223C3 /* CDNPullViewController.h */,
+				1E9B4B7F269D6D5B00D223C3 /* CDNPullViewController.m */,
+				1E9B4B84269D811A00D223C3 /* CDNMenuViewController.h */,
+				1E9B4B85269D811A00D223C3 /* CDNMenuViewController.m */,
+				1E9B4B76269D3DCD00D223C3 /* CDN.storyboard */,
+			);
+			path = CDN;
+			sourceTree = "<group>";
+		};
 		1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
+				1E9B4B75269D3DB000D223C3 /* CDN */,
 				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
 				DDEC58132626DBF80067D692 /* Live */,
 				DD59DDFD262D2C9A00A0C940 /* CallKit */,
@@ -589,6 +620,7 @@
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
 				DD812125261DC26B00AF7D35 /* Login.storyboard in Resources */,
+				1E9B4B77269D3DCD00D223C3 /* CDN.storyboard in Resources */,
 				1F4DF3F3266A0B4300D1E051 /* BeautyMenusButton.xib in Resources */,
 				1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */,
 			);
@@ -720,7 +752,9 @@
 				DD24DF5A261EEB5A00DC4665 /* HomeViewController.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* Constant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
+				1E9B4B7D269D64BD00D223C3 /* CDNLiveViewController.m in Sources */,
 				4FFC2896264A7D7B008A83F9 /* ScreenShareStreamVideo.m in Sources */,
+				1E9B4B86269D811A00D223C3 /* CDNMenuViewController.m in Sources */,
 				4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */,
 				1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
@@ -730,6 +764,7 @@
 				1F4DF3F8266A0B4300D1E051 /* BeautyMeunsSliderView.m in Sources */,
 				187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */,
 				DD59DE05262D5BD900A0C940 /* CallKitViewController.m in Sources */,
+				1E9B4B80269D6D5B00D223C3 /* CDNPullViewController.m in Sources */,
 				DD59DE73262FC1A500A0C940 /* GPUImageOutputCamera.m in Sources */,
 				DD24DFE426202F5100DC4665 /* MeetingViewController.m in Sources */,
 				DD59DE74262FC1A500A0C940 /* GPUImageHandle.m in Sources */,
@@ -737,6 +772,7 @@
 				4FFC2893264A7CF5008A83F9 /* ScreenShareVideoLayoutTool.m in Sources */,
 				DD59DE60262EEC5000A0C940 /* HomeTableViewCell.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
+				1E9B4B7A269D3DE200D223C3 /* CDNViewController.m in Sources */,
 				DD59DE75262FC1A500A0C940 /* GPUImageBeautyFilter.m in Sources */,
 				187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */,
 				DDEC58472627EC120067D692 /* CallLibViewController.m in Sources */,
