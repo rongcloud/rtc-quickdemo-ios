@@ -11,22 +11,22 @@
 /*!
  当前 UI 的几种状态
  */
-typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
+typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
     /*!
      默认，可呼叫状态
      */
     RCRTCCallStatus_Normal = 0,
-    
+
     /*!
      正在呼入
      */
     RCRTCCallStatus_Incoming = 1,
-    
+
     /*!
      正在呼出
      */
     RCRTCCallStatus_Dialing = 2,
-    
+
     /*!
      通话中
      */
@@ -44,16 +44,16 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
  */
 @interface CallLibViewController () <RCCallReceiveDelegate, RCCallSessionDelegate>
 
-@property (nonatomic, weak) IBOutlet UITextField *targetIdTextField;
+@property(nonatomic, weak) IBOutlet UITextField *targetIdTextField;
 // 本地和远端视图
-@property (nonatomic, weak) IBOutlet UIView *localView;
-@property (nonatomic, weak) IBOutlet UIView *remoteView;
+@property(nonatomic, weak) IBOutlet UIView *localView;
+@property(nonatomic, weak) IBOutlet UIView *remoteView;
 // 操作按钮
-@property (nonatomic, weak) IBOutlet UIButton *callBtn;
-@property (nonatomic, weak) IBOutlet UIButton *accpetBtn;
-@property (nonatomic, weak) IBOutlet UIButton *rejectBtn;
-@property (nonatomic, weak) IBOutlet UILabel *sessionDescription;
-@property (nonatomic, strong) RCCallSession *callSession;
+@property(nonatomic, weak) IBOutlet UIButton *callBtn;
+@property(nonatomic, weak) IBOutlet UIButton *accpetBtn;
+@property(nonatomic, weak) IBOutlet UIButton *rejectBtn;
+@property(nonatomic, weak) IBOutlet UILabel *sessionDescription;
+@property(nonatomic, strong) RCCallSession *callSession;
 
 @end
 
@@ -65,15 +65,16 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
      必要步骤：
      1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
-    
+
     // 初始化 UI
     [self initView];
-    
+
     // 配置呼叫前的一些准备参数
     [self initConfig];
 }
 
 #pragma mark - Init
+
 // 初始化相关 UI
 - (void)initView {
     [self updateUIWithStatus:RCRTCCallStatus_Normal];
@@ -86,6 +87,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 }
 
 #pragma mark - Button Action
+
 // 发起呼叫
 - (IBAction)startCall:(UIButton *)sender {
     _callSession = [[RCCallClient sharedRCCallClient] startCall:ConversationType_PRIVATE
@@ -113,6 +115,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 }
 
 #pragma mark - RCCallReceiveDelegate
+
 // 接收到通话呼入的回调
 - (void)didReceiveCall:(RCCallSession *)callSession {
     _callSession = callSession;
@@ -122,6 +125,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 }
 
 #pragma mark - RCCallSessionDelegate
+
 // 通话已接通
 - (void)callDidConnect {
     [self.callSession setVideoView:self.localView
@@ -136,12 +140,12 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
 }
 
 #pragma mark - UI Status
+
 // UI 状态控制
 - (void)updateUIWithStatus:(RCRTCCallStatus)status {
     [self.targetIdTextField resignFirstResponder];
     switch (status) {
-        case RCRTCCallStatus_Normal:
-        {
+        case RCRTCCallStatus_Normal: {
             self.localView.hidden = YES;
             self.remoteView.hidden = YES;
             self.callBtn.hidden = NO;
@@ -150,8 +154,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
             self.sessionDescription.hidden = YES;
         }
             break;
-        case RCRTCCallStatus_Incoming:
-        {
+        case RCRTCCallStatus_Incoming: {
             self.callBtn.hidden = YES;
             self.rejectBtn.hidden = NO;
             self.accpetBtn.hidden = NO;
@@ -159,8 +162,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
             self.sessionDescription.text = @"收到呼叫";
         }
             break;
-        case RCRTCCallStatus_Dialing:
-        {
+        case RCRTCCallStatus_Dialing: {
             self.callBtn.hidden = YES;
             self.rejectBtn.hidden = NO;
             self.accpetBtn.hidden = YES;
@@ -168,8 +170,7 @@ typedef NS_ENUM(NSInteger,RCRTCCallStatus) {
             self.sessionDescription.text = @"正在呼叫";
         }
             break;
-        case RCRTCCallStatus_Active:
-        {
+        case RCRTCCallStatus_Active: {
             self.localView.hidden = NO;
             self.remoteView.hidden = NO;
             self.callBtn.hidden = YES;

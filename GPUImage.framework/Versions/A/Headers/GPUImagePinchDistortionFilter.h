@@ -2,8 +2,7 @@
 
 /** Creates a pinch distortion of the image
  */
-@interface GPUImagePinchDistortionFilter : GPUImageFilter
-{
+@interface GPUImagePinchDistortionFilter : GPUImageFilter {
     GLint aspectRatioUniform, radiusUniform, centerUniform, scaleUniform;
 }
 

@@ -7,10 +7,9 @@
 // Seth Hall, "GPU accelerated feature algorithms for mobile devices", PhD thesis, School of Computing and Mathematical Sciences, Auckland University of Technology 2014.
 // http://aut.researchgateway.ac.nz/handle/10292/7991
 
-@interface GPUImageColourFASTSamplingOperation : GPUImageTwoInputFilter
-{
+@interface GPUImageColourFASTSamplingOperation : GPUImageTwoInputFilter {
     GLint texelWidthUniform, texelHeightUniform;
-    
+
     CGFloat texelWidth, texelHeight;
     BOOL hasOverriddenImageSizeFactor;
 }

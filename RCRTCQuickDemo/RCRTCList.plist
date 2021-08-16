@@ -62,5 +62,17 @@
 		<key>controllerIdentifier</key>
 		<string>ScreenShareCreateViewController</string>
 	</dict>
+	<dict>
+		<key>image</key>
+		<string>live</string>
+		<key>title</key>
+		<string>CDN</string>
+		<key>description</key>
+		<string>使用cdn拉流</string>
+		<key>storyboardName</key>
+		<string>CDN</string>
+		<key>controllerIdentifier</key>
+		<string>CDNViewController</string>
+	</dict>
 </array>
 </plist>

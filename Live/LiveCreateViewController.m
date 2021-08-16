@@ -8,7 +8,7 @@
 #import "LiveCreateViewController.h"
 #import "LiveViewController.h"
 
-static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
+static NSString *const LiveViewControllerIdentifier = @"LiveViewController";
 
 /*!
  主播/观众 区分身份直播入口类
@@ -18,7 +18,7 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
  */
 @interface LiveCreateViewController ()
 
-@property (nonatomic, weak) IBOutlet UITextField *roomIdTextField;
+@property(nonatomic, weak) IBOutlet UITextField *roomIdTextField;
 
 @end
 
@@ -32,7 +32,7 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 - (IBAction)startLive:(UIButton *)sender {
     if (![self checkTextField]) return;
     [self.roomIdTextField resignFirstResponder];
-    
+
     LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:LiveViewControllerIdentifier];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeBroadcaster;
@@ -43,7 +43,7 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 - (IBAction)watchLive:(UIButton *)sender {
     if (![self checkTextField]) return;
     [self.roomIdTextField resignFirstResponder];
-    
+
     LiveViewController *liveVC = [self.storyboard instantiateViewControllerWithIdentifier:LiveViewControllerIdentifier];
     liveVC.roomId = self.roomIdTextField.text;
     liveVC.liveRoleType = RCRTCLiveRoleTypeAudience;
@@ -51,7 +51,7 @@ static NSString * const LiveViewControllerIdentifier = @"LiveViewController";
 }
 
 - (BOOL)checkTextField {
-    if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0 ){
+    if (!self.roomIdTextField.text || self.roomIdTextField.text.length <= 0) {
         return NO;
     }
     return YES;

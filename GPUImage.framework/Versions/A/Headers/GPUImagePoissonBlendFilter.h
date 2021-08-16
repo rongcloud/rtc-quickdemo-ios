@@ -1,10 +1,9 @@
 #import "GPUImageTwoInputCrossTextureSamplingFilter.h"
 #import "GPUImageFilterGroup.h"
 
-@interface GPUImagePoissonBlendFilter : GPUImageTwoInputCrossTextureSamplingFilter
-{
+@interface GPUImagePoissonBlendFilter : GPUImageTwoInputCrossTextureSamplingFilter {
     GLint mixUniform;
-    
+
     GPUImageFramebuffer *secondOutputFramebuffer;
 }
 

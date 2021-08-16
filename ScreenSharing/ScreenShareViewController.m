@@ -15,24 +15,24 @@
 #define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
-static NSString * const ScreenShareBuildID = @"cn.rongcloud.rtcquickdemo.screenshare";
-static NSString * const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.screenshare";
+static NSString *const ScreenShareBuildID = @"cn.rongcloud.rtcquickdemo.screenshare";
+static NSString *const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.screenshare";
 
 API_AVAILABLE(ios(12.0))
-@interface ScreenShareViewController ()<RCRTCRoomEventDelegate>
+@interface ScreenShareViewController () <RCRTCRoomEventDelegate>
 
-@property (nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
-@property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic, strong) ScreenShareStreamVideo *localView;
-@property (nonatomic, strong) RCRTCRemoteVideoView *remoteView;
-@property (nonatomic, strong) ScreenShareStreamVideo *localShareView;
-@property (nonatomic, strong) RCRTCRemoteVideoView *remoteShareView;
-@property (nonatomic, strong) RCRTCVideoOutputStream *shareVideoOutputStream;
-@property (nonatomic, strong) RCRTCRoom *room;
-@property (nonatomic, strong) RCRTCEngine *engine;
-@property (nonatomic, strong) UIButton  *screenShareButton;
-@property (nonatomic) NSMutableArray <ScreenShareStreamVideo *> *streamVideos;
-@property (nonatomic, strong) ScreenShareVideoLayoutTool *layoutTool;
+@property(nonatomic, strong) RPSystemBroadcastPickerView *systemBroadcastPickerView;
+@property(nonatomic, weak) IBOutlet UIView *containerView;
+@property(nonatomic, strong) ScreenShareStreamVideo *localView;
+@property(nonatomic, strong) RCRTCRemoteVideoView *remoteView;
+@property(nonatomic, strong) ScreenShareStreamVideo *localShareView;
+@property(nonatomic, strong) RCRTCRemoteVideoView *remoteShareView;
+@property(nonatomic, strong) RCRTCVideoOutputStream *shareVideoOutputStream;
+@property(nonatomic, strong) RCRTCRoom *room;
+@property(nonatomic, strong) RCRTCEngine *engine;
+@property(nonatomic, strong) UIButton *screenShareButton;
+@property(nonatomic) NSMutableArray <ScreenShareStreamVideo *> *streamVideos;
+@property(nonatomic, strong) ScreenShareVideoLayoutTool *layoutTool;
 
 @end
 
@@ -45,13 +45,14 @@ API_AVAILABLE(ios(12.0))
      必要步骤：
      1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
-    
+
     [self initView];
     // 2.加入房间
     [self joinRoom];
 }
 
 #pragma mark - UI
+
 - (void)initView {
     [self initMode];
     [self setupLocalVideoView];
@@ -69,20 +70,20 @@ API_AVAILABLE(ios(12.0))
     if (@available(iOS 12.0, *)) {
         self.systemBroadcastPickerView = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(0, 64, 50, 80)];
         self.systemBroadcastPickerView.preferredExtension = ScreenShareBuildID;
-        self.systemBroadcastPickerView.backgroundColor = [UIColor colorWithRed:53.0/255.0 green:129.0/255.0 blue:242.0/255.0 alpha:1.0];
+        self.systemBroadcastPickerView.backgroundColor = [UIColor colorWithRed:53.0 / 255.0 green:129.0 / 255.0 blue:242.0 / 255.0 alpha:1.0];
         self.systemBroadcastPickerView.showsMicrophoneButton = NO;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.systemBroadcastPickerView ];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.systemBroadcastPickerView];
     } else {
         // Fallback on earlier versions
     }
 }
 
 - (void)initLeftBackButton {
-    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     [backButton setTitle:@"退出会议" forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backItemClick) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = backItem;
 }
 
@@ -92,36 +93,37 @@ API_AVAILABLE(ios(12.0))
         [UIView animateWithDuration:0.25 animations:^{
             [self.layoutTool layoutVideos:self.streamVideos inContainer:self.containerView];
         }];
-    }else{
+    } else {
         [self.layoutTool layoutVideos:self.streamVideos inContainer:self.containerView];
     }
 }
 
 #pragma mark - RTC
+
 // 加入房间
 - (void)joinRoom {
     RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
     videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
     videoConfig.videoFps = RCRTCVideoFPS30;
     [[RCRTCEngine sharedInstance].defaultVideoStream setVideoConfig:videoConfig];
-    
+
     RCRTCRoomConfig *config = [[RCRTCRoomConfig alloc] init];
     config.roomType = RCRTCRoomTypeNormal;
-    
+
     [self.engine enableSpeaker:YES];
 
     __weak typeof(self) weakSelf = self;
     [self.engine joinRoom:self.roomId
                    config:config
                completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        if (code == RCRTCCodeSuccess) {
-            // 3. 加入成功后进行资源的发布和订阅
-            [self afterJoinRoom:room];
-        } else {
-            [UIAlertController alertWithString:@"加入房间失败" inCurrentViewController:strongSelf];
-        }
-    }];
+                   __strong typeof(weakSelf) strongSelf = weakSelf;
+                   if (code == RCRTCCodeSuccess) {
+                       // 3. 加入成功后进行资源的发布和订阅
+                       [self afterJoinRoom:room];
+                   } else {
+                       [UIAlertController alertWithString:@"加入房间失败" inCurrentViewController:strongSelf];
+                   }
+               }];
 }
 
 // 加入成功后进行资源发布和订阅
@@ -129,14 +131,14 @@ API_AVAILABLE(ios(12.0))
     // 设置房间代理
     self.room = room;
     room.delegate = self;
-    
-    RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localView.canvesView;
+
+    RCRTCLocalVideoView *view = (RCRTCLocalVideoView *) self.localView.canvesView;
     view.fillMode = RCRTCVideoFillModeAspectFit;
 
     // 开始本地视频采集
     [[self.engine defaultVideoStream] setVideoView:view];
     [[self.engine defaultVideoStream] startCapture];
-    
+
     // 发布本地视频流
     [room.localUser publishDefaultStreams:^(BOOL isSuccess, RCRTCCode desc) {
         if (isSuccess && desc == RCRTCCodeSuccess) {
@@ -144,7 +146,7 @@ API_AVAILABLE(ios(12.0))
             [self setAppGroup];
         }
     }];
-    
+
     // 如果已经有远端用户在房间中, 需要订阅远端流
     if ([room.remoteUsers count] > 0) {
         NSMutableArray *streamArray = [NSMutableArray array];
@@ -165,10 +167,10 @@ API_AVAILABLE(ios(12.0))
             return;
         }
     }
-    
+
     // 取消本地发布并关闭摄像头采集
     [self.engine.defaultVideoStream stopCapture];
-    
+
     // 退出房间
     [self.engine leaveRoom:^(BOOL isSuccess, RCRTCCode code) {
         if (isSuccess && code == RCRTCCodeSuccess) {
@@ -176,7 +178,7 @@ API_AVAILABLE(ios(12.0))
         }
         [self.navigationController popViewControllerAnimated:YES];
     }];
-    
+
 }
 
 // 取消订阅远端流
@@ -187,7 +189,7 @@ API_AVAILABLE(ios(12.0))
             streamId = stream.streamId;
             [self fetchStreamVideoOffLineWithStreamId:streamId];
         }
-    }    
+    }
 }
 
 // 订阅远端流
@@ -203,41 +205,41 @@ API_AVAILABLE(ios(12.0))
             return;
         }
     }
-    
+
     // 订阅房间中远端用户音视频流资源
     NSArray *tinyStream = isTiny ? streams : @[];
     NSArray *ordinaryStream = isTiny ? @[] : streams;
     [self.room.localUser subscribeStream:ordinaryStream
                              tinyStreams:tinyStream
                               completion:^(BOOL isSuccess, RCRTCCode desc) {
-        if (desc != RCRTCCodeSuccess) {
-            NSString *errorStr = [NSString stringWithFormat:@"订阅远端流失败:%ld",(long)desc];
-            [UIAlertController alertWithString:errorStr inCurrentViewController:nil];
-            return;
-        }
-        
-        // 创建并设置远端视频预览视图
-        NSInteger i = 0;
-        for (RCRTCInputStream *stream in streams) {
-            if (stream.mediaType == RTCMediaTypeVideo) {
-                [self setupRemoteViewWithStream:stream];
-                i++;
-            }
-        }
-        if (i > 0) {
-            [self updateLayoutWithAnimation:YES];
-        }
-    }];
+                                  if (desc != RCRTCCodeSuccess) {
+                                      NSString *errorStr = [NSString stringWithFormat:@"订阅远端流失败:%ld", (long) desc];
+                                      [UIAlertController alertWithString:errorStr inCurrentViewController:nil];
+                                      return;
+                                  }
+
+                                  // 创建并设置远端视频预览视图
+                                  NSInteger i = 0;
+                                  for (RCRTCInputStream *stream in streams) {
+                                      if (stream.mediaType == RTCMediaTypeVideo) {
+                                          [self setupRemoteViewWithStream:stream];
+                                          i++;
+                                      }
+                                  }
+                                  if (i > 0) {
+                                      [self updateLayoutWithAnimation:YES];
+                                  }
+                              }];
 }
 
 // 创建并设置远端视频预览视图
 - (ScreenShareStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
     ScreenShareStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
-    RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *)sVideo.canvesView;
+    RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *) sVideo.canvesView;
     remoteView.fillMode = RCRTCVideoFillModeAspectFit;
-    
+
     // 设置视频流的渲染视图
-    [(RCRTCVideoInputStream *)stream setVideoView:remoteView];
+    [(RCRTCVideoInputStream *) stream setVideoView:remoteView];
     return sVideo;
 }
 
@@ -276,6 +278,7 @@ API_AVAILABLE(ios(12.0))
 }
 
 #pragma mark - RCRTCRoomEventDelegate
+
 // 远端用户发布资源通知
 - (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];
@@ -296,7 +299,7 @@ API_AVAILABLE(ios(12.0))
 }
 
 // 远端掉线
-- (void)didOfflineUser:(RCRTCRemoteUser*)user {
+- (void)didOfflineUser:(RCRTCRemoteUser *)user {
     [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
 }
 
@@ -309,6 +312,7 @@ API_AVAILABLE(ios(12.0))
 }
 
 #pragma mark - Event
+
 // 麦克风静音
 - (IBAction)micMute:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -330,7 +334,9 @@ API_AVAILABLE(ios(12.0))
 - (void)backItemClick {
     [self exitRoom];
 }
+
 #pragma mark - setter && getter
+
 - (ScreenShareStreamVideo *)localShareView {
     if (!_localShareView) {
         _localShareView = [ScreenShareStreamVideo LocalStreamVideo];

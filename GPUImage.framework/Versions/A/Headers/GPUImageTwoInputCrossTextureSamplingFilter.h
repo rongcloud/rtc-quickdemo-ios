@@ -1,9 +1,8 @@
 #import "GPUImageTwoInputFilter.h"
 
-@interface GPUImageTwoInputCrossTextureSamplingFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageTwoInputCrossTextureSamplingFilter : GPUImageTwoInputFilter {
     GLint texelWidthUniform, texelHeightUniform;
-    
+
     CGFloat texelWidth, texelHeight;
     BOOL hasOverriddenImageSizeFactor;
 }

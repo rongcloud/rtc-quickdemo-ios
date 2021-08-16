@@ -10,8 +10,7 @@
 //       lookup_soft_elegance_1.png and lookup_soft_elegance_2.png
 //       from Resources folder to your application bundle.
 
-@interface GPUImageSoftEleganceFilter : GPUImageFilterGroup
-{
+@interface GPUImageSoftEleganceFilter : GPUImageFilterGroup {
     GPUImagePicture *lookupImageSource1;
     GPUImagePicture *lookupImageSource2;
 }

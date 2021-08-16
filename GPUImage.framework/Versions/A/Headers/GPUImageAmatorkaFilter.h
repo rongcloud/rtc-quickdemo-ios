@@ -9,8 +9,7 @@
 // Note: If you want to use this effect you have to add lookup_amatorka.png
 //       from Resources folder to your application bundle.
 
-@interface GPUImageAmatorkaFilter : GPUImageFilterGroup
-{
+@interface GPUImageAmatorkaFilter : GPUImageFilterGroup {
     GPUImagePicture *lookupImageSource;
 }
 

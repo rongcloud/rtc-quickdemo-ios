@@ -2,8 +2,7 @@
 
 /** Creates a swirl distortion on the image
  */
-@interface GPUImageSwirlFilter : GPUImageFilter
-{
+@interface GPUImageSwirlFilter : GPUImageFilter {
     GLint radiusUniform, centerUniform, angleUniform;
 }
 

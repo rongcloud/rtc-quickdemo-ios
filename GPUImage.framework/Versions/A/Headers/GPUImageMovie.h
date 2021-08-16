@@ -14,8 +14,8 @@
  */
 @interface GPUImageMovie : GPUImageOutput
 
-@property (readwrite, retain) AVAsset *asset;
-@property (readwrite, retain) AVPlayerItem *playerItem;
+@property(readwrite, retain) AVAsset *asset;
+@property(readwrite, retain) AVPlayerItem *playerItem;
 @property(readwrite, retain) NSURL *url;
 
 /** This enables the benchmarking mode, which logs out instantaneous and average frame times to the console
@@ -37,25 +37,34 @@
 
 /** This is used to send the delete Movie did complete playing alert
  */
-@property (readwrite, nonatomic, assign) id <GPUImageMovieDelegate>delegate;
+@property(readwrite, nonatomic, assign) id <GPUImageMovieDelegate> delegate;
 
-@property (readonly, nonatomic) AVAssetReader *assetReader;
-@property (readonly, nonatomic) BOOL audioEncodingIsFinished;
-@property (readonly, nonatomic) BOOL videoEncodingIsFinished;
+@property(readonly, nonatomic) AVAssetReader *assetReader;
+@property(readonly, nonatomic) BOOL audioEncodingIsFinished;
+@property(readonly, nonatomic) BOOL videoEncodingIsFinished;
 
 /// @name Initialization and teardown
 - (id)initWithAsset:(AVAsset *)asset;
+
 - (id)initWithPlayerItem:(AVPlayerItem *)playerItem;
+
 - (id)initWithURL:(NSURL *)url;
+
 - (void)yuvConversionSetup;
 
 /// @name Movie processing
 - (void)enableSynchronizedEncodingUsingMovieWriter:(GPUImageMovieWriter *)movieWriter;
+
 - (BOOL)readNextVideoFrameFromOutput:(AVAssetReaderOutput *)readerVideoTrackOutput;
+
 - (BOOL)readNextAudioSampleFromOutput:(AVAssetReaderOutput *)readerAudioTrackOutput;
+
 - (void)startProcessing;
+
 - (void)endProcessing;
+
 - (void)cancelProcessing;
-- (void)processMovieFrame:(CMSampleBufferRef)movieSampleBuffer; 
+
+- (void)processMovieFrame:(CMSampleBufferRef)movieSampleBuffer;
 
 @end

@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface Constant : NSObject
 
-extern NSString * const AppKey;
+extern NSString *const AppKey;
 
-extern NSString * const AppSecret;
+extern NSString *const AppSecret;
 
 @end
 

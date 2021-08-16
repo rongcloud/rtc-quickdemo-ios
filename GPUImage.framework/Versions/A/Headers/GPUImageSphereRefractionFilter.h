@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageSphereRefractionFilter : GPUImageFilter
-{
+@interface GPUImageSphereRefractionFilter : GPUImageFilter {
     GLint radiusUniform, centerUniform, aspectRatioUniform, refractiveIndexUniform;
 }
 

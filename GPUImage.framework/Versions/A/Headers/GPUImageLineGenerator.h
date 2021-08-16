@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageLineGenerator : GPUImageFilter
-{
+@interface GPUImageLineGenerator : GPUImageFilter {
     GLint lineWidthUniform, lineColorUniform;
     GLfloat *lineCoordinates;
 }

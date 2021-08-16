@@ -1,7 +1,6 @@
 #import "GPUImageTwoInputFilter.h"
 
-@interface GPUImageExclusionBlendFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageExclusionBlendFilter : GPUImageTwoInputFilter {
 }
 
 @end

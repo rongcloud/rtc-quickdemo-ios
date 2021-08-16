@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIAlertController (RCRTC)
 
-+ (void)alertWithString:(NSString *)string inCurrentViewController:(UIViewController * _Nullable)vc;
++ (void)alertWithString:(NSString *)string inCurrentViewController:(UIViewController *_Nullable)vc;
 
 @end
 

@@ -2,8 +2,7 @@
 
 /** Transforms the colors of an image by applying a matrix to them
  */
-@interface GPUImageColorMatrixFilter : GPUImageFilter
-{
+@interface GPUImageColorMatrixFilter : GPUImageFilter {
     GLint colorMatrixUniform;
     GLint intensityUniform;
 }

@@ -20,8 +20,7 @@
  This is the Harris corner detector, as described in 
  C. Harris and M. Stephens. A Combined Corner and Edge Detector. Proc. Alvey Vision Conf., Univ. Manchester, pp. 147-151, 1988.
  */
-@interface GPUImageHarrisCornerDetectionFilter : GPUImageFilterGroup
-{
+@interface GPUImageHarrisCornerDetectionFilter : GPUImageFilterGroup {
     GPUImageXYDerivativeFilter *derivativeFilter;
     GPUImageGaussianBlurFilter *blurFilter;
     GPUImageFilter *harrisCornerDetectionFilter;
@@ -42,7 +41,7 @@
 @property(readwrite, nonatomic) CGFloat threshold;
 
 // This block is called on the detection of new corner points, usually on every processed frame. A C array containing normalized coordinates in X, Y pairs is passed in, along with a count of the number of corners detected and the current timestamp of the video frame
-@property(nonatomic, copy) void(^cornersDetectedBlock)(GLfloat* cornerArray, NSUInteger cornersDetected, CMTime frameTime);
+@property(nonatomic, copy) void (^cornersDetectedBlock)(GLfloat *cornerArray, NSUInteger cornersDetected, CMTime frameTime);
 
 // These images are only enabled when built with DEBUGFEATUREDETECTION defined, and are used to examine the intermediate states of the feature detector
 @property(nonatomic, readonly, strong) NSMutableArray *intermediateImages;

@@ -1,7 +1,6 @@
 #import "GPUImage3x3TextureSamplingFilter.h"
 
-@interface GPUImageThresholdedNonMaximumSuppressionFilter : GPUImage3x3TextureSamplingFilter
-{
+@interface GPUImageThresholdedNonMaximumSuppressionFilter : GPUImage3x3TextureSamplingFilter {
     GLint thresholdUniform;
 }
 

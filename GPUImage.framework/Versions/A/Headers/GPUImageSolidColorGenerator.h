@@ -4,8 +4,7 @@
 // dimensions, or this won't work correctly
 
 
-@interface GPUImageSolidColorGenerator : GPUImageFilter
-{
+@interface GPUImageSolidColorGenerator : GPUImageFilter {
     GLint colorUniform;
     GLint useExistingAlphaUniform;
 }

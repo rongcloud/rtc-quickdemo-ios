@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageMonochromeFilter : GPUImageFilter
-{
+@interface GPUImageMonochromeFilter : GPUImageFilter {
     GLint intensityUniform, filterColorUniform;
 }
 

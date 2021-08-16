@@ -7,12 +7,12 @@
 
 #import "ScreenShareStreamVideo.h"
 
-static NSString *zero  = @"0";
+static NSString *zero = @"0";
 
 @implementation ScreenShareStreamVideo
 
 // 根据 streamId 创建并设置远端视频预览视图
-- (instancetype)initWithStreamId:(nonnull NSString *)stream{
+- (instancetype)initWithStreamId:(nonnull NSString *)stream {
     if (self = [super init]) {
         self.streamId = stream;
         self.canvesView = [[RCRTCRemoteVideoView alloc] init];

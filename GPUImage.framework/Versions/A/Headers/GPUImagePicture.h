@@ -2,27 +2,35 @@
 #import "GPUImageOutput.h"
 
 
-@interface GPUImagePicture : GPUImageOutput
-{
+@interface GPUImagePicture : GPUImageOutput {
     CGSize pixelSizeOfImage;
     BOOL hasProcessedImage;
-    
+
     dispatch_semaphore_t imageUpdateSemaphore;
 }
 
 // Initialization and teardown
 - (id)initWithURL:(NSURL *)url;
+
 - (id)initWithImage:(UIImage *)newImageSource;
+
 - (id)initWithCGImage:(CGImageRef)newImageSource;
+
 - (id)initWithImage:(UIImage *)newImageSource smoothlyScaleOutput:(BOOL)smoothlyScaleOutput;
+
 - (id)initWithCGImage:(CGImageRef)newImageSource smoothlyScaleOutput:(BOOL)smoothlyScaleOutput;
+
 - (id)initWithImage:(UIImage *)newImageSource removePremultiplication:(BOOL)removePremultiplication;
+
 - (id)initWithCGImage:(CGImageRef)newImageSource removePremultiplication:(BOOL)removePremultiplication;
+
 - (id)initWithImage:(UIImage *)newImageSource smoothlyScaleOutput:(BOOL)smoothlyScaleOutput removePremultiplication:(BOOL)removePremultiplication;
+
 - (id)initWithCGImage:(CGImageRef)newImageSource smoothlyScaleOutput:(BOOL)smoothlyScaleOutput removePremultiplication:(BOOL)removePremultiplication;
 
 // Image rendering
 - (void)processImage;
+
 - (CGSize)outputImageSize;
 
 /**
@@ -33,6 +41,7 @@
  * @returns NO if resource is blocked and processing is discarded, YES otherwise
  */
 - (BOOL)processImageWithCompletionHandler:(void (^)(void))completion;
-- (void)processImageUpToFilter:(GPUImageOutput<GPUImageInput> *)finalFilterInChain withCompletionHandler:(void (^)(UIImage *processedImage))block;
+
+- (void)processImageUpToFilter:(GPUImageOutput <GPUImageInput> *)finalFilterInChain withCompletionHandler:(void (^)(UIImage *processedImage))block;
 
 @end

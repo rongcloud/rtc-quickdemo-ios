@@ -11,6 +11,22 @@
 		187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2B2628504A002E5288 /* LiveVideoLayoutTool.m */; };
 		187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E2D2628504A002E5288 /* LiveStreamVideo.m */; };
 		187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */; };
+		1E9B4B77269D3DCD00D223C3 /* CDN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E9B4B76269D3DCD00D223C3 /* CDN.storyboard */; };
+		1E9B4B7A269D3DE200D223C3 /* CDNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B79269D3DE200D223C3 /* CDNViewController.m */; };
+		1E9B4B7D269D64BD00D223C3 /* CDNLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B7C269D64BD00D223C3 /* CDNLiveViewController.m */; };
+		1E9B4B80269D6D5B00D223C3 /* CDNPullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B7F269D6D5B00D223C3 /* CDNPullViewController.m */; };
+		1E9B4B86269D811A00D223C3 /* CDNMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B4B85269D811A00D223C3 /* CDNMenuViewController.m */; };
+		1F4DF3F3266A0B4300D1E051 /* BeautyMenusButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E3266A0B4100D1E051 /* BeautyMenusButton.xib */; };
+		1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E4266A0B4100D1E051 /* BeautyMenusContentView.m */; };
+		1F4DF3F5266A0B4300D1E051 /* BeautyMenusContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E6266A0B4100D1E051 /* BeautyMenusContentView.xib */; };
+		1F4DF3F6266A0B4300D1E051 /* BeautyMeunsSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3E7266A0B4100D1E051 /* BeautyMeunsSliderView.xib */; };
+		1F4DF3F7266A0B4300D1E051 /* BeautyMenusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3EB266A0B4200D1E051 /* BeautyMenusView.m */; };
+		1F4DF3F8266A0B4300D1E051 /* BeautyMeunsSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3EC266A0B4200D1E051 /* BeautyMeunsSliderView.m */; };
+		1F4DF3F9266A0B4300D1E051 /* BeautyMeunsFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3ED266A0B4200D1E051 /* BeautyMeunsFilterView.m */; };
+		1F4DF3FA266A0B4300D1E051 /* BeautyMenusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3EE266A0B4200D1E051 /* BeautyMenusButton.m */; };
+		1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */; };
+		1F4DF3FC266A0B4300D1E051 /* BeautyMenusDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */; };
+		1F86215D266DF0EB000D2B8A /* BeautyMenusViewParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */; };
 		4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C12639650F00872F2B /* ScreenShareViewController.m */; };
 		4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6925C32639651D00872F2B /* ScreenShare.storyboard */; };
 		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
@@ -64,6 +80,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1F4DF465266A64BD00D1E051 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4FBD78D726395A3300660733 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,6 +112,33 @@
 		187F9E2F2628504A002E5288 /* LiveStreamVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamVideo.h; sourceTree = "<group>"; };
 		187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RCRTC.h"; sourceTree = "<group>"; };
 		187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RCRTC.m"; sourceTree = "<group>"; };
+		1E9B4B76269D3DCD00D223C3 /* CDN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CDN.storyboard; sourceTree = "<group>"; };
+		1E9B4B78269D3DE200D223C3 /* CDNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNViewController.h; sourceTree = "<group>"; };
+		1E9B4B79269D3DE200D223C3 /* CDNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNViewController.m; sourceTree = "<group>"; };
+		1E9B4B7B269D64BD00D223C3 /* CDNLiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNLiveViewController.h; sourceTree = "<group>"; };
+		1E9B4B7C269D64BD00D223C3 /* CDNLiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNLiveViewController.m; sourceTree = "<group>"; };
+		1E9B4B7E269D6D5B00D223C3 /* CDNPullViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNPullViewController.h; sourceTree = "<group>"; };
+		1E9B4B7F269D6D5B00D223C3 /* CDNPullViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNPullViewController.m; sourceTree = "<group>"; };
+		1E9B4B84269D811A00D223C3 /* CDNMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDNMenuViewController.h; sourceTree = "<group>"; };
+		1E9B4B85269D811A00D223C3 /* CDNMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDNMenuViewController.m; sourceTree = "<group>"; };
+		1F4DF3E3266A0B4100D1E051 /* BeautyMenusButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyMenusButton.xib; sourceTree = "<group>"; };
+		1F4DF3E4266A0B4100D1E051 /* BeautyMenusContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusContentView.m; sourceTree = "<group>"; };
+		1F4DF3E5266A0B4100D1E051 /* BeautyMenusContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusContentView.h; sourceTree = "<group>"; };
+		1F4DF3E6266A0B4100D1E051 /* BeautyMenusContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyMenusContentView.xib; sourceTree = "<group>"; };
+		1F4DF3E7266A0B4100D1E051 /* BeautyMeunsSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyMeunsSliderView.xib; sourceTree = "<group>"; };
+		1F4DF3E8266A0B4100D1E051 /* BeautyMeunsSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMeunsSliderView.h; sourceTree = "<group>"; };
+		1F4DF3E9266A0B4100D1E051 /* BeautyMeunsFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMeunsFilterView.h; sourceTree = "<group>"; };
+		1F4DF3EA266A0B4100D1E051 /* BeautyMenusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusButton.h; sourceTree = "<group>"; };
+		1F4DF3EB266A0B4200D1E051 /* BeautyMenusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusView.m; sourceTree = "<group>"; };
+		1F4DF3EC266A0B4200D1E051 /* BeautyMeunsSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMeunsSliderView.m; sourceTree = "<group>"; };
+		1F4DF3ED266A0B4200D1E051 /* BeautyMeunsFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMeunsFilterView.m; sourceTree = "<group>"; };
+		1F4DF3EE266A0B4200D1E051 /* BeautyMenusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusButton.m; sourceTree = "<group>"; };
+		1F4DF3EF266A0B4200D1E051 /* BeautyMenusDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusDividerView.h; sourceTree = "<group>"; };
+		1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyMeunsFilterView.xib; sourceTree = "<group>"; };
+		1F4DF3F1266A0B4300D1E051 /* BeautyMenusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyMenusView.h; sourceTree = "<group>"; };
+		1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusDividerView.m; sourceTree = "<group>"; };
+		1F86215B266DF0EB000D2B8A /* BeautyMenusViewParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeautyMenusViewParam.h; sourceTree = "<group>"; };
+		1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusViewParam.m; sourceTree = "<group>"; };
 		4F4BFF8326551D950038B8A6 /* Living.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Living.md; sourceTree = "<group>"; };
 		4F6925C02639650F00872F2B /* ScreenShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareViewController.h; sourceTree = "<group>"; };
 		4F6925C12639650F00872F2B /* ScreenShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareViewController.m; sourceTree = "<group>"; };
@@ -186,6 +239,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E9B4B75269D3DB000D223C3 /* CDN */ = {
+			isa = PBXGroup;
+			children = (
+				1E9B4B78269D3DE200D223C3 /* CDNViewController.h */,
+				1E9B4B79269D3DE200D223C3 /* CDNViewController.m */,
+				1E9B4B7B269D64BD00D223C3 /* CDNLiveViewController.h */,
+				1E9B4B7C269D64BD00D223C3 /* CDNLiveViewController.m */,
+				1E9B4B7E269D6D5B00D223C3 /* CDNPullViewController.h */,
+				1E9B4B7F269D6D5B00D223C3 /* CDNPullViewController.m */,
+				1E9B4B84269D811A00D223C3 /* CDNMenuViewController.h */,
+				1E9B4B85269D811A00D223C3 /* CDNMenuViewController.m */,
+				1E9B4B76269D3DCD00D223C3 /* CDN.storyboard */,
+			);
+			path = CDN;
+			sourceTree = "<group>";
+		};
+		1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DF3EA266A0B4100D1E051 /* BeautyMenusButton.h */,
+				1F4DF3EE266A0B4200D1E051 /* BeautyMenusButton.m */,
+				1F4DF3E3266A0B4100D1E051 /* BeautyMenusButton.xib */,
+				1F4DF3E5266A0B4100D1E051 /* BeautyMenusContentView.h */,
+				1F4DF3E4266A0B4100D1E051 /* BeautyMenusContentView.m */,
+				1F4DF3E6266A0B4100D1E051 /* BeautyMenusContentView.xib */,
+				1F4DF3EF266A0B4200D1E051 /* BeautyMenusDividerView.h */,
+				1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */,
+				1F4DF3F1266A0B4300D1E051 /* BeautyMenusView.h */,
+				1F4DF3EB266A0B4200D1E051 /* BeautyMenusView.m */,
+				1F86215B266DF0EB000D2B8A /* BeautyMenusViewParam.h */,
+				1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */,
+				1F4DF3E9266A0B4100D1E051 /* BeautyMeunsFilterView.h */,
+				1F4DF3ED266A0B4200D1E051 /* BeautyMeunsFilterView.m */,
+				1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */,
+				1F4DF3E8266A0B4100D1E051 /* BeautyMeunsSliderView.h */,
+				1F4DF3EC266A0B4200D1E051 /* BeautyMeunsSliderView.m */,
+				1F4DF3E7266A0B4100D1E051 /* BeautyMeunsSliderView.xib */,
+			);
+			path = BeautyMenusView;
+			sourceTree = "<group>";
+		};
 		4F6925952639643A00872F2B /* ScreenSharing */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
+				1E9B4B75269D3DB000D223C3 /* CDN */,
 				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
 				DDEC58132626DBF80067D692 /* Live */,
 				DD59DDFD262D2C9A00A0C940 /* CallKit */,
@@ -381,6 +476,7 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */,
 				4F4BFF8326551D950038B8A6 /* Living.md */,
 				DD59DE6C262FC1A500A0C940 /* GPUImage */,
 				4FA55F24264D124A0013061C /* LivingTool */,
@@ -453,6 +549,7 @@
 				51B46FD61753CAAB2A0A3E02 /* [CP] Embed Pods Frameworks */,
 				10A53109935367D704B8FC4D /* [CP] Copy Pods Resources */,
 				4FBD78D726395A3300660733 /* Embed App Extensions */,
+				1F4DF465266A64BD00D1E051 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -514,6 +611,8 @@
 				DD81212A261DC26F00AF7D35 /* LaunchScreen.storyboard in Resources */,
 				DDEC584B2627EC290067D692 /* CallLib.storyboard in Resources */,
 				4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */,
+				1F4DF3F5266A0B4300D1E051 /* BeautyMenusContentView.xib in Resources */,
+				1F4DF3F6266A0B4300D1E051 /* BeautyMeunsSliderView.xib in Resources */,
 				DDEC583F26270EDA0067D692 /* Live.storyboard in Resources */,
 				DD59DE64262EF19300A0C940 /* RCRTCList.plist in Resources */,
 				4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */,
@@ -521,6 +620,9 @@
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
 				DD812125261DC26B00AF7D35 /* Login.storyboard in Resources */,
+				1E9B4B77269D3DCD00D223C3 /* CDN.storyboard in Resources */,
+				1F4DF3F3266A0B4300D1E051 /* BeautyMenusButton.xib in Resources */,
+				1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,20 +742,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */,
+				1F4DF3F7266A0B4300D1E051 /* BeautyMenusView.m in Sources */,
 				DDCBC07B263105CE006C7C7D /* MeetingCryptoImpl.m in Sources */,
 				DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */,
 				4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */,
 				DDEC583726270E810067D692 /* LiveCreateViewController.m in Sources */,
 				DD812138261DC32900AF7D35 /* LoginViewController.m in Sources */,
+				1F4DF3FC266A0B4300D1E051 /* BeautyMenusDividerView.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* HomeViewController.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* Constant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
+				1E9B4B7D269D64BD00D223C3 /* CDNLiveViewController.m in Sources */,
 				4FFC2896264A7D7B008A83F9 /* ScreenShareStreamVideo.m in Sources */,
+				1E9B4B86269D811A00D223C3 /* CDNMenuViewController.m in Sources */,
 				4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */,
+				1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
+				1F4DF3FA266A0B4300D1E051 /* BeautyMenusButton.m in Sources */,
 				4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */,
+				1F86215D266DF0EB000D2B8A /* BeautyMenusViewParam.m in Sources */,
+				1F4DF3F8266A0B4300D1E051 /* BeautyMeunsSliderView.m in Sources */,
 				187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */,
 				DD59DE05262D5BD900A0C940 /* CallKitViewController.m in Sources */,
+				1E9B4B80269D6D5B00D223C3 /* CDNPullViewController.m in Sources */,
 				DD59DE73262FC1A500A0C940 /* GPUImageOutputCamera.m in Sources */,
 				DD24DFE426202F5100DC4665 /* MeetingViewController.m in Sources */,
 				DD59DE74262FC1A500A0C940 /* GPUImageHandle.m in Sources */,
@@ -661,10 +772,12 @@
 				4FFC2893264A7CF5008A83F9 /* ScreenShareVideoLayoutTool.m in Sources */,
 				DD59DE60262EEC5000A0C940 /* HomeTableViewCell.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
+				1E9B4B7A269D3DE200D223C3 /* CDNViewController.m in Sources */,
 				DD59DE75262FC1A500A0C940 /* GPUImageBeautyFilter.m in Sources */,
 				187F9E322628504A002E5288 /* LiveStreamVideo.m in Sources */,
 				DDEC58472627EC120067D692 /* CallLibViewController.m in Sources */,
 				187F9E302628504A002E5288 /* LiveMixStreamTool.m in Sources */,
+				1F4DF3F9266A0B4300D1E051 /* BeautyMeunsFilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,8 +988,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Live/Beauty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = RCRTCQuickDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -905,8 +1020,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Live/Beauty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = RCRTCQuickDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

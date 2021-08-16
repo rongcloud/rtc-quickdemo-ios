@@ -2,8 +2,7 @@
 
 /** Pixels with a luminance above the threshold will invert their color
  */
-@interface GPUImageSolarizeFilter : GPUImageFilter
-{
+@interface GPUImageSolarizeFilter : GPUImageFilter {
     GLint thresholdUniform;
 }
 

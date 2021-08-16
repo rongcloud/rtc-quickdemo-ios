@@ -1,7 +1,6 @@
 #import "GPUImageFilter.h"
 
-@interface GPUImageCrosshairGenerator : GPUImageFilter
-{
+@interface GPUImageCrosshairGenerator : GPUImageFilter {
     GLint crosshairWidthUniform, crosshairColorUniform;
 }
 

@@ -1,7 +1,6 @@
 #import "GPUImageGaussianBlurFilter.h"
 
-@interface GPUImageBilateralFilter : GPUImageGaussianBlurFilter
-{
+@interface GPUImageBilateralFilter : GPUImageGaussianBlurFilter {
     CGFloat firstDistanceNormalizationFactorUniform;
     CGFloat secondDistanceNormalizationFactorUniform;
 }

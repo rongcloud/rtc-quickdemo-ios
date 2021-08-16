@@ -2,8 +2,7 @@
 
 /** Selectively replaces a color in the first image with the second image
  */
-@interface GPUImageChromaKeyBlendFilter : GPUImageTwoInputFilter
-{
+@interface GPUImageChromaKeyBlendFilter : GPUImageTwoInputFilter {
     GLint colorToReplaceUniform, thresholdSensitivityUniform, smoothingUniform;
 }
 
