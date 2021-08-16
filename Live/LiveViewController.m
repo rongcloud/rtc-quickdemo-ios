@@ -103,7 +103,6 @@
      *
      * 参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
-
     // 初始化 UI
     [self initView];
 
@@ -362,7 +361,7 @@
 }
 
 // 自定义布局状态判断
-- (IBAction)streamLayutAction:(UIButton *)sender {
+- (IBAction)streamLayoutAction:(UIButton *)sender {
     if (self.liveRoleType == RCRTCLiveRoleTypeAudience) return;
     sender.tag >= 3 ? sender.tag = 1 : (sender.tag += 1);
     // 自定义布局刷新
@@ -501,19 +500,13 @@
             [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 code:%ld", (long) code] inCurrentViewController:strongSelf];
             return;
         }
-
         self.room = room;
         room.delegate = self;
-
-
         if (roleType == RCRTCLiveRoleTypeBroadcaster) {
-
             // 2.发布本地默认流
             [self publishLocalLiveAVStream];
-
             // 设置视频纹理渲染
             [self setBuffer];
-
             // 3.1单独订阅主播流
             if (room.remoteUsers.count) {
                 NSMutableArray *streamArray = [NSMutableArray array];

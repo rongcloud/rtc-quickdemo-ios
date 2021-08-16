@@ -40,25 +40,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     /*!
-     必要步骤：
-     1.参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
+     必要步骤：参考 RCRTCLoginViewController.m 中的 connectRongCloud 方法进行初始化
      */
-
     // 初始化 UI
     [self initView];
-
     // 配置进入会议前的一些准备参数
     [self initConfig];
-
-    // 2. 加入房间
+    // 加入房间
     [self joinRoom];
 }
 
 - (void)initConfig {
     if (!self.enableCryptho) return;
-
     /*!
      设置自定义加密代理
      如果参数为 nil 则关闭自定义加解密，如果参数非 nil 则打开自定义加解密
@@ -112,14 +106,14 @@
     config.roomType = RCRTCRoomTypeNormal;
     [[RCRTCEngine sharedInstance] enableSpeaker:YES];
     [[RCRTCEngine sharedInstance] joinRoom:self.roomId config:config completion:^(RCRTCRoom *_Nullable room, RCRTCCode code) {
-        if (code == RCRTCCodeSuccess) {
-            // 3. 加入成功后进行资源的发布和订阅
-            [self afterJoinRoom:room];
-        } else {
+        if (code != RCRTCCodeSuccess) {
             [self.navigationController popViewControllerAnimated:YES];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [UIAlertController alertWithString:[NSString stringWithFormat:@"加入房间失败 \n error code:%ld", (long) code] inCurrentViewController:self];
             });
+        } else {
+            // 加入成功后进行资源的发布和订阅
+            [self afterJoinRoom:room];
         }
     }];
 }

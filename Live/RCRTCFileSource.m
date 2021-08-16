@@ -10,18 +10,13 @@
 NSString *const kIMFileVideoCapturerErrorDomain = @"cn.rongcloud.RCRTCFileVideoCapturer";
 
 typedef NS_ENUM(NSInteger, IMFileVideoCapturerErrorCode) {
-
     RCRTCFileVideoCapturerErrorCode_CapturerRunning = 2000,
-
     RCRTCFileVideoCapturerErrorCode_FileNotFound
 };
 
 typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
-
     RCRTCFileVideoCapturerStatusNotInitialized,
-
     RCRTCFileVideoCapturerStatusStarted,
-
     RCRTCFileVideoCapturerStatusStopped
 };
 
@@ -43,11 +38,9 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
 
 - (instancetype)initWithFilePath:(NSString *)filePath {
     self = [super init];
-
     if (self) {
         _currentPath = filePath;
     }
-
     return self;
 }
 
@@ -78,7 +71,6 @@ typedef NS_ENUM(NSInteger, RCRTCFileVideoCapturerStatus) {
         [self.delegate didWillStartRead];
         [self setupReader];
     }
-
     return YES;
 }
 

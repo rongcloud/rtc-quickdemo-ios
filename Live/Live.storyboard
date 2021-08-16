@@ -182,7 +182,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="streamLayutAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="S64-p7-amv"/>
+                                            <action selector="streamLayoutAction:" destination="X66-9M-lVh" eventType="touchUpInside" id="S64-p7-amv"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yux-aa-mAM">
