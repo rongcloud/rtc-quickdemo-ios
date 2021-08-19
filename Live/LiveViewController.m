@@ -564,9 +564,13 @@
     RCRTCLocalVideoView *view = (RCRTCLocalVideoView *) self.localVideo.canvesView;
     // 2.设置视频流的渲染视图
     [self.engine.defaultVideoStream setVideoView:view];
-    // 3.开始摄像头采集
+    // 3.设置视频流参数
+    RCRTCVideoStreamConfig *videoConfig =self.engine.defaultVideoStream.videoConfig;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset1280x720;
+    [self.engine.defaultVideoStream setVideoConfig:videoConfig];
+    // 4.开始摄像头采集
     [self.engine.defaultVideoStream startCapture];
-    // 4.发布本地流到房间
+    // 5.发布本地流到房间
     [self.room.localUser publishDefaultLiveStreams:^(BOOL isSuccess, RCRTCCode desc, RCRTCLiveInfo *_Nullable liveInfo) {
         if (desc == RCRTCCodeSuccess) {
             self.liveInfo = liveInfo;
@@ -682,16 +686,6 @@
 }
 
 #pragma mark - RCRTCRoomEventDelegate
-
-// 远端用户发布资源通知
-- (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams {
-    [self subscribeRemoteResource:streams];
-}
-
-// 远端用户取消发布资源
-- (void)didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams {
-    [self unsubscribeRemoteResource:streams orStreamId:nil];
-}
 
 // 直播合流发布
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream *> *)streams {
