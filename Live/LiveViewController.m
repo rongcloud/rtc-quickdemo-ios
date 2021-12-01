@@ -11,7 +11,6 @@
 #import "UIAlertController+RCRTC.h"
 #import "LiveMixStreamTool.h"
 #import "GPUImageHandle.h"
-#import "RCRTCFileSource.h"
 #import "BeautyMenusView.h"
 #import <RongFaceBeautifier/RongFaceBeautifier.h>
 
@@ -30,14 +29,13 @@
  
  观众上麦：
  1.先清理视图
- 2.退出房间
- 3.添加本地采集预览界面
- 4.加入 RTC 房间
- 
- 观众下麦：
+ 2.使用 switch role 切换为主播, 添加需要发布的流
+ 3.切换成功, 自行订阅
+
+ 主播下麦：
  1.先清理视图
- 2.退出房间
- 3.加入 RTC 房间
+ 2.使用 switch role 切换为观众
+ 3.切换成功, 自行订阅直播合流
  
  退出房间：主播/观众
  1.先清理视图
@@ -55,7 +53,7 @@
  stopPublishVideoFile 取消发布自定义视频流
  */
 
-@interface LiveViewController ()<RCRTCRoomEventDelegate,RCRTCStatusReportDelegate,RCRTCFileCapturerDelegate,BeautyMenusViewDelegate>
+@interface LiveViewController ()<RCRTCRoomEventDelegate,RCRTCStatusReportDelegate,RCRTCFileVideoOutputStreamDelegate,BeautyMenusViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *remoteContainerView;
 @property (nonatomic, weak) IBOutlet UIButton *closeCamera;
@@ -74,9 +72,8 @@
 @property (nonatomic, strong) LiveStreamVideo *localVideo;
 @property (nonatomic) NSMutableArray <LiveStreamVideo *>*streamVideos;
 @property (nonatomic, strong) LiveVideoLayoutTool *layoutTool;
-@property (nonatomic, strong) RCRTCVideoOutputStream *fileVideoOutputStream;
+@property (nonatomic, strong) RCRTCFileVideoOutputStream *fileVideoOutputStream;
 @property (nonatomic, strong) LiveStreamVideo *localFileStreamVideo;
-@property (nonatomic, strong) RCRTCFileSource *fileCapturer;
 @property (nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
 
 // 功能按钮容器
@@ -160,24 +157,50 @@
 
 // 观众上下麦
 - (void)connectHostWithState:(BOOL)isConnect {
-    self.liveRoleType = (isConnect ? RCRTCLiveRoleTypeBroadcaster : RCRTCLiveRoleTypeAudience);
-
-    // 1.先清理视图
+    //1.清理视图
     [self cleanRemoteContainer];
-
-    // 2.退出房间
-    [self exitRoom];
     if (isConnect) {
-        /*!
-         观众上麦
-         1.添加本地采集预览界面
-         2.加入 RTC 房间
-         */
+        //设置摄像头采集,本地预览
+        RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
+        [self.engine.defaultVideoStream setVideoView:view];
+        [self.engine.defaultVideoStream startCapture];
         [self setupLocalVideoView];
-        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeBroadcaster];
-    } else {
-        // 下麦：加入 RTC 房间
-        [self joinLiveRoomWithRole:RCRTCLiveRoleTypeAudience];
+        //2.切换成主播
+        NSArray *streams = @[self.engine.defaultAudioStream,self.engine.defaultVideoStream];
+        [self.room.localUser switchToBroadcaster:streams onSucceed:^(RCRTCLiveInfo * _Nonnull liveInfo) {
+            //3.切换成功, 订阅远端用户流
+            self.liveRoleType = RCRTCLiveRoleTypeBroadcaster;
+            NSMutableArray *streamArray = [NSMutableArray array];
+            for (RCRTCRemoteUser *user in self.room.remoteUsers) {
+                if (user.remoteStreams.count) {
+                    [streamArray addObjectsFromArray:user.remoteStreams];
+                }
+            }
+            if (streamArray.count) {
+                [self subscribeRemoteResource:streamArray];
+            }
+        } onFailed:^(RCRTCCode code) {
+            NSLog(@"OnFailed:%@",@(code));
+        } onKicked:^{
+            NSLog(@"OnKicked");
+        }];
+    }else{
+        //2.切换成观众
+        [self.room.localUser switchToAudienceOnSucceed:^{
+            
+            self.liveRoleType = RCRTCLiveRoleTypeAudience;
+            [self.engine.defaultVideoStream stopCapture];
+            //3.订阅直播合流
+            NSArray *liveStreams = [self.room getLiveStreams];
+            if (liveStreams.count) {
+                [self subscribeRemoteResource:liveStreams];
+            }
+            
+        } onFailed:^(RCRTCCode code) {
+            NSLog(@"OnFailed:%@",@(code));
+        } onKicked:^{
+            NSLog(@"OnKicked");
+        }];
     }
 }
 
@@ -423,20 +446,20 @@
     localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
     localFileVideoView.frameAnimated = NO;
 
-    NSString *tag = @"RongRTCFileVideo";
-    self.fileVideoOutputStream = [[RCRTCVideoOutputStream alloc] initVideoOutputStreamWithTag:tag];
-
-    RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
-    videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
-    [self.fileVideoOutputStream setVideoConfig:videoConfig];
-    [self.fileVideoOutputStream setVideoView:localFileVideoView];
-
     NSString *path = [[NSBundle mainBundle] pathForResource:@"video_demo1_low"
                                                      ofType:@"mp4"];
-    self.fileCapturer = [[RCRTCFileSource alloc] initWithFilePath:path];
-    self.fileCapturer.delegate = self;
-    self.fileVideoOutputStream.videoSource = self.fileCapturer;
-    [self.fileCapturer setObserver:self.fileVideoOutputStream];
+    
+    RCRTCVideoStreamConfig *videoConfig = self.fileVideoOutputStream.videoConfig;
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
+    
+    NSString *tag = @"RongRTCFileVideo";
+    self.fileVideoOutputStream = [[RCRTCEngine sharedInstance] createFileVideoOutputStream:path
+                                                                              replaceAudio:NO
+                                                                                  playback:YES
+                                                                                       tag:tag
+                                                                                    config:videoConfig];
+    [self.fileVideoOutputStream setVideoView:localFileVideoView];
+    self.fileVideoOutputStream.delegate = self;
 
     [self.room.localUser publishLiveStream:self.fileVideoOutputStream
                                 completion:^(BOOL isSuccess, RCRTCCode code, RCRTCLiveInfo *_Nullable liveInfo) {
@@ -450,16 +473,16 @@
 
 // 取消发布自定义视频流
 - (void)stopPublishVideoFile {
-    if (self.fileCapturer) {
-        [self.fileCapturer stop];
-        self.fileCapturer.delegate = nil;
-        self.fileCapturer = nil;
+    if (self.fileVideoOutputStream) {
+        [self.fileVideoOutputStream stop];
+        self.fileVideoOutputStream.delegate = nil;
     }
     [self.room.localUser unpublishLiveStream:self.fileVideoOutputStream
                                   completion:^(BOOL isSuccess, RCRTCCode code) {
                                       if (isSuccess) {
                                           [self.streamVideos removeObject:self.localFileStreamVideo];
                                           self.localFileStreamVideo = nil;
+                                          self.fileVideoOutputStream = nil;
                                           [self updateLayoutWithAnimation:YES];
                                       }
                                   }];
@@ -719,16 +742,20 @@
 - (void)didReportStatusForm:(RCRTCStatusForm *)form {
 }
 
-#pragma mark - RCRTCFileCapturerDelegate
+#pragma mark - RCRTCFileVideoOutputStreamDelegate
 
-- (void)didWillStartRead {
+- (void)fileVideoOutputStreamDidStartRead:(RCRTCFileVideoOutputStream *)stream {
     RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *) self.localFileStreamVideo.canvesView;
     [localFileVideoView flushVideoView];
 }
 
-- (void)didReadCompleted {
+- (void)fileVideoOutputStreamDidReadCompleted:(RCRTCFileVideoOutputStream *)stream {
     RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *) self.localFileStreamVideo.canvesView;
     [localFileVideoView flushVideoView];
+}
+
+- (void)fileVideoOutputStreamDidFailed:(RCRTCFileVideoOutputStream *)stream {
+    NSLog(@"自定义视频解码失败，tag:%@", stream.streamId);
 }
 
 #pragma mark - BeautyMenusViewDelegate

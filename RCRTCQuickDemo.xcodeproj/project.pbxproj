@@ -32,7 +32,6 @@
 		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
 		4F852CC3263A945700570503 /* RequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF6C261EFC1700DC4665 /* RequestToken.m */; };
 		4F852CC4263A945700570503 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
-		4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */; };
 		4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */; };
 		4FBD78BE26395A3200660733 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD78BD26395A3200660733 /* ReplayKit.framework */; };
 		4FBD78C226395A3200660733 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD78C126395A3200660733 /* SampleHandler.m */; };
@@ -41,6 +40,9 @@
 		4FFC2896264A7D7B008A83F9 /* ScreenShareStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC2895264A7D7B008A83F9 /* ScreenShareStreamVideo.m */; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		5E07FE1A6525BFF1829CB4E6 /* Pods_ScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517ABB850196208300BF9CD1 /* Pods_ScreenShare.framework */; };
+		BFEAF46D271144E800254A4C /* Device.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEAF46C271144E800254A4C /* Device.storyboard */; };
+		BFEAF4702711450E00254A4C /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAF46F2711450E00254A4C /* DeviceViewController.m */; };
+		BFEAF472271153F600254A4C /* devicetest.md in Resources */ = {isa = PBXBuildFile; fileRef = BFEAF471271153F600254A4C /* devicetest.md */; };
 		DD24DF44261EAAD800DC4665 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF43261EAAD800DC4665 /* Constant.m */; };
 		DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF51261EEB3900DC4665 /* MeetingCreateViewController.m */; };
 		DD24DF5A261EEB5A00DC4665 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24DF58261EEB5A00DC4665 /* HomeViewController.m */; };
@@ -145,8 +147,6 @@
 		4F6925C32639651D00872F2B /* ScreenShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScreenShare.storyboard; sourceTree = "<group>"; };
 		4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareCreateViewController.h; sourceTree = "<group>"; };
 		4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareCreateViewController.m; sourceTree = "<group>"; };
-		4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRTCFileSource.h; sourceTree = "<group>"; };
-		4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRTCFileSource.m; sourceTree = "<group>"; };
 		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
 		4FA987F3265604F50070BD73 /* ScreenShareRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShareRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemoRelease.entitlements; sourceTree = "<group>"; };
@@ -168,6 +168,10 @@
 		86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BFEAF46C271144E800254A4C /* Device.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Device.storyboard; sourceTree = "<group>"; };
+		BFEAF46E2711450E00254A4C /* DeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
+		BFEAF46F2711450E00254A4C /* DeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
+		BFEAF471271153F600254A4C /* devicetest.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = devicetest.md; sourceTree = "<group>"; };
 		D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.release.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.release.xcconfig"; sourceTree = "<group>"; };
 		DD1F6B48265E3980001C028F /* CallLib.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CallLib.md; sourceTree = "<group>"; };
 		DD24DF42261EAAD800DC4665 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -340,6 +344,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BFEAF46B271143AC00254A4C /* DeviceTest */ = {
+			isa = PBXGroup;
+			children = (
+				BFEAF46E2711450E00254A4C /* DeviceViewController.h */,
+				BFEAF46F2711450E00254A4C /* DeviceViewController.m */,
+				BFEAF46C271144E800254A4C /* Device.storyboard */,
+				BFEAF471271153F600254A4C /* devicetest.md */,
+			);
+			path = DeviceTest;
+			sourceTree = "<group>";
+		};
 		DD24DF32261E9C0100DC4665 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +439,7 @@
 				DDEC58132626DBF80067D692 /* Live */,
 				DD59DDFD262D2C9A00A0C940 /* CallKit */,
 				DDEC58412627E43B0067D692 /* CallLib */,
+				BFEAF46B271143AC00254A4C /* DeviceTest */,
 				4F6925952639643A00872F2B /* ScreenSharing */,
 				4FBD78BF26395A3200660733 /* ScreenShare */,
 				DD812118261DC26B00AF7D35 /* Products */,
@@ -480,8 +496,6 @@
 				4F4BFF8326551D950038B8A6 /* Living.md */,
 				DD59DE6C262FC1A500A0C940 /* GPUImage */,
 				4FA55F24264D124A0013061C /* LivingTool */,
-				4F91E09F26326B7000D17B1F /* RCRTCFileSource.h */,
-				4F91E0A026326B7000D17B1F /* RCRTCFileSource.m */,
 				4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */,
 				DDEC583526270E810067D692 /* LiveCreateViewController.h */,
 				DDEC583626270E810067D692 /* LiveCreateViewController.m */,
@@ -613,9 +627,11 @@
 				4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */,
 				1F4DF3F5266A0B4300D1E051 /* BeautyMenusContentView.xib in Resources */,
 				1F4DF3F6266A0B4300D1E051 /* BeautyMeunsSliderView.xib in Resources */,
+				BFEAF472271153F600254A4C /* devicetest.md in Resources */,
 				DDEC583F26270EDA0067D692 /* Live.storyboard in Resources */,
 				DD59DE64262EF19300A0C940 /* RCRTCList.plist in Resources */,
 				4F91E0A326326B7000D17B1F /* video_demo1_low.mp4 in Resources */,
+				BFEAF46D271144E800254A4C /* Device.storyboard in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
@@ -742,6 +758,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD81211C261DC26B00AF7D35 /* AppDelegate.m in Sources */,
+				BFEAF4702711450E00254A4C /* DeviceViewController.m in Sources */,
 				1F4DF3F7266A0B4300D1E051 /* BeautyMenusView.m in Sources */,
 				DDCBC07B263105CE006C7C7D /* MeetingCryptoImpl.m in Sources */,
 				DD24DF53261EEB3900DC4665 /* MeetingCreateViewController.m in Sources */,
@@ -759,7 +776,6 @@
 				1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
 				1F4DF3FA266A0B4300D1E051 /* BeautyMenusButton.m in Sources */,
-				4F91E0A226326B7000D17B1F /* RCRTCFileSource.m in Sources */,
 				1F86215D266DF0EB000D2B8A /* BeautyMenusViewParam.m in Sources */,
 				1F4DF3F8266A0B4300D1E051 /* BeautyMeunsSliderView.m in Sources */,
 				187F9E312628504A002E5288 /* LiveVideoLayoutTool.m in Sources */,

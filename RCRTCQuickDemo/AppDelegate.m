@@ -20,7 +20,7 @@
 
     [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Verbose];
     //    [self redirectNSlogToDocumentFolder]; //只有在需要生成沙盒日志文件时才放开注释
-
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     // 未进行任何操作，直接进入 RCRTCLoginViewController
     return YES;
 }

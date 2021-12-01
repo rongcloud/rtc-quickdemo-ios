@@ -146,7 +146,7 @@ API_AVAILABLE(ios(12.0))
             [self setAppGroup];
         }
     }];
-
+    [self publishScreenStream:room];
     // 如果已经有远端用户在房间中, 需要订阅远端流
     if ([room.remoteUsers count] > 0) {
         NSMutableArray *streamArray = [NSMutableArray array];
@@ -155,6 +155,23 @@ API_AVAILABLE(ios(12.0))
         }
         [self subscribeRemoteResource:streamArray];
     }
+}
+
+- (void)publishScreenStream:(RCRTCRoom *)room {
+    
+    RCRTCScreenShareOutputStream *videoOutputStream = [[RCRTCEngine sharedInstance] getScreenShareVideoStreamWithGroupId:ScreenShareGroupID];
+    RCRTCVideoStreamConfig *videoConfig = [[RCRTCVideoStreamConfig alloc] init];
+    videoConfig.videoSizePreset = RCRTCVideoSizePreset720x480;
+    videoConfig.videoFps = RCRTCVideoFPS30;
+    [videoOutputStream setVideoConfig:videoConfig];
+    [self.room.localUser publishStream:videoOutputStream
+                            completion:^(BOOL isSuccess, RCRTCCode desc) {
+        if (isSuccess) {
+            NSLog(@"发布自定义流成功");
+        } else {
+            NSLog(@"发布自定义流失败%@", [NSString stringWithFormat:@"订阅远端流失败:%ld", (long) desc]);
+        }
+    }];
 }
 
 // 离开房间

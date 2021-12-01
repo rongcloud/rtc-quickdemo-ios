@@ -74,5 +74,17 @@
 		<key>controllerIdentifier</key>
 		<string>CDNViewController</string>
 	</dict>
+	<dict>
+		<key>image</key>
+		<string>actionbar_voice_input_icon</string>
+		<key>title</key>
+		<string>Device Test</string>
+		<key>description</key>
+		<string>检测设备声音输入输出是否完好</string>
+		<key>storyboardName</key>
+		<string>Device</string>
+		<key>controllerIdentifier</key>
+		<string>DeviceViewController</string>
+	</dict>
 </array>
 </plist>

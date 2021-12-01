@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Device View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DeviceViewController" id="Y6W-OH-hqX" customClass="DeviceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音频回路测试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1G-ig-lA4">
+                                <rect key="frame" x="20" y="82" width="374" height="25.5"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入音频测试时间[2-10]" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hfu-iS-Sl2">
+                                <rect key="frame" x="20" y="123" width="220" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="0Cw-aK-wzx"/>
+                                    <constraint firstAttribute="width" constant="220" id="m8a-cW-Nmq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpg-MI-a9x">
+                                <rect key="frame" x="20" y="184" width="82" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="t7A-fl-hBK"/>
+                                    <constraint firstAttribute="height" constant="31" id="yMJ-Yd-0T3"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="开始测试"/>
+                                <connections>
+                                    <action selector="audioEchoAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="a5Z-Pp-qMb"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ3-Wm-y0u">
+                                <rect key="frame" x="20" y="235" width="82" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="33J-ly-30n"/>
+                                    <constraint firstAttribute="width" constant="82" id="5fQ-mt-RcY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="结束测试"/>
+                                <connections>
+                                    <action selector="audioEchoStopAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Uv5-XN-JMk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAO-JV-nOS">
+                                <rect key="frame" x="226" y="169" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您可以尝试说一些话！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvj-0t-TH2">
+                                <rect key="frame" x="139.5" y="240.5" width="173.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wJ3-Wm-y0u" firstAttribute="top" secondItem="xpg-MI-a9x" secondAttribute="bottom" constant="20" id="1Ku-Rv-wrh"/>
+                            <constraint firstItem="y1G-ig-lA4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="38" id="59s-Vq-B57"/>
+                            <constraint firstItem="hfu-iS-Sl2" firstAttribute="top" secondItem="y1G-ig-lA4" secondAttribute="bottom" constant="15.5" id="5cu-vS-faa"/>
+                            <constraint firstItem="hfu-iS-Sl2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Abu-fX-ubB"/>
+                            <constraint firstItem="yAO-JV-nOS" firstAttribute="leading" secondItem="xpg-MI-a9x" secondAttribute="trailing" constant="124" id="DGA-qD-cRy"/>
+                            <constraint firstItem="yAO-JV-nOS" firstAttribute="top" secondItem="hfu-iS-Sl2" secondAttribute="bottom" constant="12" id="L3N-66-9r5"/>
+                            <constraint firstItem="wJ3-Wm-y0u" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Mh2-7v-BRZ"/>
+                            <constraint firstItem="y1G-ig-lA4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="XpN-kW-YE9"/>
+                            <constraint firstItem="xpg-MI-a9x" firstAttribute="top" secondItem="hfu-iS-Sl2" secondAttribute="bottom" constant="27" id="c38-BW-euh"/>
+                            <constraint firstItem="bvj-0t-TH2" firstAttribute="centerY" secondItem="wJ3-Wm-y0u" secondAttribute="centerY" id="caS-6k-tar"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y1G-ig-lA4" secondAttribute="trailing" constant="20" id="daF-ox-Mcy"/>
+                            <constraint firstItem="bvj-0t-TH2" firstAttribute="centerX" secondItem="yAO-JV-nOS" secondAttribute="centerX" id="gqR-pd-WJN"/>
+                            <constraint firstItem="xpg-MI-a9x" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="z5g-Og-BMY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="audioEchoButton" destination="xpg-MI-a9x" id="pkL-ze-unW"/>
+                        <outlet property="audioEchoStopButton" destination="wJ3-Wm-y0u" id="Znw-Xp-1RM"/>
+                        <outlet property="audioEchoTextField" destination="hfu-iS-Sl2" id="gto-vZ-EBW"/>
+                        <outlet property="timeCountLabel" destination="yAO-JV-nOS" id="2Qs-DJ-jhU"/>
+                        <outlet property="timeCountLabelDetail" destination="bvj-0t-TH2" id="MmO-i0-CpZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="110"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
