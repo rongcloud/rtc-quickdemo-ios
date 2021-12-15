@@ -12,6 +12,7 @@
 #import "LiveMixStreamTool.h"
 #import "GPUImageHandle.h"
 #import "BeautyMenusView.h"
+#import "RCRTCPKView.h"
 #import <RongFaceBeautifier/RongFaceBeautifier.h>
 
 /*!
@@ -51,9 +52,25 @@
  startPublishVideoFil 发布自定义视频流
  参考 RCRTCFileSource 文件设置视频中的音频，然后混音发送
  stopPublishVideoFile 取消发布自定义视频流
+ 
+ pk 跨房间连麦
+ 1.唤起 pk 邀请视图
+ 2.输入 roomId 和 userId,点击 '开始邀请'
+ 3.被邀请端点击 'ok'
+ 此时 A 房间能看到 B 房间的流, B 房间能看到 A 房间的流
+ 4.任意房间在 pk 邀请视图里点击 '离开副房间' A B 两端结束 pk
+
  */
 
-@interface LiveViewController ()<RCRTCRoomEventDelegate,RCRTCStatusReportDelegate,RCRTCFileVideoOutputStreamDelegate,BeautyMenusViewDelegate>
+@interface LiveViewController ()
+<
+RCRTCRoomEventDelegate,
+RCRTCStatusReportDelegate,
+RCRTCFileVideoOutputStreamDelegate,
+BeautyMenusViewDelegate,
+PKViewBtnEventDelegate,
+RCRTCOtherRoomEventDelegate
+>
 
 @property (nonatomic, weak) IBOutlet UIView *remoteContainerView;
 @property (nonatomic, weak) IBOutlet UIButton *closeCamera;
@@ -67,19 +84,23 @@
 
 @property (nonatomic, assign) BOOL openWaterMark;
 @property (nonatomic, strong, nullable) GPUImageHandle *gpuImageHandler;
-@property (nonatomic, strong) RCRTCRoom *room;
+@property (nonatomic, weak) RCRTCRoom *room;
+@property (nonatomic, weak) RCRTCOtherRoom *pkRoom;
 @property (nonatomic, strong) RCRTCLiveInfo *liveInfo;
 @property (nonatomic, strong) LiveStreamVideo *localVideo;
 @property (nonatomic) NSMutableArray <LiveStreamVideo *>*streamVideos;
 @property (nonatomic, strong) LiveVideoLayoutTool *layoutTool;
 @property (nonatomic, strong) RCRTCFileVideoOutputStream *fileVideoOutputStream;
 @property (nonatomic, strong) LiveStreamVideo *localFileStreamVideo;
-@property (nonatomic, strong) RCRTCRemoteVideoView *remoteFileVideoView;
+@property (nonatomic, strong) RCRTCVideoView *remoteFileVideoView;
+@property (nonatomic, strong) RCRTCPKView *pkView;
 
 // 功能按钮容器
 @property(nonatomic, copy) NSArray *funcBtns;
 // 发布本地自定义流开关
 @property(strong, nonatomic) UIButton *pushLocalButton;
+
+@property(nonatomic, strong) UIButton *pkBtn;
 // 音频配置
 @property(strong, nonatomic) RCRTCEngine *engine;
 // 美颜状态
@@ -93,8 +114,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
     /**
      * 必要步骤：
      *
@@ -161,8 +180,7 @@
     [self cleanRemoteContainer];
     if (isConnect) {
         //设置摄像头采集,本地预览
-        RCRTCLocalVideoView *view = (RCRTCLocalVideoView *)self.localVideo.canvesView;
-        [self.engine.defaultVideoStream setVideoView:view];
+        [self.engine.defaultVideoStream setVideoView:self.localVideo.canvesView];
         [self.engine.defaultVideoStream startCapture];
         [self setupLocalVideoView];
         //2.切换成主播
@@ -285,7 +303,9 @@
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
     [_pushLocalButton setTitleColor:[UIColor systemBlueColor] forState:UIControlStateSelected];
     [_pushLocalButton addTarget:self action:@selector(publishLocalButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_pushLocalButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.pkBtn];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -442,7 +462,7 @@
 // 发布自定义流
 - (void)startPublishVideoFile {
 
-    RCRTCLocalVideoView *localFileVideoView = (RCRTCLocalVideoView *) self.localFileStreamVideo.canvesView;
+    RCRTCVideoView *localFileVideoView = (RCRTCVideoView *) self.localFileStreamVideo.canvesView;
     localFileVideoView.fillMode = RCRTCVideoFillModeAspectFit;
     localFileVideoView.frameAnimated = NO;
 
@@ -584,7 +604,7 @@
 // 发布本地音视频流
 - (void)publishLocalLiveAVStream {
     // 1.初始化渲染视图
-    RCRTCLocalVideoView *view = (RCRTCLocalVideoView *) self.localVideo.canvesView;
+    RCRTCVideoView *view = (RCRTCVideoView *) self.localVideo.canvesView;
     // 2.设置视频流的渲染视图
     [self.engine.defaultVideoStream setVideoView:view];
     // 3.设置视频流参数
@@ -660,7 +680,7 @@
 - (LiveStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
 
     LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
-    RCRTCRemoteVideoView *remoteView = (RCRTCRemoteVideoView *) sVideo.canvesView;
+    RCRTCVideoView *remoteView = (RCRTCVideoView *) sVideo.canvesView;
 
     //如果为自定义视频流则适配显示
     if ([stream.tag isEqualToString:@"RongRTCFileVideo"]) {
@@ -740,6 +760,54 @@
 }
 
 - (void)didReportStatusForm:(RCRTCStatusForm *)form {
+}
+//收到 pk 邀请
+- (void)didRequestJoinOtherRoom:(NSString *)inviterRoomId
+                  inviterUserId:(NSString *)inviterUserId
+                          extra:(NSString *)extra{
+    NSString *message = [NSString stringWithFormat:@"收到来自 %@ 的 pk 邀请",inviterUserId];
+    [UIAlertController alertWithString:message okAction:^{
+        [self.room.localUser responseJoinOtherRoom:inviterRoomId userId:inviterUserId agree:YES autoMix:YES extra:@"" completion:^(BOOL isSuccess, RCRTCCode code) {
+            if (isSuccess) {
+                [self joinOtherRoom:inviterRoomId];
+            }
+        }];
+    } cancelAction:^{
+        [self.room.localUser responseJoinOtherRoom:inviterRoomId userId:inviterUserId agree:NO autoMix:YES extra:@"" completion:^(BOOL isSuccess, RCRTCCode code) {
+            
+        }];
+    } onVC:self];
+    
+}
+//收到 pk 取消
+- (void)didCancelRequestOtherRoom:(NSString *)inviterRoomId
+                    inviterUserId:(NSString *)inviterUserId
+                            extra:(NSString *)extra{
+    [UIAlertController alertWithString:@"pk 邀请取消" inCurrentViewController:self];
+}
+
+- (void)didResponseJoinOtherRoom:(NSString *)inviterRoomId
+                   inviterUserId:(NSString *)inviterUserId
+                   inviteeRoomId:(NSString *)inviteeRoomId
+                   inviteeUserId:(NSString *)inviteeUserId
+                           agree:(BOOL)agree
+                           extra:(NSString *)extra{
+    if (agree) {
+        [self joinOtherRoom:inviteeRoomId];
+    }
+}
+
+- (void)didFinishOtherRoom:(NSString *)roomId userId:(NSString *)userId{
+    [self leaveOtherRoom:roomId];
+}
+
+#pragma mark - RCRTCOtherRoomEventDelegate
+- (void)room:(RCRTCBaseRoom *)room didLeaveUser:(RCRTCRemoteUser *)user{
+    [self unsubscribeRemoteResource:user.remoteStreams orStreamId:nil];
+}
+
+- (void)room:(RCRTCBaseRoom *)room didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams{
+    [self unsubscribeRemoteResource:streams orStreamId:nil];
 }
 
 #pragma mark - RCRTCFileVideoOutputStreamDelegate
@@ -832,5 +900,89 @@
         [self.gpuImageHandler onlyWaterMark];
     }
 }
+
+- (void)showPKView:(UIButton *)btn{
+    if (self.pkView.isShowing) {
+        [self.pkView dismiss];
+    }
+    else {
+        [self.pkView showOnSuperView:self.view];
+    }
+}
+
+- (void)joinOtherRoom:(NSString *)roomId {
+    __weak typeof(self) weakSelf = self;
+    [self.engine joinOtherRoom:roomId completion:^(RCRTCOtherRoom * _Nullable room, RCRTCCode code) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (code == RCRTCCodeSuccess) {
+            room.delegate = self;
+            strongSelf.pkRoom = room;
+            NSMutableArray *streamArray = [NSMutableArray array];
+            for (RCRTCRemoteUser *user in room.remoteUsers) {
+                if (user.remoteStreams.count) {
+                    [streamArray addObjectsFromArray:user.remoteStreams];
+                }
+            }
+            if (streamArray.count) {
+                [strongSelf subscribeRemoteResource:streamArray];
+            }
+        }
+    }];
+}
+
+- (void)leaveOtherRoom:(NSString *)roomId {
+    
+    NSMutableArray *streamArray = [NSMutableArray array];
+    for (RCRTCRemoteUser *user in self.pkRoom.remoteUsers) {
+        if (user.remoteStreams.count) {
+            [streamArray addObjectsFromArray:user.remoteStreams];
+        }
+    }
+    if (streamArray.count) {
+        [self unsubscribeRemoteResource:streamArray orStreamId:nil];
+    }
+    
+    [self.engine leaveOtherRoom:roomId notifyFinished:YES completion:^(BOOL isSuccess, RCRTCCode code) {
+        if (!isSuccess) {
+            [UIAlertController alertWithString:@"离开副房间失败" inCurrentViewController:nil];
+        }
+    }];
+}
+
+#pragma mark - PKViewBtnEventDelegate
+- (void)pk_inviteWithRoomId:(NSString *)roomId userId:(NSString *)userId autoMix:(BOOL)autoMix{
+    [self.room.localUser requestJoinOtherRoom:roomId userId:userId autoMix:autoMix extra:@"" completion:^(BOOL isSuccess, RCRTCCode code) {}];
+}
+
+- (void)pk_cancelWithRoomId:(NSString *)roomId userId:(NSString *)userId{
+    [self.room.localUser cancelRequestJoinOtherRoom:roomId userId:userId extra:@"" completion:^(BOOL isSuccess, RCRTCCode code) {}];
+}
+
+- (void)pk_joinOtherRoom:(NSString *)roomId{
+    [self joinOtherRoom:roomId];
+}
+
+- (void)pk_leaveOtherRoom:(NSString *)roomId{
+    [self leaveOtherRoom:roomId];
+}
+
+- (UIButton *)pkBtn{
+    if (!_pkBtn) {
+        _pkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
+        [_pkBtn setTitle:@"PK" forState:UIControlStateNormal];
+        [_pkBtn setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+        [_pkBtn addTarget:self action:@selector(showPKView:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _pkBtn;
+}
+
+- (RCRTCPKView *)pkView{
+    if (!_pkView) {
+        _pkView = [[RCRTCPKView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)];
+        _pkView.delegate = self;
+    }
+    return _pkView;
+}
+
 
 @end

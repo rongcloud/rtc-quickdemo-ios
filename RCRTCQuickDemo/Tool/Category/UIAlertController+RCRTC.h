@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)alertWithString:(NSString *)string inCurrentViewController:(UIViewController *_Nullable)vc;
 
++ (void)alertWithString:(NSString *)string
+               okAction:(void(^)(void))okAction
+           cancelAction:(void(^)(void))cancelAction
+                   onVC:(UIViewController *)vc;
+
 @end
 
 NS_ASSUME_NONNULL_END

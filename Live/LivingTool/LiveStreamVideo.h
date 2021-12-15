@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
  */
-@property(nonatomic, strong) RCRTCVideoPreviewView *canvesView;
+@property(nonatomic, strong) RCRTCVideoView *canvesView;
 
 /*!
  RCRTCRemoteVideoView 初始化

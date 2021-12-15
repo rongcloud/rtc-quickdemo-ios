@@ -15,7 +15,7 @@ static NSString *zero = @"0";
 - (instancetype)initWithStreamId:(nonnull NSString *)stream {
     if (self = [super init]) {
         self.streamId = stream;
-        self.canvesView = [[RCRTCRemoteVideoView alloc] init];
+        self.canvesView = [[RCRTCVideoView alloc] init];
         self.canvesView.translatesAutoresizingMaskIntoConstraints = NO;
         self.canvesView.fillMode = RCRTCVideoFillModeAspectFill;
     }
@@ -26,7 +26,7 @@ static NSString *zero = @"0";
     LiveStreamVideo *localStreamVideo = [[LiveStreamVideo alloc] init];
     // 初始化 这里的 streamId 推荐 0
     localStreamVideo.streamId = zero;
-    localStreamVideo.canvesView = [[RCRTCLocalVideoView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    localStreamVideo.canvesView = [[RCRTCVideoView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     localStreamVideo.canvesView.translatesAutoresizingMaskIntoConstraints = NO;
     localStreamVideo.canvesView.fillMode = RCRTCVideoFillModeAspectFill;
     return localStreamVideo;

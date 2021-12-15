@@ -23,4 +23,35 @@
         }
     });
 }
+
++ (void)alertWithString:(NSString *)string
+               okAction:(void(^)(void))okAction
+           cancelAction:(void(^)(void))cancelAction
+                   onVC:(UIViewController *)vc {
+    if (!string.length) {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if (okAction) {
+                okAction();
+            }
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            if (cancelAction) {
+                cancelAction();
+            }
+        }]];
+        
+        if (vc) {
+            [vc presentViewController:alert animated:YES completion:nil];
+        } else {
+            UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+            [keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+    });
+}
+
 @end

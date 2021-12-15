@@ -40,6 +40,8 @@
 		4FFC2896264A7D7B008A83F9 /* ScreenShareStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC2895264A7D7B008A83F9 /* ScreenShareStreamVideo.m */; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		5E07FE1A6525BFF1829CB4E6 /* Pods_ScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517ABB850196208300BF9CD1 /* Pods_ScreenShare.framework */; };
+		9921563D2766F29D008BDA4F /* RCRTCPKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921563C2766F29D008BDA4F /* RCRTCPKView.m */; };
+		9921564A276725D7008BDA4F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 99215648276725D7008BDA4F /* UIView+Extension.m */; };
 		BFEAF46D271144E800254A4C /* Device.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEAF46C271144E800254A4C /* Device.storyboard */; };
 		BFEAF4702711450E00254A4C /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAF46F2711450E00254A4C /* DeviceViewController.m */; };
 		BFEAF472271153F600254A4C /* devicetest.md in Resources */ = {isa = PBXBuildFile; fileRef = BFEAF471271153F600254A4C /* devicetest.md */; };
@@ -168,6 +170,10 @@
 		86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9921563B2766F29D008BDA4F /* RCRTCPKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCPKView.h; sourceTree = "<group>"; };
+		9921563C2766F29D008BDA4F /* RCRTCPKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCPKView.m; sourceTree = "<group>"; };
+		99215648276725D7008BDA4F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		99215649276725D7008BDA4F /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		BFEAF46C271144E800254A4C /* Device.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Device.storyboard; sourceTree = "<group>"; };
 		BFEAF46E2711450E00254A4C /* DeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
 		BFEAF46F2711450E00254A4C /* DeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
@@ -333,6 +339,15 @@
 			path = ScreenShare;
 			sourceTree = "<group>";
 		};
+		9921563A2766F27C008BDA4F /* PK */ = {
+			isa = PBXGroup;
+			children = (
+				9921563B2766F29D008BDA4F /* RCRTCPKView.h */,
+				9921563C2766F29D008BDA4F /* RCRTCPKView.m */,
+			);
+			path = PK;
+			sourceTree = "<group>";
+		};
 		AE23833E4788BB5B11B8782D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +415,8 @@
 		DD4C6CF02626C6D600408C19 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				99215649276725D7008BDA4F /* UIView+Extension.h */,
+				99215648276725D7008BDA4F /* UIView+Extension.m */,
 				187F9E34262850B2002E5288 /* UIAlertController+RCRTC.h */,
 				187F9E35262850B2002E5288 /* UIAlertController+RCRTC.m */,
 			);
@@ -492,6 +509,7 @@
 		DDEC58132626DBF80067D692 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				9921563A2766F27C008BDA4F /* PK */,
 				1F4DF3E1266A0B2B00D1E051 /* BeautyMenusView */,
 				4F4BFF8326551D950038B8A6 /* Living.md */,
 				DD59DE6C262FC1A500A0C940 /* GPUImage */,
@@ -772,7 +790,9 @@
 				1E9B4B7D269D64BD00D223C3 /* CDNLiveViewController.m in Sources */,
 				4FFC2896264A7D7B008A83F9 /* ScreenShareStreamVideo.m in Sources */,
 				1E9B4B86269D811A00D223C3 /* CDNMenuViewController.m in Sources */,
+				9921564A276725D7008BDA4F /* UIView+Extension.m in Sources */,
 				4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */,
+				9921563D2766F29D008BDA4F /* RCRTCPKView.m in Sources */,
 				1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
 				1F4DF3FA266A0B4300D1E051 /* BeautyMenusButton.m in Sources */,
