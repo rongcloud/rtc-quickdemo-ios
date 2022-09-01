@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import <RongIMLib/RongIMLib.h>
+#import <RongIMLibCore/RongIMLibCore.h>
 #import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self registerAPN];
 
-    [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Verbose];
+    [[RCCoreClient sharedCoreClient] setLogLevel:RC_Log_Level_Verbose];
     //    [self redirectNSlogToDocumentFolder]; //只有在需要生成沙盒日志文件时才放开注释
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     // 未进行任何操作，直接进入 RCRTCLoginViewController
