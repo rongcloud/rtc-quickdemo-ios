@@ -27,6 +27,8 @@
 		1F4DF3FB266A0B4300D1E051 /* BeautyMeunsFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F0266A0B4200D1E051 /* BeautyMeunsFilterView.xib */; };
 		1F4DF3FC266A0B4300D1E051 /* BeautyMenusDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */; };
 		1F86215D266DF0EB000D2B8A /* BeautyMenusViewParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */; };
+		4F0566602924833100AD1985 /* CDNPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F05665C2924833100AD1985 /* CDNPlayerViewController.m */; };
+		4F0566612924833100AD1985 /* CDNPalyViewCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F05665F2924833100AD1985 /* CDNPalyViewCustom.m */; };
 		4F6925C22639650F00872F2B /* ScreenShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925C12639650F00872F2B /* ScreenShareViewController.m */; };
 		4F6925C42639651D00872F2B /* ScreenShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6925C32639651D00872F2B /* ScreenShare.storyboard */; };
 		4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */; };
@@ -143,6 +145,10 @@
 		1F4DF3F2266A0B4300D1E051 /* BeautyMenusDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusDividerView.m; sourceTree = "<group>"; };
 		1F86215B266DF0EB000D2B8A /* BeautyMenusViewParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeautyMenusViewParam.h; sourceTree = "<group>"; };
 		1F86215C266DF0EB000D2B8A /* BeautyMenusViewParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeautyMenusViewParam.m; sourceTree = "<group>"; };
+		4F05665C2924833100AD1985 /* CDNPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDNPlayerViewController.m; sourceTree = "<group>"; };
+		4F05665D2924833100AD1985 /* CDNPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDNPlayerViewController.h; sourceTree = "<group>"; };
+		4F05665E2924833100AD1985 /* CDNPalyViewCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDNPalyViewCustom.h; sourceTree = "<group>"; };
+		4F05665F2924833100AD1985 /* CDNPalyViewCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDNPalyViewCustom.m; sourceTree = "<group>"; };
 		4F4BFF8326551D950038B8A6 /* Living.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Living.md; sourceTree = "<group>"; };
 		4F6925C02639650F00872F2B /* ScreenShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareViewController.h; sourceTree = "<group>"; };
 		4F6925C12639650F00872F2B /* ScreenShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareViewController.m; sourceTree = "<group>"; };
@@ -252,6 +258,10 @@
 		1E9B4B75269D3DB000D223C3 /* CDN */ = {
 			isa = PBXGroup;
 			children = (
+				4F05665E2924833100AD1985 /* CDNPalyViewCustom.h */,
+				4F05665F2924833100AD1985 /* CDNPalyViewCustom.m */,
+				4F05665D2924833100AD1985 /* CDNPlayerViewController.h */,
+				4F05665C2924833100AD1985 /* CDNPlayerViewController.m */,
 				1E9B4B78269D3DE200D223C3 /* CDNViewController.h */,
 				1E9B4B79269D3DE200D223C3 /* CDNViewController.m */,
 				1E9B4B7B269D64BD00D223C3 /* CDNLiveViewController.h */,
@@ -774,6 +784,7 @@
 				1E9B4B86269D811A00D223C3 /* CDNMenuViewController.m in Sources */,
 				9921564A276725D7008BDA4F /* UIView+Extension.m in Sources */,
 				4F6925D426396E1900872F2B /* ScreenShareCreateViewController.m in Sources */,
+				4F0566612924833100AD1985 /* CDNPalyViewCustom.m in Sources */,
 				9921563D2766F29D008BDA4F /* RCRTCPKView.m in Sources */,
 				1F4DF3F4266A0B4300D1E051 /* BeautyMenusContentView.m in Sources */,
 				DD24DF6D261EFC1700DC4665 /* RequestToken.m in Sources */,
@@ -786,6 +797,7 @@
 				DD59DE73262FC1A500A0C940 /* GPUImageOutputCamera.m in Sources */,
 				DD24DFE426202F5100DC4665 /* MeetingViewController.m in Sources */,
 				DD59DE74262FC1A500A0C940 /* GPUImageHandle.m in Sources */,
+				4F0566602924833100AD1985 /* CDNPlayerViewController.m in Sources */,
 				DDEC583C26270ECA0067D692 /* LiveViewController.m in Sources */,
 				4FFC2893264A7CF5008A83F9 /* ScreenShareVideoLayoutTool.m in Sources */,
 				DD59DE60262EEC5000A0C940 /* HomeTableViewCell.m in Sources */,

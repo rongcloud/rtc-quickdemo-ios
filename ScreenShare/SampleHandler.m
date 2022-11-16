@@ -72,11 +72,13 @@ static NSString *const ScreenShareGroupID = @"group.cn.rongcloud.rtcquickdemo.sc
             break;
     }
     
-    NSError *error = [NSError errorWithDomain:NSStringFromClass(self.class)
-                                         code:0
-                                     userInfo:@{
-                                         NSLocalizedFailureReasonErrorKey:tip
-                                     }];
-    [self finishBroadcastWithError:error];
+    if (tip.length) {
+        NSError *error = [NSError errorWithDomain:NSStringFromClass(self.class)
+                                             code:0
+                                         userInfo:@{
+            NSLocalizedFailureReasonErrorKey:tip
+        }];
+        [self finishBroadcastWithError:error];
+    }
 }
 @end

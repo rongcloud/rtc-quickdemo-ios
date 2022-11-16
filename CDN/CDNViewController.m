@@ -9,9 +9,11 @@
 #import <RongRTCLib/RongRTCLib.h>
 #import "CDNLiveViewController.h"
 #import "CDNPullViewController.h"
-
+#import "CDNPlayerViewController.h"
 static NSString *const CDNLiveViewControllerId = @"CDNLiveViewController";
 static NSString *const CDNPullViewControllerId = @"CDNPullViewController";
+static NSString *const CDNPlayerViewControllerId = @"CDNPlayerViewController";
+
 
 
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
@@ -19,6 +21,7 @@ static NSString *const CDNPullViewControllerId = @"CDNPullViewController";
 
 @interface CDNViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *roomIdTextFiled;
+@property (weak, nonatomic) IBOutlet UITextField *cdnUrlTextFiled;
 
 @property (nonatomic, strong) RCRTCRoom *room;
 @property (nonatomic, strong) RCRTCLiveInfo *liveInfo;
@@ -29,6 +32,7 @@ static NSString *const CDNPullViewControllerId = @"CDNPullViewController";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.cdnUrlTextFiled.text = @"http://220.161.87.62:8800/hls/0/index.m3u8";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -49,6 +53,9 @@ static NSString *const CDNPullViewControllerId = @"CDNPullViewController";
     [self joinRoomRoleType:RCRTCLiveRoleTypeAudience];
 }
 
+- (IBAction)playCNDPlayer:(id)sender {
+    [self jumpToCDNPlayer];
+}
 
 - (void)joinRoomRoleType:(RCRTCLiveRoleType)roleType {
     //1.配置房间
@@ -118,5 +125,15 @@ static NSString *const CDNPullViewControllerId = @"CDNPullViewController";
     joinLiveVC.room = self.room;
     joinLiveVC.roomId = self.roomIdTextFiled.text;
     [self.navigationController pushViewController:joinLiveVC animated:YES];
+}
+
+
+- (void)jumpToCDNPlayer {
+    if (self.cdnUrlTextFiled.text.length == 0) {
+        return;
+    }
+    CDNPlayerViewController *cdnPlayer = [self.storyboard instantiateViewControllerWithIdentifier:CDNPlayerViewControllerId];
+    cdnPlayer.cdnUrl = self.cdnUrlTextFiled.text;
+    [self.navigationController pushViewController:cdnPlayer animated:YES];
 }
 @end
