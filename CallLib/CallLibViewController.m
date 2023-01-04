@@ -96,6 +96,9 @@ typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
                                                       mediaType:RCCallMediaVideo
                                                 sessionDelegate:self
                                                           extra:nil];
+    // 发送方预览自己的摄像头采集
+    [self.callSession setVideoView:self.localView
+                            userId:[RCCoreClient sharedCoreClient].currentUserInfo.userId];
     [_callSession addDelegate:self];
     [_callSession setMinimized:NO];
     [_callSession setSpeakerEnabled:YES];
@@ -119,6 +122,9 @@ typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
 // 接收到通话呼入的回调
 - (void)didReceiveCall:(RCCallSession *)callSession {
     _callSession = callSession;
+    // 接收方预览自己的摄像头采集
+    [self.callSession setVideoView:self.localView
+                            userId:[RCCoreClient sharedCoreClient].currentUserInfo.userId];
     [_callSession addDelegate:self];
     [_callSession setMinimized:NO];
     [self updateUIWithStatus:RCRTCCallStatus_Incoming];
@@ -128,8 +134,6 @@ typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
 
 // 通话已接通
 - (void)callDidConnect {
-    [self.callSession setVideoView:self.localView
-                            userId:[RCCoreClient sharedCoreClient].currentUserInfo.userId];
     [self.callSession setVideoView:self.remoteView userId:self.callSession.targetId];
     [self updateUIWithStatus:RCRTCCallStatus_Active];
 }
@@ -155,6 +159,7 @@ typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
         }
             break;
         case RCRTCCallStatus_Incoming: {
+            self.localView.hidden = NO;
             self.callBtn.hidden = YES;
             self.rejectBtn.hidden = NO;
             self.accpetBtn.hidden = NO;
@@ -163,6 +168,7 @@ typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
         }
             break;
         case RCRTCCallStatus_Dialing: {
+            self.localView.hidden = NO;
             self.callBtn.hidden = YES;
             self.rejectBtn.hidden = NO;
             self.accpetBtn.hidden = YES;
@@ -171,7 +177,6 @@ typedef NS_ENUM(NSInteger, RCRTCCallStatus) {
         }
             break;
         case RCRTCCallStatus_Active: {
-            self.localView.hidden = NO;
             self.remoteView.hidden = NO;
             self.callBtn.hidden = YES;
             self.rejectBtn.hidden = NO;
