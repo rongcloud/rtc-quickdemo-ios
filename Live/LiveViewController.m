@@ -680,6 +680,7 @@ RCRTCOtherRoomEventDelegate
 - (LiveStreamVideo *)setupRemoteViewWithStream:(RCRTCInputStream *)stream {
 
     LiveStreamVideo *sVideo = [self creatStreamVideoWithStreamId:stream.streamId];
+    sVideo.userId = stream.userId;
     RCRTCVideoView *remoteView = (RCRTCVideoView *) sVideo.canvesView;
 
     //如果为自定义视频流则适配显示
@@ -713,7 +714,7 @@ RCRTCOtherRoomEventDelegate
     return nil;
 }
 
-// 远端掉线/离开回掉调用，删除远端用户的所有音视频流
+// 远端掉线/离开回掉调用，根据流 id 删除远端用户的所有音视频流
 - (void)fetchStreamVideoOffLineWithStreamId:(NSString *)streamId {
     NSArray *arr = [NSArray arrayWithArray:self.streamVideos];
     for (LiveStreamVideo *sVideo in arr) {
@@ -728,8 +729,39 @@ RCRTCOtherRoomEventDelegate
     [self updateLayoutWithAnimation:YES];
 }
 
-#pragma mark - RCRTCRoomEventDelegate
+// 远端掉线/离开回掉调用，根据用户 id 删除远端用户的所有音视频流
+- (void)fetchStreamVideoOffLineWithUserId:(NSString *)userId {
+    NSArray *arr = [NSArray arrayWithArray:self.streamVideos];
+    for (LiveStreamVideo *sVideo in arr) {
+        if ([userId isEqualToString:sVideo.userId]) {
+            if (sVideo) {
+                [sVideo.canvesView removeFromSuperview];
+                [self.streamVideos removeObject:sVideo];
 
+            }
+        }
+    }
+    [self updateLayoutWithAnimation:YES];
+}
+
+#pragma mark - RCRTCRoomEventDelegate
+- (void)didSwitchRoleWithUser:(RCRTCRemoteUser *)user roleType:(RCRTCLiveRoleType)roleType{
+    if(roleType == RCRTCLiveRoleTypeAudience){
+        [self fetchStreamVideoOffLineWithUserId:user.userId];
+    }
+ 
+}
+// 主播监听其他主播发布资源并订阅
+- (void)didPublishStreams:(NSArray<RCRTCInputStream *> *)streams{
+    if(!_liveRoleType){
+        [self subscribeRemoteResource:streams];
+    }
+}
+- (void)didUnpublishStreams:(NSArray<RCRTCInputStream *> *)streams{
+    if(!_liveRoleType){
+        [self unsubscribeRemoteResource:streams orStreamId:nil];
+    }
+}
 // 直播合流发布
 - (void)didPublishLiveStreams:(NSArray<RCRTCInputStream *> *)streams {
     [self subscribeRemoteResource:streams];

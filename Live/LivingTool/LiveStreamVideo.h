@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy) NSString *streamId;
 
+@property(nonatomic, copy) NSString *userId;
+
 /*!
  包含子类的 RCRTCLocalVideoView 和 RCRTCRemoteVideoView
  */
