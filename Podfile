@@ -7,7 +7,7 @@ target 'RCRTCQuickDemo' do
 use_frameworks!
 
 # Pods for RCRTCQuickDemo
-pod 'RongCloudRTC', '5.3.0.2'
+pod 'RongCloudRTC', '5.3.4'
 end
 
 target 'ScreenShare' do
@@ -15,6 +15,6 @@ target 'ScreenShare' do
 use_frameworks!
 
 # Pods for RCRTCQuickDemo
-pod 'RongCloudRTC', '5.3.0.2'
+pod 'RongCloudRTC', '5.3.4'
 
 end
