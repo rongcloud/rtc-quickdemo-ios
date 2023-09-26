@@ -91,10 +91,10 @@
 }
 
 - (void)pushViewController:(NSString *)storyboardName identifier:(NSString *)identifier {
-
     UIStoryboard *sb = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    UIViewController *callKitVC = [sb instantiateViewControllerWithIdentifier:identifier];
-    [self.navigationController pushViewController:callKitVC animated:YES];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:identifier];
+    vc.title = [RCCoreClient sharedCoreClient].currentUserInfo.userId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - RCConnectionStatusChangeDelegate

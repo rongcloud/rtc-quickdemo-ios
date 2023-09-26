@@ -28,6 +28,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    RCInitOption *option = [RCInitOption new];
+    option.naviServer = @"http://nav-aliqa.rongcloud.net";
+//    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey option:option];
+    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey option:nil];
+    NSString *lastUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastUserId"];
+    if (lastUserId.length) {
+        self.useridTextField.text = lastUserId;
+    }
 }
 
 // 点击连接 IM 服务
@@ -36,21 +44,22 @@
         return;
     }
     [self.useridTextField resignFirstResponder];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.useridTextField.text forKey:@"lastUserId"];
 
     // 获取 Token
     [RequestToken requestToken:self.useridTextField.text
                           name:self.useridTextField.text
                    portraitUrl:nil
              completionHandler:^(BOOL isSuccess, NSString *_Nonnull tokenString) {
-                 if (!isSuccess) return;
-                 // 拿到 Token 后去连接 IM 服务
-                 [self connectRongCloud:tokenString];
-             }];
+        if (!isSuccess) return;
+        // 拿到 Token 后去连接 IM 服务
+        [self connectRongCloud:tokenString];
+    }];
 }
 
 // 初始化 AppKey 并连接 IM
 - (void)connectRongCloud:(NSString *)token {
-    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey];
     [[RCCoreClient sharedCoreClient] connectWithToken:token dbOpened:nil success:^(NSString *userId) {
         NSLog(@"IM connect success,user ID : %@", userId);
         // 回调处于子线程，需要回调到主线程进行 UI 处理。
@@ -58,7 +67,7 @@
             HomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
             [self.navigationController pushViewController:homeVC animated:YES];
         });
-    }                                           error:^(RCConnectErrorCode errorCode) {
+    } error:^(RCConnectErrorCode errorCode) {
         NSLog(@"IM connect failed, error code : %ld", (long) errorCode);
     }];
 }

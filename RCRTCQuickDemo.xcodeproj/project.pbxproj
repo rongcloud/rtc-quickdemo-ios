@@ -42,6 +42,10 @@
 		4FFC2896264A7D7B008A83F9 /* ScreenShareStreamVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC2895264A7D7B008A83F9 /* ScreenShareStreamVideo.m */; };
 		51CCEF81F36ED330D24961D4 /* Pods_RCRTCQuickDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */; };
 		5E07FE1A6525BFF1829CB4E6 /* Pods_ScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517ABB850196208300BF9CD1 /* Pods_ScreenShare.framework */; };
+		9900ED1E2A26EF5100EA7FA6 /* CallPlus.md in Resources */ = {isa = PBXBuildFile; fileRef = 9900ED1A2A26EF5100EA7FA6 /* CallPlus.md */; };
+		9900ED1F2A26EF5100EA7FA6 /* CallPlus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9900ED1C2A26EF5100EA7FA6 /* CallPlus.storyboard */; };
+		9900ED202A26EF5100EA7FA6 /* CallPlusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9900ED1D2A26EF5100EA7FA6 /* CallPlusViewController.m */; };
+		9900ED262A275B7F00EA7FA6 /* CallPlusControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9900ED252A275B7F00EA7FA6 /* CallPlusControlView.m */; };
 		9921563D2766F29D008BDA4F /* RCRTCPKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9921563C2766F29D008BDA4F /* RCRTCPKView.m */; };
 		9921564A276725D7008BDA4F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 99215648276725D7008BDA4F /* UIView+Extension.m */; };
 		BFEAF46D271144E800254A4C /* Device.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEAF46C271144E800254A4C /* Device.storyboard */; };
@@ -156,8 +160,6 @@
 		4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareCreateViewController.h; sourceTree = "<group>"; };
 		4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareCreateViewController.m; sourceTree = "<group>"; };
 		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
-		4FA987F3265604F50070BD73 /* ScreenShareRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShareRelease.entitlements; sourceTree = "<group>"; };
-		4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RCRTCQuickDemoRelease.entitlements; sourceTree = "<group>"; };
 		4FA987F6265608980070BD73 /* ScreenShare.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ScreenShare.md; sourceTree = "<group>"; };
 		4FA987FA2656567B0070BD73 /* CallKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallKit.md; sourceTree = "<group>"; };
 		4FA988372656728D0070BD73 /* Meeting.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Meeting.md; sourceTree = "<group>"; };
@@ -176,10 +178,17 @@
 		86B54F0B630BC7431B0F808A /* Pods-ScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-ScreenShare/Pods-ScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		89EB5836CE093514087DD774 /* Pods_RCRTCQuickDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RCRTCQuickDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971EBA1398449987D6131A1B /* Pods-RCRTCQuickDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCRTCQuickDemo.debug.xcconfig"; path = "Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9900ED1A2A26EF5100EA7FA6 /* CallPlus.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallPlus.md; sourceTree = "<group>"; };
+		9900ED1B2A26EF5100EA7FA6 /* CallPlusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallPlusViewController.h; sourceTree = "<group>"; };
+		9900ED1C2A26EF5100EA7FA6 /* CallPlus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CallPlus.storyboard; sourceTree = "<group>"; };
+		9900ED1D2A26EF5100EA7FA6 /* CallPlusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallPlusViewController.m; sourceTree = "<group>"; };
+		9900ED242A275B7F00EA7FA6 /* CallPlusControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallPlusControlView.h; sourceTree = "<group>"; };
+		9900ED252A275B7F00EA7FA6 /* CallPlusControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallPlusControlView.m; sourceTree = "<group>"; };
 		9921563B2766F29D008BDA4F /* RCRTCPKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCRTCPKView.h; sourceTree = "<group>"; };
 		9921563C2766F29D008BDA4F /* RCRTCPKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCRTCPKView.m; sourceTree = "<group>"; };
 		99215648276725D7008BDA4F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		99215649276725D7008BDA4F /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		99BD60B42A42E988007FE340 /* ScreenShareRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ScreenShareRelease.entitlements; sourceTree = "<group>"; };
 		BFEAF46C271144E800254A4C /* Device.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Device.storyboard; sourceTree = "<group>"; };
 		BFEAF46E2711450E00254A4C /* DeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
 		BFEAF46F2711450E00254A4C /* DeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
@@ -341,12 +350,25 @@
 		4FBD78BF26395A3200660733 /* ScreenShare */ = {
 			isa = PBXGroup;
 			children = (
-				4FA987F3265604F50070BD73 /* ScreenShareRelease.entitlements */,
+				99BD60B42A42E988007FE340 /* ScreenShareRelease.entitlements */,
 				4FBD78C026395A3200660733 /* SampleHandler.h */,
 				4FBD78C126395A3200660733 /* SampleHandler.m */,
 				4FBD78C326395A3200660733 /* Info.plist */,
 			);
 			path = ScreenShare;
+			sourceTree = "<group>";
+		};
+		9900ED192A26EF5100EA7FA6 /* CallPlus */ = {
+			isa = PBXGroup;
+			children = (
+				9900ED1A2A26EF5100EA7FA6 /* CallPlus.md */,
+				9900ED1B2A26EF5100EA7FA6 /* CallPlusViewController.h */,
+				9900ED1D2A26EF5100EA7FA6 /* CallPlusViewController.m */,
+				9900ED242A275B7F00EA7FA6 /* CallPlusControlView.h */,
+				9900ED252A275B7F00EA7FA6 /* CallPlusControlView.m */,
+				9900ED1C2A26EF5100EA7FA6 /* CallPlus.storyboard */,
+			);
+			path = CallPlus;
 			sourceTree = "<group>";
 		};
 		9921563A2766F27C008BDA4F /* PK */ = {
@@ -461,6 +483,9 @@
 			isa = PBXGroup;
 			children = (
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
+				DD24DF56261EEB4600DC4665 /* Home */,
+				DD4C6CEF2626C68900408C19 /* Tool */,
+				9900ED192A26EF5100EA7FA6 /* CallPlus */,
 				1E9B4B75269D3DB000D223C3 /* CDN */,
 				DD812148261DCC4600AF7D35 /* Meeting1v1 */,
 				DDEC58132626DBF80067D692 /* Live */,
@@ -487,15 +512,12 @@
 		DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */ = {
 			isa = PBXGroup;
 			children = (
-				4FA987F4265605210070BD73 /* RCRTCQuickDemoRelease.entitlements */,
 				DD81211A261DC26B00AF7D35 /* AppDelegate.h */,
 				DD81211B261DC26B00AF7D35 /* AppDelegate.m */,
-				DD24DF56261EEB4600DC4665 /* Home */,
-				DD4C6CEF2626C68900408C19 /* Tool */,
+				DD81212C261DC26F00AF7D35 /* main.m */,
 				DD812126261DC26F00AF7D35 /* Assets.xcassets */,
 				DD812128261DC26F00AF7D35 /* LaunchScreen.storyboard */,
 				DD81212B261DC26F00AF7D35 /* Info.plist */,
-				DD81212C261DC26F00AF7D35 /* main.m */,
 				DD59DE63262EF19300A0C940 /* RCRTCList.plist */,
 			);
 			path = RCRTCQuickDemo;
@@ -569,6 +591,7 @@
 				4FBD78B826395A3200660733 /* Sources */,
 				4FBD78B926395A3200660733 /* Frameworks */,
 				4FBD78BA26395A3200660733 /* Resources */,
+				2724EFD37F6B98D706E1CE42 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -615,6 +638,7 @@
 					};
 					DD812116261DC26B00AF7D35 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -661,7 +685,9 @@
 				BFEAF46D271144E800254A4C /* Device.storyboard in Resources */,
 				DD812127261DC26F00AF7D35 /* Assets.xcassets in Resources */,
 				DD24DFF0262045C000DC4665 /* Meeting.storyboard in Resources */,
+				9900ED1E2A26EF5100EA7FA6 /* CallPlus.md in Resources */,
 				DD59DE01262D5BCD00A0C940 /* CallKit.storyboard in Resources */,
+				9900ED1F2A26EF5100EA7FA6 /* CallPlus.storyboard in Resources */,
 				DD812125261DC26B00AF7D35 /* Login.storyboard in Resources */,
 				1E9B4B77269D3DCD00D223C3 /* CDN.storyboard in Resources */,
 				1F4DF3F3266A0B4300D1E051 /* BeautyMenusButton.xib in Resources */,
@@ -709,6 +735,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2724EFD37F6B98D706E1CE42 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		51B46FD61753CAAB2A0A3E02 /* [CP] Embed Pods Frameworks */ = {
@@ -777,6 +820,7 @@
 				DD812138261DC32900AF7D35 /* LoginViewController.m in Sources */,
 				1F4DF3FC266A0B4300D1E051 /* BeautyMenusDividerView.m in Sources */,
 				DD24DF5A261EEB5A00DC4665 /* HomeViewController.m in Sources */,
+				9900ED262A275B7F00EA7FA6 /* CallPlusControlView.m in Sources */,
 				DD24DF44261EAAD800DC4665 /* Constant.m in Sources */,
 				187F9E36262850B2002E5288 /* UIAlertController+RCRTC.m in Sources */,
 				1E9B4B7D269D64BD00D223C3 /* CDNLiveViewController.m in Sources */,
@@ -801,6 +845,7 @@
 				DDEC583C26270ECA0067D692 /* LiveViewController.m in Sources */,
 				4FFC2893264A7CF5008A83F9 /* ScreenShareVideoLayoutTool.m in Sources */,
 				DD59DE60262EEC5000A0C940 /* HomeTableViewCell.m in Sources */,
+				9900ED202A26EF5100EA7FA6 /* CallPlusViewController.m in Sources */,
 				DD81212D261DC26F00AF7D35 /* main.m in Sources */,
 				1E9B4B7A269D3DE200D223C3 /* CDNViewController.m in Sources */,
 				DD59DE75262FC1A500A0C940 /* GPUImageBeautyFilter.m in Sources */,
@@ -870,8 +915,8 @@
 			baseConfigurationReference = D12B20D80E9E32AE274EB1D0 /* Pods-ScreenShare.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShareRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ScreenShare/Info.plist;
@@ -883,7 +928,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo.screenshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "RongCloud RTC QuickDemo ScreenShare Distribution";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1010,10 +1055,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RCRTCQuickDemo/RCRTCQuickDemoRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1031,6 +1077,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CallPlus/RCRTCQuickDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1042,10 +1091,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RCRTCQuickDemo/RCRTCQuickDemoRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9CVMN4UZK4;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9CVMN4UZK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1062,7 +1113,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.rongcloud.rtcquickdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "RongCloud RTC QuickDemo Distribution";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "RongCloud RTC QuickDemo Distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "CallPlus/RCRTCQuickDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

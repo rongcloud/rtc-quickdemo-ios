@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TmA-2z-xo9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TmA-2z-xo9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -196,6 +196,12 @@
                                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new" translatesAutoresizingMaskIntoConstraints="NO" id="tMV-6V-MjC">
+                                                            <rect key="frame" x="307.5" y="0.0" width="46.5" height="46.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="tMV-6V-MjC" secondAttribute="height" id="WGV-Fn-FdT"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -205,8 +211,10 @@
                                                         <constraint firstItem="Cgs-gC-X8O" firstAttribute="leading" secondItem="Kkn-jr-VDD" secondAttribute="leading" id="NIe-WH-7oT"/>
                                                         <constraint firstItem="Kkn-jr-VDD" firstAttribute="leading" secondItem="TXl-OA-Qs8" secondAttribute="trailing" constant="14" id="NPm-Wg-OKU"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kkn-jr-VDD" secondAttribute="trailing" constant="20" symbolic="YES" id="Qwf-K0-uPj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tMV-6V-MjC" secondAttribute="trailing" id="dCG-Jq-oak"/>
                                                         <constraint firstItem="TXl-OA-Qs8" firstAttribute="leading" secondItem="Fo8-uO-hjU" secondAttribute="leading" constant="30" id="ne1-Vx-DgB"/>
                                                         <constraint firstAttribute="trailing" secondItem="Cgs-gC-X8O" secondAttribute="trailing" constant="30" id="o3e-6I-gPC"/>
+                                                        <constraint firstItem="tMV-6V-MjC" firstAttribute="top" secondItem="Fo8-uO-hjU" secondAttribute="top" id="zAV-Kl-bkS"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -220,7 +228,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="Cgs-gC-X8O" id="bc2-B0-rW9"/>
-                                            <outlet property="iconImageView" destination="TXl-OA-Qs8" id="eHb-l7-Aiv"/>
+                                            <outlet property="iconImageView" destination="TXl-OA-Qs8" id="nVs-xh-agz"/>
+                                            <outlet property="identifyIcon" destination="tMV-6V-MjC" id="9tk-u3-8DB"/>
                                             <outlet property="titleLabel" destination="Kkn-jr-VDD" id="IlT-DN-15d"/>
                                         </connections>
                                     </tableViewCell>
@@ -258,7 +267,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="meeting" width="48" height="48"/>
+        <image name="meeting" width="51" height="45"/>
+        <image name="new" width="46" height="46.5"/>
         <image name="user2" width="24" height="24"/>
     </resources>
 </document>

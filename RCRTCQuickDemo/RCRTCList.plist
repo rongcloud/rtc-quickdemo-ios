@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>image</key>
-		<string>meeting</string>
+		<string>callLib</string>
 		<key>title</key>
 		<string>CallLib</string>
 		<key>description</key>
@@ -40,7 +40,7 @@
 	</dict>
 	<dict>
 		<key>image</key>
-		<string>callkit</string>
+		<string>callKit</string>
 		<key>title</key>
 		<string>CallKit</string>
 		<key>description</key>
@@ -52,7 +52,7 @@
 	</dict>
 	<dict>
 		<key>image</key>
-		<string>meeting</string>
+		<string>screen</string>
 		<key>title</key>
 		<string>共享屏幕</string>
 		<key>description</key>
@@ -85,6 +85,18 @@
 		<string>Device</string>
 		<key>controllerIdentifier</key>
 		<string>DeviceViewController</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>callPlus</string>
+		<key>title</key>
+		<string>CallPlus</string>
+		<key>description</key>
+		<string>通话1v1</string>
+		<key>storyboardName</key>
+		<string>CallPlus</string>
+		<key>controllerIdentifier</key>
+		<string>CallPlusViewController</string>
 	</dict>
 </array>
 </plist>
