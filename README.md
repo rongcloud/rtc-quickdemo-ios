@@ -32,7 +32,7 @@ https://www.rongcloud.cn/downloads/demo
 
 2. `pod install` 完成后, 打开生成的 `RCRTCQuickDemo.xcworkspace`。
 
-3. 请登录官网获取AppKey, AppSecret；找到 `/RCRTCQuickDemo/Tool/Constant/Constant.m`，将红框内的 `AppKey` 和 `AppSecret` 替换为从开发者后台获取到的具体内容，然后去掉 `#error` 提醒。
+3. 请登录官网获取 App Key，并通过客户服务端生成 Token。可以在 `/RCRTCQuickDemo/Tool/Constant/Constant.m` 中填写 `AppKey` 和 `Token` 作为默认值，也可以运行 Demo 后在登录页手动输入。
 
 4. 修改工程 `target` 中 `RCRTCQuickDemo` 的 `Bundle Identifier`，例如：`cn.rongcloud.rtcquickdemo`。
 

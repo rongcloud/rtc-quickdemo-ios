@@ -7,23 +7,14 @@
 
 #import "Constant.h"
 
-/*!
- 填写信息之后可删除 #error
- */
 @implementation Constant
 
-// #error 请填写 App Key
 /*!
- 获取地址: https://developer.rongcloud.cn/app/appkey/
+ 可选：在代码中填写 App Key 与 Token。
+ 如果保持为空，运行时可在登录页手动输入。
  */
-NSString *const AppKey = @"<#your appKey#>";
+NSString *const AppKey = @"pvxdm17jpw0pr";
 
-// #error 请填写 App Secret
-/*!
- 获取Token 需要提供 App Key 和 App Secret
- 正式环境请勿在客户端请求 Token，您的客户端代码一旦被反编译，会导致您的 AppSecret 泄露。
- 请务必确保在服务端获取 Token。 参考文档：https://docs.rongcloud.cn/v4/views/im/server/user/register.html
- */
-NSString *const AppSecret = @"<#your appSecret#>";
+NSString *const Token = @"J0w9dUpIsZE7t2iawWHcKxLPLVpGpkP2NbTsR1U3XU0=@44lh.cn.rongnav.com;44lh.cn.rongcfg.com";
 
 @end

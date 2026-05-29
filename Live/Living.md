@@ -15,8 +15,8 @@
 
 2. `pod install` 完成后, 打开生成的 `RCRTCQuickDemo.xcworkspace`。
 
-3. 请登录官网获取AppKey, AppSecret；找到 `/RCRTCQuickDemo/Tool/Constant/Constant.m`，将红框内的 `AppKey` 和 `AppSecret`
-   替换为从开发者后台获取到的具体内容，然后去掉 `#error` 提醒。
+3. 请登录官网获取 App Key，并通过客户服务端生成 Token。可以在 `/RCRTCQuickDemo/Tool/Constant/Constant.m` 中填写 `AppKey` 和 `Token`
+   作为默认值，也可以运行 Demo 后在登录页手动输入。
 
 4. 修改工程 `target` 中 `RCRTCQuickDemo` 的 `Bundle Identifier`，例如：`cn.rongcloud.rtcquickdemo`。
 
@@ -285,7 +285,6 @@ if (self.pushLocalButton.selected && !self.liveRoleType) {
 # 观众上下麦：
 
 观众上麦本质是观众先离开当前房间，然后再以主播身份加入房间，之后逻辑可参考主播端实现。 观众下麦本质是观众上麦后（此时直播角色类型已变为主播），先离开房间，然后以观众身份加入房间，之后逻辑可参考观众端实现。
-
 
 
 

@@ -7,8 +7,8 @@ target 'RCRTCQuickDemo' do
 use_frameworks!
 
 # Pods for RCRTCQuickDemo
-pod 'RongCloudRTC'
-pod 'RongCallPlusLib'
+pod 'RongCloudRTC', '~> 5.38.0'
+pod 'RongCallPlusLib', '~> 2.26.0'
 
 end
 

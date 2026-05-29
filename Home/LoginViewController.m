@@ -6,7 +6,6 @@
 //
 
 #import "LoginViewController.h"
-#import "RequestToken.h"
 #import "Constant.h"
 #import "HomeViewController.h"
 
@@ -20,7 +19,8 @@
  */
 @interface LoginViewController ()
 
-@property(nonatomic, weak) IBOutlet UITextField *useridTextField;
+@property(nonatomic, weak) IBOutlet UITextField *appKeyTextField;
+@property(nonatomic, weak) IBOutlet UITextField *tokenTextField;
 
 @end
 
@@ -28,34 +28,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    RCInitOption *option = [RCInitOption new];
-    option.naviServer = @"http://nav-aliqa.rongcloud.net";
-//    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey option:option];
-    [[RCCoreClient sharedCoreClient] initWithAppKey:AppKey option:nil];
-    NSString *lastUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastUserId"];
-    if (lastUserId.length) {
-        self.useridTextField.text = lastUserId;
+    NSString *lastAppKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastAppKey"];
+    if (lastAppKey.length) {
+        self.appKeyTextField.text = lastAppKey;
+    } else if (AppKey.length) {
+        self.appKeyTextField.text = AppKey;
+    }
+    if (Token.length) {
+        self.tokenTextField.text = Token;
     }
 }
 
 // 点击连接 IM 服务
 - (IBAction)connectIMServer:(UIButton *)sender {
-    if (!self.useridTextField.text || self.useridTextField.text.length == 0) {
+    NSString *appKey = [self trimmedString:self.appKeyTextField.text];
+    NSString *token = [self trimmedString:self.tokenTextField.text];
+    if (appKey.length == 0 || token.length == 0) {
         return;
     }
-    [self.useridTextField resignFirstResponder];
+    [self.appKeyTextField resignFirstResponder];
+    [self.tokenTextField resignFirstResponder];
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.useridTextField.text forKey:@"lastUserId"];
-
-    // 获取 Token
-    [RequestToken requestToken:self.useridTextField.text
-                          name:self.useridTextField.text
-                   portraitUrl:nil
-             completionHandler:^(BOOL isSuccess, NSString *_Nonnull tokenString) {
-        if (!isSuccess) return;
-        // 拿到 Token 后去连接 IM 服务
-        [self connectRongCloud:tokenString];
-    }];
+    [[NSUserDefaults standardUserDefaults] setObject:appKey forKey:@"lastAppKey"];
+    // 使用客户输入的 App Key 初始化 SDK，再使用客户输入的 Token 连接 IM 服务。
+    [[RCCoreClient sharedCoreClient] initWithAppKey:appKey option:nil];
+    [self connectRongCloud:token];
 }
 
 // 初始化 AppKey 并连接 IM
@@ -72,8 +69,13 @@
     }];
 }
 
+- (NSString *)trimmedString:(NSString *)string {
+    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.useridTextField resignFirstResponder];
+    [self.appKeyTextField resignFirstResponder];
+    [self.tokenTextField resignFirstResponder];
 }
 
 @end

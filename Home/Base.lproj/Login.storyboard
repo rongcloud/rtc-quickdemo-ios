@@ -22,8 +22,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入用户 ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01K-3y-iRU">
-                                <rect key="frame" x="30" y="217" width="117.5" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入 App Key：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01K-3y-iRU">
+                                <rect key="frame" x="30" y="217" width="123" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dz-7Z-8kW">
-                                <rect key="frame" x="30" y="390" width="354" height="45"/>
+                                <rect key="frame" x="30" y="460" width="354" height="45"/>
                                 <color key="backgroundColor" red="0.11290193279999999" green="0.71933102159999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="qlw-yW-0sr"/>
@@ -54,28 +54,48 @@
                                     <action selector="connectIMServer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="05n-HM-adj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应用内唯一标识，重复的用户 Id 将被当作为同一用户，支持大小写英文字母、数字、部分特殊符号 + = - _ 的组合方式，最大长度 64 字节。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWu-Az-RTu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请填写从控制台获取的 App Key。Token 请由客户服务端生成后填写，客户端不再请求 Token。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWu-Az-RTu">
                                 <rect key="frame" x="30" y="247" width="354" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入 Token：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sG-GR-gRZ">
+                                <rect key="frame" x="30" y="370" width="105" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9bc-Pc-mmI">
+                                <rect key="frame" x="30" y="400" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cya-oE-hYk"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="pCO-Qk-Lxf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.95458504898071861" green="0.97441616620939331" blue="0.97617238759994507" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9Dz-7Z-8kW" firstAttribute="top" secondItem="MWQ-zB-59R" secondAttribute="bottom" constant="40" id="0SP-mV-xwJ"/>
+                            <constraint firstItem="9Dz-7Z-8kW" firstAttribute="top" secondItem="9bc-Pc-mmI" secondAttribute="bottom" constant="20" id="0SP-mV-xwJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nWu-Az-RTu" secondAttribute="trailing" constant="30" id="Bch-sv-pXg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9bc-Pc-mmI" secondAttribute="trailing" constant="30" id="D8t-gn-Nx4"/>
+                            <constraint firstItem="5sG-GR-gRZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="H17-Ew-Dyj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MWQ-zB-59R" secondAttribute="trailing" constant="30" id="JxM-Mu-N0K"/>
                             <constraint firstItem="01K-3y-iRU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Yvm-5L-YUA"/>
                             <constraint firstItem="MWQ-zB-59R" firstAttribute="top" secondItem="nWu-Az-RTu" secondAttribute="bottom" constant="20" id="ZSD-lO-tmM"/>
                             <constraint firstItem="MWQ-zB-59R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="cyN-0r-vR1"/>
                             <constraint firstItem="01K-3y-iRU" firstAttribute="top" secondItem="1sE-qh-9XU" secondAttribute="bottom" constant="60" id="euy-1h-5Ku"/>
                             <constraint firstItem="9Dz-7Z-8kW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fWb-m9-STC"/>
+                            <constraint firstItem="9bc-Pc-mmI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="gJY-gG-IgD"/>
                             <constraint firstItem="nWu-Az-RTu" firstAttribute="top" secondItem="01K-3y-iRU" secondAttribute="bottom" constant="10" id="ikZ-ut-VQ8"/>
+                            <constraint firstItem="9bc-Pc-mmI" firstAttribute="top" secondItem="5sG-GR-gRZ" secondAttribute="bottom" constant="10" id="j8T-uL-TIj"/>
                             <constraint firstItem="1sE-qh-9XU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="nRe-tY-vpc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Dz-7Z-8kW" secondAttribute="trailing" constant="30" id="pJu-Jg-gmW"/>
                             <constraint firstItem="MWQ-zB-59R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="rEu-5x-Qhl"/>
+                            <constraint firstItem="5sG-GR-gRZ" firstAttribute="top" secondItem="MWQ-zB-59R" secondAttribute="bottom" constant="20" id="wq2-uL-a1A"/>
                             <constraint firstItem="1sE-qh-9XU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xFm-0p-que"/>
                             <constraint firstItem="nWu-Az-RTu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xod-45-FPq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MWQ-zB-59R" secondAttribute="trailing" constant="30" id="xs4-LY-2b2"/>
@@ -83,7 +103,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="融云 RTC 示例" id="zp7-z9-JH8"/>
                     <connections>
-                        <outlet property="useridTextField" destination="MWQ-zB-59R" id="370-da-trX"/>
+                        <outlet property="appKeyTextField" destination="MWQ-zB-59R" id="370-da-trX"/>
+                        <outlet property="tokenTextField" destination="9bc-Pc-mmI" id="1R3-dO-SZV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

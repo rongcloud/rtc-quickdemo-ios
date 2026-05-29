@@ -10,13 +10,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /*!
- 运行项目前，请先填写 App Key 与 App Secret
+ 可在此处预置 App Key 与 Token，也可以在登录页手动输入。
  */
 @interface Constant : NSObject
 
 extern NSString *const AppKey;
 
-extern NSString *const AppSecret;
+extern NSString *const Token;
 
 @end
 

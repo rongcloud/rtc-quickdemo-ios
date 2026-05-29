@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -159,6 +159,7 @@
 		4F6925C32639651D00872F2B /* ScreenShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScreenShare.storyboard; sourceTree = "<group>"; };
 		4F6925D226396E1900872F2B /* ScreenShareCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenShareCreateViewController.h; sourceTree = "<group>"; };
 		4F6925D326396E1900872F2B /* ScreenShareCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenShareCreateViewController.m; sourceTree = "<group>"; };
+		4F8F81E32FC922A200659389 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4F91E0A126326B7000D17B1F /* video_demo1_low.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_demo1_low.mp4; sourceTree = "<group>"; };
 		4FA987F6265608980070BD73 /* ScreenShare.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ScreenShare.md; sourceTree = "<group>"; };
 		4FA987FA2656567B0070BD73 /* CallKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CallKit.md; sourceTree = "<group>"; };
@@ -482,6 +483,7 @@
 		DD81210E261DC26B00AF7D35 = {
 			isa = PBXGroup;
 			children = (
+				4F8F81E32FC922A200659389 /* README.md */,
 				DD812119261DC26B00AF7D35 /* RCRTCQuickDemo */,
 				DD24DF56261EEB4600DC4665 /* Home */,
 				DD4C6CEF2626C68900408C19 /* Tool */,
@@ -706,9 +708,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -745,9 +751,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScreenShare/Pods-ScreenShare-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -762,9 +772,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RCRTCQuickDemo/Pods-RCRTCQuickDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
