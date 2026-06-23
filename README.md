@@ -1,5 +1,7 @@
 # RongCloud-RTC iOS Quick Demo
 
+这是一个融云 RTC iOS Quick Demo，用于演示融云实时音视频 SDK 在 iOS 端的典型场景集成。
+
 # 融云场景 Demo
 包含单群聊、音视频通话、语音聊天室、娱乐直播、教学课堂、多人会议等场景
 https://www.rongcloud.cn/downloads/demo
